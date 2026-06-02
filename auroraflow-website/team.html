@@ -43,6 +43,30 @@
       text-transform: uppercase; font-weight: 400;
     }
 
+    /* ── PROVIDER CARD WITH BOOKING BUTTON ── */
+    .team-card-link {
+      display: block; text-decoration: none; color: inherit;
+    }
+    .team-book-btn {
+      display: inline-flex; align-items: center;
+      margin-top: 12px; padding: 7px 16px; border-radius: 100px;
+      background: var(--dark); color: var(--cream);
+      font-family: var(--sans); font-size: 10px; font-weight: 400;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .team-book-btn:hover { background: var(--accent2); }
+
+    /* ── TEAM GROUP SECTIONS ── */
+    .team-group { max-width: 1200px; margin: 0 auto; }
+    .team-group + .team-group { margin-top: 72px; }
+    .team-group-heading {
+      font-family: var(--sans); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+      padding-bottom: 16px; margin-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+    }
+
     /* ── VALUES BAND ── */
     .values-band { background: var(--warm-white); padding: 80px 40px; }
     .values-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
@@ -136,123 +160,174 @@
 
 <!-- TEAM GRID -->
 <div class="team-section">
-  <div class="team-grid">
 
-    <!-- PROVIDERS -->
-    <a class="team-card" href="team/brandon-hu.html">
-      <div class="team-photo">
-        <img src="assets/img/6893923ca6c2d2cc6188bde0_Untitled-design-50-.png" alt="Brandon Hu" />
-        <span class="team-badge">New</span>
-      </div>
-      <div class="team-name">Brandon Hu</div>
-      <div class="team-title">Massage Therapist · He/Him</div>
-    </a>
+  <!-- SERVICE PROVIDERS -->
+  <div class="team-group">
+    <h2 class="team-group-heading">Service Providers</h2>
+    <div class="team-grid">
 
-    <a class="team-card" href="team/omer-unluata.html">
-      <div class="team-photo">
-        <img src="assets/img/6893956b4420df3dbf1612ef_Untitled-design-51-.png" alt="Omer Unluata" />
-        <span class="team-badge">New</span>
-      </div>
-      <div class="team-name">Omer Unluata</div>
-      <div class="team-title">Massage Therapist · He/Him</div>
-    </a>
+    <div class="team-card">
+      <a class="team-card-link" href="team/brandon-hu.html">
+        <div class="team-photo">
+          <img src="assets/img/6893923ca6c2d2cc6188bde0_Untitled-design-50-.png" alt="Brandon Hu" />
+        </div>
+        <div class="team-name">Brandon Hu</div>
+        <div class="team-title">Massage Therapist · He/Him</div>
+      </a>
+      <a class="team-book-btn" href="https://booking.mangomint.com/auroraflow?staffId=61" target="_blank">Book Now</a>
+    </div>
 
-    <a class="team-card" href="team/carissa-bovee.html">
-      <div class="team-photo">
-        <img src="assets/img/6748ed21e5ab6934a8ab842a_IMG_1165-Carissa-Bovee.jpeg.pdf-1500-x-1500-px-1-.png" alt="Carissa Bovee" />
-        <span class="team-badge">New</span>
-      </div>
-      <div class="team-name">Carissa Bovee</div>
-      <div class="team-title">Esthetician · She/Her</div>
-    </a>
+    <div class="team-card">
+      <a class="team-card-link" href="team/omer-unluata.html">
+        <div class="team-photo">
+          <img src="assets/img/6893956b4420df3dbf1612ef_Untitled-design-51-.png" alt="Omer Unluata" />
+        </div>
+        <div class="team-name">Omer Unluata</div>
+        <div class="team-title">Massage Therapist · He/Him</div>
+      </a>
+      <a class="team-book-btn" href="https://booking.mangomint.com/auroraflow?staffId=60" target="_blank">Book Now</a>
+    </div>
 
-    <a class="team-card" href="team/taylor-casella.html">
-      <div class="team-photo">
-        <img src="assets/img/6723f8e36d8a23f1812f6c9a_1.png" alt="Taylor Casella" />
-      </div>
-      <div class="team-name">Taylor Casella</div>
-      <div class="team-title">Massage Therapist · she/they</div>
-    </a>
+    <div class="team-card">
+      <a class="team-card-link" href="team/carissa-bovee.html">
+        <div class="team-photo">
+          <img src="assets/img/6748ed21e5ab6934a8ab842a_IMG_1165-Carissa-Bovee.jpeg.pdf-1500-x-1500-px-1-.png" alt="Carissa Bovee" />
+        </div>
+        <div class="team-name">Carissa Bovee</div>
+        <div class="team-title">Esthetician · She/Her</div>
+      </a>
+      <a class="team-book-btn" href="https://booking.mangomint.com/814946?staffId=54" target="_blank">Book Now</a>
+    </div>
 
-    <a class="team-card" href="team/giules-colpo.html">
-      <div class="team-photo">
-        <img src="assets/img/6696d3d64541bec292305cb4_Giules-Colpo.jpg" alt="Giules Colpo" />
-      </div>
-      <div class="team-name">Giules Colpo</div>
-      <div class="team-title">Massage Therapist · she/they</div>
-    </a>
+    <div class="team-card">
+      <a class="team-card-link" href="team/taylor-casella.html">
+        <div class="team-photo">
+          <img src="assets/img/6723f8e36d8a23f1812f6c9a_1.png" alt="Taylor Casella" />
+        </div>
+        <div class="team-name">Taylor Casella</div>
+        <div class="team-title">Massage Therapist · she/they</div>
+      </a>
+      <a class="team-book-btn" href="https://booking.mangomint.com/814946?staffId=52" target="_blank">Book Now</a>
+    </div>
 
-    <a class="team-card" href="team/amanda-stehle.html">
-      <div class="team-photo">
-        <img src="assets/img/66884bfe92b99695f8d467a8_Amanda-Stehle.JPG" alt="Amanda Stehle" />
-      </div>
-      <div class="team-name">Amanda Stehle</div>
-      <div class="team-title">Massage Therapist · she/her</div>
-    </a>
+    <div class="team-card">
+      <a class="team-card-link" href="team/giules-colpo.html">
+        <div class="team-photo">
+          <img src="assets/img/6696d3d64541bec292305cb4_Giules-Colpo.jpg" alt="Giules Colpo" />
+        </div>
+        <div class="team-name">Giules Colpo</div>
+        <div class="team-title">Massage Therapist · she/they</div>
+      </a>
+      <a class="team-book-btn" href="https://booking.mangomint.com/814946?staffId=47" target="_blank">Book Now</a>
+    </div>
 
-    <a class="team-card" href="team/cleo-hyzy.html">
-      <div class="team-photo">
-        <img src="assets/img/659d883026af59d9d8a74339_1.png" alt="Cleo Hyzy" />
-      </div>
-      <div class="team-name">Cleo Hyzy</div>
-      <div class="team-title">Massage Therapist · she/her</div>
-    </a>
+    <div class="team-card">
+      <a class="team-card-link" href="team/amanda-stehle.html">
+        <div class="team-photo">
+          <img src="assets/img/66884bfe92b99695f8d467a8_Amanda-Stehle.JPG" alt="Amanda Stehle" />
+        </div>
+        <div class="team-name">Amanda Stehle</div>
+        <div class="team-title">Massage Therapist · she/her</div>
+      </a>
+      <a class="team-book-btn" href="https://booking.mangomint.com/814946?staffId=43" target="_blank">Book Now</a>
+    </div>
 
-    <a class="team-card" href="team/brandy-robertson.html">
-      <div class="team-photo">
-        <img src="assets/img/6510ed3ea2dc726c9741db54_Brandi.png" alt="Brandy Robertson" />
-      </div>
-      <div class="team-name">Brandy Robertson</div>
-      <div class="team-title">Massage Therapist · She/Her</div>
-    </a>
+    <div class="team-card">
+      <a class="team-card-link" href="team/cleo-hyzy.html">
+        <div class="team-photo">
+          <img src="assets/img/659d883026af59d9d8a74339_1.png" alt="Cleo Hyzy" />
+        </div>
+        <div class="team-name">Cleo Hyzy</div>
+        <div class="team-title">Massage Therapist · she/her</div>
+      </a>
+      <a class="team-book-btn" href="https://booking.mangomint.com/814946?staffId=40" target="_blank">Book Now</a>
+    </div>
 
-    <a class="team-card" href="team/jessmary-ramos.html">
-      <div class="team-photo">
-        <img src="assets/img/6510ed52becbe7216d196271_Jessmary.png" alt="Jessmary Ramos" />
-      </div>
-      <div class="team-name">Jessmary Ramos</div>
-      <div class="team-title">Massage Therapist · She/Her</div>
-    </a>
+    <div class="team-card">
+      <a class="team-card-link" href="team/brandy-robertson.html">
+        <div class="team-photo">
+          <img src="assets/img/6510ed3ea2dc726c9741db54_Brandi.png" alt="Brandy Robertson" />
+        </div>
+        <div class="team-name">Brandy Robertson</div>
+        <div class="team-title">Massage Therapist · She/Her</div>
+      </a>
+      <a class="team-book-btn" href="https://booking.mangomint.com/814946?staffId=34" target="_blank">Book Now</a>
+    </div>
 
-    <a class="team-card" href="team/patience-oneil.html">
-      <div class="team-photo">
-        <img src="assets/img/649a036b21a9becd849d02ac_Untitled-design-22-.png" alt="Patience O'Neill" />
-      </div>
-      <div class="team-name">Patience O'Neill</div>
-      <div class="team-title">Massage Therapist · They/Them</div>
-    </a>
+    <div class="team-card">
+      <a class="team-card-link" href="team/jessmary-ramos.html">
+        <div class="team-photo">
+          <img src="assets/img/6510ed52becbe7216d196271_Jessmary.png" alt="Jessmary Ramos" />
+        </div>
+        <div class="team-name">Jessmary Ramos</div>
+        <div class="team-title">Massage Therapist · She/Her</div>
+      </a>
+      <a class="team-book-btn" href="https://booking.mangomint.com/814946?staffId=35" target="_blank">Book Now</a>
+    </div>
 
-    <a class="team-card" href="team/izzy-weiser.html">
-      <div class="team-photo">
-        <img src="assets/img/6510ed87a428f0504d2cd408_Izzy.png" alt="Izzy Weiser" />
-      </div>
-      <div class="team-name">Izzy Weiser</div>
-      <div class="team-title">Massage Therapist · They/she</div>
-    </a>
+    <div class="team-card">
+      <a class="team-card-link" href="team/patience-oneil.html">
+        <div class="team-photo">
+          <img src="assets/img/649a036b21a9becd849d02ac_Untitled-design-22-.png" alt="Patience O'Neill" />
+        </div>
+        <div class="team-name">Patience O'Neill</div>
+        <div class="team-title">Massage Therapist · They/Them</div>
+      </a>
+      <a class="team-book-btn" href="https://booking.mangomint.com/814946?staffId=17" target="_blank">Book Now</a>
+    </div>
 
-    <a class="team-card" href="team/nikkia-beech-moore.html">
-      <div class="team-photo">
-        <img src="assets/img/6510ed5b9aaff1956e04a9d5_Nik.png" alt="Nikkia Beech-Moore" />
-      </div>
-      <div class="team-name">Nikkia "Nik" Beech-Moore</div>
-      <div class="team-title">Esthetician · She/her</div>
-    </a>
+    <div class="team-card">
+      <a class="team-card-link" href="team/izzy-weiser.html">
+        <div class="team-photo">
+          <img src="assets/img/6510ed87a428f0504d2cd408_Izzy.png" alt="Izzy Weiser" />
+        </div>
+        <div class="team-name">Izzy Weiser</div>
+        <div class="team-title">Massage Therapist · They/she</div>
+      </a>
+      <a class="team-book-btn" href="https://booking.mangomint.com/814946?staffId=23" target="_blank">Book Now</a>
+    </div>
 
-    <a class="team-card" href="team/christine-link.html">
-      <div class="team-photo">
-        <img src="assets/img/66bf9d0d6d1f2ac1aedfc550_Christine-Headshot.jpg" alt="Christine Link" />
-      </div>
-      <div class="team-name">Christine Link</div>
-      <div class="team-title">Esthetician · They/she</div>
-    </a>
+    <div class="team-card">
+      <a class="team-card-link" href="team/nikkia-beech-moore.html">
+        <div class="team-photo">
+          <img src="assets/img/6510ed5b9aaff1956e04a9d5_Nik.png" alt="Nikkia Beech-Moore" />
+        </div>
+        <div class="team-name">Nikkia "Nik" Beech-Moore</div>
+        <div class="team-title">Esthetician · She/her</div>
+      </a>
+      <a class="team-book-btn" href="https://booking.mangomint.com/814946?staffId=28" target="_blank">Book Now</a>
+    </div>
 
-    <a class="team-card" href="team/hayley-yokoyama.html">
-      <div class="team-photo">
-        <img src="assets/img/6510edcb9473faa75eba6269_Hayley.png" alt="Hayley Yokoyama" />
-      </div>
-      <div class="team-name">Hayley Yokoyama</div>
-      <div class="team-title">Director of Education · She/Her</div>
-    </a>
+    <div class="team-card">
+      <a class="team-card-link" href="team/christine-link.html">
+        <div class="team-photo">
+          <img src="assets/img/66bf9d0d6d1f2ac1aedfc550_Christine-Headshot.jpg" alt="Christine Link" />
+        </div>
+        <div class="team-name">Christine Link</div>
+        <div class="team-title">Esthetician · They/she</div>
+      </a>
+      <a class="team-book-btn" href="https://booking.mangomint.com/814946?staffId=26" target="_blank">Book Now</a>
+    </div>
+
+    <div class="team-card">
+      <a class="team-card-link" href="team/hayley-yokoyama.html">
+        <div class="team-photo">
+          <img src="assets/img/6510edcb9473faa75eba6269_Hayley.png" alt="Hayley Yokoyama" />
+        </div>
+        <div class="team-name">Hayley Yokoyama</div>
+        <div class="team-title">Director of Education · She/Her</div>
+      </a>
+      <a class="team-book-btn" href="https://booking.mangomint.com/auroraflow?staffId=14" target="_blank">Book Now</a>
+    </div>
+
+
+    </div><!-- /.team-grid providers -->
+  </div><!-- /.team-group providers -->
+
+  <!-- SUPPORT STAFF -->
+  <div class="team-group">
+    <h2 class="team-group-heading">Support Staff</h2>
+    <div class="team-grid">
 
     <a class="team-card" href="team/castle-frame.html">
       <div class="team-photo">
@@ -262,7 +337,6 @@
       <div class="team-title">CEO &amp; Massage Therapist · She/Her</div>
     </a>
 
-    <!-- SUPPORT STAFF -->
     <a class="team-card" href="team/lydia-atkins.html">
       <div class="team-photo">
         <img src="assets/img/66bf9d8cad22d765622d2bb4_Lydia-Headshot.jpg" alt="Lydia Atkins" />
@@ -303,7 +377,9 @@
       <div class="team-title">Co-founder · She/Her</div>
     </a>
 
-  </div>
+    </div><!-- /.team-grid support -->
+  </div><!-- /.team-group support -->
+
 </div>
 
 <!-- VALUES -->

@@ -20,7 +20,7 @@
       aspect-ratio: 1/1; background: #e0d8d0;
     }
     .bio-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .bio-lifestyle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+    .bio-lifestyle { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
     .bio-lifestyle img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; display: block; }
     .bio-back {
       display: inline-flex; align-items: center; gap: 8px;
@@ -86,6 +86,15 @@
       letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
       transition: opacity 0.2s;
     }
+    .btn-book-hero {
+      display: inline-flex; align-items: center;
+      margin-bottom: 28px; padding: 12px 28px; border-radius: 100px;
+      background: var(--accent2); color: var(--cream);
+      font-family: var(--sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-book-hero:hover { background: var(--accent); color: var(--dark); }
     .btn-cta:hover { opacity: 0.85; }
     @media (max-width: 960px) {
       .bio-hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px 60px; }
@@ -96,7 +105,7 @@
     }
     @media (max-width: 520px) {
       .bio-services-grid { grid-template-columns: 1fr; }
-      .bio-lifestyle { grid-template-columns: 1fr 1fr; }
+      .bio-lifestyle { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
     }
   </style>
 </head>
@@ -132,7 +141,11 @@
       <div class="bio-photo">
         <img src="../assets/img/6893956b4420df3dbf1612ef_Untitled-design-51-.png" alt="Omer Unluata" />
       </div>
-      <div class="bio-lifestyle"><img src="../assets/img/68b1e55de582c6b4dfb12b74_Untitled-design-55-.png" alt="Omer Unluata lifestyle" /><img src="../assets/img/68b1e55ffeecc8859c0d331d_Untitled-design-56-.png" alt="Omer Unluata lifestyle" /><img src="../assets/img/68b1e580db1c56934fa2830f_Untitled-design-57-.png" alt="Omer Unluata lifestyle" /></div>
+            <div class="bio-lifestyle">
+        <img src="../assets/img/68b1e55de582c6b4dfb12b74_Untitled-design-55-.png" alt="Omer Unluata lifestyle" />
+        <img src="../assets/img/68b1e55ffeecc8859c0d331d_Untitled-design-56-.png" alt="Omer Unluata lifestyle" />
+        <img src="../assets/img/68b1e580db1c56934fa2830f_Untitled-design-57-.png" alt="Omer Unluata lifestyle" />
+      </div>
     </div>
     <div class="bio-content">
       <a class="bio-back" href="../team.html">
@@ -144,6 +157,7 @@
       <h1 class="bio-name">Omer Unluata</h1>
       <div class="bio-title">Massage Therapist</div>
       <div class="bio-divider"></div>
+      <a class="btn-book-hero" href="https://booking.mangomint.com/auroraflow?staffId=60" target="_blank">Book Now</a>
       <div class="bio-body"><p>Omer is a licensed massage therapist who received his training from Cortiva Institute of Massage Therapy and the American Academy of Personal Training. He also holds a bachelor's degree in engineering from Yildiz Technical University. Omer specializes in blending Myofascial Release with Sports and Deep Tissue Massage Therapy. His approach is both intuitive and grounded in science, shaped by his early career as an athletic trainer and supported by a strong understanding of biomechanics and functional movement.</p><p>With a firm, calming touch, he incorporates advanced techniques to address pain, improve mobility, and restore balance, while also offering deeply relaxing full-body sessions for those seeking better alignment and function.</p><p>Before massage therapy, Omer lived many lives: musician, desk worker, bartender, personal trainer, and owner of an electronic music dance club in the heart of NYC for 12 years. That rhythm, diversity, and connection lives in his bodywork.</p><p><strong>LMBT #22537</strong></p></div>
     </div>
   </div>

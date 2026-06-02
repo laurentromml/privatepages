@@ -20,7 +20,7 @@
       aspect-ratio: 1/1; background: #e0d8d0;
     }
     .bio-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .bio-lifestyle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+    .bio-lifestyle { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
     .bio-lifestyle img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; display: block; }
     .bio-back {
       display: inline-flex; align-items: center; gap: 8px;
@@ -86,6 +86,15 @@
       letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
       transition: opacity 0.2s;
     }
+    .btn-book-hero {
+      display: inline-flex; align-items: center;
+      margin-bottom: 28px; padding: 12px 28px; border-radius: 100px;
+      background: var(--accent2); color: var(--cream);
+      font-family: var(--sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-book-hero:hover { background: var(--accent); color: var(--dark); }
     .btn-cta:hover { opacity: 0.85; }
     @media (max-width: 960px) {
       .bio-hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px 60px; }
@@ -96,7 +105,7 @@
     }
     @media (max-width: 520px) {
       .bio-services-grid { grid-template-columns: 1fr; }
-      .bio-lifestyle { grid-template-columns: 1fr 1fr; }
+      .bio-lifestyle { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
     }
   </style>
 </head>
@@ -132,7 +141,9 @@
       <div class="bio-photo">
         <img src="../assets/img/6510ed87a428f0504d2cd408_Izzy.png" alt="Izzy Weiser" />
       </div>
-      <div class="bio-lifestyle"><img src="../assets/img/63f389d0126a6f766435b40c_1.jpg" alt="Izzy Weiser lifestyle" /></div>
+            <div class="bio-lifestyle">
+        <img src="../assets/img/63f389d0126a6f766435b40c_1.jpg" alt="Izzy Weiser lifestyle" />
+      </div>
     </div>
     <div class="bio-content">
       <a class="bio-back" href="../team.html">
@@ -144,6 +155,7 @@
       <h1 class="bio-name">Izzy Weiser</h1>
       <div class="bio-title">Massage Therapist</div>
       <div class="bio-divider"></div>
+      <a class="btn-book-hero" href="https://booking.mangomint.com/814946?staffId=23" target="_blank">Book Now</a>
       <div class="bio-body"><p>Izzy Weiser, <strong>LMBT #14265</strong>, studied Massage Therapy at WakeTech, where they learned Swedish, Deep Tissue, and Trigger Point techniques as well as Aromatherapy, Cupping, and Psychosomatic psychology, along with an introduction to energetic modalities.</p><p>According to Izzy, "Massage is about teamwork: therapist and client working together to reach their shared treatment goals. I want each client to feel good in their body so they can continue to do the things that feed their soul."</p><p>In their free time, Izzy loves hanging out with their two cats, reading, refinishing furniture and crafts, spending quality time outside with friends both near and far. "Give me a fire pit surrounded by friends over 'going out' any day!"</p></div>
     </div>
   </div>

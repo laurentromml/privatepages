@@ -20,7 +20,7 @@
       aspect-ratio: 1/1; background: #e0d8d0;
     }
     .bio-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .bio-lifestyle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+    .bio-lifestyle { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
     .bio-lifestyle img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; display: block; }
     .bio-back {
       display: inline-flex; align-items: center; gap: 8px;
@@ -86,6 +86,15 @@
       letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
       transition: opacity 0.2s;
     }
+    .btn-book-hero {
+      display: inline-flex; align-items: center;
+      margin-bottom: 28px; padding: 12px 28px; border-radius: 100px;
+      background: var(--accent2); color: var(--cream);
+      font-family: var(--sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-book-hero:hover { background: var(--accent); color: var(--dark); }
     .btn-cta:hover { opacity: 0.85; }
     @media (max-width: 960px) {
       .bio-hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px 60px; }
@@ -96,7 +105,7 @@
     }
     @media (max-width: 520px) {
       .bio-services-grid { grid-template-columns: 1fr; }
-      .bio-lifestyle { grid-template-columns: 1fr 1fr; }
+      .bio-lifestyle { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
     }
   </style>
 </head>
@@ -132,7 +141,11 @@
       <div class="bio-photo">
         <img src="../assets/img/6748ed21e5ab6934a8ab842a_IMG_1165-Carissa-Bovee.jpeg.pdf-1500-x-1500-px-1-.png" alt="Carissa Bovee" />
       </div>
-      <div class="bio-lifestyle"><img src="../assets/img/6748f01aedc252f09d19cf9a_IMG_2336-Carissa-Bovee.jpeg.pdf-1500-x-1500-px-.png" alt="Carissa Bovee lifestyle" /><img src="../assets/img/6748f1362c79f7b89cc8136f_IMG_3498-Carissa-Bovee.jpeg.pdf-1500-x-1500-px-.png" alt="Carissa Bovee lifestyle" /><img src="../assets/img/6748f2b65dc7bb58659325a1_IMG_3985-Carissa-Bovee.jpeg.pdf-2-.png" alt="Carissa Bovee lifestyle" /></div>
+            <div class="bio-lifestyle">
+        <img src="../assets/img/6748f01aedc252f09d19cf9a_IMG_2336-Carissa-Bovee.jpeg.pdf-1500-x-1500-px-.png" alt="Carissa Bovee lifestyle" />
+        <img src="../assets/img/6748f1362c79f7b89cc8136f_IMG_3498-Carissa-Bovee.jpeg.pdf-1500-x-1500-px-.png" alt="Carissa Bovee lifestyle" />
+        <img src="../assets/img/6748f2b65dc7bb58659325a1_IMG_3985-Carissa-Bovee.jpeg.pdf-2-.png" alt="Carissa Bovee lifestyle" />
+      </div>
     </div>
     <div class="bio-content">
       <a class="bio-back" href="../team.html">
@@ -144,6 +157,7 @@
       <h1 class="bio-name">Carissa Bovee</h1>
       <div class="bio-title">Esthetician</div>
       <div class="bio-divider"></div>
+      <a class="btn-book-hero" href="https://booking.mangomint.com/814946?staffId=54" target="_blank">Book Now</a>
       <div class="bio-body"><p>Carissa <strong>(#E21673)</strong> is a dedicated esthetician with a passion for results-driven skincare and natural lash and brow enhancements. A graduate of Elevate Salon Institute in Durham, NC, she has specialized training in lash lifting, brow lamination, lash and brow tinting, microdermabrasion, gua sha, facial cupping, hydrodermabrasion, and chemical peels.</p><p>Specializing in waxing and evidence-based skincare, Carissa is committed to providing practical, approachable solutions tailored to each client. She loves blending professional-grade and over-the-counter products to achieve personalized results without unnecessary financial investment.</p><p>Carissa is a proud advocate for the LGBTQ+ community and has a long history of disability support and advocacy, ensuring her services are inclusive, accessible, and welcoming to all, regardless of skin type, color, age, or condition.</p><p>Originally from a small town in Iowa, Carissa moved to Durham in 2015 and has made it her home. In her free time, she enjoys painting, hand embroidery, casual video games, and audiobooks, as well as spending time with her wife and their two cats.</p></div>
     </div>
   </div>

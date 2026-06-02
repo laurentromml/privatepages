@@ -20,7 +20,7 @@
       aspect-ratio: 1/1; background: #e0d8d0;
     }
     .bio-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .bio-lifestyle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+    .bio-lifestyle { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
     .bio-lifestyle img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; display: block; }
     .bio-back {
       display: inline-flex; align-items: center; gap: 8px;
@@ -86,6 +86,15 @@
       letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
       transition: opacity 0.2s;
     }
+    .btn-book-hero {
+      display: inline-flex; align-items: center;
+      margin-bottom: 28px; padding: 12px 28px; border-radius: 100px;
+      background: var(--accent2); color: var(--cream);
+      font-family: var(--sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-book-hero:hover { background: var(--accent); color: var(--dark); }
     .btn-cta:hover { opacity: 0.85; }
     @media (max-width: 960px) {
       .bio-hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px 60px; }
@@ -96,7 +105,7 @@
     }
     @media (max-width: 520px) {
       .bio-services-grid { grid-template-columns: 1fr; }
-      .bio-lifestyle { grid-template-columns: 1fr 1fr; }
+      .bio-lifestyle { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
     }
   </style>
 </head>
@@ -132,7 +141,10 @@
       <div class="bio-photo">
         <img src="../assets/img/6893923ca6c2d2cc6188bde0_Untitled-design-50-.png" alt="Brandon Hu" />
       </div>
-      <div class="bio-lifestyle"><img src="../assets/img/6892cb8c1c06742cb2648a09_Untitled-design-49-.png" alt="Brandon Hu lifestyle" /><img src="../assets/img/6892cb742d5971baffed3a92_Untitled-design-47-.png" alt="Brandon Hu lifestyle" /></div>
+            <div class="bio-lifestyle">
+        <img src="../assets/img/6892cb8c1c06742cb2648a09_Untitled-design-49-.png" alt="Brandon Hu lifestyle" />
+        <img src="../assets/img/6892cb742d5971baffed3a92_Untitled-design-47-.png" alt="Brandon Hu lifestyle" />
+      </div>
     </div>
     <div class="bio-content">
       <a class="bio-back" href="../team.html">
@@ -144,6 +156,7 @@
       <h1 class="bio-name">Brandon Hu</h1>
       <div class="bio-title">Massage Therapist</div>
       <div class="bio-divider"></div>
+      <a class="btn-book-hero" href="https://booking.mangomint.com/auroraflow?staffId=61" target="_blank">Book Now</a>
       <div class="bio-body"><p>Brandon is a licensed massage therapist who received his training from Aveda Institute and Gwinnett College. He specializes in deep tissue and cupping techniques that help melt away tension and restore balance. His approach is intuitive and calming, creating a space where clients can truly relax, breathe deeply, and let go. Each session is personalized with care to support the body's natural healing and leave you feeling grounded and renewed.</p><p>When he's not working, Brandon is tending to his growing jungle of houseplants or adding to his collection of skulls and insects (ethically sourced, of course!). He has a soft spot for all things nature, the weirder, the better.</p><p><strong>LMBT #19220</strong></p></div>
     </div>
   </div>

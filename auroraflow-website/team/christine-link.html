@@ -20,7 +20,7 @@
       aspect-ratio: 1/1; background: #e0d8d0;
     }
     .bio-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .bio-lifestyle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+    .bio-lifestyle { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
     .bio-lifestyle img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; display: block; }
     .bio-back {
       display: inline-flex; align-items: center; gap: 8px;
@@ -86,6 +86,15 @@
       letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
       transition: opacity 0.2s;
     }
+    .btn-book-hero {
+      display: inline-flex; align-items: center;
+      margin-bottom: 28px; padding: 12px 28px; border-radius: 100px;
+      background: var(--accent2); color: var(--cream);
+      font-family: var(--sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-book-hero:hover { background: var(--accent); color: var(--dark); }
     .btn-cta:hover { opacity: 0.85; }
     @media (max-width: 960px) {
       .bio-hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px 60px; }
@@ -96,7 +105,7 @@
     }
     @media (max-width: 520px) {
       .bio-services-grid { grid-template-columns: 1fr; }
-      .bio-lifestyle { grid-template-columns: 1fr 1fr; }
+      .bio-lifestyle { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
     }
   </style>
 </head>
@@ -133,7 +142,11 @@
         <img src="../assets/img/66bf9d0d6d1f2ac1aedfc550_Christine-Headshot.jpg" alt="Christine Link" />
       </div>
       
-      <div class="bio-lifestyle"><img src="../assets/img/637d0a8ec0f8f3b822eba6dd_Untitled-design-2-.jpg" alt="Christine Pride" /><img src="../assets/img/637d0a8ebf971ecb7a93611a_Untitled-design-1-.jpg" alt="Christine hiking" /><img src="../assets/img/637d0a8e8f6359483c04790c_Untitled-design.jpg" alt="Christine and Aria" /></div>
+            <div class="bio-lifestyle">
+        <img src="../assets/img/637d0a8ec0f8f3b822eba6dd_Untitled-design-2-.jpg" alt="Christine Link lifestyle" />
+        <img src="../assets/img/637d0a8ebf971ecb7a93611a_Untitled-design-1-.jpg" alt="Christine Link lifestyle" />
+        <img src="../assets/img/637d0a8e8f6359483c04790c_Untitled-design.jpg" alt="Christine Link lifestyle" />
+      </div>
     </div>
     <div class="bio-content">
       <a class="bio-back" href="../team.html">
@@ -145,6 +158,7 @@
       <h1 class="bio-name">Christine Link</h1>
       <div class="bio-title">Esthetician</div>
       <div class="bio-divider"></div>
+      <a class="btn-book-hero" href="https://booking.mangomint.com/814946?staffId=26" target="_blank">Book Now</a>
       <div class="bio-body"><p>Christine Link is a skin therapist specializing in facials, gender-neutral body and facial hair removal, and skincare education. They received training and certifications as an esthetician from the Natural Touch School of Massage and Esthetics in Hickory, NC.</p><p>They believe that skincare is multifaceted, just like humans are. One of Christine's favorite parts of the job is helping educate clients to find what fits their budget and lifestyle. Christine has been told they are a gentle esthetician because they don't use harsh exfoliation tactics but work with the skin gradually to achieve skin health over time.</p><p>Christine is gender non-conforming and ecstatic about being part of a community that supports a safe spa space for everyone. They have a wife, Aria, and a wonderful pup named Hazel. Outside of work, Christine is attending UNC Chapel Hill and loves sci-fi and fantasy, weightlifting, eating, watching anime, and traveling. Christine has also completed hands-on training with Joelle on chemical peels for skin of color.</p></div>
     </div>
   </div>

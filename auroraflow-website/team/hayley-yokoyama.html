@@ -20,7 +20,7 @@
       aspect-ratio: 1/1; background: #e0d8d0;
     }
     .bio-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .bio-lifestyle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+    .bio-lifestyle { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
     .bio-lifestyle img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; display: block; }
     .bio-back {
       display: inline-flex; align-items: center; gap: 8px;
@@ -86,6 +86,15 @@
       letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
       transition: opacity 0.2s;
     }
+    .btn-book-hero {
+      display: inline-flex; align-items: center;
+      margin-bottom: 28px; padding: 12px 28px; border-radius: 100px;
+      background: var(--accent2); color: var(--cream);
+      font-family: var(--sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-book-hero:hover { background: var(--accent); color: var(--dark); }
     .btn-cta:hover { opacity: 0.85; }
     @media (max-width: 960px) {
       .bio-hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px 60px; }
@@ -96,7 +105,7 @@
     }
     @media (max-width: 520px) {
       .bio-services-grid { grid-template-columns: 1fr; }
-      .bio-lifestyle { grid-template-columns: 1fr 1fr; }
+      .bio-lifestyle { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
     }
   </style>
 </head>
@@ -132,6 +141,12 @@
       <div class="bio-photo">
         <img src="../assets/img/6510edcb9473faa75eba6269_Hayley.png" alt="Hayley Yokoyama" />
       </div>
+      <div class="bio-lifestyle">
+        <img src="../assets/img/63933ea4b98f77a65c365955_1.png" alt="Hayley Yokoyama lifestyle" />
+        <img src="../assets/img/63933ea435f74b63f85c5a76_2.png" alt="Hayley Yokoyama lifestyle" />
+        <img src="../assets/img/63933ea40aa62015c3980f04_3.png" alt="Hayley Yokoyama lifestyle" />
+        <img src="../assets/img/68c874346ec74741b171d787_Untitled-design-59-.png" alt="Hayley Yokoyama lifestyle" />
+      </div>
     </div>
     <div class="bio-content">
       <a class="bio-back" href="../team.html">
@@ -142,6 +157,7 @@
       <h1 class="bio-name">Hayley Yokoyama</h1>
       <div class="bio-title">Director of Education · Massage Therapist</div>
       <div class="bio-divider"></div>
+      <a class="btn-book-hero" href="https://booking.mangomint.com/auroraflow?staffId=14" target="_blank">Book Now</a>
       <div class="bio-body">
         <p>I'm originally from Hillsborough, just a couple minutes down the road from Auroraflow. I've also spent a chunk of time in Roanoke, VA, while at Hollins University, so I have a soft spot for the Blue Ridge Mountains. I'm a Leo and an INFJ, meaning I'm a big-picture kind of gal with big homebody energy. I love to do all things crafty, especially sewing, embroidery, and furniture redesign.</p>
         <p>My partner, Keita, and I are big foodies, so the weekends tend to be our time to explore new restaurants or concoct our own dishes. When we retire, we really want to open our own Japanese-Southern fusion restaurant. I have also been challenging my dancing background by taking aerial silks classes on Sundays.</p>
@@ -176,7 +192,7 @@
 <div class="bio-cta">
   <h3>Ready to book with<br><em>Hayley?</em></h3>
   <p>Use our online scheduler to find a time that works for you.</p>
-  <a class="btn-cta" href="https://booking.mangomint.com/814946" target="_blank">Book an Appointment</a>
+  <a class="btn-cta" href="https://booking.mangomint.com/auroraflow?staffId=14" target="_blank">Book an Appointment</a>
 </div>
 
 <footer>

@@ -20,7 +20,7 @@
       aspect-ratio: 1/1; background: #e0d8d0;
     }
     .bio-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .bio-lifestyle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+    .bio-lifestyle { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
     .bio-lifestyle img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; display: block; }
     .bio-back {
       display: inline-flex; align-items: center; gap: 8px;
@@ -86,6 +86,15 @@
       letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
       transition: opacity 0.2s;
     }
+    .btn-book-hero {
+      display: inline-flex; align-items: center;
+      margin-bottom: 28px; padding: 12px 28px; border-radius: 100px;
+      background: var(--accent2); color: var(--cream);
+      font-family: var(--sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-book-hero:hover { background: var(--accent); color: var(--dark); }
     .btn-cta:hover { opacity: 0.85; }
     @media (max-width: 960px) {
       .bio-hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px 60px; }
@@ -96,7 +105,7 @@
     }
     @media (max-width: 520px) {
       .bio-services-grid { grid-template-columns: 1fr; }
-      .bio-lifestyle { grid-template-columns: 1fr 1fr; }
+      .bio-lifestyle { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
     }
   </style>
 </head>
@@ -132,7 +141,11 @@
       <div class="bio-photo">
         <img src="../assets/img/649a036b21a9becd849d02ac_Untitled-design-22-.png" alt="Patience O'Neill" />
       </div>
-      <div class="bio-lifestyle"><img src="../assets/img/63862ae5fc1ac29137a22797_Untitled-design-5.png" alt="Patience O'Neill lifestyle" /><img src="../assets/img/63862ae7fc1ac254f5a227a7_Untitled-design-4.png" alt="Patience O'Neill lifestyle" /></div>
+            <div class="bio-lifestyle">
+        <img src="../assets/img/63862ae5fc1ac29137a22797_Untitled-design-5.png" alt="Patience Oneil lifestyle" />
+        <img src="../assets/img/63862ae7fc1ac254f5a227a7_Untitled-design-4.png" alt="Patience Oneil lifestyle" />
+        <img src="../assets/img/63862aedea82e8709367798f_Untitled-design-2-.png" alt="Patience Oneil lifestyle" />
+      </div>
     </div>
     <div class="bio-content">
       <a class="bio-back" href="../team.html">
@@ -144,6 +157,7 @@
       <h1 class="bio-name">Patience O'Neill</h1>
       <div class="bio-title">Massage Therapist</div>
       <div class="bio-divider"></div>
+      <a class="btn-book-hero" href="https://booking.mangomint.com/814946?staffId=17" target="_blank">Book Now</a>
       <div class="bio-body"><p>Patience O'Neill, <strong>LMBT#14469</strong>, is a genderqueer massage therapist specializing in tension release and pain management. Their goal as a massage therapist is to meet your goals as a client and to help you fall as deeply into the relaxation you desire.</p><p>They use a mix of direct pressure techniques to pinpoint tension within specific muscles, Myofascial Release Therapy to melt connective tissue and open up muscle groups, and Swedish techniques to warm and soothe. The modalities Patience has utilized in their practice since becoming a massage therapist in 2014 include Trigger Point Therapy, Myofascial Release Therapy, Swedish Massage, Pregnancy Massage, and Joint Mobilization and Stretching.</p><p>Patience's request of you as a client is that you communicate with them if there are any adjustments that could make you more comfortable: pressure, positioning, temperature, music.</p></div>
     </div>
   </div>
