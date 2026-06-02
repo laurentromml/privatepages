@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Classes | Auroraflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* cls-hero replaced by shared .page-hero */
+
+    /* ── STORY SECTION (matches about story-section pattern) ── */
+    .cls-story { background: var(--warm-white); padding: 110px 40px; }
+    .cls-story-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: center;
+    }
+    .cls-story-img {
+      position: relative;
+      padding: 0 0 24px 24px;
+    }
+    .cls-story-img::before {
+      content: ""; position: absolute;
+      inset: 24px -24px 0 0;
+      background: linear-gradient(140deg, var(--space) 0%, var(--deep) 100%);
+      border-radius: 3px;
+      z-index: 0;
+    }
+    .cls-story-img::after {
+      content: ""; position: absolute;
+      inset: 24px -24px 0 0;
+      background-image:
+        radial-gradient(circle at center, rgba(250,247,242,0.16) 1px, transparent 1.4px);
+      background-size: 14px 14px;
+      border-radius: 3px;
+      z-index: 0; pointer-events: none; opacity: 0.7;
+    }
+    .cls-story-img .frame {
+      position: relative; z-index: 1;
+      border-radius: 4px; overflow: hidden;
+      aspect-ratio: 4/5; background: #e0d8d0;
+      box-shadow: 0 30px 60px -20px rgba(28,24,22,0.28);
+    }
+    .cls-story-img img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .cls-story-text h2 {
+      font-family: var(--serif); font-size: clamp(30px, 4vw, 56px);
+      font-weight: 400; line-height: 1.08; margin-bottom: 26px;
+      letter-spacing: -0.01em;
+    }
+    .cls-story-text h2 em { font-style: italic; color: var(--space); }
+    .cls-story-text p {
+      font-size: 17px; line-height: 1.78; color: var(--mid); margin-bottom: 18px;
+      text-wrap: pretty;
+    }
+
+    /* past classes, editorial list with rainbow markers */
+    .past-classes {
+      margin: 36px 0 32px;
+      padding: 26px 0 4px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .past-classes-label {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+      font-family: var(--sans); font-size: 10.5px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .past-classes-label span:last-child {
+      font-family: var(--serif); font-size: 14px; font-style: italic;
+      letter-spacing: 0; text-transform: none; color: var(--muted);
+    }
+    .past-classes ul {
+      list-style: none; padding: 0; margin: 0;
+      display: grid; grid-template-columns: 1fr 1fr;
+      column-gap: 24px; row-gap: 8px;
+    }
+    .past-classes li {
+      display: flex; align-items: baseline; gap: 12px;
+      font-family: var(--serif); font-size: 21px;
+      color: var(--dark); letter-spacing: 0.005em;
+      padding: 6px 0;
+    }
+    .past-classes li .marker {
+      flex-shrink: 0;
+      width: 8px; height: 8px; border-radius: 50%;
+      transform: translateY(-2px);
+    }
+    .past-classes li:nth-child(1) .marker { background: var(--waves); }
+    .past-classes li:nth-child(2) .marker { background: var(--space); }
+    .past-classes li:nth-child(3) .marker { background: var(--accent); }
+    .past-classes li:nth-child(4) .marker { background: var(--deep); }
+
+    /* CTAs */
+    .cls-actions {
+      display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+      margin-top: 36px;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 32px; border-radius: 100px;
+      background: var(--dark); color: var(--cream);
+      font-family: var(--sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--space); transform: translateY(-1px); }
+    .btn-primary::after {
+      content: "→"; font-size: 14px; line-height: 1;
+      transition: transform 0.25s;
+    }
+    .btn-primary:hover::after { transform: translateX(4px); }
+    .btn-text-link {
+      display: inline-flex; align-items: center;
+      font-family: var(--sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--dark); text-decoration: none;
+      padding: 16px 4px;
+      border-bottom: 1.5px solid var(--dark);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-text-link:hover { color: var(--space); border-color: var(--space); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .cls-story { padding: 72px 24px; }
+      .cls-story-inner { grid-template-columns: 1fr; gap: 56px; }
+      .cls-story-img { max-width: 460px; margin: 0 auto; }
+    }
+    @media (max-width: 480px) {
+      .past-classes ul { grid-template-columns: 1fr; }
+      .cls-actions { width: 100%; }
+      .btn-primary, .btn-text-link { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><img src="assets/logo.png" alt="Auroraflow" class="nav-logo-img" /></a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="memberships.html">Memberships</a></li>
+    <li><a href="journal.html">Journal</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a class="btn-book" href="https://booking.mangomint.com/814946" target="_blank">Book Now</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="about.html">About</a>
+  <a href="team.html">Team</a>
+  <a href="services.html">Services</a>
+  <a href="memberships.html">Memberships</a>
+  <a href="classes.html">Classes</a>
+  <a href="journal.html">Journal</a>
+  <a href="contact.html">Contact</a>
+  <a class="btn-book-mobile" href="https://booking.mangomint.com/814946" target="_blank">Book Now</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-img">
+    <img src="assets/classes-group.jpg" alt="A community class in motion at Auroraflow" />
+  </div>
+  <div class="page-hero-content">
+    <p class="section-label">Community Classes</p>
+    <h1>Move with us,<br><em>grow with us.</em></h1>
+    <p>An ever-evolving lineup of group sessions, shaped by what our practitioners love to teach, and what our community asks us to bring next.</p>
+  </div>
+</div>
+<div class="rainbow-bar"></div>
+
+<!-- STORY / TWO-COLUMN -->
+<section class="cls-story">
+  <div class="cls-story-inner">
+
+    <!-- LEFT: image -->
+    <div class="cls-story-img">
+      <div class="frame">
+        <img src="assets/classes-hero.png" alt="Inside an Auroraflow class session" />
+      </div>
+    </div>
+
+    <!-- RIGHT: text + past classes + CTAs -->
+    <div class="cls-story-text">
+      <h2>A program that <em>keeps growing.</em></h2>
+      <p>Our community classes are designed to extend the care of our private sessions into spaces where people can practice together, without prerequisites, without performance.</p>
+      <p>Some classes return season after season; others are one-time gatherings led by visiting practitioners. The lineup shifts, but the spirit doesn't.</p>
+
+      <div class="past-classes">
+        <div class="past-classes-label">
+          <span>Past classes have included</span>
+          <span>&amp; more to come</span>
+        </div>
+        <ul>
+          <li><span class="marker"></span>TMJ Therapy</li>
+          <li><span class="marker"></span>Pelvic Floor</li>
+          <li><span class="marker"></span>Aromatherapy</li>
+          <li><span class="marker"></span>Self-Defense</li>
+        </ul>
+      </div>
+
+      <p>To see what's currently on the calendar, or to suggest a class you'd love to see, get in touch.</p>
+
+      <div class="cls-actions">
+        <a class="btn-primary" href="https://booking.mangomint.com/814946?showOnlyScId=41" target="_blank">See What's Available</a>
+        <a class="btn-text-link" href="mailto:info@auroraflow.com?subject=Class%20Suggestion">Suggest a Class</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Auroraflow</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="memberships.html">Memberships</a></li>
+          <li><a href="classes.html">Classes</a></li>
+          <li><a href="https://clients.mangomint.com/gift-cards/814946" target="_blank">Gift Cards</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="contact.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="pay-what-you-can.html">Pay What You Can</a></li>
+          <li><a href="policies.html">Policies</a></li>
+        </ul>
+        <div class="footer-address">
+          607 William Vickers Ave Durham, NC 27701<br>
+          <a href="tel:9192299555">(919) 229-9555</a><br>
+          Mon 9am–6pm &nbsp;·&nbsp; Tue–Fri 9am–8pm &nbsp;·&nbsp; Sat &amp; Sun 9am–6pm
+        </div>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/auroraflowmassage" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/auroraflowmassage/" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/company/auroraflow-massage/" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v2a6 6 0 0 1 2-3z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Auroraflow</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+<script src="shared.js"></script>
+</body>
+</html>

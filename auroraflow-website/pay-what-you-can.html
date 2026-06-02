@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pay What You Can | Auroraflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* pwyc-hero now uses shared .page-hero */
+
+    /* ── WHAT IS IT ── */
+    .what-section { background: var(--warm-white); padding: 96px 40px; }
+    .what-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .what-text h2 {
+      font-family: var(--serif); font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 400; line-height: 1.15; margin-bottom: 24px; letter-spacing: -0.01em;
+    }
+    .what-text h2 em { font-style: italic; }
+    .what-text p {
+      font-size: 16px; line-height: 1.82; color: var(--mid); margin-bottom: 18px;
+    }
+    .what-img {
+      border-radius: 4px; overflow: hidden; aspect-ratio: 4/3; background: #e0d8d0;
+    }
+    .what-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── HOW IT WORKS ── */
+    .how-section { background: var(--cream); padding: 96px 40px; }
+    .how-inner { max-width: 1200px; margin: 0 auto; }
+    .how-inner h2 {
+      font-family: var(--serif); font-size: clamp(26px, 3vw, 44px);
+      font-weight: 400; margin-bottom: 56px; letter-spacing: -0.01em;
+    }
+    .how-inner h2 em { font-style: italic; }
+    .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .how-step {}
+    .step-num {
+      font-family: var(--serif); font-size: 48px; font-weight: 300;
+      color: #ddd5cc; line-height: 1; margin-bottom: 16px;
+    }
+    .how-step h4 {
+      font-family: var(--serif); font-size: 22px; font-weight: 400;
+      margin-bottom: 10px; letter-spacing: 0.01em;
+    }
+    .how-step p { font-size: 15px; line-height: 1.78; color: var(--mid); }
+
+    /* ── SCHEDULE STRIP ── */
+    .schedule-section { background: var(--dark); padding: 72px 40px; }
+    .schedule-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+    .schedule-inner h3 {
+      font-family: var(--serif); font-size: clamp(26px, 3.5vw, 44px);
+      font-weight: 300; color: var(--cream); margin-bottom: 12px; line-height: 1.2;
+    }
+    .schedule-inner h3 em { font-style: italic; }
+    .schedule-inner > p {
+      font-size: 16px; color: rgba(250,247,242,0.6); margin-bottom: 40px; line-height: 1.65;
+    }
+    .schedule-cards {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px;
+    }
+    .schedule-card {
+      border: 1px solid rgba(250,247,242,0.12); border-radius: 4px;
+      padding: 24px 28px; text-align: left;
+      background: rgba(250,247,242,0.04);
+    }
+    .schedule-card .day {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(250,247,242,0.4); margin-bottom: 6px;
+    }
+    .schedule-card .time {
+      font-family: var(--serif); font-size: 28px; font-weight: 400;
+      color: var(--cream); line-height: 1.1;
+    }
+    .schedule-card .note {
+      font-size: 13px; color: rgba(250,247,242,0.45); margin-top: 6px;
+    }
+    .schedule-cta {
+      display: inline-flex; align-items: center;
+      padding: 15px 38px; border-radius: 100px;
+      background: var(--cream); color: var(--dark);
+      font-family: var(--sans); font-size: 13px; font-weight: 400;
+      letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .schedule-cta:hover { opacity: 0.88; }
+
+    /* ── VALUES ── */
+    .values-section { background: var(--warm-white); padding: 96px 40px; }
+    .values-inner { max-width: 1200px; margin: 0 auto; }
+    .values-inner h2 {
+      font-family: var(--serif); font-size: clamp(26px, 3vw, 44px);
+      font-weight: 400; margin-bottom: 48px; letter-spacing: -0.01em;
+    }
+    .values-inner h2 em { font-style: italic; }
+    .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .value-card {
+      padding: 32px; border-radius: 4px;
+      border: 1px solid var(--border); background: var(--cream);
+    }
+    .value-card h4 {
+      font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 10px;
+    }
+    .value-card p { font-size: 15px; line-height: 1.75; color: var(--mid); }
+
+    /* ── FAQ ── */
+    .faq-section { background: var(--cream); padding: 96px 40px; }
+    .faq-inner { max-width: 860px; margin: 0 auto; }
+    .faq-inner h2 {
+      font-family: var(--serif); font-size: clamp(26px, 3vw, 40px);
+      font-weight: 400; margin-bottom: 40px; letter-spacing: -0.01em;
+    }
+    .faq-inner h2 em { font-style: italic; }
+    .faq-item { border-top: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none; padding: 20px 0;
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; text-align: left; gap: 16px;
+    }
+    .faq-q span { font-family: var(--serif); font-size: 19px; font-weight: 400; color: var(--dark); line-height: 1.3; }
+    .faq-icon {
+      width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: var(--mid); transition: transform 0.25s;
+    }
+    .faq-icon svg { width: 11px; height: 11px; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 15px; line-height: 1.78; color: var(--mid);
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s;
+    }
+    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 20px; }
+
+    @media (max-width: 960px) {
+      .what-inner { grid-template-columns: 1fr; gap: 40px; }
+      .how-steps { grid-template-columns: 1fr; gap: 32px; }
+      .schedule-cards { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+      .what-section, .how-section, .schedule-section, .values-section, .faq-section { padding: 72px 24px; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html"><img src="assets/logo.png" alt="Auroraflow" class="nav-logo-img" /></a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="memberships.html">Memberships</a></li>
+    <li><a href="journal.html">Journal</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a class="btn-book" href="https://booking.mangomint.com/814946" target="_blank">Book Now</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="about.html">About</a>
+  <a href="team.html">Team</a>
+  <a href="services.html">Services</a>
+  <a href="memberships.html">Memberships</a>
+  <a href="journal.html">Journal</a>
+  <a href="contact.html">Contact</a>
+  <a class="btn-book-mobile" href="https://booking.mangomint.com/814946" target="_blank">Book Now</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-img">
+    <img src="assets/img/63989d6c19252735e3124266_FullSizeRender.jpeg" alt="" />
+  </div>
+  <div class="page-hero-content">
+    <p class="section-label">Community Access</p>
+    <h1>Pay what<br>you <em>can.</em></h1>
+    <p>Wellness is a fundamental right, not a luxury. Every second and fourth Thursday, we open our doors with sliding-scale pricing so financial circumstances never stand between you and the care you deserve.</p>
+    <div class="page-hero-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span>Every <strong>2nd &amp; 4th Thursday</strong> of the month</span>
+    </div>
+  </div>
+</div>
+<div class="rainbow-bar"></div>
+
+<!-- WHAT IS IT -->
+<div class="what-section">
+  <div class="what-inner">
+    <div class="what-text">
+      <h2>Wellness for<br><em>everyone.</em></h2>
+      <p>We know that in the current American environment, massage and professional wellness services are often treated as luxuries, things you do when you can afford them. We fundamentally disagree with that framing.</p>
+      <p>Stress affects everyone. Bodies need care. And the people who most need a moment of rest and healing are often the ones who can least afford it.</p>
+      <p>Pay What You Can days are our commitment to changing that, even just a little, right here in Durham. Spots are limited, so we ask that if you are able to pay full price, you do. That generosity helps us keep this program running for those who truly need it.</p>
+    </div>
+    <div class="what-img">
+      <img src="assets/img/6614875d29f243a0184aaa7b_Brown-And-Blue-Nature-Scenery-Travel-Photo-Collage.png" alt="Auroraflow community" />
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-section">
+  <div class="how-inner">
+    <h2>How it <em>works</em></h2>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="step-num">01</div>
+        <h4>Check the schedule</h4>
+        <p>Pay What You Can days happen every second and fourth Thursday of the month. Follow our Instagram or check back here for specific dates and any updates.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">02</div>
+        <h4>Book your spot</h4>
+        <p>Spots are limited. We recommend booking in advance. Call us at (919) 229-9555 or use our online booking system. Let us know you're booking for a Pay What You Can day.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">03</div>
+        <h4>Come in &amp; pay what you can</h4>
+        <p>At checkout, pay the amount that works for you. No questions, no judgment. If you are able to pay full price or more, we deeply appreciate it. It directly supports this program.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCHEDULE -->
+<div class="schedule-section">
+  <div class="schedule-inner">
+    <h3>Mark your <em>calendar.</em></h3>
+    <p>Pay What You Can days happen on a recurring schedule every month. Spots fill up. Book early.</p>
+    <div class="schedule-cards">
+      <div class="schedule-card">
+        <div class="day">2nd Thursday of the month</div>
+        <div class="time">Every Month</div>
+        <div class="note">Recurring · Limited spots available</div>
+      </div>
+      <div class="schedule-card">
+        <div class="day">4th Thursday of the month</div>
+        <div class="time">Every Month</div>
+        <div class="note">Recurring · Limited spots available</div>
+      </div>
+    </div>
+    <a class="schedule-cta" href="https://booking.mangomint.com/814946" target="_blank">Book a Spot</a>
+  </div>
+</div>
+
+<!-- WHY WE DO THIS -->
+<div class="values-section">
+  <div class="values-inner">
+    <h2>Why we <em>do this</em></h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <h4>Stress doesn't discriminate</h4>
+        <p>Chronic stress disproportionately affects marginalized communities: BIPOC individuals, low-income families, and those with less economic security. We believe that access to healing shouldn't follow the same inequities.</p>
+      </div>
+      <div class="value-card">
+        <h4>Community is our why</h4>
+        <p>Auroraflow was built by and for the Durham community. Pay What You Can days are one concrete way we put that value into practice, not just as a statement, but as a recurring commitment.</p>
+      </div>
+      <div class="value-card">
+        <h4>It takes all of us</h4>
+        <p>This program works because clients who can pay full price or more help subsidize access for those who can't. Every time you choose Auroraflow, you're part of that ecosystem of community care.</p>
+      </div>
+      <div class="value-card">
+        <h4>No questions asked</h4>
+        <p>We don't ask you to prove financial need, fill out a form, or explain yourself. You decide what to pay. We trust you. That trust is part of what makes this space feel different.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <h2>Common <em>questions</em></h2>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span>What services are available on Pay What You Can days?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      </button>
+      <div class="faq-a">Standard therapeutic massage sessions are the primary service offered on Pay What You Can days. Availability may vary. Contact us at (919) 229-9555 for details on what's available on a specific date.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span>Is there a minimum amount I need to pay?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      </button>
+      <div class="faq-a">There is no enforced minimum. We ask that you pay what is genuinely accessible to you, and that you be honest with yourself about what that is. If you can pay full price, we ask that you do, it helps us keep this program sustainable.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span>Do I need to book in advance?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      </button>
+      <div class="faq-a">Yes, spots are limited and we strongly recommend booking in advance. You can book online or call us at (919) 229-9555. Walk-ins are welcome if spots are still available, but we can't guarantee availability.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span>Can I use a membership credit on a Pay What You Can day?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      </button>
+      <div class="faq-a">Membership credits and Pay What You Can pricing are separate programs. PWYC days are intended for those who need financial assistance. We ask members to save their credits for regular appointments so PWYC spots stay available for the community.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span>How do I stay updated on upcoming dates?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      </button>
+      <div class="faq-a">Follow us on Instagram <a href="https://www.instagram.com/auroraflowmassage/" target="_blank">@auroraflowmassage</a> for the most current updates and any schedule changes. You can also sign up for our newsletter via the Journal page.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Auroraflow</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="memberships.html">Memberships</a></li>
+          <li><a href="classes.html">Classes</a></li>
+          <li><a href="https://clients.mangomint.com/gift-cards/814946" target="_blank">Gift Cards</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="pay-what-you-can.html">Pay What You Can</a></li>
+          <li><a href="policies.html">Policies</a></li>
+        </ul>
+        <div class="footer-address">
+          607 William Vickers Ave Durham, NC 27701<br>
+          <a href="tel:9192299555">(919) 229-9555</a><br>
+          Mon 9am–6pm &nbsp;·&nbsp; Tue–Fri 9am–8pm &nbsp;·&nbsp; Sat &amp; Sun 9am–6pm
+        </div>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/auroraflowmassage" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/auroraflowmassage/" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/company/auroraflow-massage/" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v2a6 6 0 0 1 2-3z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Auroraflow</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+<script src="shared.js"></script>
+</body>
+</html>

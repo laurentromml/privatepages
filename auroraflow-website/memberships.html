@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memberships | Auroraflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* mem-hero now uses shared .page-hero */
+
+    /* ── INDIVIDUAL PLANS ── */
+    .plans-section { background: var(--cream); padding: 96px 40px; }
+    .plans-inner { max-width: 1200px; margin: 0 auto; }
+    .section-header { margin-bottom: 56px; }
+    .section-header h2 {
+      font-family: var(--serif); font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 400; letter-spacing: -0.01em; margin-bottom: 10px;
+    }
+    .section-header h2 em { font-style: italic; }
+    .section-header p { font-size: 16px; color: var(--mid); line-height: 1.7; max-width: 580px; }
+
+    .plans-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+
+    /* Plan cards */
+    .plan-card {
+      border-radius: 4px; border: 1.5px solid var(--border);
+      background: var(--warm-white); overflow: hidden;
+    }
+    .plan-card.featured { border-color: var(--dark); }
+    .plan-header { padding: 32px 32px 24px; }
+    .plan-name {
+      font-family: var(--serif); font-size: 28px; font-weight: 400;
+      margin-bottom: 4px; letter-spacing: 0.01em;
+    }
+    .plan-tagline { font-size: 14px; color: var(--muted); line-height: 1.5; margin-bottom: 20px; }
+    .plan-price-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 6px; }
+    .plan-price {
+      font-family: var(--serif); font-size: 52px; font-weight: 300;
+      letter-spacing: -0.02em; line-height: 1; color: var(--dark);
+    }
+    .plan-price-detail { font-size: 14px; color: var(--muted); }
+    .plan-savings {
+      display: inline-block; padding: 4px 12px; border-radius: 100px;
+      background: oklch(72% 0.18 140); color: white;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-top: 10px;
+    }
+
+    /* What's included */
+    .plan-body { padding: 0 32px 32px; }
+    .plan-divider { height: 1px; background: var(--border); margin-bottom: 24px; }
+    .plan-includes-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+    }
+    .plan-services { list-style: none; padding: 0; margin-bottom: 24px; }
+    .plan-services li {
+      font-size: 14px; line-height: 1.65; color: var(--mid);
+      padding: 7px 0; border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    }
+    .plan-services li:last-child { border-bottom: none; }
+    .plan-services .svc-value {
+      font-size: 12px; color: oklch(62% 0.14 140); font-weight: 400;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .plan-perks { list-style: none; padding: 0; margin-bottom: 28px; }
+    .plan-perks li {
+      font-size: 13px; color: var(--mid); padding: 5px 0;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .plan-perks li::before {
+      content: '';
+      width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
+      background: var(--dark)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='7' viewBox='0 0 8 7'%3E%3Cpath d='M1 3.5l2 2 4-4' stroke='white' stroke-width='1.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+        no-repeat center;
+    }
+    .plan-btn {
+      display: block; text-align: center; padding: 14px 24px; border-radius: 100px;
+      font-family: var(--sans); font-size: 12px; font-weight: 400;
+      letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .plan-btn-dark { background: var(--dark); color: var(--cream); border: 1.5px solid var(--dark); }
+    .plan-btn-dark:hover { background: oklch(62% 0.14 25); border-color: oklch(62% 0.14 25); }
+    .plan-note {
+      font-size: 12px; color: var(--muted); text-align: center;
+      margin-top: 10px; line-height: 1.6;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-section { background: var(--warm-white); padding: 96px 40px; }
+    .how-inner { max-width: 1200px; margin: 0 auto; }
+    .how-inner h2 {
+      font-family: var(--serif); font-size: clamp(26px, 3vw, 42px);
+      font-weight: 400; margin-bottom: 48px; letter-spacing: -0.01em;
+    }
+    .how-inner h2 em { font-style: italic; }
+    .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+    .how-num {
+      font-family: var(--serif); font-size: 40px; font-weight: 300;
+      color: #ddd5cc; line-height: 1; margin-bottom: 14px;
+    }
+    .how-step h4 { font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 8px; }
+    .how-step p { font-size: 14px; line-height: 1.75; color: var(--mid); }
+
+    /* ── INDIVIDUAL FAQ ── */
+    .faq-section { background: var(--cream); padding: 96px 40px; }
+    .faq-inner { max-width: 860px; margin: 0 auto; }
+    .faq-inner h2 {
+      font-family: var(--serif); font-size: clamp(26px, 3vw, 40px);
+      font-weight: 400; margin-bottom: 40px; letter-spacing: -0.01em;
+    }
+    .faq-inner h2 em { font-style: italic; }
+    .faq-item { border-top: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none; padding: 20px 0;
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; text-align: left; gap: 16px;
+    }
+    .faq-q span { font-family: var(--serif); font-size: 19px; font-weight: 400; color: var(--dark); line-height: 1.3; }
+    .faq-icon {
+      width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: var(--mid); transition: transform 0.25s;
+    }
+    .faq-icon svg { width: 11px; height: 11px; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 15px; line-height: 1.78; color: var(--mid);
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s;
+    }
+    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 20px; }
+
+    /* ── CORPORATE DIVIDER ── */
+    .corp-intro {
+      background: var(--dark); padding: 96px 40px; text-align: center;
+    }
+    .corp-intro .section-label { color: rgba(250,247,242,0.45); margin-bottom: 16px; }
+    .corp-intro h2 {
+      font-family: var(--serif); font-size: clamp(30px, 4.5vw, 60px);
+      font-weight: 300; color: var(--cream); line-height: 1.15;
+      letter-spacing: -0.01em; margin-bottom: 16px;
+    }
+    .corp-intro h2 em { font-style: italic; }
+    .corp-intro p {
+      font-size: 17px; color: rgba(250,247,242,0.65); max-width: 600px;
+      margin: 0 auto 36px; line-height: 1.7;
+    }
+    .corp-intro .stat-row {
+      display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
+      padding-top: 48px; border-top: 1px solid rgba(250,247,242,0.1); margin-top: 48px;
+    }
+    .corp-stat {}
+    .corp-stat-num {
+      font-family: var(--serif); font-size: 48px; font-weight: 300;
+      color: var(--cream); line-height: 1; letter-spacing: -0.02em; margin-bottom: 6px;
+    }
+    .corp-stat-label { font-size: 13px; color: rgba(250,247,242,0.5); letter-spacing: 0.06em; }
+
+    /* ── CORPORATE PLANS ── */
+    .corp-plans { background: #161210; padding: 96px 40px; }
+    .corp-plans-inner { max-width: 1200px; margin: 0 auto; }
+    .corp-plans-inner .section-label { color: rgba(250,247,242,0.4); margin-bottom: 12px; }
+    .corp-plans-inner > h2 {
+      font-family: var(--serif); font-size: clamp(26px, 3.5vw, 44px);
+      font-weight: 400; color: var(--cream); margin-bottom: 48px; letter-spacing: -0.01em;
+    }
+    .corp-plans-inner > h2 em { font-style: italic; }
+    .corp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+
+    .corp-card {
+      border-radius: 4px; border: 1.5px solid rgba(250,247,242,0.1);
+      background: rgba(250,247,242,0.04);
+      padding: 36px 32px 32px;
+      display: flex; flex-direction: column;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .corp-card:hover { border-color: rgba(250,247,242,0.22); background: rgba(250,247,242,0.07); }
+    .corp-card.hybrid {
+      border-color: oklch(68% 0.18 140);
+      background: rgba(250,247,242,0.04);
+    }
+    .corp-badge {
+      display: inline-block; padding: 4px 12px; border-radius: 100px;
+      font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 20px; align-self: flex-start;
+    }
+    .corp-badge.green { background: oklch(68% 0.18 140); color: white; }
+    .corp-badge.blue { background: oklch(60% 0.18 220); color: white; }
+    .corp-badge.custom { background: rgba(250,247,242,0.15); color: rgba(250,247,242,0.8); }
+    .corp-name {
+      font-family: var(--serif); font-size: 26px; font-weight: 400;
+      color: var(--cream); margin-bottom: 6px;
+    }
+    .corp-subtitle { font-size: 13px; color: rgba(250,247,242,0.45); margin-bottom: 24px; line-height: 1.5; }
+    .corp-price {
+      font-family: var(--serif); font-size: 44px; font-weight: 300;
+      color: var(--cream); line-height: 1; letter-spacing: -0.02em; margin-bottom: 4px;
+    }
+    .corp-price sup { font-size: 20px; vertical-align: super; }
+    .corp-period { font-size: 13px; color: rgba(250,247,242,0.4); margin-bottom: 28px; }
+    .corp-divider { height: 1px; background: rgba(250,247,242,0.1); margin-bottom: 24px; }
+    .corp-features { list-style: none; padding: 0; margin-bottom: 32px; flex: 1; }
+    .corp-features li {
+      font-size: 14px; color: rgba(250,247,242,0.65); line-height: 1.65;
+      padding: 7px 0; border-bottom: 1px solid rgba(250,247,242,0.07);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .corp-features li:last-child { border-bottom: none; }
+    .corp-features li::before {
+      content: '';
+      width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; margin-top: 2px;
+      background: rgba(250,247,242,0.15)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='7' viewBox='0 0 8 7'%3E%3Cpath d='M1 3.5l2 2 4-4' stroke='white' stroke-width='1.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+        no-repeat center;
+    }
+    .corp-card.hybrid .corp-features li::before { background-color: oklch(68% 0.18 140); }
+    .corp-btn {
+      display: block; text-align: center; padding: 14px 24px; border-radius: 100px;
+      font-family: var(--sans); font-size: 12px; font-weight: 400;
+      letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .corp-btn-outline {
+      border: 1.5px solid rgba(250,247,242,0.3); color: var(--cream); background: transparent;
+    }
+    .corp-btn-outline:hover { border-color: var(--cream); background: rgba(250,247,242,0.07); }
+    .corp-btn-solid {
+      background: oklch(68% 0.18 140); color: white; border: 1.5px solid transparent;
+    }
+    .corp-btn-solid:hover { background: oklch(62% 0.18 140); }
+    .corp-note { font-size: 12px; color: rgba(250,247,242,0.35); text-align: center; margin-top: 10px; }
+
+    /* ── CORP INQUIRY FORM ── */
+    .corp-form-section { background: #1e1916; padding: 96px 40px; }
+    .corp-form-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    .corp-form-text .section-label { color: rgba(250,247,242,0.4); margin-bottom: 14px; }
+    .corp-form-text h2 {
+      font-family: var(--serif); font-size: clamp(26px, 3.5vw, 44px);
+      font-weight: 400; color: var(--cream); margin-bottom: 16px; letter-spacing: -0.01em;
+      line-height: 1.15;
+    }
+    .corp-form-text h2 em { font-style: italic; }
+    .corp-form-text p { font-size: 15px; color: rgba(250,247,242,0.55); line-height: 1.78; margin-bottom: 20px; }
+    .corp-form-text address {
+      font-style: normal; font-size: 14px; color: rgba(250,247,242,0.4); line-height: 1.9;
+    }
+    .corp-form-text address a { color: rgba(250,247,242,0.55); text-decoration: none; }
+    .corp-form-text address a:hover { color: var(--cream); }
+
+    .corp-form { }
+    .corp-form .form-group { margin-bottom: 16px; }
+    .corp-form label {
+      display: block; font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(250,247,242,0.4); margin-bottom: 8px;
+    }
+    .corp-form input,
+    .corp-form select,
+    .corp-form textarea {
+      width: 100%; padding: 13px 16px; border-radius: 4px;
+      border: 1.5px solid rgba(250,247,242,0.12); background: rgba(250,247,242,0.05);
+      font-family: var(--sans); font-size: 14px; font-weight: 300;
+      color: var(--cream); outline: none; appearance: none;
+      transition: border-color 0.2s; box-sizing: border-box;
+    }
+    .corp-form input::placeholder,
+    .corp-form textarea::placeholder { color: rgba(250,247,242,0.25); }
+    .corp-form input:focus,
+    .corp-form select:focus,
+    .corp-form textarea:focus { border-color: rgba(250,247,242,0.35); }
+    .corp-form textarea { resize: vertical; min-height: 110px; }
+    .corp-form select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23faf7f2' stroke-width='1.5' fill='none' stroke-linecap='round' opacity='0.4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 16px center;
+      padding-right: 40px; cursor: pointer;
+    }
+    .corp-form select option { background: #1e1916; color: var(--cream); }
+    .corp-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .corp-submit {
+      width: 100%; padding: 15px; border-radius: 100px;
+      background: var(--cream); color: var(--dark); border: none;
+      font-family: var(--sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.09em; text-transform: uppercase; cursor: pointer;
+      transition: opacity 0.2s; margin-top: 8px;
+    }
+    .corp-submit:hover { opacity: 0.88; }
+    .corp-form-success {
+      display: none; text-align: center; padding: 48px 0;
+    }
+    .corp-form-success h3 {
+      font-family: var(--serif); font-size: 28px; font-weight: 400;
+      color: var(--cream); margin-bottom: 10px;
+    }
+    .corp-form-success p { font-size: 15px; color: rgba(250,247,242,0.55); }
+
+    /* ── SHARED BUTTONS ── */
+    .btn-dark {
+      display: inline-flex; align-items: center; padding: 14px 32px; border-radius: 100px;
+      background: var(--dark); color: var(--cream);
+      font-family: var(--sans); font-size: 12px; font-weight: 400;
+      letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-dark:hover { background: oklch(62% 0.14 25); }
+    .btn-outline-dark {
+      display: inline-flex; align-items: center; padding: 14px 32px; border-radius: 100px;
+      border: 1.5px solid var(--dark); color: var(--dark);
+      font-family: var(--sans); font-size: 12px; font-weight: 400;
+      letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline-dark:hover { background: var(--dark); color: var(--cream); }
+
+    @media (max-width: 960px) {
+      .plans-grid { grid-template-columns: 1fr; }
+      .corp-grid { grid-template-columns: 1fr; }
+      .corp-form-inner { grid-template-columns: 1fr; gap: 48px; }
+      .how-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .plans-section, .how-section, .faq-section, .corp-intro, .corp-plans, .corp-form-section { padding: 72px 24px; }
+      .corp-intro .stat-row { gap: 32px; }
+      .corp-form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .how-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html"><img src="assets/logo.png" alt="Auroraflow" class="nav-logo-img" /></a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="memberships.html">Memberships</a></li>
+    <li><a href="journal.html">Journal</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a class="btn-book" href="https://booking.mangomint.com/814946" target="_blank" style="color: rgb(255, 255, 255)">Book Now</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="about.html">About</a>
+  <a href="team.html">Team</a>
+  <a href="services.html">Services</a>
+  <a href="memberships.html">Memberships</a>
+  <a href="journal.html">Journal</a>
+  <a href="contact.html">Contact</a>
+  <a class="btn-book-mobile" href="https://booking.mangomint.com/814946" target="_blank">Book Now</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-img">
+    <img src="assets/img/memberships-hero.jpg" alt="Auroraflow reception area with floral murals" />
+  </div>
+  <div class="page-hero-content">
+    <p class="section-label">Memberships</p>
+    <h1>Invest in yourself,<br><em>every month.</em></h1>
+    <p>Consistent wellness at a price that makes sense. One simple monthly credit, no contracts, credits that never expire.</p>
+    <div class="page-hero-actions">
+      <a class="btn-light" href="#individual">View Individual Plans</a>
+      <a class="btn-ghost" href="#corporate">Corporate Memberships</a>
+    </div>
+  </div>
+</div>
+<div class="rainbow-bar"></div>
+
+<!-- ═══════════════════════════════════
+     INDIVIDUAL MEMBERSHIPS
+═══════════════════════════════════ -->
+<div class="plans-section" id="individual">
+  <div class="plans-inner">
+    <div class="section-header">
+      <p class="section-label">Individual Memberships</p>
+      <h2>Simple, flexible,<br><em>worth it.</em></h2>
+      <p>One credit added to your account each month. Use it on the services below, save $20 each visit, and get 10% off everything else. Questions? Call or text us at (919) 229-9555.</p>
+    </div>
+
+    <div class="plans-grid">
+
+      <!-- Massage Membership -->
+      <div class="plan-card featured">
+        <div class="plan-header">
+          <div class="plan-name">Massage &amp; Facial Membership</div>
+          <div class="plan-tagline">One monthly credit for bodywork or upgraded facial services</div>
+          <div class="plan-price-row">
+            <div class="plan-price">$115</div>
+            <div class="plan-price-detail">/ month</div>
+          </div>
+          <span class="plan-savings">Save $20 per visit</span>
+        </div>
+        <div class="plan-body">
+          <div class="plan-divider"></div>
+          <div class="plan-includes-label">Your monthly credit covers any of these ($135 value each):</div>
+          <ul class="plan-services">
+            <li>75-min Therapeutic or Sports Massage <span class="svc-value">$135 value</span></li>
+            <li>75-min Energy Healing Service <span class="svc-value">$135 value</span></li>
+            <li>75-min Blended Massage + Energy Healing <span class="svc-value">$135 value</span></li>
+            <li>75-min Prenatal Massage <span class="svc-value">$135 value</span></li>
+            <li>60-min Ashiatsu Barefoot Massage <span class="svc-value">$135 value</span></li>
+            <li>60-min Craniosacral Therapeutic Massage <span class="svc-value">$135 value</span></li>
+            <li>Excellent Exfoliation, Hydration Station, or Grizzly Beard Facial <span class="svc-value">$135 value</span></li>
+          </ul>
+          <ul class="plan-perks">
+            <li>10% off all additional services &amp; products</li>
+            <li>Credits never expire; use anytime</li>
+            <li>Pause or cancel anytime, no contracts</li>
+            <li>Apply credit to longer sessions (pay the difference)</li>
+          </ul>
+          <a class="plan-btn plan-btn-dark" href="https://booking.mangomint.com/814946" target="_blank">Request Membership</a>
+          <p class="plan-note">Questions? Call us at (919) 229-9555</p>
+        </div>
+      </div>
+
+      <!-- Brazilian Membership -->
+      <div class="plan-card">
+        <div class="plan-header">
+          <div class="plan-name">All Bare Down There Membership</div>
+          <div class="plan-tagline">Monthly Brazilian waxing membership, smooth, consistent, affordable</div>
+          <div class="plan-price-row">
+            <div class="plan-price">$65</div>
+            <div class="plan-price-detail">/ month</div>
+          </div>
+          <span class="plan-savings">Significant monthly savings</span>
+        </div>
+        <div class="plan-body">
+          <div class="plan-divider"></div>
+          <div class="plan-includes-label">Membership includes:</div>
+          <ul class="plan-services">
+            <li>1st-time or extended service <span class="svc-value">$25 off</span></li>
+            <li>Maintenance service (returning every 3–6 wks) <span class="svc-value">$5 off</span></li>
+          </ul>
+          <ul class="plan-perks">
+            <li>10% off all additional services &amp; products</li>
+            <li>Credits never expire; use anytime</li>
+            <li>Pause or cancel anytime, no contracts</li>
+            <li>Gender-affirming, inclusive service always</li>
+          </ul>
+          <a class="plan-btn plan-btn-dark" href="https://booking.mangomint.com/814946" target="_blank">Request Membership</a>
+          <p class="plan-note">Both memberships can be held simultaneously</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-section">
+  <div class="how-inner">
+    <h2>How it <em>works</em></h2>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">01</div>
+        <h4>Activate your membership</h4>
+        <p>Contact us or request via our booking system. Your credit is added immediately upon activation.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">02</div>
+        <h4>Credit renews monthly</h4>
+        <p>Every month a new credit is automatically added to your account for you to use whenever you're ready.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">03</div>
+        <h4>Book &amp; apply at checkout</h4>
+        <p>Book online, then apply your member credit at checkout. Need a longer session? Just pay the difference at your discounted rate.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">04</div>
+        <h4>Credits never expire</h4>
+        <p>Life happens. Your credits roll over indefinitely, even if your membership is no longer active, you can still use them.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INDIVIDUAL FAQ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <h2>Membership <em>FAQs</em></h2>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span>How does the credit system work?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      </button>
+      <div class="faq-a">Once your membership is activated, you receive a credit immediately. Every month on your billing date, a new credit is added. At checkout, you can apply your credit, if you have unused credits, the session is discounted; if you use one, you pay any difference for upgrades.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span>What if I want a longer session?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      </button>
+      <div class="faq-a">No problem! Your credit applies to any session length. You just pay the difference at the member-discounted rate. For example, a 90-minute massage (typically $160) would be $29 + one member credit.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span>Do member credits expire?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      </button>
+      <div class="faq-a">Nope! Member credits never expire. You're welcome to come back at any time to use them, even if your membership is no longer active.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span>Can I pause or cancel anytime?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      </button>
+      <div class="faq-a">Yes! Our memberships are here to support you, not bind you to a long-term contract. Pause or cancel anytime. Your earned credits will still be there when you come back.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        <span>Can I hold both memberships at once?</span>
+        <div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      </button>
+      <div class="faq-a">Absolutely. You can hold the Massage &amp; Facial membership and the All Bare Down There membership simultaneously, both discounts and credits apply independently.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     CORPORATE SECTION
+═══════════════════════════════════ -->
+<div class="corp-intro" id="corporate">
+  <p class="section-label">Corporate Wellness</p>
+  <h2>Wellness as a<br><em>team benefit.</em></h2>
+  <p>Give your employees access to real, professional wellness, from quarterly on-site chair massage events to individual session credits they can use on their own time. Healthy teams perform better.</p>
+
+</div>
+
+<div class="corp-plans">
+  <div class="corp-plans-inner">
+    <p class="section-label">Corporate Plans</p>
+    <h2>Choose how you<br><em>invest in your team.</em></h2>
+    <div class="corp-grid">
+
+      <!-- Chair Massage -->
+      <div class="corp-card">
+        <span class="corp-badge blue">On-Site</span>
+        <div class="corp-name">Chair Massage</div>
+        <div class="corp-subtitle">Quarterly on-site wellness events at your workplace</div>
+        <div class="corp-price"><sup>$</sup>1,200</div>
+        <div class="corp-period">per year · ~$300 per event</div>
+        <div class="corp-divider"></div>
+        <ul class="corp-features">
+          <li>4 quarterly on-site chair massage events</li>
+          <li>Professional Auroraflow therapists come to you</li>
+          <li>15–20 min sessions per employee, fully clothed</li>
+          <li>Focus on neck, shoulders, back &amp; arms</li>
+          <li>No equipment needed on your side; we bring everything</li>
+          <li>Ideal for office wellness days, all-hands, team appreciation</li>
+        </ul>
+        <a class="corp-btn corp-btn-outline" href="#corp-inquiry">Get in Touch</a>
+        <p class="corp-note">Pricing based on standard team size. Custom quotes available.</p>
+      </div>
+
+      <!-- Member Credits -->
+      <div class="corp-card">
+        <span class="corp-badge green">Individual Access</span>
+        <div class="corp-name">Member Credits</div>
+        <div class="corp-subtitle">Give employees individual session credits to use at Auroraflow on their own time</div>
+        <div class="corp-price"><sup>$</sup>3,500</div>
+        <div class="corp-period">per year · 30 member credits</div>
+        <div class="corp-divider"></div>
+        <ul class="corp-features">
+          <li>30 individual session credits distributed to your team</li>
+          <li>Each credit = one full 60–75 min service</li>
+          <li>Employees book independently at their convenience</li>
+          <li>Access to full menu: massage, facials, bodywork &amp; more</li>
+          <li>Credits never expire; no pressure to use quickly</li>
+          <li>10% off any additional services for credit holders</li>
+        </ul>
+        <a class="corp-btn corp-btn-outline" href="#corp-inquiry">Get in Touch</a>
+        <p class="corp-note">Credits distributed quarterly or all at once, your choice.</p>
+      </div>
+
+      <!-- Hybrid -->
+      <div class="corp-card hybrid">
+        <span class="corp-badge custom">Custom</span>
+        <div class="corp-name">Hybrid Program</div>
+        <div class="corp-subtitle">The best of both: on-site team events combined with individual member access</div>
+        <div class="corp-price">Custom</div>
+        <div class="corp-period">tailored to your team &amp; goals</div>
+        <div class="corp-divider"></div>
+        <ul class="corp-features">
+          <li>Custom mix of on-site chair massage visits</li>
+          <li>Individual member credits for employee use</li>
+          <li>Flexible scheduling: quarterly, monthly, or event-based</li>
+          <li>Dedicated Auroraflow contact for your account</li>
+          <li>Scalable as your team grows</li>
+          <li>Ideal for companies wanting both team culture + individual wellbeing</li>
+        </ul>
+        <a class="corp-btn corp-btn-solid" href="#corp-inquiry">Request a Custom Quote</a>
+        <p class="corp-note">We'll build a program around your team size, goals &amp; budget.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CORP INQUIRY FORM -->
+<div class="corp-form-section" id="corp-inquiry">
+  <div class="corp-form-inner">
+    <div class="corp-form-text">
+      <p class="section-label">Get in Touch</p>
+      <h2>Let's build your<br><em>wellness program.</em></h2>
+      <p>Tell us about your team and what you're looking for. We'll get back to you within one business day with a custom proposal.</p>
+      <p>Prefer to talk first? Reach out directly:</p>
+      <address>
+        <a href="mailto:lydia@auroraflow.com">lydia@auroraflow.com</a><br>
+        <a href="tel:9192299555">(919) 229-9555</a><br>
+        607 William Vickers Ave<br>Durham, NC 27701
+      </address>
+    </div>
+    <div>
+      <form class="corp-form" id="corpForm" onsubmit="handleCorpSubmit(event)">
+        <div class="corp-form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="First name" required />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last name" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Company Name</label>
+          <input type="text" placeholder="Your company" required />
+        </div>
+        <div class="form-group">
+          <label>Work Email</label>
+          <input type="email" placeholder="you@company.com" required />
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="(919) 000-0000" />
+        </div>
+        <div class="form-group">
+          <label>Team Size</label>
+          <select required>
+            <option value="" disabled selected>Select team size…</option>
+            <option>1–10 employees</option>
+            <option>11–25 employees</option>
+            <option>26–50 employees</option>
+            <option>51–100 employees</option>
+            <option>100+ employees</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Program Interest</label>
+          <select required>
+            <option value="" disabled selected>Select a program…</option>
+            <option>Chair Massage ($1,200/yr)</option>
+            <option>Member Credits ($3,500/yr)</option>
+            <option>Hybrid: Custom Program</option>
+            <option>Not sure, let's talk</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell us more (optional)</label>
+          <textarea placeholder="Any details about your team, goals, or questions…"></textarea>
+        </div>
+        <button type="submit" class="corp-submit">Request a Proposal</button>
+      </form>
+      <div class="corp-form-success" id="corpSuccess">
+        <h3>Request received!</h3>
+        <p>We'll be in touch within one business day with a custom proposal for your team.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Auroraflow</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="memberships.html">Memberships</a></li>
+          <li><a href="classes.html">Classes</a></li>
+          <li><a href="https://clients.mangomint.com/gift-cards/814946" target="_blank">Gift Cards</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="pay-what-you-can.html">Pay What You Can</a></li>
+          <li><a href="policies.html">Policies</a></li>
+        </ul>
+        <div class="footer-address">
+          607 William Vickers Ave Durham, NC 27701<br>
+          <a href="tel:9192299555">(919) 229-9555</a><br>
+          Mon 9am–6pm &nbsp;·&nbsp; Tue–Fri 9am–8pm &nbsp;·&nbsp; Sat &amp; Sun 9am–6pm
+        </div>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/auroraflowmassage" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/auroraflowmassage/" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/company/auroraflow-massage/" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v2a6 6 0 0 1 2-3z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Auroraflow</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Corp form
+  function handleCorpSubmit(e) {
+    e.preventDefault();
+    document.getElementById('corpForm').style.display = 'none';
+    document.getElementById('corpSuccess').style.display = 'block';
+  }
+</script>
+<script src="shared.js"></script>
+</body>
+</html>

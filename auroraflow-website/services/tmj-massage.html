@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TMJ Tune-up | Auroraflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css">
+  <style>
+    .svc-hero { padding-top: var(--nav-h); background: var(--warm-white); }
+    .svc-hero-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start; padding: 72px 40px 80px;
+    }
+    .svc-img-wrap { border-radius: 4px; overflow: hidden; aspect-ratio: 4/3; background: #e0d8d0; }
+    .svc-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .svc-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 400; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted); text-decoration: none;
+      margin-bottom: 28px; transition: color 0.2s;
+    }
+    .svc-back:hover { color: var(--dark); }
+    .svc-cat {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+    }
+    .svc-name {
+      font-family: var(--serif); font-size: clamp(30px, 4vw, 56px);
+      font-weight: 400; line-height: 1.1; margin-bottom: 10px; letter-spacing: -0.01em;
+    }
+    .svc-price-row {
+      display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 32px; align-items: center;
+    }
+    .svc-price {
+      font-size: 18px; font-weight: 400; color: var(--dark); letter-spacing: -0.01em;
+    }
+    .svc-duration {
+      font-size: 13px; color: var(--muted); letter-spacing: 0.04em;
+      padding: 5px 14px; border-radius: 100px; border: 1px solid var(--border);
+    }
+    .svc-divider { height: 1px; background: var(--border); margin-bottom: 28px; }
+    .svc-desc { font-size: 17px; line-height: 1.82; color: var(--mid); margin-bottom: 24px; }
+    .svc-book-btn {
+      display: inline-flex; align-items: center;
+      padding: 15px 36px; border-radius: 100px;
+      background: var(--dark); color: var(--cream);
+      font-family: var(--sans); font-size: 13px; font-weight: 400;
+      letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s; margin-bottom: 12px;
+    }
+    .svc-book-btn:hover { background: oklch(62% 0.14 25); }
+    .svc-consult {
+      display: block; font-size: 13px; color: var(--muted);
+    }
+    .svc-consult a { color: var(--dark); }
+
+    /* Detail sections */
+    .svc-details { background: var(--cream); padding: 72px 40px; }
+    .svc-details-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
+    .svc-detail-block h4 {
+      font-family: var(--sans); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .svc-detail-block ul { list-style: none; padding: 0; }
+    .svc-detail-block li {
+      font-size: 15px; line-height: 1.7; color: var(--mid);
+      padding: 7px 0; border-bottom: 1px solid var(--border);
+    }
+    .svc-detail-block li:last-child { border-bottom: none; }
+
+    /* Providers */
+    .svc-providers-section { background: var(--warm-white); padding: 72px 40px; }
+    .svc-providers-inner { max-width: 1200px; margin: 0 auto; }
+    .svc-providers-inner h3 {
+      font-family: var(--serif); font-size: 34px; font-weight: 400;
+      margin-bottom: 32px; letter-spacing: -0.01em;
+    }
+    .svc-providers-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+    .svc-provider-card { display: block; text-decoration: none; color: inherit; }
+    .svc-provider-photo {
+      aspect-ratio: 1/1; border-radius: 4px; overflow: hidden;
+      background: #e0d8d0; margin-bottom: 12px;
+    }
+    .svc-provider-photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.4s ease;
+    }
+    .svc-provider-card:hover .svc-provider-photo img { transform: scale(1.04); }
+    .svc-provider-name { font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 3px; }
+    .svc-provider-role { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+
+    /* Related */
+    .svc-related { background: var(--cream); padding: 72px 40px; }
+    .svc-related-inner { max-width: 1200px; margin: 0 auto; }
+    .svc-related-inner h3 {
+      font-family: var(--serif); font-size: 34px; font-weight: 400;
+      margin-bottom: 32px; letter-spacing: -0.01em;
+    }
+    .svc-related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .svc-related-card {
+      display: flex; flex-direction: column; text-decoration: none; color: inherit;
+      border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+      background: var(--warm-white); transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .svc-related-card:hover { box-shadow: 0 4px 20px rgba(28,24,22,0.08); border-color: rgba(28,24,22,0.2); }
+    .svc-related-img { aspect-ratio: 3/2; overflow: hidden; background: #e0d8d0; }
+    .svc-related-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .svc-related-card:hover .svc-related-img img { transform: scale(1.04); }
+    .svc-related-body { padding: 18px 20px 20px; }
+    .svc-related-name { font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 4px; }
+    .svc-related-price { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+
+    @media (max-width: 960px) {
+      .svc-hero-inner { grid-template-columns: 1fr; gap: 36px; padding: 48px 24px 60px; }
+      .svc-details-inner { grid-template-columns: 1fr; gap: 28px; }
+      .svc-details { padding: 56px 24px; }
+      .svc-providers-grid { grid-template-columns: repeat(2,1fr); }
+      .svc-providers-section { padding: 56px 24px; }
+      .svc-related-grid { grid-template-columns: repeat(2,1fr); }
+      .svc-related { padding: 56px 24px; }
+    }
+    @media (max-width: 560px) {
+      .svc-providers-grid { grid-template-columns: 1fr 1fr; }
+      .svc-related-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../assets/logo.png" alt="Auroraflow" class="nav-logo-img" /></a>
+  <ul class="nav-links">
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../team.html">Team</a></li>
+    <li><a href="../services.html" class="active">Services</a></li>
+    <li><a href="../journal.html">Journal</a></li>
+    <li><a href="../contact.html">Contact</a></li>
+    <li><a class="btn-book" href="https://booking.mangomint.com/814946" target="_blank">Book Now</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="../about.html">About</a>
+  <a href="../team.html">Team</a>
+  <a href="../services.html">Services</a>
+  <a href="../journal.html">Journal</a>
+  <a href="../contact.html">Contact</a>
+  <a class="btn-book-mobile" href="https://booking.mangomint.com/814946" target="_blank">Book Now</a>
+</div>
+
+<div class="svc-hero">
+  <div class="svc-hero-inner">
+    <div class="svc-img-wrap">
+      <img src="../assets/img/68d6c71a004fc3b817123290_Untitled-design-67-.png" alt="TMJ Tune-up" />
+    </div>
+    <div class="svc-content">
+      <a class="svc-back" href="../services.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        All Services
+      </a>
+      <div class="svc-cat">Massage & Bodywork</div>
+      <h1 class="svc-name">TMJ Tune-up</h1>
+      <div class="svc-price-row">
+        <span class="svc-price">$80 ($70 first session)</span>
+        <span class="svc-duration">30 min</span>
+      </div>
+      <div class="svc-divider"></div>
+      <p class="svc-desc">The TMJ Tune-up is a specialized treatment targeting the temporomandibular joint and surrounding muscles to relieve jaw tension, reduce headaches, and improve jaw mobility. Ideal for those who clench or grind their teeth, experience jaw clicking, or carry chronic tension in the face, head, and neck.</p>
+      <a class="svc-book-btn" href="https://booking.mangomint.com/814946" target="_blank">Book Appointment</a>
+      <span class="svc-consult">Not sure? <a href="https://booking.mangomint.com/814946?serviceId=121" target="_blank">Book a free consultation</a></span>
+    </div>
+  </div>
+</div>
+
+<div class="rainbow-bar"></div>
+
+<div class="svc-details">
+  <div class="svc-details-inner">
+    <div class="svc-detail-block">
+      <h4>Good For</h4>
+      <ul><li>Jaw clenching & grinding (bruxism)</li><li>TMJ disorders</li><li>Tension headaches</li><li>Neck & shoulder tension</li><li>Post-dental procedure discomfort</li></ul>
+    </div>
+    <div class="svc-detail-block">
+      <h4>What to Expect</h4>
+      <ul><li>Intraoral (inside the mouth) work possible with consent</li><li>Focus on jaw, face, head, and neck muscles</li><li>Pressure relief that can feel intense but deeply satisfying</li><li>Significant relief often felt in first session</li></ul>
+    </div>
+    <div class="svc-detail-block">
+      <h4>How to Prepare</h4>
+      <ul><li>Mention any dental appliances</li><li>Inform therapist of any jaw surgeries</li><li>First session is $70 (mention at booking)</li><li>Schedule regular sessions for best results</li></ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="svc-related">
+  <div class="svc-related-inner">
+    <h3>You Might Also Like</h3>
+    <div class="svc-related-grid">
+      
+      <a class="svc-related-card" href="craniosacral-massage.html">
+        <div class="svc-related-img"><img src="../assets/img/6723f8ce74900e8a01148c9c_2.png" alt="Craniosacral Massage Blend" /></div>
+        <div class="svc-related-body">
+          <div class="svc-related-name">Craniosacral Massage Blend</div>
+          <div class="svc-related-price">$135 · 60 min</div>
+        </div>
+      </a>
+      <a class="svc-related-card" href="therapeutic-massage.html">
+        <div class="svc-related-img"><img src="../assets/img/684875281528670cae3abc26_Untitled-design-34-.png" alt="Therapeutic Massage" /></div>
+        <div class="svc-related-body">
+          <div class="svc-related-name">Therapeutic Massage</div>
+          <div class="svc-related-price">From $115 · 60 min</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Auroraflow</div>
+        <ul class="footer-links">
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="#">Memberships</a></li>
+          <li><a href="https://clients.mangomint.com/gift-cards/814946" target="_blank">Gift Cards</a></li>
+          <li><a href="../journal.html">Journal</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <div class="footer-address">
+          607 William Vickers Ave Durham, NC 27701<br>
+          <a href="tel:9192299555">(919) 229-9555</a><br>
+          Mon 9am–6pm &nbsp;·&nbsp; Tue–Fri 9am–8pm &nbsp;·&nbsp; Sat &amp; Sun 9am–6pm
+        </div>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/auroraflowmassage" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/auroraflowmassage/" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/company/auroraflow-massage/" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v2a6 6 0 0 1 2-3z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom"><span class="footer-copy">© 2026 Auroraflow</span></div>
+  </div>
+</footer>
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+</body>
+</html>

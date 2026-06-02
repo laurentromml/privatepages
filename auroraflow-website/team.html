@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team | Auroraflow Massage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .team-section { background: var(--cream); padding: 64px 40px 100px; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px 24px;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .team-card {
+      display: block; text-decoration: none; color: inherit;
+    }
+    .team-photo {
+      aspect-ratio: 3/4; border-radius: 4px; overflow: hidden;
+      background: #e0d8d0; margin-bottom: 16px; position: relative;
+    }
+    .team-photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.45s ease;
+    }
+    .team-card:hover .team-photo img { transform: scale(1.04); }
+    .team-badge {
+      position: absolute; top: 12px; left: 12px;
+      background: var(--dark); color: var(--cream);
+      font-family: var(--sans); font-size: 10px; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 100px;
+    }
+    .team-name {
+      font-family: var(--serif); font-size: 22px; font-weight: 400;
+      margin-bottom: 4px; line-height: 1.2;
+    }
+    .team-title {
+      font-size: 12px; color: var(--muted); letter-spacing: 0.06em;
+      text-transform: uppercase; font-weight: 400;
+    }
+
+    /* ── VALUES BAND ── */
+    .values-band { background: var(--warm-white); padding: 80px 40px; }
+    .values-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+    .values-inner h2 {
+      font-family: var(--serif); font-size: clamp(30px, 4vw, 52px);
+      font-weight: 300; line-height: 1.2; margin-bottom: 48px; letter-spacing: -0.01em;
+    }
+    .values-inner h2 em { font-style: italic; }
+    .values-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: left;
+    }
+    .value h4 {
+      font-family: var(--serif); font-size: 20px; font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .value p { font-size: 14px; line-height: 1.75; color: var(--mid); }
+
+    /* ── JOIN BAND ── */
+    .join-band { background: var(--dark); padding: 80px 40px; text-align: center; }
+    .join-band h3 {
+      font-family: var(--serif); font-size: clamp(28px, 4vw, 52px);
+      font-weight: 300; color: var(--cream); margin-bottom: 16px; line-height: 1.2;
+    }
+    .join-band p {
+      font-size: 16px; color: rgba(250,247,242,0.7); margin-bottom: 36px; line-height: 1.65;
+    }
+    .btn-hero-light {
+      display: inline-flex; align-items: center;
+      padding: 14px 36px; border-radius: 100px;
+      background: transparent; border: 1.5px solid rgba(250,247,242,0.5);
+      color: #faf7f2; font-family: var(--sans); font-size: 12px;
+      font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.25s, border-color 0.25s;
+    }
+    .btn-hero-light:hover { background: rgba(250,247,242,0.12); border-color: #faf7f2; }
+
+    @media (max-width: 1100px) {
+      .team-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .team-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
+      .team-section { padding: 48px 24px 80px; }
+      .values-grid { grid-template-columns: 1fr; gap: 28px; }
+      .values-band { padding: 60px 24px; }
+      .join-band { padding: 60px 24px; }
+    }
+    @media (max-width: 400px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><img src="assets/logo.png" alt="Auroraflow" class="nav-logo-img" /></a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="team.html" class="active">Team</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="memberships.html">Memberships</a></li>
+    <li><a href="journal.html">Journal</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a class="btn-book" href="https://booking.mangomint.com/814946" target="_blank">Book Now</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="about.html">About</a>
+  <a href="team.html">Team</a>
+  <a href="services.html">Services</a>
+  <a href="memberships.html">Memberships</a>
+  <a href="journal.html">Journal</a>
+  <a href="contact.html">Contact</a>
+  <a class="btn-book-mobile" href="https://booking.mangomint.com/814946" target="_blank">Book Now</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-img">
+    <img src="assets/img/team-hero.jpg" alt="Auroraflow team planting together" />
+  </div>
+  <div class="page-hero-content">
+    <p class="section-label">Our People</p>
+    <h1>Meet our <em>team</em></h1>
+    <p>Our providers are skilled, compassionate, and committed to creating a safe, affirming space for every body.</p>
+  </div>
+</div>
+<div class="rainbow-bar"></div>
+
+<!-- TEAM GRID -->
+<div class="team-section">
+  <div class="team-grid">
+
+    <!-- PROVIDERS -->
+    <a class="team-card" href="team/brandon-hu.html">
+      <div class="team-photo">
+        <img src="assets/img/6893923ca6c2d2cc6188bde0_Untitled-design-50-.png" alt="Brandon Hu" />
+        <span class="team-badge">New</span>
+      </div>
+      <div class="team-name">Brandon Hu</div>
+      <div class="team-title">Massage Therapist · He/Him</div>
+    </a>
+
+    <a class="team-card" href="team/omer-unluata.html">
+      <div class="team-photo">
+        <img src="assets/img/6893956b4420df3dbf1612ef_Untitled-design-51-.png" alt="Omer Unluata" />
+        <span class="team-badge">New</span>
+      </div>
+      <div class="team-name">Omer Unluata</div>
+      <div class="team-title">Massage Therapist · He/Him</div>
+    </a>
+
+    <a class="team-card" href="team/carissa-bovee.html">
+      <div class="team-photo">
+        <img src="assets/img/6748ed21e5ab6934a8ab842a_IMG_1165-Carissa-Bovee.jpeg.pdf-1500-x-1500-px-1-.png" alt="Carissa Bovee" />
+        <span class="team-badge">New</span>
+      </div>
+      <div class="team-name">Carissa Bovee</div>
+      <div class="team-title">Esthetician · She/Her</div>
+    </a>
+
+    <a class="team-card" href="team/taylor-casella.html">
+      <div class="team-photo">
+        <img src="assets/img/6723f8e36d8a23f1812f6c9a_1.png" alt="Taylor Casella" />
+      </div>
+      <div class="team-name">Taylor Casella</div>
+      <div class="team-title">Massage Therapist · she/they</div>
+    </a>
+
+    <a class="team-card" href="team/giules-colpo.html">
+      <div class="team-photo">
+        <img src="assets/img/6696d3d64541bec292305cb4_Giules-Colpo.jpg" alt="Giules Colpo" />
+      </div>
+      <div class="team-name">Giules Colpo</div>
+      <div class="team-title">Massage Therapist · she/they</div>
+    </a>
+
+    <a class="team-card" href="team/amanda-stehle.html">
+      <div class="team-photo">
+        <img src="assets/img/66884bfe92b99695f8d467a8_Amanda-Stehle.JPG" alt="Amanda Stehle" />
+      </div>
+      <div class="team-name">Amanda Stehle</div>
+      <div class="team-title">Massage Therapist · she/her</div>
+    </a>
+
+    <a class="team-card" href="team/cleo-hyzy.html">
+      <div class="team-photo">
+        <img src="assets/img/659d883026af59d9d8a74339_1.png" alt="Cleo Hyzy" />
+      </div>
+      <div class="team-name">Cleo Hyzy</div>
+      <div class="team-title">Massage Therapist · she/her</div>
+    </a>
+
+    <a class="team-card" href="team/brandy-robertson.html">
+      <div class="team-photo">
+        <img src="assets/img/6510ed3ea2dc726c9741db54_Brandi.png" alt="Brandy Robertson" />
+      </div>
+      <div class="team-name">Brandy Robertson</div>
+      <div class="team-title">Massage Therapist · She/Her</div>
+    </a>
+
+    <a class="team-card" href="team/jessmary-ramos.html">
+      <div class="team-photo">
+        <img src="assets/img/6510ed52becbe7216d196271_Jessmary.png" alt="Jessmary Ramos" />
+      </div>
+      <div class="team-name">Jessmary Ramos</div>
+      <div class="team-title">Massage Therapist · She/Her</div>
+    </a>
+
+    <a class="team-card" href="team/patience-oneil.html">
+      <div class="team-photo">
+        <img src="assets/img/649a036b21a9becd849d02ac_Untitled-design-22-.png" alt="Patience O'Neill" />
+      </div>
+      <div class="team-name">Patience O'Neill</div>
+      <div class="team-title">Massage Therapist · They/Them</div>
+    </a>
+
+    <a class="team-card" href="team/izzy-weiser.html">
+      <div class="team-photo">
+        <img src="assets/img/6510ed87a428f0504d2cd408_Izzy.png" alt="Izzy Weiser" />
+      </div>
+      <div class="team-name">Izzy Weiser</div>
+      <div class="team-title">Massage Therapist · They/she</div>
+    </a>
+
+    <a class="team-card" href="team/nikkia-beech-moore.html">
+      <div class="team-photo">
+        <img src="assets/img/6510ed5b9aaff1956e04a9d5_Nik.png" alt="Nikkia Beech-Moore" />
+      </div>
+      <div class="team-name">Nikkia "Nik" Beech-Moore</div>
+      <div class="team-title">Esthetician · She/her</div>
+    </a>
+
+    <a class="team-card" href="team/christine-link.html">
+      <div class="team-photo">
+        <img src="assets/img/66bf9d0d6d1f2ac1aedfc550_Christine-Headshot.jpg" alt="Christine Link" />
+      </div>
+      <div class="team-name">Christine Link</div>
+      <div class="team-title">Esthetician · They/she</div>
+    </a>
+
+    <a class="team-card" href="team/hayley-yokoyama.html">
+      <div class="team-photo">
+        <img src="assets/img/6510edcb9473faa75eba6269_Hayley.png" alt="Hayley Yokoyama" />
+      </div>
+      <div class="team-name">Hayley Yokoyama</div>
+      <div class="team-title">Director of Education · She/Her</div>
+    </a>
+
+    <a class="team-card" href="team/castle-frame.html">
+      <div class="team-photo">
+        <img src="assets/img/66bf9d8673894dd181e887b8_Castle-Headshot.jpg" alt="Castle Frame" />
+      </div>
+      <div class="team-name">Castle Frame</div>
+      <div class="team-title">CEO &amp; Massage Therapist · She/Her</div>
+    </a>
+
+    <!-- SUPPORT STAFF -->
+    <a class="team-card" href="team/lydia-atkins.html">
+      <div class="team-photo">
+        <img src="assets/img/66bf9d8cad22d765622d2bb4_Lydia-Headshot.jpg" alt="Lydia Atkins" />
+      </div>
+      <div class="team-name">Lydia Atkins</div>
+      <div class="team-title">Wellness Director · She/Her</div>
+    </a>
+
+    <a class="team-card" href="team/sascha-de-la-sabia.html">
+      <div class="team-photo">
+        <img src="assets/img/678d60f7fb933bdacd740158_Untitled-1500-x-1500-px-2-.png" alt="Sascha De la Sabia" />
+      </div>
+      <div class="team-name">Sascha De la Sabia</div>
+      <div class="team-title">Front Desk Manager · They/she</div>
+    </a>
+
+    <a class="team-card" href="team/jaylon-martin.html">
+      <div class="team-photo">
+        <img src="assets/img/68d6ba76ab268601824aef08_Untitled-design-61-.png" alt="Jaylon Martin" />
+      </div>
+      <div class="team-name">Jaylon Martin</div>
+      <div class="team-title">Front Desk · Any/All</div>
+    </a>
+
+    <a class="team-card" href="team/elare-andre.html">
+      <div class="team-photo">
+        <img src="assets/img/68d6b885a4d21acf5e8b63e6_Untitled-design-63-.png" alt="Elare André" />
+      </div>
+      <div class="team-name">Elare André</div>
+      <div class="team-title">Front Desk · He/They</div>
+    </a>
+
+    <a class="team-card" href="team/lauren-mccullough.html">
+      <div class="team-photo">
+        <img src="assets/img/6510eddc753332fbbf45bae8_Lauren.png" alt="Lauren McCullough" />
+      </div>
+      <div class="team-name">Lauren McCullough</div>
+      <div class="team-title">Co-founder · She/Her</div>
+    </a>
+
+  </div>
+</div>
+
+<!-- VALUES -->
+<div class="values-band">
+  <div class="values-inner">
+    <h2>Skilled hands.<br><em>Compassionate hearts.</em></h2>
+    <div class="values-grid">
+      <div class="value">
+        <h4>Inclusive by Design</h4>
+        <p>Every member of our team is trained to provide affirming, judgment-free care for all bodies, identities, and backgrounds.</p>
+      </div>
+      <div class="value">
+        <h4>Continually Growing</h4>
+        <p>Our providers stay current with advanced techniques and continuing education to deliver the highest standard of care.</p>
+      </div>
+      <div class="value">
+        <h4>Community Rooted</h4>
+        <p>We are proud to be based in Durham, NC, a city as diverse and vibrant as the community we serve every day.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JOIN -->
+<div class="join-band">
+  <h3>Interested in joining<br><em>our team?</em></h3>
+  <p>We're always looking for talented, passionate wellness providers who share our values.</p>
+  <a class="btn-hero-light" href="#">View Open Positions</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Auroraflow</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="memberships.html">Memberships</a></li>
+          <li><a href="classes.html">Classes</a></li>
+          <li><a href="https://clients.mangomint.com/gift-cards/814946" target="_blank">Gift Cards</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="contact.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="pay-what-you-can.html">Pay What You Can</a></li>
+          <li><a href="policies.html">Policies</a></li>
+        </ul>
+        <div class="footer-address">
+          607 William Vickers Ave Durham, NC 27701<br>
+          <a href="tel:9192299555">(919) 229-9555</a><br>
+          Mon 9am–6pm &nbsp;·&nbsp; Tue–Fri 9am–8pm &nbsp;·&nbsp; Sat &amp; Sun 9am–6pm
+        </div>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/auroraflowmassage" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/auroraflowmassage/" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/company/auroraflow-massage/" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v2a6 6 0 0 1 2-3z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Auroraflow</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+<script src="shared.js"></script>
+</body>
+</html>

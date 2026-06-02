@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hayley Yokoyama | Auroraflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css">
+  <style>
+    .bio-hero { padding-top: var(--nav-h); background: var(--warm-white); }
+    .bio-hero-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 400px 1fr;
+      gap: 72px; align-items: start; padding: 72px 40px 80px;
+    }
+    .bio-photo-wrap { position: sticky; top: calc(var(--nav-h) + 24px); }
+    .bio-photo {
+      border-radius: 4px; overflow: hidden;
+      aspect-ratio: 1/1; background: #e0d8d0;
+    }
+    .bio-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .bio-lifestyle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+    .bio-lifestyle img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; display: block; }
+    .bio-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 400; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted); text-decoration: none;
+      margin-bottom: 28px; transition: color 0.2s;
+    }
+    .bio-back:hover { color: var(--dark); }
+    .bio-badge {
+      display: inline-block; padding: 4px 14px; border-radius: 100px;
+      background: var(--dark); color: var(--cream);
+      font-size: 10px; font-weight: 400; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 18px;
+    }
+    .bio-pronoun {
+      display: inline-block; padding: 4px 14px; border-radius: 100px;
+      border: 1px solid var(--border); color: var(--muted);
+      font-size: 10px; font-weight: 400; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 18px; margin-left: 6px;
+    }
+    .bio-name {
+      font-family: var(--serif); font-size: clamp(34px, 4vw, 58px);
+      font-weight: 400; line-height: 1.1; margin-bottom: 6px; letter-spacing: -0.01em;
+    }
+    .bio-title {
+      font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 36px;
+    }
+    .bio-divider { height: 1px; background: var(--border); margin-bottom: 32px; }
+    .bio-body p { font-size: 16px; line-height: 1.85; color: var(--mid); margin-bottom: 18px; }
+    .bio-body p:last-child { margin-bottom: 0; }
+    .bio-body a { color: var(--dark); }
+    .bio-body strong { font-weight: 500; color: var(--dark); }
+    .bio-services-section { background: var(--cream); padding: 72px 40px; }
+    .bio-services-inner { max-width: 1200px; margin: 0 auto; }
+    .bio-services-inner h3 {
+      font-family: var(--serif); font-size: 34px; font-weight: 400;
+      margin-bottom: 8px; letter-spacing: -0.01em;
+    }
+    .bio-services-inner > p { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+    .bio-services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .bio-svc {
+      display: block; padding: 20px 22px; border-radius: 4px;
+      border: 1.5px solid var(--border); background: var(--warm-white);
+      text-decoration: none; color: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .bio-svc:hover { border-color: var(--dark); box-shadow: 0 4px 16px rgba(28,24,22,0.07); }
+    .bio-svc-name { font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 4px; }
+    .bio-svc-price { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+    .bio-cta { background: var(--dark); padding: 90px 40px; text-align: center; }
+    .bio-cta h3 {
+      font-family: var(--serif); font-size: clamp(26px,3.5vw,46px);
+      font-weight: 300; color: var(--cream); margin-bottom: 12px; line-height: 1.2;
+    }
+    .bio-cta h3 em { font-style: italic; }
+    .bio-cta p { font-size: 16px; color: rgba(250,247,242,0.65); margin-bottom: 32px; line-height: 1.6; }
+    .btn-cta {
+      display: inline-flex; align-items: center;
+      padding: 15px 38px; border-radius: 100px;
+      background: var(--cream); color: var(--dark);
+      font-family: var(--sans); font-size: 13px; font-weight: 400;
+      letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-cta:hover { opacity: 0.85; }
+    @media (max-width: 960px) {
+      .bio-hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px 60px; }
+      .bio-photo-wrap { position: static; max-width: 320px; }
+      .bio-services-grid { grid-template-columns: repeat(2,1fr); }
+      .bio-services-section { padding: 56px 24px; }
+      .bio-cta { padding: 70px 24px; }
+    }
+    @media (max-width: 520px) {
+      .bio-services-grid { grid-template-columns: 1fr; }
+      .bio-lifestyle { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../assets/logo.png" alt="Auroraflow" class="nav-logo-img" /></a>
+  <ul class="nav-links">
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../team.html" class="active">Team</a></li>
+    <li><a href="../services.html">Services</a></li>
+    <li><a href="../memberships.html">Memberships</a></li>
+    <li><a href="../journal.html">Journal</a></li>
+    <li><a href="../contact.html">Contact</a></li>
+    <li><a class="btn-book" href="https://booking.mangomint.com/814946" target="_blank">Book Now</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="../about.html">About</a>
+  <a href="../team.html">Team</a>
+  <a href="../services.html">Services</a>
+  <a href="../memberships.html">Memberships</a>
+  <a href="../journal.html">Journal</a>
+  <a href="../contact.html">Contact</a>
+  <a class="btn-book-mobile" href="https://booking.mangomint.com/814946" target="_blank">Book Now</a>
+</div>
+
+<div class="bio-hero">
+  <div class="bio-hero-inner">
+    <div class="bio-photo-wrap">
+      <div class="bio-photo">
+        <img src="../assets/img/6510edcb9473faa75eba6269_Hayley.png" alt="Hayley Yokoyama" />
+      </div>
+    </div>
+    <div class="bio-content">
+      <a class="bio-back" href="../team.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Team
+      </a>
+      <span class="bio-pronoun">She/Her</span>
+      <h1 class="bio-name">Hayley Yokoyama</h1>
+      <div class="bio-title">Director of Education · Massage Therapist</div>
+      <div class="bio-divider"></div>
+      <div class="bio-body">
+        <p>I'm originally from Hillsborough, just a couple minutes down the road from Auroraflow. I've also spent a chunk of time in Roanoke, VA, while at Hollins University, so I have a soft spot for the Blue Ridge Mountains. I'm a Leo and an INFJ, meaning I'm a big-picture kind of gal with big homebody energy. I love to do all things crafty, especially sewing, embroidery, and furniture redesign.</p>
+        <p>My partner, Keita, and I are big foodies, so the weekends tend to be our time to explore new restaurants or concoct our own dishes. When we retire, we really want to open our own Japanese-Southern fusion restaurant. I have also been challenging my dancing background by taking aerial silks classes on Sundays.</p>
+        <p>I've been dancing for almost 20 years now and wanted to translate all of the skills I had learned in the studio into something I could share with a wider range of people. Dance taught me how to improvise, how to be intuitive with others' minds and bodies, and how each body savors movement in a different way. After a pretty severe dance injury, it really shocked me that there was not an accessible system set up for post-physical therapy care for higher-performance athletes and artists.</p>
+        <p>I specialize in Ashiatsu — which means "foot pressure" in Japanese. It's a super slow, deep massage that feels almost like you're being enveloped in a warm, compressive wave. As a dancer, I wanted to take advantage of the knowledge that my body already possessed. Another pro is that Ashiatsu uses gravity to deliver deep pressure instead of pure muscle, which means that 5'2" me can deliver 6'2" pressure consistently.</p>
+        <p>While I think almost everyone can benefit from Ashiatsu, I would say two groups especially benefit: those who suffer from chronic pain conditions, because the deep structural pressure provides longer-lasting relief; and those who suffer from anxiety, insomnia, or depression, because the slow, deep pressure engages the parasympathetic "rest and digest" response, like a moving, weighted blanket.</p>
+        <p>Something that has always bothered me in healthcare has been the lack of support post-treatment. I wanted to participate in a space in which people could be honest with their difficulties and receive unconditionally positive care.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rainbow-bar"></div>
+
+<div class="bio-services-section">
+  <div class="bio-services-inner">
+    <h3>Book a Session with Hayley</h3>
+    <p>Click a service below to learn more or book directly.</p>
+    <div class="bio-services-grid">
+      <a class="bio-svc" href="../services/ashiatsu-massage.html">
+        <div class="bio-svc-name">Ashiatsu Massage</div>
+        <div class="bio-svc-price">From $115 · 60 min</div>
+      </a>
+      <a class="bio-svc" href="../services/therapeutic-massage.html">
+        <div class="bio-svc-name">Therapeutic Massage</div>
+        <div class="bio-svc-price">From $115 · 60 min</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="bio-cta">
+  <h3>Ready to book with<br><em>Hayley?</em></h3>
+  <p>Use our online scheduler to find a time that works for you.</p>
+  <a class="btn-cta" href="https://booking.mangomint.com/814946" target="_blank">Book an Appointment</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Auroraflow</div>
+        <ul class="footer-links">
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../team.html">Team</a></li>
+          <li><a href="../memberships.html">Memberships</a></li>
+          <li><a href="https://clients.mangomint.com/gift-cards/814946" target="_blank">Gift Cards</a></li>
+          <li><a href="../journal.html">Journal</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+        <div class="footer-address">
+          607 William Vickers Ave Durham, NC 27701<br>
+          <a href="tel:9192299555">(919) 229-9555</a><br>
+          Mon 9am–6pm &nbsp;·&nbsp; Tue–Fri 9am–8pm &nbsp;·&nbsp; Sat &amp; Sun 9am–6pm
+        </div>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/auroraflowmassage" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/auroraflowmassage/" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/company/auroraflow-massage/" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v2a6 6 0 0 1 2-3z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Auroraflow</span>
+    </div>
+  </div>
+</footer>
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+</body>
+</html>

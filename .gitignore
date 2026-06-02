@@ -1,0 +1,9 @@
+# Ignore everything in home directory by default
+*
+.*
+
+# Track only the website project
+!auroraflow-website/
+!auroraflow-website/**
+!README.md
+!.gitignore

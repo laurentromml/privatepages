@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Policies | Auroraflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .policies-main {
+      background: var(--warm-white);
+    }
+
+    /* ── QUICK NAV ── */
+    .policy-nav {
+      max-width: 860px; margin: 0 auto;
+      padding: 56px 40px 48px;
+      display: flex; gap: 10px; flex-wrap: wrap;
+    }
+    .policy-nav a {
+      padding: 8px 20px; border-radius: 100px;
+      border: 1.5px solid var(--border); color: var(--mid);
+      font-family: var(--sans); font-size: 12px; font-weight: 400;
+      letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .policy-nav a:hover { background: var(--dark); color: var(--cream); border-color: var(--dark); }
+
+    /* ── POLICY SECTIONS ── */
+    .policy-body {
+      max-width: 860px; margin: 0 auto;
+      padding: 0 40px 100px;
+    }
+    .policy-section {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+    }
+    .policy-section:first-child { border-top: none; padding-top: 0; }
+    .policy-section h2 {
+      font-family: var(--serif); font-size: clamp(24px, 3vw, 36px);
+      font-weight: 400; margin-bottom: 6px; letter-spacing: -0.01em;
+      scroll-margin-top: calc(var(--nav-h) + 24px);
+    }
+    .policy-section .policy-updated {
+      font-size: 12px; color: var(--muted); letter-spacing: 0.05em;
+      margin-bottom: 28px;
+    }
+    .policy-section p {
+      font-size: 16px; line-height: 1.82; color: var(--mid); margin-bottom: 18px;
+    }
+    .policy-section p:last-child { margin-bottom: 0; }
+    .policy-section h3 {
+      font-family: var(--sans); font-size: 13px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--dark);
+      margin-top: 28px; margin-bottom: 12px;
+    }
+    .policy-section ul {
+      margin: 0 0 18px 20px; padding: 0;
+    }
+    .policy-section li {
+      font-size: 15px; line-height: 1.78; color: var(--mid); margin-bottom: 8px;
+    }
+    .policy-section strong { font-weight: 500; color: var(--dark); }
+    .policy-section a { color: var(--dark); }
+
+    /* highlight box */
+    .policy-note {
+      background: var(--cream); border-left: 3px solid var(--dark);
+      border-radius: 0 4px 4px 0; padding: 18px 24px;
+      margin: 24px 0; font-size: 15px; line-height: 1.75; color: var(--mid);
+    }
+    .policy-note strong { color: var(--dark); }
+
+    /* ── CTA ── */
+    .policies-cta { background: var(--dark); padding: 80px 40px; text-align: center; }
+    .policies-cta h3 {
+      font-family: var(--serif); font-size: clamp(26px, 3.5vw, 44px);
+      font-weight: 300; color: var(--cream); margin-bottom: 12px; line-height: 1.2;
+    }
+    .policies-cta h3 em { font-style: italic; }
+    .policies-cta p {
+      font-size: 16px; color: rgba(250,247,242,0.6); margin-bottom: 32px; line-height: 1.65;
+      max-width: 480px; margin-inline: auto;
+    }
+    .btn-light {
+      display: inline-flex; align-items: center; padding: 14px 36px; border-radius: 100px;
+      background: var(--cream); color: var(--dark);
+      font-family: var(--sans); font-size: 13px; font-weight: 400;
+      letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-light:hover { opacity: 0.85; }
+
+    @media (max-width: 768px) {
+      .policy-nav { padding: 36px 24px 36px; }
+      .policy-body { padding: 0 24px 80px; }
+      .policies-cta { padding: 64px 24px; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html"><img src="assets/logo.png" alt="Auroraflow" class="nav-logo-img" /></a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="memberships.html">Memberships</a></li>
+    <li><a href="journal.html">Journal</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a class="btn-book" href="https://booking.mangomint.com/814946" target="_blank">Book Now</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="about.html">About</a>
+  <a href="team.html">Team</a>
+  <a href="services.html">Services</a>
+  <a href="memberships.html">Memberships</a>
+  <a href="journal.html">Journal</a>
+  <a href="contact.html">Contact</a>
+  <a class="btn-book-mobile" href="https://booking.mangomint.com/814946" target="_blank">Book Now</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-img">
+    <img src="assets/img/63989d6c19252735e3124266_FullSizeRender.jpeg" alt="" />
+  </div>
+  <div class="page-hero-content">
+    <p class="section-label">Policies</p>
+    <h1>Our <em>policies</em></h1>
+    <p>At Auroraflow, transparency is part of how we show up for you. Here you'll find our health, safety, and service policies, so you can come in feeling informed and at ease.</p>
+  </div>
+</div>
+<div class="rainbow-bar"></div>
+
+<div class="policies-main">
+
+  <!-- QUICK NAV -->
+  <div class="policy-nav" aria-label="Policy sections">
+    <a href="#cancellation">Cancellation</a>
+    <a href="#covid">COVID-19</a>
+    <a href="#cancer">Cancer Policy</a>
+    <a href="#prenatal">Prenatal &amp; Postnatal</a>
+    <a href="#post-surgical">Post-Surgical</a>
+    <a href="#intake">Intake &amp; Consent</a>
+  </div>
+
+  <div class="policy-body">
+
+    <!-- CANCELLATION -->
+    <div class="policy-section" id="cancellation">
+      <h2>Cancellation Policy</h2>
+      <div class="policy-updated">General policy</div>
+      <p>We ask that you give us <strong>at least 24 hours notice</strong> if you need to cancel or reschedule your appointment. This allows us to offer your spot to another client who may need it.</p>
+      <p>Cancellations made within 24 hours of the appointment time may incur a <strong>50% cancellation fee</strong>. We understand that life happens. If an unexpected situation arises, please contact us as soon as possible to discuss your options.</p>
+      <div class="policy-note">
+        <strong>Questions or special circumstances?</strong> Reach out to us at <a href="mailto:info@auroraflow.com">info@auroraflow.com</a> or call <a href="tel:9192299555">(919) 229-9555</a>. We are always happy to work with you.
+      </div>
+    </div>
+
+    <!-- COVID -->
+    <div class="policy-section" id="covid">
+      <h2>COVID-19 Policy</h2>
+      <div class="policy-updated">Updated November 2024 · Subject to change based on Durham conditions</div>
+      <p>At Auroraflow, the health and safety of our clients and staff are our top priorities. We are committed to maintaining a safe and clean environment through rigorous protocols.</p>
+
+      <h3>For Clients</h3>
+      <ul>
+        <li><strong>Masks:</strong> We encourage clients to wear masks during sessions, but it is not currently mandatory.</li>
+        <li><strong>Reporting symptoms:</strong> Notify the front desk immediately if you develop symptoms, email <a href="mailto:info@auroraflow.com">info@auroraflow.com</a> or call (919) 229-9555.</li>
+        <li><strong>COVID-19 cancellation:</strong> Clients who test positive within 24 hours of their appointment will incur a 50% cancellation fee. We ask that you test or communicate symptoms <strong>well before 24 hours</strong> of your appointment. If an unexpected situation arises within the 24-hour window, contact us to discuss exceptions.</li>
+      </ul>
+
+      <h3>For Our Staff</h3>
+      <ul>
+        <li><strong>Masks:</strong> Staff wear KN95 masks in treatment rooms. Masks are currently optional in common spaces.</li>
+        <li><strong>Health monitoring:</strong> Team members monitor their health daily. Any symptoms require immediate notification and protocol compliance.</li>
+        <li><strong>In-room cleaning:</strong> After every session, high-touch areas, including face cradles and door handles, are wiped with Clorox wipes.</li>
+        <li><strong>End-of-day cleaning:</strong> All non-porous surfaces are treated with Microban spray at the end of each day.</li>
+      </ul>
+
+      <h3>Positive Case Response</h3>
+      <ul>
+        <li>If a client tests positive within 3 days of their visit, we will promptly notify any staff members who may have had contact.</li>
+        <li>If a staff member tests positive, we will promptly notify any clients who may have been exposed.</li>
+      </ul>
+
+      <div class="policy-note">
+        <strong>This policy changes as conditions change.</strong> Check back here for the most current status, or call us at (919) 229-9555.
+      </div>
+    </div>
+
+    <!-- CANCER -->
+    <div class="policy-section" id="cancer">
+      <h2>Cancer Policy</h2>
+      <div class="policy-updated">General policy</div>
+      <p>We want to ensure the safety and wellbeing of every client. Massage can be deeply beneficial during and after cancer treatment, but requires careful consideration based on your specific situation.</p>
+
+      <h3>Clients undergoing active cancer treatment</h3>
+      <p>If you are currently undergoing active cancer treatment or taking medications related to cancer treatment, your therapist has the discretion to determine whether bodywork is appropriate for your session. This decision is made to protect both you and your provider, considering the potential risks associated with massage during active treatment.</p>
+      <p>We encourage you to speak with your oncologist before booking and to inform us of your treatment status at the time of booking.</p>
+
+      <h3>Clients with cancer not undergoing active treatment</h3>
+      <p>If you have a cancer diagnosis but are not currently undergoing active treatment, we require a <strong>doctor's note confirming it is safe for you to receive bodywork</strong>. Once received, your therapist will review it and confirm their comfort level providing services.</p>
+
+      <div class="policy-note">
+        <strong>Please contact us before booking</strong> if you have a current or recent cancer diagnosis so we can help determine the best path forward. Email <a href="mailto:info@auroraflow.com">info@auroraflow.com</a> or call <a href="tel:9192299555">(919) 229-9555</a>.
+      </div>
+    </div>
+
+    <!-- PRENATAL -->
+    <div class="policy-section" id="prenatal">
+      <h2>Prenatal &amp; Postnatal Policy</h2>
+      <div class="policy-updated">General policy</div>
+      <p>All massages performed on pregnant bodies at Auroraflow are <strong>prenatal massages only</strong>. We do not perform standard massage modalities on pregnant clients. This ensures your safety and comfort throughout your pregnancy.</p>
+
+      <h3>Prenatal massage</h3>
+      <p>Our prenatal massage is safe at any stage of pregnancy and uses specialized positioning, bolstering, and techniques designed for pregnant bodies. We can assist with back pain, hip tension, swelling, anxiety, and stress.</p>
+      <p>We recommend informing us of your trimester and any complications at the time of booking. While we do not require a doctor's note, we recommend speaking with your OB or midwife if you have a high-risk pregnancy or specific concerns.</p>
+
+      <h3>Postnatal massage</h3>
+      <p>Postnatal massage is available and can be deeply supportive in the weeks and months after birth. Please inform your therapist of your birth experience and any areas of physical focus. If you have had a C-section, please review our Post-Surgical Policy below.</p>
+
+      <div class="policy-note">
+        If you have any questions about what's right for your specific situation, please call us before booking at <a href="tel:9192299555">(919) 229-9555</a>.
+      </div>
+    </div>
+
+    <!-- POST-SURGICAL -->
+    <div class="policy-section" id="post-surgical">
+      <h2>Post-Surgical Policy</h2>
+      <div class="policy-updated">General policy</div>
+      <p>Massage can be an incredibly powerful part of post-surgical recovery, helping with scar tissue, lymphatic drainage, mobility, and overall healing. However, it requires careful timing and communication.</p>
+
+      <h3>General guidelines</h3>
+      <ul>
+        <li>We ask that all recent surgical incisions be <strong>fully closed</strong> before receiving any bodywork, no open wounds.</li>
+        <li>For most surgeries, we recommend waiting <strong>at least 6–8 weeks</strong> before booking, though this varies depending on the procedure.</li>
+        <li>A doctor's clearance is strongly recommended and may be required depending on the nature of your surgery.</li>
+        <li>Please inform your therapist of the type of surgery, date, and any areas that should be avoided or given special attention.</li>
+      </ul>
+
+      <h3>Gender-affirming surgeries</h3>
+      <p>We have experience and genuine care for clients recovering from gender-affirming procedures. Please reach out before booking so we can discuss your specific needs and ensure your session is appropriately tailored. All conversations are confidential and judgment-free.</p>
+
+      <div class="policy-note">
+        <strong>Not sure if you're ready for massage?</strong> Contact us and we'll help you figure it out. Email <a href="mailto:info@auroraflow.com">info@auroraflow.com</a> or call <a href="tel:9192299555">(919) 229-9555</a>.
+      </div>
+    </div>
+
+    <!-- INTAKE & CONSENT -->
+    <div class="policy-section" id="intake">
+      <h2>Intake &amp; Consent</h2>
+      <div class="policy-updated">General policy</div>
+      <p>Every session at Auroraflow begins with a thorough, private intake, either a written form sent before your appointment, or a verbal check-in with your provider at the start of your session.</p>
+      <p>Your intake information helps your provider understand your goals, health history, any contraindications, and your comfort preferences, including pressure, areas to focus on or avoid, and draping preferences.</p>
+      <p><strong>Everything shared during intake is private and confidential.</strong> It is never shared outside of the care team supporting your session.</p>
+      <p>Consent is ongoing throughout every session. You can ask your therapist to adjust pressure, skip areas, or stop the session entirely at any time, no questions asked.</p>
+      <div class="policy-note">
+        If you have accessibility needs, sensory sensitivities, or any other considerations we should know about before your visit, please let us know at booking or contact us at <a href="tel:9192299555">(919) 229-9555</a>. We are always happy to accommodate.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="policies-cta">
+  <h3>Questions about<br><em>any of these policies?</em></h3>
+  <p>We're always happy to talk through any concerns before you book.</p>
+  <a class="btn-light" href="contact.html">Get in Touch</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Auroraflow</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="memberships.html">Memberships</a></li>
+          <li><a href="classes.html">Classes</a></li>
+          <li><a href="https://clients.mangomint.com/gift-cards/814946" target="_blank">Gift Cards</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="pay-what-you-can.html">Pay What You Can</a></li>
+          <li><a href="policies.html">Policies</a></li>
+        </ul>
+        <div class="footer-address">
+          607 William Vickers Ave Durham, NC 27701<br>
+          <a href="tel:9192299555">(919) 229-9555</a><br>
+          Mon 9am–6pm &nbsp;·&nbsp; Tue–Fri 9am–8pm &nbsp;·&nbsp; Sat &amp; Sun 9am–6pm
+        </div>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/auroraflowmassage" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/auroraflowmassage/" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/company/auroraflow-massage/" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v2a6 6 0 0 1 2-3z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Auroraflow</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+<script src="shared.js"></script>
+</body>
+</html>

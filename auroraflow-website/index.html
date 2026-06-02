@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auroraflow Massage - Inclusive Wellness Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <meta name="description" content="Auroraflow is an LGBTQ-owned massage and skincare spa in downtown Durham, NC. Inclusive wellness for every body.">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* ── HERO ── */
+    .hero {
+      position: relative; height: 100vh; min-height: 640px;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .hero video {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to right, rgba(18,115,109,0.55) 0%, transparent 65%),
+        linear-gradient(to top, rgba(28,24,22,0.92) 0%, rgba(28,24,22,0.3) 50%, rgba(28,24,22,0.1) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 72px 72px;
+      max-width: 900px;
+      text-align: left;
+    }
+    .hero-eyebrow {
+      font-family: var(--sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: #ADCD52;
+      margin-bottom: 20px; display: block;
+    }
+    .hero-content h1 {
+      font-family: var(--serif);
+      font-size: clamp(44px, 6.5vw, 88px);
+      font-weight: 400; color: #faf7f2; line-height: 1.05;
+      letter-spacing: -0.01em; margin-bottom: 24px;
+    }
+    .hero-content h1 .accent {
+      color: #12736D;
+      display: block;
+    }
+    .hero-content p {
+      font-size: clamp(15px, 1.6vw, 18px); font-weight: 300;
+      color: rgba(250,247,242,0.75); line-height: 1.7;
+      margin-bottom: 36px; max-width: 520px;
+    }
+    .hero-actions {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    }
+    .btn-hero {
+      display: inline-flex; align-items: center;
+      padding: 16px 36px; border-radius: 100px;
+      background: #12736D; color: #faf7f2;
+      font-family: var(--sans); font-size: 13px;
+      font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.25s;
+    }
+    .btn-hero:hover { background: #ADCD52; color: #1c1816; }
+    .btn-hero-ghost {
+      display: inline-flex; align-items: center;
+      padding: 16px 32px; border-radius: 100px;
+      border: 1.5px solid rgba(250,247,242,0.4);
+      color: #faf7f2; font-family: var(--sans); font-size: 13px;
+      font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; transition: border-color 0.25s, background 0.25s;
+    }
+    .btn-hero-ghost:hover { border-color: #faf7f2; background: rgba(250,247,242,0.1); }
+    .hero-badge {
+      display: flex; align-items: center; gap: 10px;
+      transition: transform 0.3s ease;
+    }
+    .hero-badge img {
+      height: var(--badge-size, 72px);
+      border-radius: var(--badge-radius, 6px);
+      transform: rotate(var(--badge-rotation, 0deg));
+      box-shadow: var(--badge-shadow, none);
+      transition: height 0.25s ease, border-radius 0.25s ease, transform 0.3s ease, box-shadow 0.25s ease, filter 0.25s ease;
+      filter: var(--badge-filter, none);
+    }
+    /* ── BADGE POSITION VARIANTS ── */
+    .hero-badge.pos-inline {
+      /* default, sits inline with the action buttons */
+    }
+    .hero-badge.pos-top-right {
+      position: absolute; top: 110px; right: 40px;
+      z-index: 3;
+    }
+    .hero-badge.pos-top-left {
+      position: absolute; top: 110px; left: 40px;
+      z-index: 3;
+    }
+    .hero-badge.pos-bottom-right {
+      position: absolute; bottom: 36px; right: 40px;
+      z-index: 3;
+    }
+    .hero-badge.hidden { display: none !important; }
+
+    /* ── ABOUT ── */
+    .about { background: var(--warm-white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .about-image {
+      border-radius: 4px; overflow: hidden; aspect-ratio: 4/3; position: relative;
+    }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-text h2 {
+      font-family: var(--serif); font-size: clamp(30px, 3.5vw, 52px);
+      font-weight: 400; line-height: 1.2; margin-bottom: 24px;
+    }
+    .about-text h2 em { font-style: italic; }
+    .about-text p {
+      font-size: 16px; line-height: 1.78; color: var(--mid); margin-bottom: 20px;
+    }
+    .about-text p:last-of-type { margin-bottom: 32px; }
+
+    /* ── PROVIDERS ── */
+    .providers { background: var(--cream); }
+    .providers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .provider-card { text-decoration: none; color: inherit; display: block; }
+    .provider-photo {
+      aspect-ratio: 1/1; border-radius: 4px; overflow: hidden; margin-bottom: 14px;
+      background: #e0d8d0;
+    }
+    .provider-photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.45s ease;
+    }
+    .provider-card:hover .provider-photo img { transform: scale(1.04); }
+    .provider-name {
+      font-family: var(--serif); font-size: 22px; font-weight: 400; letter-spacing: 0.01em;
+    }
+
+    /* ── SERVICES PREVIEW ── */
+    .services-preview { background: var(--warm-white); }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .service-card {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 24px; border-radius: 4px; background: var(--cream);
+      text-decoration: none; color: inherit; border: 1px solid var(--border);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .service-card:hover {
+      box-shadow: 0 4px 20px rgba(28,24,22,0.07); border-color: rgba(28,24,22,0.18);
+    }
+    .service-thumb {
+      width: 86px; height: 86px; border-radius: 3px;
+      flex-shrink: 0; overflow: hidden; background: #e0d8d0;
+    }
+    .service-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .service-info h4 {
+      font-family: var(--serif); font-size: 19px; font-weight: 400;
+      margin-bottom: 6px; line-height: 1.25;
+    }
+    .service-info p { font-size: 13px; line-height: 1.65; color: var(--muted); }
+
+    /* ── TAGLINE BAND ── */
+    .tagline-band {
+      background: var(--dark); padding: 90px 40px; text-align: center;
+    }
+    .tagline-band h3 {
+      font-family: var(--serif); font-size: clamp(28px, 4.5vw, 58px);
+      font-weight: 300; color: var(--cream); line-height: 1.2; letter-spacing: -0.01em;
+    }
+    .tagline-band h3 em { font-style: italic; }
+    .tagline-band .btn-hero { margin-top: 36px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .providers-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .hero-badge img { height: 60px; }
+      .hero-content { padding: 0 24px 56px; }
+      .tagline-band { padding: 70px 24px; }
+    }
+    @media (max-width: 480px) {
+      .providers-grid { grid-template-columns: 1fr; }
+      .service-card { flex-direction: column; }
+      .service-thumb { width: 100%; height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><img src="assets/logo.png" alt="Auroraflow" class="nav-logo-img" /></a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="memberships.html">Memberships</a></li>
+    <li><a href="journal.html">Journal</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a class="btn-book" href="https://booking.mangomint.com/814946" target="_blank" style="color: rgb(255, 255, 255)">Book Now</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="about.html">About</a>
+  <a href="team.html">Team</a>
+  <a href="services.html">Services</a>
+  <a href="memberships.html">Memberships</a>
+  <a href="journal.html">Journal</a>
+  <a href="contact.html">Contact</a>
+  <a class="btn-book-mobile" href="https://booking.mangomint.com/814946" target="_blank">Book Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <video autoplay muted loop playsinline
+    poster="assets/img/64d1b5f61b89c16edafd997e_Massage-Video-2-transcode.mp4.jpg">
+    <source src="assets/img/64d1b5f61b89c16edafd997e_Massage-Video-2-transcode.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Durham, NC &nbsp;·&nbsp; Inclusive Wellness</span>
+    <h1 style="font-weight: 700">Feel welcome<br><span class="accent" style="color: rgb(157, 213, 210); font-weight: 700">in your own skin.</span></h1>
+    <p>Massage, skincare, and bodywork in a space built for every body, exactly as it is.</p>
+    <div class="hero-actions">
+      <a class="btn-hero" href="services.html">Explore Services</a>
+      <a class="btn-hero-ghost" href="https://booking.mangomint.com/814946" target="_blank">Book Now</a>
+      <div class="hero-badge pos-inline" id="heroBadge">
+        <img src="assets/img/695d02be17e983c000368553_Best-of-25.png"
+          alt="Best Massage in the Triangle" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rainbow-bar"></div>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="assets/img/63989d6c19252735e3124266_FullSizeRender.jpeg"
+          alt="Rainbow mural and massage tables at Auroraflow" />
+      </div>
+      <div class="about-text">
+        <h2><strong>Reimagining wellness…</strong><br><em>for the rest of us.</em></h2>
+        <p>We're an LGBTQ-owned spa in downtown Durham, here for the people the wellness world usually overlooks.</p>
+        <p>That shows up in the details: affirming intake, tables with no weight limits, and a team that uses your pronouns without being asked. Come as you are, and we'll take it from there.</p>
+        <a class="btn-outline" href="about.html">Learn More About Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEW PROVIDERS -->
+<section class="providers">
+  <div class="section-inner">
+    <p class="section-label">New Providers</p>
+    <div class="providers-grid">
+      <a class="provider-card" href="team.html">
+        <div class="provider-photo">
+          <img src="assets/img/6893923ca6c2d2cc6188bde0_Untitled-design-50-.png" alt="Brandon Hu" />
+        </div>
+        <div class="provider-name">Brandon Hu</div>
+      </a>
+      <a class="provider-card" href="team.html">
+        <div class="provider-photo">
+          <img src="assets/img/6893956b4420df3dbf1612ef_Untitled-design-51-.png" alt="Omer Unluata" />
+        </div>
+        <div class="provider-name">Omer Unluata</div>
+      </a>
+      <a class="provider-card" href="team.html">
+        <div class="provider-photo">
+          <img src="assets/img/6748ed21e5ab6934a8ab842a_IMG_1165-Carissa-Bovee.jpeg.pdf-1500-x-1500-px-1-.png" alt="Carissa Bovee" />
+        </div>
+        <div class="provider-name">Carissa Bovee</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEW SERVICES PREVIEW -->
+<section class="services-preview">
+  <div class="section-inner">
+    <p class="section-label">New Services</p>
+    <div class="services-grid">
+      <a class="service-card" href="services.html">
+        <div class="service-thumb">
+          <img src="assets/img/68d6c70511d1fc22166a4c16_Untitled-design-68-.png" alt="BIPOC Specific Clinical Facial" />
+        </div>
+        <div class="service-info">
+          <h4>BIPOC Specific Clinical Facial &amp; Consultation</h4>
+          <p>Comprehensive skin consultation and treatment plan designed and tailored specifically for skin of color.</p>
+        </div>
+      </a>
+      <a class="service-card" href="services.html">
+        <div class="service-thumb">
+          <img src="assets/img/68c1fccb36c16802544e18ee_759A8228.jpg" alt="Facial 101" />
+        </div>
+        <div class="service-info">
+          <h4>Facial 101 (Intro)</h4>
+          <p>A complete introductory facial including cleanse, exfoliation, extractions, mask and massage. Perfect first facial.</p>
+        </div>
+      </a>
+      <a class="service-card" href="services.html">
+        <div class="service-thumb">
+          <img src="assets/img/68a61503465e5c82d11698fe_Untitled-design-5-.png" alt="Cupping" />
+        </div>
+        <div class="service-info">
+          <h4>Cupping</h4>
+          <p>Releases deep tension, improves circulation and supports the body's natural healing process. Deeply relaxing.</p>
+        </div>
+      </a>
+      <a class="service-card" href="services.html">
+        <div class="service-thumb">
+          <img src="assets/img/68484aabb261d1c803583b61_Untitled-design-30-.png" alt="Microdermabrasion Facial" />
+        </div>
+        <div class="service-info">
+          <h4>Microdermabrasion Facial</h4>
+          <p>Diamond-tip exfoliation and suction reveal smoother, brighter skin while stimulating long-term collagen production.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TAGLINE BAND -->
+<div class="tagline-band">
+  <h3>Services As Diverse<br><em>As Our Community</em></h3>
+  <a class="btn-hero" href="services.html">View All Services</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Auroraflow</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="memberships.html">Memberships</a></li>
+          <li><a href="classes.html">Classes</a></li>
+          <li><a href="https://clients.mangomint.com/gift-cards/814946" target="_blank">Gift Cards</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="contact.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="pay-what-you-can.html">Pay What You Can</a></li>
+          <li><a href="policies.html">Policies</a></li>
+        </ul>
+        <div class="footer-address">
+          607 William Vickers Ave Durham, NC 27701<br>
+          <a href="tel:9192299555">(919) 229-9555</a><br>
+          Mon 9am–6pm &nbsp;·&nbsp; Tue–Fri 9am–8pm &nbsp;·&nbsp; Sat &amp; Sun 9am–6pm
+        </div>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/auroraflowmassage" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/auroraflowmassage/" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/company/auroraflow-massage/" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v2a6 6 0 0 1 2-3z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Auroraflow</span>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+</body>
+</html>
