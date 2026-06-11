@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auroraflow LLC — Buyout Assessment and Recommendation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Manrope:wght@300..800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Brand colors */
+      --teal-deep: #1F6E6B;
+      --teal-primary: #2D8A86;
+      --teal-light: #5BAFA9;
+      --teal-pale: #C8DFDD;
+      --teal-mist: #EAF3F2;
+      
+      --purple-deep: #4A3D5F;
+      --purple-primary: #5D4E75;
+      --purple-light: #8B7CA5;
+      --purple-pale: #D5CCE3;
+      --purple-mist: #F0EBF5;
+      
+      /* Neutrals */
+      --bg-cream: #FBF8F3;
+      --surface: #FFFFFF;
+      --text-primary: #1A1F2C;
+      --text-secondary: #5A6068;
+      --text-tertiary: #8A8F98;
+      --border: #E8E2D6;
+      --border-soft: #F0EBE0;
+      
+      /* Status */
+      --negative: #B85450;
+      --positive: #4F7A5E;
+      
+      /* Typography */
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Manrope', -apple-system, sans-serif;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-cream);
+      color: var(--text-primary);
+      line-height: 1.65;
+      font-weight: 400;
+      font-feature-settings: 'ss01', 'cv11';
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .document {
+      max-width: 920px;
+      margin: 0 auto;
+      background: var(--surface);
+      box-shadow: 0 1px 60px rgba(31, 110, 107, 0.06);
+    }
+    
+    /* === COVER === */
+    .cover {
+      padding: 80px 80px 60px;
+      background: linear-gradient(135deg, var(--teal-mist) 0%, var(--purple-mist) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(45, 138, 134, 0.12) 0%, transparent 70%);
+    }
+    
+    .cover::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(93, 78, 117, 0.1) 0%, transparent 70%);
+    }
+    
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 48px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal-primary), var(--purple-primary));
+    }
+    
+    .brand-text {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--teal-deep);
+      font-variation-settings: 'opsz' 14;
+    }
+    
+    .cover h1 {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+      font-variation-settings: 'opsz' 144;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .cover h1 em {
+      font-style: italic;
+      color: var(--purple-primary);
+      font-weight: 300;
+    }
+    
+    .cover-subtitle {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 56px;
+      max-width: 620px;
+      position: relative;
+      z-index: 1;
+      font-variation-settings: 'opsz' 36;
+    }
+    
+    .cover-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(31, 110, 107, 0.18);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    
+    .meta-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal-deep);
+    }
+    
+    .meta-value {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-primary);
+      font-variation-settings: 'opsz' 24;
+    }
+    
+    /* === CONTENT === */
+    main {
+      padding: 0 80px;
+    }
+    
+    section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    
+    section:last-of-type {
+      border-bottom: none;
+    }
+    
+    .section-number {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal-primary);
+      margin-bottom: 12px;
+      font-variation-settings: 'opsz' 14;
+    }
+    
+    h2 {
+      font-family: var(--font-display);
+      font-size: 42px;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: var(--text-primary);
+      margin-bottom: 40px;
+      font-variation-settings: 'opsz' 96;
+    }
+    
+    h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      font-variation-settings: 'opsz' 36;
+    }
+    
+    h4 {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--purple-primary);
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+    
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-primary);
+      margin-bottom: 18px;
+      max-width: 720px;
+    }
+    
+    p strong, li strong {
+      font-weight: 700;
+      color: var(--teal-deep);
+    }
+    
+    em {
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+    
+    ul, ol {
+      margin: 0 0 24px 24px;
+      padding: 0;
+    }
+    
+    li {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      max-width: 700px;
+    }
+    
+    ul li::marker {
+      color: var(--teal-primary);
+    }
+    
+    ol li::marker {
+      color: var(--teal-primary);
+      font-weight: 700;
+    }
+    
+    /* === CALLOUT BOX === */
+    .callout {
+      background: linear-gradient(135deg, var(--teal-mist) 0%, var(--purple-mist) 100%);
+      border-left: 4px solid var(--teal-primary);
+      padding: 32px 36px;
+      margin: 36px 0;
+      border-radius: 4px;
+      position: relative;
+    }
+    
+    .callout-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal-deep);
+      margin-bottom: 8px;
+    }
+    
+    .callout-value {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 12px;
+      font-variation-settings: 'opsz' 144;
+    }
+    
+    .callout-value em {
+      color: var(--purple-primary);
+      font-style: italic;
+      font-weight: 400;
+    }
+    
+    .callout p {
+      margin-bottom: 0;
+      color: var(--text-secondary);
+    }
+    
+    /* === STAT GRID === */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 36px 0;
+    }
+    
+    .stat-card {
+      background: var(--bg-cream);
+      border: 1px solid var(--border-soft);
+      border-radius: 6px;
+      padding: 24px 20px;
+    }
+    
+    .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 8px;
+    }
+    
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--teal-deep);
+      line-height: 1.1;
+      font-variation-settings: 'opsz' 36;
+    }
+    
+    .stat-value.purple {
+      color: var(--purple-primary);
+    }
+    
+    .stat-detail {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+    
+    /* === TABLES === */
+    .table-wrap {
+      margin: 32px 0;
+      overflow-x: auto;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    
+    thead {
+      background: var(--teal-deep);
+      color: white;
+    }
+    
+    thead th {
+      padding: 14px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    
+    thead th:last-child {
+      text-align: right;
+    }
+    
+    tbody td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-soft);
+      vertical-align: top;
+    }
+    
+    tbody td:last-child {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+    }
+    
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+    
+    tbody tr:nth-child(even) {
+      background: var(--bg-cream);
+    }
+    
+    tbody tr.total-row {
+      background: var(--teal-mist) !important;
+      font-weight: 600;
+    }
+    
+    tbody tr.total-row td {
+      border-top: 2px solid var(--teal-primary);
+      color: var(--teal-deep);
+    }
+    
+    /* === CHARTS === */
+    .chart-container {
+      background: var(--bg-cream);
+      border-radius: 8px;
+      padding: 36px;
+      margin: 32px 0;
+      border: 1px solid var(--border-soft);
+    }
+    
+    .chart-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      font-variation-settings: 'opsz' 24;
+    }
+    
+    .chart-subtitle {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      margin-bottom: 28px;
+    }
+    
+    .chart-svg {
+      width: 100%;
+      height: auto;
+    }
+    
+    .chart-legend {
+      display: flex;
+      gap: 24px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    
+    .legend-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+    }
+    
+    /* === TIMELINE === */
+    .timeline {
+      position: relative;
+      margin: 32px 0;
+      padding-left: 40px;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 14px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--teal-primary), var(--purple-primary));
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-bottom: 28px;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -33px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 3px solid var(--teal-primary);
+    }
+    
+    .timeline-item.purple::before {
+      border-color: var(--purple-primary);
+    }
+    
+    .timeline-date {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--teal-deep);
+      letter-spacing: 0.02em;
+      margin-bottom: 4px;
+      font-variation-settings: 'opsz' 14;
+    }
+    
+    .timeline-item.purple .timeline-date {
+      color: var(--purple-primary);
+    }
+    
+    .timeline-content {
+      font-size: 15px;
+      color: var(--text-primary);
+      line-height: 1.55;
+    }
+    
+    /* === SECTION DIVIDER === */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 24px 0 8px;
+    }
+    
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    
+    .divider-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal-primary);
+    }
+    
+    /* === EYEBROW QUOTE === */
+    .pullquote {
+      font-family: var(--font-display);
+      font-size: 26px;
+      line-height: 1.3;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--purple-primary);
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 36px 0;
+      max-width: 680px;
+      font-variation-settings: 'opsz' 48;
+    }
+    
+    .pullquote::before {
+      content: '"';
+      font-size: 56px;
+      line-height: 0;
+      vertical-align: -22px;
+      color: var(--teal-light);
+      margin-right: 6px;
+    }
+    
+    /* === KEY VALUE FLAG === */
+    .key-flag {
+      display: inline-block;
+      padding: 4px 10px;
+      background: var(--teal-mist);
+      color: var(--teal-deep);
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 4px;
+      letter-spacing: 0.01em;
+    }
+    
+    .key-flag.purple {
+      background: var(--purple-mist);
+      color: var(--purple-primary);
+    }
+    
+    /* === FOOTER === */
+    footer {
+      padding: 48px 80px 64px;
+      background: var(--bg-cream);
+      border-top: 1px solid var(--border);
+    }
+    
+    .footer-disclaimer {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      font-style: italic;
+      line-height: 1.6;
+      max-width: 720px;
+    }
+    
+    .footer-version {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 16px;
+      letter-spacing: 0.04em;
+    }
+    
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .cover, main, footer { padding-left: 32px; padding-right: 32px; }
+      .cover h1 { font-size: 36px; }
+      h2 { font-size: 32px; }
+      .callout-value { font-size: 36px; }
+      .cover-meta { grid-template-columns: 1fr; gap: 16px; }
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    /* === PRINT === */
+    @media print {
+      body { background: white; }
+      .document { box-shadow: none; max-width: none; }
+      section { page-break-inside: avoid; }
+      h2, h3 { page-break-after: avoid; }
+      table { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="document">
+    
+    <!-- ============================ COVER ============================ -->
+    <header class="cover">
+      <div class="brand-mark">
+        <div class="brand-dot"></div>
+        <span class="brand-text">Auroraflow LLC</span>
+      </div>
+      
+      <h1>Membership Interest <em>Buyout</em> Assessment <em>&</em> Recommendation</h1>
+      
+      <p class="cover-subtitle">A valuation of the business and recommended structure for the voluntary withdrawal of Castle M. Frame, 51% Member.</p>
+      
+      <div class="cover-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prepared for</span>
+          <span class="meta-value">Lauren R. McCullough</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Date</span>
+          <span class="meta-value">May 25, 2026</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Status</span>
+          <span class="meta-value">Working Draft</span>
+        </div>
+      </div>
+    </header>
+    
+    <main>
+      
+      <!-- ====================== 1. EXECUTIVE SUMMARY ====================== -->
+      <section id="executive-summary">
+        <div class="section-number">01 — Executive Summary</div>
+        <h2>The business, the value, and the recommendation</h2>
+        
+        <p>Auroraflow LLC is a five-year-old wellness center in Durham, North Carolina, organized in July 2021 with its operating location opening in December 2022. The business serves the Triangle market with massage, aesthetician services, and retail products, operating on the Mango Mint POS/CRM platform with a team of 20+ providers. It has earned consecutive Best Spa recognition from Indyweek and Durham Magazine in 2025. Revenue has grown from $14,901 in the 2022 build year to a current annualized run rate of approximately $1.06 million, with the first profitable calendar year achieved in 2025 ($24,110 of net income). Growth has plateaued in 2026, and trailing-twelve-month profitability has reverted to a slight loss as operating costs have outpaced revenue scaling.</p>
+        
+        <p>The business is held 51% by Castle M. Frame (Founder, primary operator) and 49% by Lauren R. McCullough (Founder and COO, strategic role). Castle is voluntarily exiting on amicable terms. The withdrawal proceeds with Lauren's consent under Operating Agreement §8.1, outside the appraisal mechanism of Article IX, providing the parties full flexibility on price and structure.</p>
+        
+        <div class="callout">
+          <div class="callout-label">Valuation Conclusion</div>
+          <div class="callout-value">Fair Market Value: <em>$0</em></div>
+          <p>Derived from a multi-method valuation framework applying three IRS-recognized approaches — income (DCF), market (comparable transactions), and asset (net asset value). All three methodologies converge on the same result. Castle's 51% economic interest in the equity is, mathematically and defensibly, $0.</p>
+        </div>
+        
+        <p>The DCF yields negligible enterprise value once the operator role is replaced with market-rate labor; the market-multiple approach is constrained by the business's modest profitability; and the asset approach reflects deeply negative book equity (approximately -$202,585) once the previously off-books gift card obligation ($94,173) and accurate credit card balances are properly reflected. Standard 409A-style discounts for lack of marketability and key person dependence only floor the value further.</p>
+        
+        <h3>Recommended buyout</h3>
+        
+        <p>Given the zero-equity reality, the buyout cannot be structured as a payment for equity. The recommended package is <strong>$30,000 in goodwill compensation</strong> recognizing five years of founder contribution, two Best Spa awards earned under Castle's leadership, and the 20+ provider team she built, <strong>plus continued transition compensation totaling $12,000–$18,000</strong> covering her August–September full-time period and a six-month consulting retainer. Total cash to Castle is approximately <strong>$45,000–$51,000 over five years</strong>. Castle additionally receives release from personal guarantees on business debt and credit cards, worth approximately <strong>$50,000–$80,000 in risk relief</strong>. All compensation is contingent on her continued engagement — full-time operational responsibility through legal close (August–September 2026), then approximately 10–20 hours per month of knowledge transfer and on-call availability during the consulting period (October 2026 – March 2027) — with forfeiture triggered by material breach of these obligations or the restrictive covenants.</p>
+        
+        <p>The $30,000 goodwill payment is structured as <strong>$10,000 upfront at financial completion (March 31, 2027) plus $20,000 on a 48-month promissory note</strong> at 8% interest (approximately $488 per month, with no prepayment provision). The upfront amount is funded from a cash-out refinance of the existing institutional debt (Business Installment Loan + Xelle Ventures Loan, totaling $99,322); the monthly note payments are absorbed from business operating cash flow over a four-year amortization period.</p>
+        
+        <p>The transaction is structured as an <strong>LLC redemption</strong> under OA §3.3(g) — the business buys back Castle's interest, with Lauren becoming 100% sole member by operation of the redemption. The refinance pays off the existing institutional debt that Castle currently guarantees, releasing her cleanly as a natural consequence of the loan payoff. Both the upfront payment and note payments are characterized as §736(a) guaranteed payments for services — deductible to the LLC and ordinary income to Castle. An S-Corporation election effective October 1, 2026 saves Lauren approximately $4,000–$8,000 per year in self-employment tax going forward.</p>
+        
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Equity FMV</div>
+            <div class="stat-value">$0</div>
+            <div class="stat-detail">Castle's 51% × $0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Goodwill Payment</div>
+            <div class="stat-value purple">$30K</div>
+            <div class="stat-detail">$10K up + $20K note</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Total Cash to Castle</div>
+            <div class="stat-value">$45–51K</div>
+            <div class="stat-detail">Over ~5 years</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Guarantee Release Value</div>
+            <div class="stat-value purple">$50–80K</div>
+            <div class="stat-detail">Risk relief to Castle</div>
+          </div>
+        </div>
+        
+        <h3>Timeline at a glance</h3>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">Mid-July 2026</div>
+            <div class="timeline-content">Binding Memorandum of Understanding signed by Lauren and Castle.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">August – September 2026</div>
+            <div class="timeline-content">Castle remains full-time as partner; refinance and lender discussions begin.</div>
+          </div>
+          <div class="timeline-item purple">
+            <div class="timeline-date">September 30, 2026 — Legal Close</div>
+            <div class="timeline-content">Lauren becomes 100% sole member by operation of the redemption.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">October 1, 2026</div>
+            <div class="timeline-content">S-Corp election effective; Castle begins six-month consulting period.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">October 2026 – February 2027</div>
+            <div class="timeline-content">Refinance institutional debt; cash-out provides funds for Castle's upfront payment.</div>
+          </div>
+          <div class="timeline-item purple">
+            <div class="timeline-date">March 31, 2027 — Financial Completion</div>
+            <div class="timeline-content">$10,000 upfront paid; 48-month note executed; all personal guarantees released.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">April 2027 – March 2031</div>
+            <div class="timeline-content">Monthly note payments of approximately $488 to Castle, totaling ~$23,400.</div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- ====================== 2. STATE OF THE BUSINESS ====================== -->
+      <section id="state-of-business">
+        <div class="section-number">02 — State of the Business</div>
+        <h2>A snapshot of where Auroraflow stands today</h2>
+        
+        <h3>Business identity</h3>
+        <p>Auroraflow LLC is a North Carolina limited liability company organized July 8, 2021, operating as a wellness center providing massage, aesthetician services, and retail products. The brick-and-mortar location opened December 2022. The business operates on the Mango Mint POS/CRM platform with a team of 20+ providers on commission-based compensation.</p>
+        <p>The brand has earned successive recognition in the Triangle market: voted Best Spa by Indyweek and Durham Magazine in 2025, and Best New Business in an earlier year. The business is recognized for its inclusive positioning, addressing communities historically underserved by mainstream spa culture.</p>
+        <p>NAICS code: 812190 (Other Personal Care Services). Federal tax classification: Partnership (Form 1065). CPA: James Heyward, Heyward CPA PLLC, Durham.</p>
+        
+        <h3>Members and ownership</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Member</th><th>Interest</th><th>Title</th><th>Operating Role</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Castle M. Frame</td><td>51%</td><td>Founder</td><td>Primary operator (full-time, day-to-day)</td></tr>
+              <tr><td>Lauren R. McCullough</td><td>49%</td><td>Founder &amp; COO</td><td>Strategic; reduced operational involvement past ~12 months</td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <p>Both members are co-managers per OA §3.1. Castle's withdrawal with Lauren's consent is expressly permitted under the Operating Agreement and is <em>not</em> a Buy-Sell Event under Article IX. The transaction proceeds under Article VIII (Transfer with consent), outside the appraisal default and discount mechanism of §9.4, giving the parties maximum flexibility on price, structure, timing, and terms. <strong>The §9.4(c) 50% bad-leaver discount does not apply.</strong></p>
+        
+        <h3>Revenue growth trajectory</h3>
+        
+        <div class="chart-container">
+          <div class="chart-title">Revenue by period</div>
+          <div class="chart-subtitle">Strong growth from launch through 2025, plateaued in 2026 at ~$1.06M annualized</div>
+          <svg class="chart-svg" viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background grid -->
+            <line x1="80" y1="50" x2="700" y2="50" stroke="#E8E2D6" stroke-width="1"/>
+            <line x1="80" y1="110" x2="700" y2="110" stroke="#E8E2D6" stroke-width="1"/>
+            <line x1="80" y1="170" x2="700" y2="170" stroke="#E8E2D6" stroke-width="1"/>
+            <line x1="80" y1="230" x2="700" y2="230" stroke="#E8E2D6" stroke-width="1"/>
+            <line x1="80" y1="280" x2="700" y2="280" stroke="#1A1F2C" stroke-width="1.5"/>
+            
+            <!-- Y-axis labels -->
+            <text x="70" y="54" text-anchor="end" font-family="Manrope" font-size="11" fill="#8A8F98">$1.0M</text>
+            <text x="70" y="114" text-anchor="end" font-family="Manrope" font-size="11" fill="#8A8F98">$750K</text>
+            <text x="70" y="174" text-anchor="end" font-family="Manrope" font-size="11" fill="#8A8F98">$500K</text>
+            <text x="70" y="234" text-anchor="end" font-family="Manrope" font-size="11" fill="#8A8F98">$250K</text>
+            <text x="70" y="284" text-anchor="end" font-family="Manrope" font-size="11" fill="#8A8F98">$0</text>
+            
+            <!-- Bars: 5 columns, plot area x=100 to x=700, width=600, 5 bars * (bar+gap) = 600
+                 bar=90, gap=30, total=5*90+4*30=570, start at x=115 -->
+            
+            <!-- 2022: $14,901 / $1.1M = 1.4% of 230px = ~3px tall -->
+            <rect x="115" y="277" width="90" height="3" fill="#2D8A86" rx="2"/>
+            <text x="160" y="270" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="600" fill="#5A6068">$15K</text>
+            <text x="160" y="305" text-anchor="middle" font-family="Manrope" font-size="12" font-weight="500" fill="#1A1F2C">2022</text>
+            <text x="160" y="320" text-anchor="middle" font-family="Manrope" font-size="10" fill="#8A8F98">build year</text>
+            
+            <!-- 2023: $505,795 / $1.1M = 46% = 106px tall -->
+            <rect x="235" y="174" width="90" height="106" fill="#2D8A86" rx="3"/>
+            <text x="280" y="167" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="600" fill="#5A6068">$506K</text>
+            <text x="280" y="305" text-anchor="middle" font-family="Manrope" font-size="12" font-weight="500" fill="#1A1F2C">2023</text>
+            <text x="280" y="320" text-anchor="middle" font-family="Manrope" font-size="10" fill="#8A8F98">first full year</text>
+            
+            <!-- 2024: $786,417 / $1.1M = 71.5% = 164px -->
+            <rect x="355" y="116" width="90" height="164" fill="#2D8A86" rx="3"/>
+            <text x="400" y="109" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="600" fill="#5A6068">$786K</text>
+            <text x="400" y="305" text-anchor="middle" font-family="Manrope" font-size="12" font-weight="500" fill="#1A1F2C">2024</text>
+            <text x="400" y="320" text-anchor="middle" font-family="Manrope" font-size="10" fill="#8A8F98">+55%</text>
+            
+            <!-- 2025: $1,047,508 / $1.1M = 95.2% = 219px -->
+            <rect x="475" y="61" width="90" height="219" fill="#2D8A86" rx="3"/>
+            <text x="520" y="54" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="600" fill="#5A6068">$1.05M</text>
+            <text x="520" y="305" text-anchor="middle" font-family="Manrope" font-size="12" font-weight="500" fill="#1A1F2C">2025</text>
+            <text x="520" y="320" text-anchor="middle" font-family="Manrope" font-size="10" fill="#8A8F98">+33%</text>
+            
+            <!-- TTM: $1,063,933 / $1.1M = 96.7% = 222px -->
+            <rect x="595" y="58" width="90" height="222" fill="#5D4E75" rx="3"/>
+            <text x="640" y="51" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="600" fill="#5A6068">$1.06M</text>
+            <text x="640" y="305" text-anchor="middle" font-family="Manrope" font-size="12" font-weight="500" fill="#1A1F2C">TTM</text>
+            <text x="640" y="320" text-anchor="middle" font-family="Manrope" font-size="10" fill="#8A8F98">+1.5%</text>
+          </svg>
+          <div class="chart-legend">
+            <div class="legend-item"><span class="legend-swatch" style="background:#2D8A86"></span>Calendar year revenue</div>
+            <div class="legend-item"><span class="legend-swatch" style="background:#5D4E75"></span>Trailing twelve months (May 2025 – April 2026)</div>
+          </div>
+        </div>
+        
+        <h3>Profitability trajectory</h3>
+        
+        <div class="chart-container">
+          <div class="chart-title">Net income by period</div>
+          <div class="chart-subtitle">First profitable year achieved in 2025; TTM reverted to slight loss; Q1 2026 underlying run rate ~$71K</div>
+          <svg class="chart-svg" viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg">
+            <!-- Y-axis grid: range -80K to +80K, zero at midline y=170 -->
+            <line x1="80" y1="50" x2="700" y2="50" stroke="#E8E2D6" stroke-width="1"/>
+            <line x1="80" y1="110" x2="700" y2="110" stroke="#E8E2D6" stroke-width="1"/>
+            <line x1="80" y1="170" x2="700" y2="170" stroke="#1A1F2C" stroke-width="1.5"/>
+            <line x1="80" y1="230" x2="700" y2="230" stroke="#E8E2D6" stroke-width="1"/>
+            <line x1="80" y1="290" x2="700" y2="290" stroke="#E8E2D6" stroke-width="1"/>
+            
+            <!-- Y-axis labels -->
+            <text x="70" y="54" text-anchor="end" font-family="Manrope" font-size="11" fill="#8A8F98">+$80K</text>
+            <text x="70" y="114" text-anchor="end" font-family="Manrope" font-size="11" fill="#8A8F98">+$40K</text>
+            <text x="70" y="174" text-anchor="end" font-family="Manrope" font-size="11" fill="#1A1F2C" font-weight="600">$0</text>
+            <text x="70" y="234" text-anchor="end" font-family="Manrope" font-size="11" fill="#8A8F98">-$40K</text>
+            <text x="70" y="294" text-anchor="end" font-family="Manrope" font-size="11" fill="#8A8F98">-$80K</text>
+            
+            <!-- Bars: 6 cols, plot 100-700 = 600, bar=75, gap=30, total 6*75+5*30=600 -->
+            
+            <!-- 2022: -$70,355 / 80K = 88% of 120px below zero = 105px below 170 -->
+            <rect x="115" y="170" width="75" height="106" fill="#B85450" rx="3"/>
+            <text x="152" y="290" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="600" fill="#B85450">-$70K</text>
+            <text x="152" y="320" text-anchor="middle" font-family="Manrope" font-size="11" fill="#1A1F2C">2022</text>
+            
+            <!-- 2023: -$57,977 = 72% = 87px -->
+            <rect x="220" y="170" width="75" height="87" fill="#B85450" rx="3"/>
+            <text x="257" y="271" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="600" fill="#B85450">-$58K</text>
+            <text x="257" y="320" text-anchor="middle" font-family="Manrope" font-size="11" fill="#1A1F2C">2023</text>
+            
+            <!-- 2024: -$7,695 = 9.6% = 12px -->
+            <rect x="325" y="170" width="75" height="12" fill="#B85450" rx="2"/>
+            <text x="362" y="197" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="600" fill="#B85450">-$8K</text>
+            <text x="362" y="320" text-anchor="middle" font-family="Manrope" font-size="11" fill="#1A1F2C">2024</text>
+            
+            <!-- 2025: +$24,110 = 30% = 36px -->
+            <rect x="430" y="134" width="75" height="36" fill="#2D8A86" rx="3"/>
+            <text x="467" y="125" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="600" fill="#2D8A86">+$24K</text>
+            <text x="467" y="320" text-anchor="middle" font-family="Manrope" font-size="11" fill="#1A1F2C">2025</text>
+            
+            <!-- TTM: -$12,044 = 15% = 18px -->
+            <rect x="535" y="170" width="75" height="18" fill="#B85450" rx="2"/>
+            <text x="572" y="205" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="600" fill="#B85450">-$12K</text>
+            <text x="572" y="320" text-anchor="middle" font-family="Manrope" font-size="11" fill="#1A1F2C">TTM</text>
+            
+            <!-- Q1 2026 ann: +$71,024 = 88.8% = 107px -->
+            <rect x="640" y="63" width="75" height="107" fill="#5D4E75" rx="3"/>
+            <text x="677" y="56" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="600" fill="#5D4E75">+$71K</text>
+            <text x="677" y="320" text-anchor="middle" font-family="Manrope" font-size="11" fill="#1A1F2C">Q1 '26 ann.</text>
+          </svg>
+          <div class="chart-legend">
+            <div class="legend-item"><span class="legend-swatch" style="background:#2D8A86"></span>Profitable period</div>
+            <div class="legend-item"><span class="legend-swatch" style="background:#B85450"></span>Loss period</div>
+            <div class="legend-item"><span class="legend-swatch" style="background:#5D4E75"></span>Underlying run rate (clean quarter, annualized)</div>
+          </div>
+        </div>
+        
+        <p>The TTM reversion to slight loss reflects (1) three predictable biweekly three-paycheck months falling within the period (May 2025, October 2025, April 2026) — recurring structural events on a biweekly payroll cadence; and (2) Salaries &amp; Wages growing faster than revenue (76% S&amp;W increase from CY 2024 to TTM versus 35% revenue increase), reflecting team buildout ahead of revenue scaling.</p>
+        
+        <p>The <strong>Q1 2026 clean quarter</strong> provides the underlying earning capacity view: revenue of $261,985 (annualizing to $1.05M, consistent with the run rate), NOI of $17,756 (annualizing to ~$71,000). This is the figure that supports debt service on the refinanced loan plus the monthly note payments to Castle.</p>
+        
+        <h3>Balance sheet (rebuilt to reflect actual economic obligations)</h3>
+        
+        <p>The balance sheet as currently posted in QuickBooks understates total liabilities because the gift card liability of $94,173 is not on Schedule L, and sign-convention quirks on certain credit card accounts have historically obscured true balances.</p>
+        
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th colspan="2">Assets</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Business checking (BUS COMPLETE CHK 2087)</td><td>$21,423</td></tr>
+              <tr><td>Mango Mint Holding</td><td>$0</td></tr>
+              <tr><td>Fixed assets, net of accumulated depreciation</td><td>$2,144</td></tr>
+              <tr><td>Security deposit</td><td>$6,650</td></tr>
+              <tr class="total-row"><td><strong>Total Assets</strong></td><td><strong>$30,217</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th colspan="2">Liabilities</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Business Installment Loan (BIL)</td><td>$50,871</td></tr>
+              <tr><td>Xelle Ventures Loan</td><td>$48,451</td></tr>
+              <tr><td>Credit cards (Chase Ink + C. Frame 5709 + minor)</td><td>$24,329</td></tr>
+              <tr><td>Line of credit (BUS CREDIT LINE 2004)</td><td>$0 owed (~$19,593 capacity)</td></tr>
+              <tr><td>Gift card liability (off-books)</td><td>$94,173</td></tr>
+              <tr><td>Aflac employee contributions (pass-through)</td><td>$13,657</td></tr>
+              <tr><td>Payroll wages payable</td><td>$1,321</td></tr>
+              <tr class="total-row"><td><strong>Total Liabilities</strong></td><td><strong>$232,802</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="pullquote">
+          True equity position after cleanup: approximately negative $202,585. Both members hold meaningfully negative capital accounts.
+        </div>
+      </section>
+      
+      <!-- ====================== 3. VALUATION ASSESSMENT ====================== -->
+      <section id="valuation">
+        <div class="section-number">03 — Valuation Assessment</div>
+        <h2>Three independent methodologies, one conclusion</h2>
+        
+        <h3>Documents and data sources used</h3>
+        <ol>
+          <li><strong>Auroraflow LLC Operating Agreement</strong> dated July 8, 2021 — governance, transfer restrictions, buy-sell framework, capital and distribution provisions</li>
+          <li><strong>Monthly Profit and Loss Statement</strong>, accrual basis, December 2021 through April 2026 (53 months)</li>
+          <li><strong>Balance Sheet</strong> as of May 23, 2026, and updated account balances from QuickBooks as of late May 2026</li>
+          <li><strong>2025 Federal Tax Return (Form 1065)</strong> with K-1s, Schedule L, M-1, M-2, and Schedule K</li>
+          <li><strong>North Carolina Form D-403</strong> for tax year 2025</li>
+          <li>Owner compensation schedule and operating context provided by Lauren McCullough</li>
+          <li>Industry comparables — small wellness/day spa sale transactions (NAICS 812190)</li>
+        </ol>
+        
+        <h3>Methodology convergence</h3>
+        
+        <div class="chart-container">
+          <div class="chart-title">Implied enterprise value by method</div>
+          <div class="chart-subtitle">All three methodologies converge on $0 equity FMV after discounts</div>
+          <svg class="chart-svg" viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg">
+            <!-- Zero line and grid -->
+            <line x1="320" y1="40" x2="320" y2="280" stroke="#1A1F2C" stroke-width="2"/>
+            <text x="320" y="32" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="600" fill="#1A1F2C">$0</text>
+            
+            <line x1="180" y1="40" x2="180" y2="280" stroke="#E8E2D6" stroke-width="1" stroke-dasharray="3,3"/>
+            <text x="180" y="32" text-anchor="middle" font-family="Manrope" font-size="10" fill="#8A8F98">-$100K</text>
+            
+            <line x1="460" y1="40" x2="460" y2="280" stroke="#E8E2D6" stroke-width="1" stroke-dasharray="3,3"/>
+            <text x="460" y="32" text-anchor="middle" font-family="Manrope" font-size="10" fill="#8A8F98">+$100K</text>
+            
+            <line x1="600" y1="40" x2="600" y2="280" stroke="#E8E2D6" stroke-width="1" stroke-dasharray="3,3"/>
+            <text x="600" y="32" text-anchor="middle" font-family="Manrope" font-size="10" fill="#8A8F98">+$200K</text>
+            
+            <line x1="40" y1="40" x2="40" y2="280" stroke="#E8E2D6" stroke-width="1" stroke-dasharray="3,3"/>
+            <text x="40" y="32" text-anchor="middle" font-family="Manrope" font-size="10" fill="#8A8F98">-$200K</text>
+            
+            <!-- Scale: -$200K to +$200K spans x=40 to x=600, so $1K = (600-40)/400 = 1.4px per $1K -->
+            <!-- Center (zero) at x = 40 + 200*1.4 = 320 -->
+            
+            <!-- Income (DCF): $0 to $30K, ends at x = 320 + 30*1.4 = 362 -->
+            <rect x="320" y="70" width="42" height="32" fill="#2D8A86" opacity="0.85" rx="4"/>
+            <text x="180" y="91" text-anchor="start" font-family="Manrope" font-size="13" font-weight="600" fill="#1A1F2C">Income approach (DCF)</text>
+            <text x="370" y="91" text-anchor="start" font-family="Manrope" font-size="11" fill="#5A6068">$0 – $30K</text>
+            
+            <!-- Market: $0 to $75K, ends at 320 + 75*1.4 = 425 -->
+            <rect x="320" y="120" width="105" height="32" fill="#5BAFA9" opacity="0.85" rx="4"/>
+            <text x="180" y="141" text-anchor="start" font-family="Manrope" font-size="13" font-weight="600" fill="#1A1F2C">Market approach (SDE/EBITDA)</text>
+            <text x="433" y="141" text-anchor="start" font-family="Manrope" font-size="11" fill="#5A6068">$0 – $75K</text>
+            
+            <!-- Asset NAV: -$165K, starts at 320 - 165*1.4 = 89, ends at 320 -->
+            <rect x="89" y="170" width="231" height="32" fill="#B85450" opacity="0.85" rx="4"/>
+            <text x="50" y="191" text-anchor="start" font-family="Manrope" font-size="13" font-weight="600" fill="#FFFFFF">Asset approach (NAV)</text>
+            <text x="50" y="161" text-anchor="start" font-family="Manrope" font-size="11" fill="#1A1F2C">-$165K</text>
+            
+            <!-- Weighted: -$17K, ends at 320 -->
+            <rect x="296" y="220" width="24" height="32" fill="#5D4E75" rx="4"/>
+            <text x="180" y="241" text-anchor="start" font-family="Manrope" font-size="13" font-weight="600" fill="#1A1F2C">Weighted (pre-discount)</text>
+            <text x="280" y="241" text-anchor="end" font-family="Manrope" font-size="11" fill="#5A6068">-$17K</text>
+            
+            <!-- Final: $0 floored -->
+            <circle cx="320" cy="285" r="6" fill="#5D4E75"/>
+            <text x="180" y="290" text-anchor="start" font-family="Manrope" font-size="13" font-weight="700" fill="#5D4E75">Final FMV (after discounts)</text>
+            <text x="335" y="290" text-anchor="start" font-family="Manrope" font-size="13" font-weight="700" fill="#5D4E75">$0</text>
+          </svg>
+        </div>
+        
+        <h3>How the conclusion is derived</h3>
+        
+        <p>The DCF yields negligible enterprise value once the operator role is replaced with market-rate labor (~$65,000–$75,000 loaded for a Durham-area spa GM). The market-multiple approach (SDE and EBITDA at 1.5–2.5x and 3–4x respectively) is constrained by the business's modest profitability. The asset approach reflects deeply negative book equity. Weighting the methodologies (40% income / 40% market / 20% asset) produces a pre-discount EV of approximately -$17,000.</p>
+        
+        <p>Standard 409A-style discounts then apply: a 30–35% discount for lack of marketability (private business, restricted transferability under OA Article VIII), and a 10–15% key person discount for operational dependence on Castle. Applied to an already-negative weighted EV, the discounts only floor the value further.</p>
+        
+        <div class="callout">
+          <div class="callout-label">Final Determination</div>
+          <div class="callout-value">FMV of equity = $0</div>
+          <p>Equity value cannot go below zero for valuation purposes; limited liability protects members from owing more than their contributed capital. Castle's 51% economic interest in the equity is, mathematically and defensibly, $0.</p>
+        </div>
+      </section>
+      
+      <!-- ====================== 4. RECOMMENDED BUYOUT PLAN ====================== -->
+      <section id="buyout-plan">
+        <div class="section-number">04 — Recommended Buyout Plan</div>
+        <h2>An LLC redemption funded by debt refinance</h2>
+        
+        <p>The buyout is structured as an <strong>LLC redemption</strong> funded through a <strong>cash-out refinance of the existing business debt</strong>. The business (not Lauren personally) is the financing party. Lauren becomes 100% sole member by operation of the redemption.</p>
+        
+        <h3>Payment cadence and timing</h3>
+        
+        <div class="chart-container">
+          <div class="chart-title">Cash to Castle across the buyout period</div>
+          <div class="chart-subtitle">Continued comp through legal close, consulting period, then $10K upfront + 48-month note</div>
+          <svg class="chart-svg" viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg">
+            <!-- Horizontal timeline base -->
+            <line x1="60" y1="180" x2="700" y2="180" stroke="#E8E2D6" stroke-width="2"/>
+            
+            <!-- Time markers -->
+            <text x="60" y="210" text-anchor="middle" font-family="Manrope" font-size="11" fill="#8A8F98">Aug 2026</text>
+            <text x="180" y="210" text-anchor="middle" font-family="Manrope" font-size="11" fill="#8A8F98">Oct 2026</text>
+            <text x="340" y="210" text-anchor="middle" font-family="Manrope" font-size="11" fill="#8A8F98">Mar 2027</text>
+            <text x="380" y="225" text-anchor="middle" font-family="Manrope" font-size="10" font-weight="600" fill="#5D4E75">Financial Completion</text>
+            <text x="700" y="210" text-anchor="middle" font-family="Manrope" font-size="11" fill="#8A8F98">Mar 2031</text>
+            
+            <!-- Period 1: Aug-Sept (full-time comp) -->
+            <rect x="60" y="120" width="120" height="50" fill="#2D8A86" opacity="0.85" rx="4"/>
+            <text x="120" y="142" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="700" fill="#FFFFFF">Aug – Sept 2026</text>
+            <text x="120" y="158" text-anchor="middle" font-family="Manrope" font-size="11" fill="#FFFFFF">~$6,000 (full-time)</text>
+            <text x="120" y="105" text-anchor="middle" font-family="Manrope" font-size="10" font-weight="600" fill="#2D8A86">Partner comp</text>
+            
+            <!-- Period 2: Oct-Mar consulting -->
+            <rect x="180" y="120" width="160" height="50" fill="#5BAFA9" opacity="0.85" rx="4"/>
+            <text x="260" y="142" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="700" fill="#FFFFFF">Oct '26 – Mar '27</text>
+            <text x="260" y="158" text-anchor="middle" font-family="Manrope" font-size="11" fill="#FFFFFF">$6–12K consulting</text>
+            <text x="260" y="105" text-anchor="middle" font-family="Manrope" font-size="10" font-weight="600" fill="#5BAFA9">1099 contractor</text>
+            
+            <!-- Marker: Mar 31, 2027 upfront -->
+            <circle cx="345" cy="180" r="8" fill="#5D4E75"/>
+            <line x1="345" y1="172" x2="345" y2="55" stroke="#5D4E75" stroke-width="2" stroke-dasharray="4,3"/>
+            <rect x="290" y="40" width="110" height="40" fill="#5D4E75" rx="4"/>
+            <text x="345" y="58" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="700" fill="#FFFFFF">$10,000 upfront</text>
+            <text x="345" y="72" text-anchor="middle" font-family="Manrope" font-size="10" fill="#FFFFFF">from refinance</text>
+            
+            <!-- Period 3: 48 months note Apr 2027 - Mar 2031 -->
+            <rect x="345" y="120" width="355" height="50" fill="#8B7CA5" opacity="0.9" rx="4"/>
+            <text x="522" y="142" text-anchor="middle" font-family="Manrope" font-size="11" font-weight="700" fill="#FFFFFF">April 2027 – March 2031 (48 months)</text>
+            <text x="522" y="158" text-anchor="middle" font-family="Manrope" font-size="11" fill="#FFFFFF">$488/month × 48 = ~$23,400 (incl. interest)</text>
+            <text x="522" y="105" text-anchor="middle" font-family="Manrope" font-size="10" font-weight="600" fill="#5D4E75">Promissory note (8%, no prepayment)</text>
+            
+            <!-- Total -->
+            <text x="380" y="260" text-anchor="middle" font-family="Fraunces" font-size="15" font-style="italic" fill="#1F6E6B">Total cash to Castle over ~5 years: approximately $45,000 – $51,000</text>
+          </svg>
+        </div>
+        
+        <h3>The refinance structure</h3>
+        
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Refinance Element</th><th>Amount</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Pay off Business Installment Loan</td><td>$50,871</td></tr>
+              <tr><td>Pay off Xelle Ventures Loan</td><td>$48,451</td></tr>
+              <tr><td>Upfront payment to Castle</td><td>$10,000</td></tr>
+              <tr><td>Working capital cushion</td><td>$10,000 – $15,000</td></tr>
+              <tr><td>Closing costs (estimated)</td><td>$3,000 – $5,000</td></tr>
+              <tr class="total-row"><td><strong>Total new loan size</strong></td><td><strong>~$122,000 – $128,000</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <p>Available loan types to evaluate with lenders include <strong>SBA 7(a)</strong> (best terms but slower close; 10-year amortization typical), <strong>conventional bank loan</strong> (faster, 5–7 year amortization, similar collateral requirements), and <strong>specialty business lenders</strong> (faster but higher rates; viable backup option).</p>
+        
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">New loan size</div>
+            <div class="stat-value">~$125K</div>
+            <div class="stat-detail">After refinance</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Monthly debt service</div>
+            <div class="stat-value purple">~$2,500</div>
+            <div class="stat-detail">Refi + Castle note</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Underlying NOI</div>
+            <div class="stat-value">~$71K/yr</div>
+            <div class="stat-detail">Q1 2026 annualized</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">DSCR</div>
+            <div class="stat-value purple">~2.4x</div>
+            <div class="stat-detail">Well above 1.25x min.</div>
+          </div>
+        </div>
+        
+        <h3>Why $30,000 — the rationale</h3>
+        
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Factor</th><th>Direction</th><th>Influence</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Five years of founder contribution and brand building</td><td>Positive</td><td>+$25,000 "years of service" goodwill</td></tr>
+              <tr><td>Two consecutive Best Spa awards earned under her leadership</td><td>Positive</td><td>+$5,000 brand contribution value</td></tr>
+              <tr><td>20+ provider team built and operational legacy</td><td>Positive</td><td>+$5,000</td></tr>
+              <tr><td>Negative equity reality (FMV $0)</td><td>Negative</td><td>Caps equity component at $0</td></tr>
+              <tr><td>Castle released from ~$50–80K of personal guarantees</td><td>Negative</td><td>Real economic value provided in lieu of cash</td></tr>
+              <tr><td>Castle retains her independent massage practice</td><td>Negative</td><td>Portable post-exit; reduces cash need</td></tr>
+              <tr><td>Lauren absorbs all $230K+ of net obligations going forward</td><td>Negative</td><td>Constrains affordability</td></tr>
+              <tr class="total-row"><td colspan="2"><strong>Defensible middle</strong></td><td><strong>~$30,000 ($10K upfront + $20K note)</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h3>Tax-minimization mechanics</h3>
+        
+        <p><em>All of the following should be reviewed and refined in consultation with Heyward CPA PLLC and engaged transaction counsel.</em></p>
+        
+        <h4>§736(a) vs. §736(b) characterization</h4>
+        <p>The $30,000 payment (both $10,000 upfront and $20,000 note) should be characterized as a <strong>§736(a) guaranteed payment for services</strong> rather than a §736(b) capital interest redemption. Under §736(a), payments are ordinary income to Castle and <strong>deductible to the LLC</strong>. Because the equity FMV is $0, there is no economic basis for §736(b) treatment.</p>
+        
+        <h4>S-Corporation election effective October 1, 2026</h4>
+        <p>When Castle exits, the LLC automatically becomes a disregarded entity. <strong>Electing S-Corporation status on Form 2553 effective October 1, 2026</strong> allows Lauren to pay herself a reasonable salary subject to FICA, with remaining profits flowing as K-1 distributions not subject to self-employment tax. Expected savings: <strong>$4,000–$8,000 per year</strong>. Form 2553 must be filed within 75 days (by mid-December 2026). <span class="key-flag purple">Single biggest tax lever in this report</span></p>
+        
+        <h4>Other items requiring Heyward's review</h4>
+        <ul>
+          <li><strong>§754 election analysis</strong> — likely not material given $0 equity and §736(a) characterization, but should be confirmed</li>
+          <li><strong>Capital account reconciliation</strong> — ~$51K discrepancy between K-1 sum and M-2 on 2025 return</li>
+          <li><strong>Gift card liability accounting cleanup</strong> — prior period adjustment to recognize $94K liability on Schedule L</li>
+          <li><strong>Timing of payments across tax years</strong> — note payments naturally spread tax recognition across 2027–2031</li>
+          <li><strong>Lauren's note receivable</strong> — characterize as Loan from Partner under OA §5.2, document with promissory note and interest accrual</li>
+        </ul>
+      </section>
+      
+      <!-- ====================== 5. CONDITIONS OF THE BUYOUT ====================== -->
+      <section id="conditions">
+        <div class="section-number">05 — Conditions of the Buyout</div>
+        <h2>Why a redemption, and what protections are required</h2>
+        
+        <h3>LLC redemption vs. cross-purchase</h3>
+        
+        <p>A traditional partner buyout could theoretically be structured as a <strong>cross-purchase</strong> (Lauren personally buys Castle's interest from her own funds) or an <strong>LLC redemption</strong> (the business buys back Castle's interest, funded by business debt). The LLC redemption is the appropriate structure here because:</p>
+        
+        <ol>
+          <li>Lauren does not need to inject personal capital</li>
+          <li>The refinance pays off existing debt that Castle is currently guaranteeing, releasing her cleanly as a natural consequence of the loan payoff</li>
+          <li>It produces the cleanest tax characterization (§736(a) deductibility for the LLC)</li>
+          <li>It produces the cleanest governance outcome (Lauren as sole member with full control of an amended Operating Agreement)</li>
+        </ol>
+        
+        <p>Under OA §3.3(g), redemption requires unanimous member consent. Castle consents, so the requirement is satisfied. Under §8.1, withdrawal requires consent of the Disinterested Member (Lauren), also satisfied. The transaction proceeds under Article VIII (Transfer with consent) rather than as a Buy-Sell Event under Article IX, providing maximum flexibility on price, structure, and terms.</p>
+        
+        <h3>Castle's continuing obligations and conditions for ongoing payments</h3>
+        
+        <p>The compensation structure recognizes that Castle is being paid for ongoing work and engagement during the transition, not for exiting alone. Compensation is contingent on her performance of the scope described below and her compliance with the conditions that follow.</p>
+        
+        <h4>Scope of work — August through September 2026 (full-time as partner)</h4>
+        <p>Castle continues in her current operational role as primary day-to-day operator: managing the team, overseeing service delivery, maintaining client relationships, handling vendor and supplier interactions, and operational decision-making jointly with Lauren. She also begins transition handoff activities — documenting SOPs, introducing Lauren and successor team members to key relationships, and preparing transition documentation. Compensation flows as guaranteed payment under §707(c) at approximately her current run rate.</p>
+        
+        <h4>Scope of work — October 2026 through March 2027 (six-month consulting period)</h4>
+        <p>Castle transitions to a 1099 contractor role with reduced involvement. Expected scope:</p>
+        <ul>
+          <li>Approximately 10–20 hours per month average commitment</li>
+          <li>On-call availability for operational questions during business hours, with defined response time (e.g., 48 hours)</li>
+          <li>Knowledge transfer on operational, client, vendor, and provider relationships</li>
+          <li>Specific administrative handoff items (vendor accounts, account access, client communications regarding ownership change)</li>
+          <li>Strategic input where her institutional knowledge adds value</li>
+        </ul>
+        <p>Day-to-day operational responsibility has shifted to Lauren during this period. The consulting retainer ($1,000–$2,000/month) compensates Castle for availability and the specific handoff work; she is not expected to maintain operational decision-making authority.</p>
+        
+        <h4>Conditions for the upfront payment and ongoing note payments</h4>
+        <ol>
+          <li>Completion of the August–September partner period and the October–March consulting period in good faith and according to the scope described above</li>
+          <li>No material breach of the restrictive covenants — including during the 48-month note amortization period</li>
+          <li>Active cooperation with the refinancing process, including signing all reasonably-requested lender documents</li>
+          <li>No disparagement of the business, Lauren, employees, providers, or clients</li>
+          <li>Confirmation that all personal guarantees have been released, or that Castle has not impeded the release process</li>
+          <li>Mutual release re-affirmed at financial completion</li>
+        </ol>
+        <p>A material breach during the consulting period or note period triggers forfeiture of the unpaid upfront amount (if before release) and acceleration/forfeiture of the remaining note balance.</p>
+        
+        <h3>Restrictive covenants</h3>
+        
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Covenant</th><th>Scope</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Non-compete</strong></td><td>5-mile radius from Auroraflow Durham premises; 18 months from financial completion (through Sept 30, 2028). Narrow scopes are more enforceable under NC case law.</td></tr>
+              <tr><td><strong>Non-solicit of clients</strong></td><td>18 months. Does not prevent clients who independently find Castle from working with her.</td></tr>
+              <tr><td><strong>Non-solicit of providers</strong></td><td>18 months. Castle cannot actively recruit Auroraflow's current employees or contractors to a competing venture.</td></tr>
+              <tr><td><strong>Non-disparagement (with forfeiture)</strong></td><td>No disparagement of Auroraflow, Lauren, employees, providers, or clients. Breach triggers forfeiture of any unpaid portion of the promissory note.</td></tr>
+              <tr><td><strong>Confidentiality</strong></td><td>Perpetual on truly confidential information; 3-year tail on general business information.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h3>Personal guarantee release sequencing</h3>
+        
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Obligation</th><th>Release Mechanism</th><th>Target Date</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Line of credit ($0 owed)</td><td>Close account or remove Castle as account holder</td><td>Within 30 days of legal close</td></tr>
+              <tr><td>C. Frame (5709) — small remaining balance</td><td>Pay off</td><td>Within 30 days of legal close</td></tr>
+              <tr><td>Chase Ink (if Castle is on it)</td><td>Balance transfer or paydown</td><td>60–90 days post legal close</td></tr>
+              <tr><td>Business Installment Loan ($50,871)</td><td>Paid off by refinance; Castle automatically released</td><td>Refinance close, Q1 2027</td></tr>
+              <tr><td>Xelle Ventures ($48,451)</td><td>Paid off by refinance; Castle released</td><td>Refinance close, Q1 2027</td></tr>
+              <tr><td>Lease guarantee (if applicable)</td><td>Landlord consent to remove Castle</td><td>By March 31, 2027</td></tr>
+              <tr><td>Vendor accounts in Castle's name</td><td>Identify, transfer to LLC accounts</td><td>Q4 2026</td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <p><strong>Bridge protection:</strong> From legal close (September 30, 2026) through full release of each guarantee, Lauren personally indemnifies Castle for any claim arising from un-released guarantees. Documented in a standalone <strong>Personal Indemnification Agreement</strong> executed at legal close.</p>
+        
+        <h3>Escrow and note documentation</h3>
+        
+        <p>The $10,000 upfront payment is placed in a holdback account (attorney trust account) at the time refinance proceeds are received. Released to Castle at financial completion (March 31, 2027) upon Lauren's certification that all conditions are met.</p>
+        
+        <p>The $20,000 note is documented as a formal promissory note from the LLC to Castle, executed at financial completion:</p>
+        <ul>
+          <li><strong>Principal:</strong> $20,000</li>
+          <li><strong>Interest rate:</strong> 8% per annum</li>
+          <li><strong>Term:</strong> 48 months (April 2027 – March 2031)</li>
+          <li><strong>Monthly payment:</strong> approximately $488 (level amortization)</li>
+          <li><strong>No prepayment provision</strong> — note runs the full 48-month term</li>
+          <li><strong>Forfeiture trigger:</strong> material breach of restrictive covenants causes acceleration and write-off of remaining balance</li>
+          <li><strong>Acceleration on third-party sale of LLC</strong> (Lauren's protection if she sells the business)</li>
+        </ul>
+        
+        <h3>Mutual general release</h3>
+        <p>A mutual general release is executed at financial completion (March 31, 2027), releasing both parties from all claims arising from the operation of the business through that date. Standard carve-outs for fraud, intentional misconduct, ongoing obligations under the buyout agreement and note, and tax obligations imposed by law.</p>
+      </section>
+      
+      <!-- ====================== 6. NEXT STEPS ====================== -->
+      <section id="next-steps">
+        <div class="section-number">06 — Recommended Next Steps</div>
+        <h2>Sequenced execution plan through March 2027</h2>
+        
+        <h3>Immediate (May – June 2026)</h3>
+        <ol>
+          <li><strong>Engage Heyward CPA PLLC</strong> to confirm §736(a) characterization, S-Corp election timing, capital account reconciliation, gift card cleanup, and Lauren's note receivable treatment</li>
+          <li><strong>Engage transaction counsel</strong> to begin drafting MOU, Redemption Agreement, Amended Operating Agreement, Promissory Note, Restrictive Covenants, Personal Indemnification Agreement, Consulting Agreement, Mutual Release, and Escrow Agreement</li>
+          <li><strong>Initiate lender conversations</strong> for the ~$122–128K cash-out refinance. Approach current relationship banks, SBA 7(a) preferred lenders, and specialty business lenders for backup</li>
+        </ol>
+        
+        <h3>MOU target: mid-July 2026 (no later than early August)</h3>
+        <p>The binding MOU between Lauren and Castle is the gating document. It covers agreed valuation ($0 equity), goodwill payment ($30,000 structured as $10K upfront + $20K over 48 months at 8% with no prepayment), transition compensation, form of transaction (LLC redemption funded by debt refinance), restrictive covenants, guarantee release framework, escrow mechanism, note acceleration/forfeiture triggers, closing target (September 30, 2026), and financial completion target (March 31, 2027).</p>
+        
+        <h3>Through legal close (August – September 30, 2026)</h3>
+        <ul>
+          <li>Castle remains full-time as partner; compensation as guaranteed payment under §707(c)</li>
+          <li>Lauren and counsel finalize all definitive documents</li>
+          <li>Lender refinancing process well underway</li>
+          <li>Identify all accounts and obligations in Castle's name for transfer planning</li>
+        </ul>
+        
+        <h3>Transition phase (October 2026 – February 2027)</h3>
+        <ul>
+          <li>Castle on consultant retainer (1099)</li>
+          <li>File Form 2553 (S-Corp election) by mid-December 2026 for October 1 effective date</li>
+          <li>Heyward issues short-year partnership return for Jan 1 – Sept 30, 2026</li>
+          <li>Heyward completes capital account reconciliation and prior-period adjustments</li>
+          <li>Refinance closes; pays off BIL + Xelle; releases Castle from those guarantees</li>
+          <li>Castle-name CCs balance-transferred or paid off; Castle removed from LOC</li>
+          <li>Lease guarantee removal (landlord consent)</li>
+          <li>Monthly cash flow monitoring</li>
+        </ul>
+        
+        <h3>Financial completion (March 31, 2027)</h3>
+        <ul>
+          <li>All institutional debt refinanced; Castle released from all personal guarantees</li>
+          <li>$10,000 upfront payment released from holdback to Castle</li>
+          <li>Promissory note becomes effective; first $488 monthly payment due April 30, 2027</li>
+          <li>Personal Indemnification Agreement terminates</li>
+          <li>Mutual General Release executed</li>
+          <li>Restrictive Covenants in full force for their remaining 18-month duration</li>
+        </ul>
+        
+        <h3>Note amortization (April 2027 – March 2031)</h3>
+        <ul>
+          <li>Monthly $488 payments to Castle for 48 months</li>
+          <li>Restrictive covenants enforced; material breach triggers note acceleration/forfeiture</li>
+          <li>LLC continues operating under Lauren's sole ownership and S-Corp election</li>
+        </ul>
+      </section>
+      
+      <!-- ====================== 7. OPEN ITEMS ====================== -->
+      <section id="open-items">
+        <div class="section-number">07 — Open Items</div>
+        <h2>Verification required before finalizing the MOU</h2>
+        
+        <ol>
+          <li><strong>Chase Ink credit card ($22,968 balance)</strong> — confirm whose name is on the card and whether both partners are personal guarantors. Affects refinance sequencing.</li>
+          <li><strong>Lease guarantor status</strong> — confirm whether Castle is a personal guarantor on the lease, or whether the lease is in the LLC's name only.</li>
+          <li><strong>Lauren's note receivable</strong> — Heyward to provide the reconciled amount and characterize as a loan under §5.2 on Schedule L going forward.</li>
+          <li><strong>Gift card liability prior-period adjustment</strong> — Heyward to advise on the cleanup approach and any tax-return implications.</li>
+          <li><strong>Castle's stated expectations</strong> — if Castle has communicated any specific number or framework for her exit, this provides anchor information for the negotiation.</li>
+          <li><strong>Lender pre-qualification</strong> — confirm with at least one lender that a $122,000–$128,000 refinance with cash-out is feasible given the business's DSCR, Lauren's credit, and collateral. Initiate this conversation early so it's not a closing-period bottleneck.</li>
+        </ol>
+      </section>
+      
+      <!-- ====================== 8. KEY NUMBERS ====================== -->
+      <section id="key-numbers">
+        <div class="section-number">08 — Summary of Key Numbers</div>
+        <h2>The deal at a glance</h2>
+        
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Item</th><th>Value</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Auroraflow LLC total equity fair market value</td><td>$0</td></tr>
+              <tr><td>Castle's 51% interest fair market value</td><td>$0</td></tr>
+              <tr><td>Recommended total goodwill payment to Castle</td><td>$30,000</td></tr>
+              <tr><td>Upfront portion (March 31, 2027)</td><td>$10,000</td></tr>
+              <tr><td>Note portion (48 months at 8%, ~$488/month)</td><td>$20,000 + ~$3,400 interest</td></tr>
+              <tr><td>Continued comp August–September 2026</td><td>~$6,000</td></tr>
+              <tr><td>Consultant retainer October 2026 – March 2027</td><td>$6,000 – $12,000</td></tr>
+              <tr class="total-row"><td><strong>Total cash to Castle over ~5 years</strong></td><td><strong>~$45,000 – $51,000</strong></td></tr>
+              <tr><td>Castle's economic value from release of personal guarantees</td><td>$50,000 – $80,000</td></tr>
+              <tr class="total-row"><td><strong>Total economic value to Castle</strong></td><td><strong>~$95,000 – $131,000</strong></td></tr>
+              <tr><td>New refinance loan size</td><td>$122,000 – $128,000</td></tr>
+              <tr><td>Self-employment tax savings from S-Corp election (per year)</td><td>$4,000 – $8,000</td></tr>
+              <tr><td>Total financing debt being refinanced</td><td>~$99,000</td></tr>
+              <tr><td>Off-books gift card obligation</td><td>~$94,000</td></tr>
+              <tr><td>Underlying business operating cash flow (Q1 2026 annualized)</td><td>~$71,000</td></tr>
+              <tr><td>Estimated DSCR on new refinance + note</td><td>~2.4x</td></tr>
+              <tr><td>Current annualized revenue run rate</td><td>~$1.06M</td></tr>
+              <tr><td>Lease remaining term</td><td>~25 months (through June 2028)</td></tr>
+              <tr><td><strong>MOU target date</strong></td><td><strong>Mid-July 2026</strong></td></tr>
+              <tr><td><strong>Legal close target</strong></td><td><strong>September 30, 2026</strong></td></tr>
+              <tr><td><strong>Refinance close target</strong></td><td><strong>Q1 2027</strong></td></tr>
+              <tr><td><strong>Financial completion target</strong></td><td><strong>March 31, 2027</strong></td></tr>
+              <tr><td><strong>Note amortization period</strong></td><td><strong>April 2027 – March 2031</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="callout">
+          <div class="callout-label">In Summary</div>
+          <p style="font-size: 16px; color: var(--text-primary); line-height: 1.7;">This buyout structure honors Castle's five years of co-founding contribution to Auroraflow with a fair, defensible package, while reflecting the honest economic reality that the business carries no positive equity value. It accomplishes (a) clean ownership transition to Lauren, (b) release of Castle from personal liability exposure through the natural mechanics of the debt refinance, (c) preservation of business continuity, (d) tax-efficient treatment for both parties spread across multiple tax years, and (e) full funding from a business refinance without requiring personal capital injection from Lauren. Castle exits with predictable cash compensation over five years, release from personal guarantees, restrictive covenants she can comfortably comply with, and her independent practice intact. Lauren retains 100% of a business she can operate with full control, on a debt-restructured basis with tax-optimized treatment going forward.</p>
+        </div>
+      </section>
+      
+    </main>
+    
+    <footer>
+      <p class="footer-disclaimer">This report is provided as a working analytical foundation for review by James Heyward, CPA (Heyward CPA PLLC) and the engaged transaction counsel. All recommendations are subject to refinement based on professional review. This document is not legal or tax advice; final structuring decisions should be made in consultation with qualified professionals.</p>
+      <p class="footer-version">Auroraflow LLC — Working draft v5 — May 25, 2026</p>
+    </footer>
+    
+  </div>
+</body>
+</html>
