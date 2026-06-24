@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angel Bridge Memo | Tromml</title>
+<meta name="description" content="A small angel bridge to convert enterprise pilots, including a new signed pilot with Snap-on, into recurring revenue. Minimum check $25,000.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --tromml-navy:      #06043a;
+    --tromml-navy-mid:  #2a2769;
+    --tromml-copper:    #b46a43;
+    --tromml-sand:      #d9b39f;
+    --tromml-sand-tint: #f6ece6;
+    --tromml-ink:       #1a1830;
+    --tromml-slate:     #565473;
+    --tromml-cloud:     #f6ece6;
+    --tromml-line:      #e7ded8;
+    --tromml-white:     #FFFFFF;
+    --tromml-blue:      var(--tromml-navy);
+    --tromml-blue-deep: var(--tromml-navy);
+    --tromml-blue-mid:  var(--tromml-copper);
+    --tromml-green:     var(--tromml-copper);
+    --maxw: 760px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    color:var(--tromml-ink);
+    background:var(--tromml-white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .site-header{border-bottom:1px solid var(--tromml-line);padding:20px 0;}
+  .site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .site-header img{height:42px;width:auto;display:block;}
+  .header-cta{
+    font-size:14px;font-weight:600;text-decoration:none;
+    color:var(--tromml-blue);border:1px solid var(--tromml-blue);
+    padding:8px 16px;border-radius:8px;white-space:nowrap;
+  }
+  .header-cta:hover{background:var(--tromml-blue);color:#fff;}
+  .hero{background:var(--tromml-cloud);padding:56px 0;}
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:.08em;font-size:13px;font-weight:600;
+    color:var(--tromml-blue-mid);margin:0 0 12px;
+  }
+  .hero h1{font-size:40px;line-height:1.15;font-weight:700;color:var(--tromml-blue);margin:0 0 16px;}
+  .hero p.lede{font-size:19px;color:var(--tromml-slate);margin:0 0 24px;max-width:620px;}
+  main{padding:48px 0;}
+  main h2{font-size:28px;font-weight:700;color:var(--tromml-blue);margin:40px 0 12px;}
+  main h3{font-size:20px;font-weight:600;color:var(--tromml-ink);margin:28px 0 8px;}
+  main p{font-size:17px;color:var(--tromml-ink);margin:0 0 18px;}
+  main a{color:var(--tromml-blue-mid);text-decoration:underline;text-underline-offset:2px;}
+  main a:hover{color:var(--tromml-blue);}
+  main ul{margin:0 0 20px;padding:0;list-style:none;}
+  main ul li{
+    position:relative;padding-left:30px;margin-bottom:12px;font-size:17px;
+  }
+  main ul li::before{
+    content:"";position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:50%;
+    background:var(--tromml-green);
+    -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='white' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/></svg>") center/12px no-repeat;
+            mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='white' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/></svg>") center/12px no-repeat;
+  }
+  main ol{margin:0 0 20px;padding-left:22px;}
+  main ol li{font-size:17px;margin-bottom:10px;}
+  blockquote{
+    margin:24px 0;padding:18px 24px;background:var(--tromml-cloud);
+    border-left:4px solid var(--tromml-blue-mid);border-radius:0 8px 8px 0;
+    font-size:18px;color:var(--tromml-blue-deep);font-style:italic;
+  }
+  blockquote p{margin:0;color:inherit;}
+  figure{margin:28px 0;text-align:center;}
+  figure svg{max-width:100%;height:auto;}
+  figure img{max-width:100%;height:auto;border-radius:10px;}
+  figcaption{font-size:13px;color:var(--tromml-slate);margin-top:8px;}
+  .trust{border-top:1px solid var(--tromml-line);border-bottom:1px solid var(--tromml-line);padding:28px 0;background:#fff;}
+  .trust p{text-align:center;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--tromml-slate);margin:0 0 16px;font-weight:600;}
+  .trust .logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:28px;}
+  .trust .logos img{height:30px;width:auto;opacity:.85;}
+  .cta-block{background:var(--tromml-blue);color:#fff;padding:48px 0;text-align:center;}
+  .cta-block h2{color:#fff;font-size:26px;margin:0 0 12px;font-weight:700;}
+  .cta-block p{color:rgba(255,255,255,.85);font-size:17px;margin:0 0 24px;}
+  .btn{
+    display:inline-block;background:var(--tromml-copper);color:#fff;
+    font-size:16px;font-weight:600;text-decoration:none;padding:14px 32px;border-radius:10px;
+  }
+  .btn:hover{background:#9c5836;}
+  .site-footer{background:var(--tromml-navy);color:#cbc9e0;padding:44px 0;}
+  .site-footer img{height:40px;margin-bottom:16px;}
+  .site-footer .tagline{font-size:15px;color:#cbc9e0;max-width:520px;margin:0 0 24px;}
+  .site-footer .social{display:flex;gap:16px;margin:0 0 24px;}
+  .site-footer .social a{color:#cbc9e0;text-decoration:none;font-size:14px;}
+  .site-footer .links{display:flex;flex-wrap:wrap;gap:18px;margin:0 0 20px;}
+  .site-footer .links a{color:#cbc9e0;text-decoration:none;font-size:14px;}
+  .site-footer .links a:hover,.site-footer .social a:hover{color:var(--tromml-sand);text-decoration:underline;}
+  .site-footer .copyright{font-size:13px;color:#807da6;}
+  @media (max-width:600px){
+    .hero h1{font-size:30px;}
+    .hero{padding:40px 0;}
+    .header-cta{display:none;}
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="https://www.tromml.com/"><img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0859_Tromml%20Blue.png" alt="Tromml logo"></a>
+      <a class="header-cta" href="https://meetings.hubspot.com/lauren756/tromml-intro-call">Meet With Our Experts</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Angel Bridge Memo</p>
+      <h1>We're building the intelligence layer the aftermarket will run on.</h1>
+      <p class="lede">A small bridge to keep our focus on converting the enterprise pilots we have already signed, including a new pilot with Snap-on. Minimum check is $25,000.</p>
+    </div>
+  </section>
+
+  <section class="trust">
+    <div class="wrap">
+      <p>Embedded across the aftermarket's leading groups</p>
+      <div class="logos">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f087d_Auto%20Care%20Association%20Logo.svg" alt="Auto Care Association">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0874_MEMA%20Logo.svg" alt="MEMA">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0877_SEMA%20Logo.svg" alt="SEMA">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0870_HDA%20Truck%20Pride%20Logo.svg" alt="HDA Truck Pride">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f086f_Vipar%20logo.svg" alt="Vipar">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0876_Federated%20Logo.svg" alt="Federated">
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="wrap">
+
+      <h2>The one line</h2>
+      <p>Tromml turns what your sales reps already know into structured intelligence the whole business can act on, starting with the automotive aftermarket. <a href="https://www.tromml.com/solutions/sales">Minecart</a> is the wedge. The bigger prize is becoming the intelligence layer this $400B industry runs its AI on. We just signed a pilot with Snap-on, and we are raising a small bridge to convert pilots like it into recurring revenue.</p>
+
+      <h2>The problem</h2>
+      <p>In the aftermarket, the most valuable intelligence in a business gets created in conversations between reps and customers. Who is about to churn, where a competitor is winning, which account is ready to grow. Almost none of it makes it back into the company in a usable way. Managers coach off anecdotes. Category teams miss early signals. The knowledge walks out the door when a rep retires. Every system these companies own sits downstream of that lost signal.</p>
+
+      <h2>What Tromml does</h2>
+      <p><a href="https://www.tromml.com/solutions/sales">Minecart</a> is the big red button reps talk into. It captures the conversation, ties it to the account, and pulls out the signal: the people, the risks, the opportunities. No manual call reports. Managers finally coach off real activity instead of guesswork. It plugs into the CRM and ERP they already pay for. We are not a rip-and-replace. We are the layer that feeds everything else.</p>
+
+      <h2>Why this isn't a note-taker</h2>
+      <p>You will get this faster than most. Note-taking is a commodity. The data underneath it is not. Every time a rep talks into Minecart and a manager confirms, corrects, or acts on what it surfaced, we capture labeled, vertical-specific signal that no public model and no horizontal tool will ever see: private sales conversations, account dynamics, pricing pressure, the real language of this industry. That data tunes our models for exactly the edge cases the aftermarket hits. The product gets better at this industry specifically, customers embed it deeper, and that generates more signal.</p>
+
+      <figure>
+        <svg viewBox="0 0 720 215" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tromml data flywheel">
+          <defs>
+            <marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#b46a43"></path>
+            </marker>
+          </defs>
+          <g font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">
+            <rect x="10" y="30" width="150" height="62" rx="10" fill="#06043a"></rect>
+            <text x="85" y="56">Reps capture</text>
+            <text x="85" y="74">the conversation</text>
+            <rect x="190" y="30" width="150" height="62" rx="10" fill="#06043a"></rect>
+            <text x="265" y="56">Managers confirm</text>
+            <text x="265" y="74">and correct</text>
+            <rect x="370" y="30" width="150" height="62" rx="10" fill="#06043a"></rect>
+            <text x="445" y="56">Private vertical</text>
+            <text x="445" y="74">training data</text>
+            <rect x="550" y="30" width="160" height="62" rx="10" fill="#06043a"></rect>
+            <text x="630" y="56">Model improves,</text>
+            <text x="630" y="74">embeds deeper</text>
+          </g>
+          <g stroke="#b46a43" stroke-width="2.5" marker-end="url(#ah)">
+            <line x1="162" y1="61" x2="186" y2="61"></line>
+            <line x1="342" y1="61" x2="366" y2="61"></line>
+            <line x1="522" y1="61" x2="546" y2="61"></line>
+          </g>
+          <path d="M630,94 L630,162 L85,162 L85,94" fill="none" stroke="#b46a43" stroke-width="2.5" marker-end="url(#ah)"></path>
+          <text x="357" y="186" font-family="Inter, sans-serif" font-size="12.5" font-weight="600" fill="#565473" text-anchor="middle">Every interaction makes the model better, so customers use it more and the data compounds.</text>
+        </svg>
+        <figcaption>Minecart's wedge is capture. The moat is the private, vertical dataset it compounds.</figcaption>
+      </figure>
+
+      <p>The note-taker is the wedge for adoption. The proprietary data flywheel, and the workflow it owns, is the moat. More than half of AI investors will tell you the rarity of proprietary data is the durable advantage, not the model. That is the asset we are compounding, and it is why we are building this vertical-first and agent-native rather than as one more horizontal wrapper.</p>
+
+      <h2>Why now</h2>
+      <p>Margins are tightening, pricing is volatile, and reps are retiring faster than they can be replaced. At the same time, AI went from experiment to expectation in every boardroom in this industry. The companies that structure their frontline intelligence first will be the ones that can actually deploy AI. The rest will keep reacting. There is a narrow window to own that layer, and the door into it is the sales team.</p>
+
+      <h2>Why us</h2>
+      <p>This is a relationship business, and you don't get to sell it from the outside. Harry and I have spent years inside the aftermarket. We earned the trust the slow way, on stage at HDAW, MEMA, and SEMA, advising distributors on how to even think about AI. That trust is turning into deployments now. We won the 2025 MEMA Innovation Award over Epicor and PDM Automotive. We did it on under $734K raised, with discipline, and with our own money in the company.</p>
+
+      <h2>The momentum</h2>
+      <ul>
+        <li>We just signed a pilot contract with <strong>Snap-on</strong>, a 1,000-call voice-of-customer pilot.</li>
+        <li>We are in active enterprise conversations with <strong>Advance Auto Parts, WorldPac, Fisher, and ACI</strong>.</li>
+        <li>We have signed, recurring deployments with <strong>OK 4 Wheel Drive, PDI Federated, Capulli, and Heavy Duty Consulting</strong>, plus a growing reseller channel through partners like Vipar Heavy Duty.</li>
+        <li>Pilots show about a 30% lift in rep productivity and roughly 20% more value per customer interaction. Decision-makers open their report every single morning. That is the behavior that compounds.</li>
+      </ul>
+
+      <h2>The numbers, lightly</h2>
+      <p>Revenue grew about 11x from 2023 to 2025, from roughly $21K to $238K, built on relationships, not ad spend. We have raised $734K to date from Techstars and operators inside the industry, including the founders of Payments360, PartsTech, and Vehlo. We run lean. We are at the inflection point between legacy services revenue and product-led recurring revenue, and the enterprise pilots we just signed are what tip it.</p>
+
+      <h2>The ask</h2>
+      <p>A small angel bridge. The minimum check is <strong>$25,000</strong>, which is an easy, low-risk way in. We are raising up to <strong>$200K</strong> total, with <strong>$100K</strong> as the floor, on a standard YC SAFE at an 80% discount and a $10M post-money cap. This is not a "go big" round. It is runway and support so we can stay focused and convert the pilots we already have into recurring contracts, then raise a proper institutional round from strength. The work right now is execution, not exploration. This capital keeps our deployment team on the field, keeps us in the room at the conferences and customer sites where these deals get won, and gets us to a recurring-revenue base that sets up the seed.</p>
+
+      <blockquote><p>We are not selling you a someday story. We have real enterprise logos signing now, a clear wedge, a proprietary dataset that compounds, and a credible path to the intelligence layer this industry is going to need. Our biggest competitor in the aftermarket is waste. Let's not waste this window.</p></blockquote>
+
+      <p style="font-weight:600;margin-top:28px;">Lauren McCullough, Founder &amp; CEO<br><a href="mailto:lauren@tromml.com">lauren@tromml.com</a></p>
+
+    </div>
+  </main>
+
+  <section class="cta-block">
+    <div class="wrap">
+      <h2>Let's talk</h2>
+      <p>If this is the kind of focused, capital-efficient bet you like to make, I would love to walk you through it.</p>
+      <a class="btn" href="https://meetings.hubspot.com/lauren756/tromml-intro-call">Meet With Our Experts</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <a href="https://www.tromml.com/"><img style="background:#fff;padding:8px 12px;border-radius:8px;" src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0859_Tromml%20Blue.png" alt="Tromml logo"></a>
+      <p class="tagline">Built for the aftermarket, Tromml turns complex sales data into clear insights that drive growth and efficiency.</p>
+      <div class="social">
+        <a href="https://www.linkedin.com/company/tromml/">LinkedIn</a>
+        <a href="https://www.facebook.com/tromml">Facebook</a>
+        <a href="https://www.youtube.com/@Trommlofficial">YouTube</a>
+      </div>
+      <div class="links">
+        <a href="https://www.tromml.com/about-tromml">About Us</a>
+        <a href="https://www.tromml.com/blog">Blog</a>
+        <a href="https://www.tromml.com/contact-us">Contact Us</a>
+        <a href="https://www.tromml.com/legal/privacy-policy">Privacy Policy</a>
+        <a href="https://www.tromml.com/legal/terms-of-service">Terms of Service</a>
+      </div>
+      <p class="copyright">Copyright 2026 Tromml, Inc</p>
+    </div>
+  </footer>
+
+</body>
+</html>
