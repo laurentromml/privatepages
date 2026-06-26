@@ -7,3 +7,7 @@
 !auroraflow-website/**
 !README.md
 !.gitignore
+
+# Root index of private pages
+!index.html
+!robots.txt
