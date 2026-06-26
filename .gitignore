@@ -9,7 +9,9 @@
 !.gitignore
 
 # Root index of private pages
-!index.html
 !robots.txt
 !pivotree/
 !pivotree/**
+
+# Disable Jekyll so the bare root URL 404s (no README fallback)
+!.nojekyll
