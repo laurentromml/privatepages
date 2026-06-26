@@ -3,21 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- TITLE: replace with the asset's real title -->
 <title>Angel Bridge Memo | Tromml</title>
-<meta name="description" content="A small angel bridge to convert enterprise pilots, including a new signed pilot with Snap-on, into recurring revenue. Minimum check $25,000.">
+<meta name="description" content="Tromml is the activity-intelligence layer for the automotive aftermarket, scaling toward the agentic operating system for industrial commerce. A small angel bridge, $25,000 minimum.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --tromml-navy:      #06043a;
-    --tromml-navy-mid:  #2a2769;
-    --tromml-copper:    #b46a43;
-    --tromml-sand:      #d9b39f;
-    --tromml-sand-tint: #f6ece6;
-    --tromml-ink:       #1a1830;
-    --tromml-slate:     #565473;
-    --tromml-cloud:     #f6ece6;
-    --tromml-line:      #e7ded8;
+    /* Tromml brand tokens. Keep in sync with references/brand.md. */
+    --tromml-navy:      #06043a;   /* primary: deep navy, logo, headings, footer */
+    --tromml-navy-mid:  #2a2769;   /* lighter navy for links / accents */
+    --tromml-copper:    #b46a43;   /* warm accent: buttons, eyebrow, check marks */
+    --tromml-sand:      #d9b39f;   /* soft sand: highlights, light backgrounds */
+    --tromml-sand-tint: #f6ece6;   /* very light sand wash for section backgrounds */
+    --tromml-ink:       #1a1830;   /* body text (navy-tinted near-black) */
+    --tromml-slate:     #565473;   /* secondary text */
+    --tromml-cloud:     #f6ece6;   /* light section background (sand tint) */
+    --tromml-line:      #e7ded8;   /* hairline borders */
     --tromml-white:     #FFFFFF;
+    /* Back-compat aliases so existing rules below resolve to the new palette */
     --tromml-blue:      var(--tromml-navy);
     --tromml-blue-deep: var(--tromml-navy);
     --tromml-blue-mid:  var(--tromml-copper);
@@ -34,6 +37,8 @@
     -webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  /* Header */
   .site-header{border-bottom:1px solid var(--tromml-line);padding:20px 0;}
   .site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;}
   .site-header img{height:42px;width:auto;display:block;}
@@ -43,6 +48,8 @@
     padding:8px 16px;border-radius:8px;white-space:nowrap;
   }
   .header-cta:hover{background:var(--tromml-blue);color:#fff;}
+
+  /* Hero */
   .hero{background:var(--tromml-cloud);padding:56px 0;}
   .eyebrow{
     text-transform:uppercase;letter-spacing:.08em;font-size:13px;font-weight:600;
@@ -50,6 +57,8 @@
   }
   .hero h1{font-size:40px;line-height:1.15;font-weight:700;color:var(--tromml-blue);margin:0 0 16px;}
   .hero p.lede{font-size:19px;color:var(--tromml-slate);margin:0 0 24px;max-width:620px;}
+
+  /* Content */
   main{padding:48px 0;}
   main h2{font-size:28px;font-weight:700;color:var(--tromml-blue);margin:40px 0 12px;}
   main h3{font-size:20px;font-weight:600;color:var(--tromml-ink);margin:28px 0 8px;}
@@ -63,7 +72,9 @@
   main ul li::before{
     content:"";position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:50%;
     background:var(--tromml-green);
-    -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='white' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/></svg>") center/12px no-repeat;            mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='white' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/></svg>") center/12px no-repeat;  }
+    -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='white' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/></svg>") center/12px no-repeat;
+            mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='white' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/></svg>") center/12px no-repeat;
+  }
   main ol{margin:0 0 20px;padding-left:22px;}
   main ol li{font-size:17px;margin-bottom:10px;}
   blockquote{
@@ -76,10 +87,14 @@
   figure svg{max-width:100%;height:auto;}
   figure img{max-width:100%;height:auto;border-radius:10px;}
   figcaption{font-size:13px;color:var(--tromml-slate);margin-top:8px;}
+
+  /* Trust strip (optional) */
   .trust{border-top:1px solid var(--tromml-line);border-bottom:1px solid var(--tromml-line);padding:28px 0;background:#fff;}
   .trust p{text-align:center;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--tromml-slate);margin:0 0 16px;font-weight:600;}
   .trust .logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:28px;}
-  .trust .logos img{height:30px;width:auto;opacity:.85;}
+  .trust .logos img{height:30px;width:auto;opacity:.75;filter:grayscale(100%);}
+
+  /* CTA block */
   .cta-block{background:var(--tromml-blue);color:#fff;padding:48px 0;text-align:center;}
   .cta-block h2{color:#fff;font-size:26px;margin:0 0 12px;font-weight:700;}
   .cta-block p{color:rgba(255,255,255,.85);font-size:17px;margin:0 0 24px;}
@@ -88,6 +103,8 @@
     font-size:16px;font-weight:600;text-decoration:none;padding:14px 32px;border-radius:10px;
   }
   .btn:hover{background:#9c5836;}
+
+  /* Footer */
   .site-footer{background:var(--tromml-navy);color:#cbc9e0;padding:44px 0;}
   .site-footer img{height:40px;margin-bottom:16px;}
   .site-footer .tagline{font-size:15px;color:#cbc9e0;max-width:520px;margin:0 0 24px;}
@@ -97,6 +114,7 @@
   .site-footer .links a{color:#cbc9e0;text-decoration:none;font-size:14px;}
   .site-footer .links a:hover,.site-footer .social a:hover{color:var(--tromml-sand);text-decoration:underline;}
   .site-footer .copyright{font-size:13px;color:#807da6;}
+
   @media (max-width:600px){
     .hero h1{font-size:30px;}
     .hero{padding:40px 0;}
@@ -106,22 +124,25 @@
 </head>
 <body>
 
+  <!-- HEADER -->
   <header class="site-header">
     <div class="wrap">
       <a href="https://www.tromml.com/"><img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0859_Tromml%20Blue.png" alt="Tromml logo"></a>
+      <!-- header CTA: set to chosen CTA url/label -->
       <a class="header-cta" href="https://meetings.hubspot.com/lauren756/tromml-intro-call">Meet With Our Experts</a>
     </div>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="wrap">
-      <p class="eyebrow">Angel Bridge Memo</p>
-      <h1>We're building the intelligence layer the aftermarket will run on.</h1>
-      <p class="lede">A small bridge to keep our focus on converting the enterprise pilots we have already signed, including a new pilot with Snap-on. Minimum check is $25,000.</p>
+      <p class="eyebrow">Winner: 2025 MEMA Technology Innovation Award · Auto Care 40 Under 40</p>
+      <h1>We turn frontline sales intelligence into AI that runs the business.</h1>
+      <p class="lede">Every business is about to run on AI, but it is only as good as the data underneath it, and in the aftermarket that data is still trapped in people's heads. Someone is going to unlock it and become the system this industry runs on, and we are the insiders positioned to be that someone. Join the industry operators already backing us, including the founders of PartsTech, 360 Payments, and ChannelAdvisor, in a small angel bridge ($25K minimum) to convert signed pilots like Snap-on into recurring revenue.</p>
     </div>
   </section>
 
-  <section class="trust">
+    <section class="trust">
     <div class="wrap">
       <p>Embedded across the aftermarket's leading groups</p>
       <div class="logos">
@@ -135,127 +156,129 @@
     </div>
   </section>
 
+  <!-- MAIN CONTENT: drop voice-passed, markdown-converted HTML here -->
   <main>
     <div class="wrap">
+      
+      <p><strong>TL;DR.</strong> Tromml is the activity-intelligence layer for the automotive aftermarket. We capture what reps hear from customers every day and turn it into streamlined, monitored execution through AI agents trained on the industry. Today the focus is field sales teams in the aftermarket. The same technology is positioned to scale as the agentic operating system across industrial commerce.</p>
 
-      <p><strong>TL;DR.</strong> Tromml is the activity-intelligence layer for the automotive aftermarket: we capture what frontline reps already know and turn it into structured data, reporting, and agents. We just signed a pilot with Snap-on, won the 2025 MEMA Technology Innovation Award, and grew revenue about 11x from 2023 to 2025. We are raising a small angel bridge, minimum check $25,000, to convert signed pilots into recurring revenue.</p>
+      <h2>The leading voice in the aftermarket</h2>
+      <p>This is an industry that buys from people it trusts, and we earned that trust before asking for a dollar of it. In 2025 we won the MEMA Technology Innovation Award over finalists including Epicor and PDM Automotive, and I was named to the Auto Care 40 Under 40. We are on the stages where this industry makes its decisions, at HDAW, MEMA, and SEMA, and our backers include the founders of PartsTech, 360 Payments, and ChannelAdvisor, people who built and sold the companies this aftermarket runs on. Harry and I put our own money in and got to 11x revenue growth on a tiny amount of capital. We are not tourists who picked a vertical off a TAM chart. We have been in the room with these distributors and reps for years, and we are building the thing they need next. By the industry, for the industry.</p>
 
-      <h2>The one line</h2>
-      <p>Tromml turns what your sales reps already know into structured intelligence the whole business can act on, starting with the automotive aftermarket. <a href="https://www.tromml.com/solutions/sales">Minecart</a> is the wedge. The bigger prize is becoming the intelligence layer this $400B+ industry runs its AI on. We just signed a pilot with Snap-on, and we are raising a small bridge to convert pilots like it into recurring revenue.</p>
+      <h2>The barrier to enterprise AI adoption</h2>
+      <p>By one widely cited 2025 study, roughly 95 percent of enterprise AI pilots never reach production. The models are not the problem. The data underneath them is. Most companies are trying to run AI on information that is scattered, incomplete, or stuck in people's heads, and an agent is only as good as the data it can actually reach.</p>
+      <p>Nowhere is that gap wider than in the aftermarket. The most valuable intelligence in the business lives in conversations between reps and customers, and almost none of it reaches a system. Reps walk out of shops every day knowing what is selling, what is slipping, and where the next order is hiding, and then it is gone. Managers coach off gut and stale CRM fields. This is a $435B channel, deeply fragmented, run on relationships and phone calls, with a sales force retiring fast and frontline CRM adoption stuck around 20 to 30 percent.</p>
+      <p>Here is why now. AI just crossed from giving advice to taking action, and it can finally pull the signal out of messy, spoken conversation and turn it into data an agent can use. The gap has been there for decades. AI is what makes closing it worth doing, and whoever captures and structures that data first becomes the system this industry runs on.</p>
 
-      <h2>The problem</h2>
-      <p>In the aftermarket, the most valuable intelligence in a business gets created in conversations between reps and customers. Who is about to churn, where a competitor is winning, which account is ready to grow. Almost none of it makes it back into the company in a usable way. Managers coach off anecdotes. Category teams miss early signals. The knowledge walks out the door when a rep retires. Every system these companies own sits downstream of that lost signal.</p>
-
-      <h2>What Tromml does</h2>
-      <p><a href="https://www.tromml.com/solutions/sales">Minecart</a> is the big red button reps talk into. It captures the conversation, ties it to the account, and pulls out the signal: the people, the risks, the opportunities. No manual call reports. Managers finally coach off real activity instead of guesswork. It plugs into the CRM and ERP they already pay for. We are not a rip-and-replace. We are the layer that feeds everything else. This is a system of action, not just more reports.</p>
-
-      <h2>Why this isn't a note-taker</h2>
-      <p>You will get this faster than most. Note-taking is a commodity. The data underneath it is not. In AI, access to proprietary data like this is not just an advantage, it is a barrier to competition. Every time a rep talks into Minecart and a manager confirms, corrects, or acts on what it surfaced, we capture labeled, vertical-specific signal that no public model and no horizontal tool will ever see: private sales conversations, account dynamics, pricing pressure, the real language of this industry. That data tunes our models for exactly the edge cases the aftermarket hits. The product gets better at this industry specifically, customers embed it deeper, and that generates more signal.</p>
+      <h2>Minecart: activity intelligence for the aftermarket</h2>
+      <p>We give managers visibility into the most important things happening across their accounts. We mine the data that is already there, rank it against the company's goals, and point managers straight to the opportunities and actions worth their time, so they can coach their reps instead of chasing them.</p>
+      <p>Information is only as good as its inputs, so we made capture take seconds. A rep leaves a quick voice memo or clips something from the browser, and that single capture becomes both a reminder for them and an executable follow-up opportunity in the system. No call reports, no forms. Then we monitor how those opportunities actually progress, so reps are not stuck checking boxes in the CRM to prove they did the work. The system watches the work instead of making the rep narrate it.</p>
 
       <figure>
-        <svg viewBox="0 0 720 215" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tromml data flywheel">
+        <svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tromml execution loop with compounding execution at the center">
           <defs>
             <marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
               <path d="M0,0 L6,3 L0,6 Z" fill="#b46a43"></path>
             </marker>
           </defs>
-          <g font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">
-            <rect x="10" y="30" width="150" height="62" rx="10" fill="#06043a"></rect>
-            <text x="85" y="56">Reps capture</text>
-            <text x="85" y="74">the conversation</text>
-            <rect x="190" y="30" width="150" height="62" rx="10" fill="#06043a"></rect>
-            <text x="265" y="56">Managers confirm</text>
-            <text x="265" y="74">and correct</text>
-            <rect x="370" y="30" width="150" height="62" rx="10" fill="#06043a"></rect>
-            <text x="445" y="56">Private vertical</text>
-            <text x="445" y="74">training data</text>
-            <rect x="550" y="30" width="160" height="62" rx="10" fill="#06043a"></rect>
-            <text x="630" y="56">Model improves,</text>
-            <text x="630" y="74">embeds deeper</text>
+          <g fill="none" stroke="#b46a43" stroke-width="2.5">
+            <path d="M388.1,73.0 A135 135 0 0 1 492.0,176.9" marker-end="url(#ah)"></path>
+            <path d="M492.0,233.1 A135 135 0 0 1 388.1,337.0" marker-end="url(#ah)"></path>
+            <path d="M331.9,337.0 A135 135 0 0 1 228.0,233.1" marker-end="url(#ah)"></path>
+            <path d="M228.0,176.9 A135 135 0 0 1 331.9,73.0" marker-end="url(#ah)"></path>
           </g>
-          <g stroke="#b46a43" stroke-width="2.5" marker-end="url(#ah)">
-            <line x1="162" y1="61" x2="186" y2="61"></line>
-            <line x1="342" y1="61" x2="366" y2="61"></line>
-            <line x1="522" y1="61" x2="546" y2="61"></line>
+          <circle cx="360" cy="70" r="8" fill="#b46a43"></circle>
+          <circle cx="495" cy="205" r="8" fill="#b46a43"></circle>
+          <circle cx="360" cy="340" r="8" fill="#b46a43"></circle>
+          <circle cx="225" cy="205" r="8" fill="#b46a43"></circle>
+          <g font-family="Inter, sans-serif" fill="#06043a">
+            <text x="360" y="40" text-anchor="middle" font-size="16" font-weight="700">Capture</text>
+            <text x="360" y="56" text-anchor="middle" font-size="12" fill="#565473">every conversation</text>
+            <text x="516" y="201" text-anchor="start" font-size="16" font-weight="700">Signal</text>
+            <text x="516" y="219" text-anchor="start" font-size="12" fill="#565473">structured + usable</text>
+            <text x="360" y="368" text-anchor="middle" font-size="16" font-weight="700">Attention</text>
+            <text x="360" y="386" text-anchor="middle" font-size="12" fill="#565473">ranked to your goals</text>
+            <text x="204" y="201" text-anchor="end" font-size="16" font-weight="700">Action</text>
+            <text x="204" y="219" text-anchor="end" font-size="12" fill="#565473">tasks &amp; briefings</text>
           </g>
-          <path d="M630,94 L630,162 L85,162 L85,94" fill="none" stroke="#b46a43" stroke-width="2.5" marker-end="url(#ah)"></path>
-          <text x="357" y="186" font-family="Inter, sans-serif" font-size="12.5" font-weight="600" fill="#565473" text-anchor="middle">Every interaction makes the model better, so customers use it more and the data compounds.</text>
+          <circle cx="360" cy="205" r="62" fill="#06043a"></circle>
+          <text x="360" y="200" text-anchor="middle" fill="#fff" font-size="14.5" font-weight="700" font-family="Inter, sans-serif">Compounding</text>
+          <text x="360" y="219" text-anchor="middle" fill="#fff" font-size="14.5" font-weight="700" font-family="Inter, sans-serif">execution</text>
         </svg>
-        <figcaption>Minecart's wedge is capture. The moat is the private, vertical dataset it compounds.</figcaption>
+        <figcaption>Four moves, one loop, with compounding execution at the center.</figcaption>
       </figure>
 
-      <p>The note-taker is the wedge for adoption. The proprietary data flywheel, and the workflow it owns, is the moat. More than half of AI investors will tell you the rarity of proprietary data is the durable advantage, not the model. That is the asset we are compounding, and it is why we are building this vertical-first and agent-native rather than as one more horizontal wrapper.</p>
+      <p>Every lap of that loop compounds. The reps get faster, the managers see more, and the data underneath gets richer, which is the real unlock for enterprise AI. None of it asks a company to rip out what it already runs on.</p>
 
-      <h2>How this gets big: land, expand, become the utility</h2>
-      <p>The wedge is the start, not the story.</p>
+      <h2>Integrates with existing tech stacks</h2>
+      <p>Minecart works with or without a CRM, and it works especially well next to the systems that already hold a company's data, like HubSpot and Salesforce. We push information in and pull it out in real time, so a team gets more out of the database it already pays for instead of buying seats people will never log into. That is the problem we are solving for companies like Advance, Snap-on, and WorldPac, where Salesforce spend kept climbing while the value coming back did not.</p>
+
+      <h2>Building the intelligence layer for industrial commerce</h2>
+      <p>What customers see is a tool that gives managers visibility they have never had, saves reps real time, and makes the team more efficient. That part is true, and it is what gets us in the door. What we are actually building is the intelligence layer for the whole organization.</p>
+      <p>This is the thing that matters most. Data is what stands between most enterprises and AI that actually works, and it is why so many AI efforts stall. We give a company the structured, trustworthy operational data its agents need to do real work. For us, that is how we land and expand: we start with the sales front line, then become the system of action across the rest of it, customer service, procurement, drivers, and everyone else who creates signal the business loses today. As we move into new industries, that same intelligence comes with us. This is what the next generation of agentic operations looks like, and it starts on the front line.</p>
+
+      <h2>An embedded system that scales across the organization</h2>
+      <p>Today we price the way the market expects, so it is easy to say yes: a platform fee plus per-user pricing. Our buyer right now is the sales manager, and the people we serve are the reps in the field every day. We have already found a fast second motion in inside sales and customer success, the same loop with a new set of users.</p>
+      <p>As we add automations and AI agents take on more of the work, the model shifts from per-seat to utility. We get paid for the work the system does across the whole organization, not the number of logins, which lines our price up with the value and opens the door to far more of the company. That same shift is how we move into adjacent markets, tool and hardware distribution and the rest of industrial commerce, which run on the exact same motion. Simple pricing gets us off the ground. Utility pricing is where this compounds, and over time Tromml becomes the data layer this industry runs its AI on, the position Verisk holds in insurance and CoStar holds in real estate.</p>
 
       <figure>
-        <svg viewBox="0 0 720 245" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tromml land and expand staircase">
+        <svg viewBox="0 0 720 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tromml land and expand model">
           <defs>
-            <marker id="ah2" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
-              <path d="M0,0 L6,3 L0,6 Z" fill="#b46a43"></path>
-            </marker>
+            <marker id="le" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#b46a43"></path></marker>
           </defs>
-          <g font-family="Inter, sans-serif" text-anchor="middle">
-            <rect x="20" y="155" width="150" height="60" rx="8" fill="#06043a"></rect>
-            <text x="95" y="180" fill="#ffffff" font-size="14" font-weight="700">1 &#183; Land</text>
-            <text x="95" y="199" fill="#d9b39f" font-size="12.5" font-weight="600">the wedge</text>
-            <rect x="195" y="120" width="150" height="95" rx="8" fill="#06043a"></rect>
-            <text x="270" y="145" fill="#ffffff" font-size="14" font-weight="700">2 &#183; Expand</text>
-            <text x="270" y="164" fill="#d9b39f" font-size="12.5" font-weight="600">more products</text>
-            <rect x="370" y="85" width="150" height="130" rx="8" fill="#06043a"></rect>
-            <text x="445" y="110" fill="#ffffff" font-size="14" font-weight="700">3 &#183; Utility</text>
-            <text x="445" y="129" fill="#d9b39f" font-size="12.5" font-weight="600">the data layer</text>
-            <rect x="545" y="50" width="155" height="165" rx="8" fill="#06043a"></rect>
-            <text x="622" y="75" fill="#ffffff" font-size="14" font-weight="700">4 &#183; Adjacent</text>
-            <text x="622" y="94" fill="#d9b39f" font-size="12.5" font-weight="600">categories</text>
+          <g font-family="Inter, sans-serif">
+            <text x="115" y="46" text-anchor="middle" fill="#b46a43" font-size="13" font-weight="700" letter-spacing="0.08em">LAND</text>
+            <rect x="45" y="64" width="140" height="150" rx="10" fill="#fff" stroke="#06043a" stroke-width="1.5"></rect>
+            <text x="115" y="86" text-anchor="middle" fill="#565473" font-size="11">one customer</text>
+            <rect x="49" y="174" width="132" height="36" rx="4" fill="#b46a43"></rect>
+            <text x="115" y="197" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">field sales team</text>
+            <text x="115" y="238" text-anchor="middle" fill="#1a1830" font-size="12.5">Start with one team</text>
+
+            <line x1="196" y1="139" x2="244" y2="139" stroke="#b46a43" stroke-width="2.5" marker-end="url(#le)"></line>
+
+            <text x="320" y="46" text-anchor="middle" fill="#b46a43" font-size="13" font-weight="700" letter-spacing="0.08em">EXPAND</text>
+            <rect x="250" y="64" width="140" height="150" rx="10" fill="#fff" stroke="#06043a" stroke-width="1.5"></rect>
+            <rect x="254" y="92" width="132" height="118" rx="4" fill="#b46a43"></rect>
+            <text x="320" y="144" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">the whole</text>
+            <text x="320" y="161" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">organization</text>
+            <text x="320" y="234" text-anchor="middle" fill="#1a1830" font-size="12.5">Inside sales, service,</text>
+            <text x="320" y="250" text-anchor="middle" fill="#1a1830" font-size="12.5">procurement, drivers</text>
+            <text x="320" y="268" text-anchor="middle" fill="#565473" font-size="11.5">per-seat &#8594; utility pricing</text>
+
+            <line x1="401" y1="139" x2="449" y2="139" stroke="#b46a43" stroke-width="2.5" marker-end="url(#le)"></line>
+
+            <text x="600" y="46" text-anchor="middle" fill="#b46a43" font-size="13" font-weight="700" letter-spacing="0.08em">REPEAT</text>
+            <g fill="#b46a43" stroke="#06043a" stroke-width="1.3">
+              <rect x="510" y="74" width="48" height="48" rx="6"></rect>
+              <rect x="576" y="74" width="48" height="48" rx="6"></rect>
+              <rect x="642" y="74" width="48" height="48" rx="6"></rect>
+              <rect x="510" y="136" width="48" height="48" rx="6"></rect>
+              <rect x="576" y="136" width="48" height="48" rx="6"></rect>
+              <rect x="642" y="136" width="48" height="48" rx="6"></rect>
+            </g>
+            <text x="600" y="238" text-anchor="middle" fill="#1a1830" font-size="12.5">Same motion, every</text>
+            <text x="600" y="254" text-anchor="middle" fill="#1a1830" font-size="12.5">customer and new market</text>
           </g>
-          <line x1="30" y1="212" x2="694" y2="52" stroke="#b46a43" stroke-width="2.5" marker-end="url(#ah2)"></line>
         </svg>
-        <figcaption>Land one workflow, expand into the customer, become the data layer the market runs on, then repeat in adjacent categories.</figcaption>
+        <figcaption>Land one team, expand to the whole organization, then repeat the same motion across the market and into adjacent industries.</figcaption>
       </figure>
 
-      <ul>
-        <li><strong>Land.</strong> We start with one job that hurts: capturing what reps already know and turning it into structured activity intelligence. Minecart earns its place because it does work no manager can do by hand, reviewing every conversation across the business instead of a handful of ride-alongs.</li>
-        <li><strong>Expand.</strong> Once we are the system of record for frontline activity, we add the next products the same customers already need: reporting, opportunity tracking, account intelligence, and agents. This is how the best vertical software companies compound, the layer-cake motion behind Toast, Procore, and ServiceTitan, and it is why a customer's spend with us grows year over year instead of staying flat. We sit on the labor side of the business, not the software-tools line, so the budget we grow into is far bigger than a note-taking subscription.</li>
-        <li><strong>Become the utility.</strong> Every conversation we structure builds a private dataset no competitor and no general model can buy or scrape. The more the industry runs on us, the better our models get, and that advantage compounds instead of fading. Over time Tromml becomes the data layer the aftermarket runs its AI on, the same position Verisk holds in insurance and CoStar holds in real estate. Not a vendor anyone can swap out, but the utility the market is wired into.</li>
-        <li><strong>Then repeat in adjacent categories.</strong> Tool and hardware distribution, industrial and MRO supply, construction supply, agriculture, and powersports all run the same way: independent distributors, territory reps, and frontline conversations that never reach a system. Tool and hardware alone is a roughly $94B US channel, sold the same relationship-driven way as auto parts, to the same kind of branch buyer, by the same kind of rep. We move category by category because each one shares our buyer, our workflow, and our data model, so the same product earns its place without being rebuilt.</li>
-      </ul>
-
-      <p>The reason this works now: as AI models become a commodity, the scarce and defensible asset is proprietary data, and the value shifts to whoever owns the data and the rails the agents call. We are building that layer in an industry where we already have the trust to get the data first.</p>
-
-      <h2>Why now</h2>
-      <p>Margins are tightening, pricing is volatile, and reps are retiring faster than they can be replaced. At the same time, AI went from experiment to expectation in every boardroom in this industry. The companies that structure their frontline intelligence first will be the ones that can actually deploy AI. The rest will keep reacting. There is a narrow window to own that layer, and the door into it is the sales team.</p>
-
-      <h2>Why us</h2>
-      <p>This is a relationship business, and you don't get to sell it from the outside. Harry and I have spent years inside the aftermarket, and Tromml has become one of the most trusted voices on AI in the industry. We are the people distributors call to make sense of AI: on stage at HDAW, MEMA, and SEMA, running the education and the conversations that are carrying this industry through its AI transformation. That trust is turning into deployments now. We won the 2025 MEMA Technology Innovation Award over finalists including Epicor and PDM Automotive, and our backers are operators embedded in the biggest brands in the aftermarket, including the founders of Payments360, PartsTech, and Vehlo. We did it on under $734K raised, with discipline, and with our own money in the company.</p>
-
-      <h2>How we build</h2>
+      <h2>AI-native operations</h2>
       <p>We run Tromml as an AI-native company. Customer meetings turn into product feedback and feature requests automatically, and AI agents help us plan work, write production code, and ship it. That has roughly six-x'd our engineering velocity without adding headcount, and it is starting to do the same across marketing, support, and operations. It is a big part of how a small team does this much on this little, and that operating leverage compounds into a lasting advantage.</p>
 
-      <h2>The momentum</h2>
-      <ul>
-        <li>We just signed a pilot contract with <strong>Snap-on</strong>, a 1,000-call voice-of-customer pilot.</li>
-        <li>We are in active enterprise conversations with <strong>Advance Auto Parts, WorldPac, Fisher, and ACI</strong>.</li>
-        <li>We have signed, recurring deployments with <strong>OK 4 Wheel Drive, PDI Federated, Kunzman (~20 reps), Capoli (~10 reps), and Heavy Duty Consulting</strong>, plus a growing reseller channel through partners like Vipar Heavy Duty.</li>
-        <li>Customer health has climbed from near zero to <strong>over 77%</strong>, with managers logging in to review activity and team insights, not just capturing notes. Pilots show about a 30% lift in rep productivity and roughly 20% more value per customer interaction. That is the behavior that compounds.</li>
-      </ul>
-
-      <p><strong>We complete Salesforce, we don't compete with it.</strong> Our largest opportunity, Advance Auto Parts, shows the wedge clearly. Many frontline reps never generated enough ROI to justify a Salesforce seat, so those seats got cut. Minecart gives those reps a simpler workflow and writes structured data back into Salesforce, so the company gets more and better customer intelligence into its CRM while carrying a smaller license footprint. The goal is a paid pilot this budget cycle and a multi-year enterprise agreement for 2027.</p>
-
-      <h2>The numbers, lightly</h2>
-      <p>Revenue grew about 11x from 2023 to 2025, from roughly $21K to $238K, built on relationships, not ad spend. We have raised $734K to date from Techstars and operators inside the industry, including the founders of Payments360, PartsTech, and Vehlo. We run lean. We are at the inflection point between legacy services revenue and product-led recurring revenue, and the enterprise pilots we just signed are what tip it.</p>
+      <h2>From build to scale</h2>
+      <p>The pivot to agentic operations started with one small distributor, PDI Federated. We converted a few of our e-commerce clients next, including OK 4 Wheel Drive. Then the repping agencies came on, Capoli Sales and Kunzman among them, and they turned out to be more than customers. Their field teams run on the product every day, and they bring us deals we could never reach on our own. Through them we are now working with Eastern Parts, ACI Auto Parts, and Fisher, one of the largest auto parts distributors in the Northeast. Kunzman, a large agency with deep reach on the performance side, is in a pilot that converts to an annual contract next July. We are in early conversations with Advance Auto Parts and WorldPac.</p>
+      <p>The hardest door to get through in this industry is the one the whole channel runs on, the buying groups. We are already inside it, with strategic partnerships at ByPart, Temot, and APSG. And it shows in how the product gets used: managers who never logged into anything now open Tromml every morning, and customer health has climbed from near zero to over 77 percent.</p>
 
       <h2>The ask</h2>
-      <p>A small angel bridge. The minimum check is <strong>$25,000</strong>, which is an easy, low-risk way in. We are raising up to <strong>$200K</strong> total, with <strong>$100K</strong> as the floor, on a standard YC SAFE at an 80% discount and a $10M post-money cap. This is not a "go big" round. It is runway and support so we can stay focused and convert the pilots we already have into recurring contracts, then raise a proper institutional round from strength. The work right now is execution, not exploration. This capital keeps our deployment team on the field, keeps us in the room at the conferences and customer sites where these deals get won, and gets us to a recurring-revenue base that sets up the seed. We are keeping this round small and selective, looking for a few angels who know this industry and where AI is heading.</p>
-
-      <blockquote><p>We are not selling you a someday story. We have real enterprise logos signing now, a clear wedge, a proprietary dataset that compounds, and a credible path to the intelligence layer this industry is going to need. Our biggest competitor in the aftermarket is waste. Let's not waste this window.</p></blockquote>
+      <p>We are raising up to <strong>$150,000</strong> on a standard SAFE, with a minimum check of <strong>$25,000</strong>, at an 80% discount and a $10M post-money cap. This adds to the roughly $750,000 already invested in Tromml. The goal of this round is straightforward: give the team time to focus on sales over the next few months and prepare for a larger raise later this year.</p>
 
       <p style="font-weight:600;margin-top:28px;">Lauren McCullough, Founder &amp; CEO<br><a href="mailto:lauren@tromml.com">lauren@tromml.com</a></p>
 
     </div>
   </main>
 
+  <!-- CTA BLOCK -->
   <section class="cta-block">
     <div class="wrap">
       <h2>Let's talk</h2>
@@ -264,6 +287,7 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="wrap">
       <a href="https://www.tromml.com/"><img style="background:#fff;padding:8px 12px;border-radius:8px;" src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0859_Tromml%20Blue.png" alt="Tromml logo"></a>
