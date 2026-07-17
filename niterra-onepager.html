@@ -127,7 +127,11 @@
   .compare h4{margin:0 0 10px;font-size:15px;font-weight:700;color:var(--tromml-navy);text-transform:uppercase;letter-spacing:.05em;}
   .compare p{font-size:15px;margin:0 0 10px;color:var(--tromml-ink);}
   .shots{display:flex;gap:24px;align-items:flex-start;justify-content:center;flex-wrap:wrap;margin:26px 0;}
-  .shots .shot{text-align:center;}
+  .shots .shot{text-align:center;margin:0;}
+  .shots .shot.phone{width:210px;}
+  .shots .shot.phone figcaption{max-width:210px;}
+  .shots .shot.desk{width:420px;max-width:100%;}
+  .shots .shot.desk img{width:100%;}
   .shots .shot.phone img{width:200px;border-radius:22px;box-shadow:0 14px 30px rgba(6,4,58,.18);}
   .shots .shot.desk img{width:420px;border-radius:10px;border:1px solid var(--tromml-line);box-shadow:0 14px 30px rgba(6,4,58,.14);}
   .shots figcaption{font-size:13px;color:var(--tromml-slate);margin-top:10px;max-width:420px;margin-left:auto;margin-right:auto;}
