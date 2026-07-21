@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Executive briefing | Tromml for the Auto Care Association</title>
+<meta name="description" content="Minecart turns the member conversations ACA staff already have into a trusted, searchable record, so your team can act on what members say, not just what got typed in.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#06043a; --navy-mid:#2a2769; --copper:#b46a43; --sand:#d9b39f;
+  --sand-tint:#f6ece6; --ink:#1a1830; --slate:#565473; --line:#e7ded8; --white:#fff;
+  --maxw:820px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;overflow-x:hidden}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);background:var(--white);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+a{color:var(--navy-mid)}
+/* header */
+.site-header{border-bottom:1px solid var(--line);padding:18px 0}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.site-header img{height:34px;display:block}
+.header-cta{font-size:13.5px;font-weight:600;text-decoration:none;color:var(--navy);
+  border:1px solid var(--navy);padding:8px 15px;border-radius:8px;white-space:nowrap}
+.header-cta:hover{background:var(--navy);color:#fff}
+/* dark hero */
+.hero{background:var(--navy);color:#fff;padding:56px 0 50px;position:relative}
+.hero:before{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:44px 44px}
+.hero .wrap{position:relative}
+.eyebrow{color:var(--copper);font-weight:700;letter-spacing:.13em;font-size:12.5px;text-transform:uppercase;margin:0 0 14px}
+.hero .eyebrow{color:var(--sand)}
+.hero h1{font-size:38px;line-height:1.12;margin:0 0 16px;color:#fff;font-weight:800;letter-spacing:-.7px;max-width:720px}
+.hero h1 em{font-style:normal;color:var(--sand)}
+.hero .stand{font-size:18px;color:#c9c9e2;margin:0 0 24px;max-width:690px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.hero .award{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;color:#fff;
+  border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);border-radius:9px;
+  padding:8px 14px;margin:26px 0 0 28px}
+.hero .award .star{color:var(--sand);font-size:14px}
+@media(min-width:900px){
+  .hero .award{position:absolute;top:28px;right:calc((100% - 820px)/2 + 28px);margin:0;z-index:2}
+  .hero .eyebrow{max-width:440px}
+}
+.hero .btn{display:inline-block;background:var(--copper);color:#fff;text-decoration:none;font-weight:700;
+  font-size:15.5px;padding:13px 26px;border-radius:999px}
+.hero .btn:hover{background:#a05c38}
+.hero .ghost{color:#d9d9ef;text-decoration:underline;text-underline-offset:3px;font-size:15px;font-weight:600}
+.hero .ghost:hover{color:#fff}
+/* body */
+.body{padding:14px 0 6px;font-size:17px}
+.body p{margin:0 0 18px}
+.body strong{color:var(--navy)}
+h2.sec{font-size:26px;line-height:1.18;color:var(--navy);font-weight:800;letter-spacing:-.4px;margin:42px 0 12px}
+.intro{font-size:17px;color:#33384a;margin:20px 0 14px}
+.award{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:800;color:var(--navy);
+  border:1px solid var(--sand);background:var(--sand-tint);border-radius:9px;padding:9px 15px;margin:2px 0 6px}
+.award .star{color:var(--copper);font-size:15px}
+/* compare */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 4px}
+.compare .col{border:1px solid var(--line);border-radius:13px;padding:18px 20px;background:#fff}
+.compare .col.us{background:var(--sand-tint);border-color:var(--sand)}
+.compare .col h4{margin:0 0 10px;font-size:14px;color:var(--navy);font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+.compare .col ul{list-style:none;margin:0;padding:0}
+.compare .col li{position:relative;padding:7px 0 7px 20px;font-size:14px;color:#33384a;line-height:1.5}
+.compare .col li:before{content:"";position:absolute;left:0;top:12px;width:7px;height:7px;border-radius:50%;background:#c4ccd4}
+.compare .col.us li:before{background:var(--copper)}
+/* benefits */
+.bens{display:grid;grid-template-columns:1fr;gap:0;margin:8px 0 4px}
+.ben{display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+.ben:first-child{border-top:none}
+.ben .k{flex:0 0 auto;width:34px;height:34px;border-radius:9px;background:var(--sand-tint);display:flex;align-items:center;justify-content:center}
+.ben .k i{width:13px;height:8px;border-left:2.5px solid var(--copper);border-bottom:2.5px solid var(--copper);transform:rotate(-45deg);display:block;margin-top:-2px}
+.ben .bt{font-size:17px;color:var(--navy);font-weight:800;margin:2px 0 4px}
+.ben .bd{font-size:15.5px;color:#33384a;margin:0;line-height:1.55}
+/* product visuals */
+.plabel{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--copper);font-weight:800;margin:22px 0 4px}
+.plabel .n{display:inline-flex;width:21px;height:21px;border-radius:50%;background:var(--copper);color:#fff;align-items:center;justify-content:center;font-size:11.5px;margin-right:8px;vertical-align:middle}
+.phones{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:14px 0 4px}
+.phonecol{width:210px;text-align:center}
+.phone{width:210px;height:440px;background:#0c1620;border-radius:30px;padding:7px;margin:0 auto;box-shadow:0 14px 32px rgba(6,4,58,.18)}
+.phone .screen{width:100%;height:100%;border-radius:24px;overflow:hidden;background:#e9edf0}
+.phone .screen img{width:100%;height:100%;object-fit:cover;display:block}
+.shotcap{font-size:12.5px;color:#33384a;margin:10px 4px 0;line-height:1.45}
+.shotcap b{color:var(--navy)}
+.win{max-width:720px;margin:22px auto 0}
+.winframe{border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 12px 28px rgba(6,4,58,.12);background:#fff}
+.winbar{background:#eef0f3;border-bottom:1px solid var(--line);padding:8px 12px;display:flex;gap:6px;align-items:center}
+.winbar i{width:10px;height:10px;border-radius:50%;display:block}
+.winbar .r{background:#ff5f57}.winbar .y{background:#febc2e}.winbar .g{background:#28c840}
+.winshotwrap img{width:100%;display:block}
+/* report showcase */
+.reportfig{margin:18px 0 6px}
+.reportfig .frame{border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(6,4,58,.14);background:#fff}
+.reportfig img{width:100%;display:block}
+.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0 4px}
+.statcard{border:1px solid var(--line);border-radius:12px;background:#fff;padding:14px 12px}
+.statcard .l{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--slate);font-weight:700;margin-bottom:7px;line-height:1.3}
+.statcard .vals{display:flex;align-items:baseline;gap:7px}
+.statcard .before{font-size:15px;font-weight:600;color:#a6a3bd;text-decoration:line-through}
+.statcard .arrow{color:var(--copper);font-weight:700}
+.statcard .after{font-size:23px;font-weight:800;color:var(--navy);line-height:1}
+.fineprint{font-size:12px;color:var(--slate);margin:8px 0 0}
+.demolinks{display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:center;margin:16px 0 2px}
+.demolinks a{font-size:14.5px;font-weight:700;color:var(--copper);text-decoration:underline;text-underline-offset:3px}
+.demolinks a:hover{color:var(--navy)}
+/* pull quote */
+.pull{font-size:22px;line-height:1.4;color:var(--navy);font-weight:800;letter-spacing:-.3px;margin:26px 0 4px;padding-left:18px;border-left:4px solid var(--copper)}
+.pullsrc{font-size:13px;color:var(--slate);font-weight:700;margin:0 0 8px;padding-left:18px}
+/* proof */
+.proof{border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin:18px 0;background:#fcfbfa;box-shadow:0 2px 18px rgba(6,4,58,.04)}
+.proof .co{font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--copper);font-weight:800;margin:0 0 6px}
+.proof h3{font-size:21px;color:var(--navy);font-weight:800;margin:0 0 10px;letter-spacing:-.3px}
+.proof p{margin:0 0 12px;font-size:15.5px;color:#33384a}
+.proof p b{color:var(--navy)}
+/* guardrail note */
+.guardrail{background:var(--sand-tint);border-left:4px solid var(--copper);border-radius:0 10px 10px 0;padding:18px 20px;margin:40px 0 22px;font-size:15.5px;color:var(--ink)}
+.guardrail b{color:var(--navy)}
+.guardrail .kicker{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--copper);margin:0 0 7px}
+/* cta */
+.cta{background:var(--navy);border-radius:18px;padding:34px 32px;text-align:center;margin:34px 0 10px;color:#fff}
+.cta h3{color:#fff;font-size:25px;margin:0 0 8px}
+.cta p{color:#c9c9e2;margin:0 auto 18px;max-width:560px;font-size:16px}
+.cta a{display:inline-block;background:var(--copper);color:#fff;text-decoration:none;font-weight:700;
+  font-size:16px;padding:13px 28px;border-radius:10px}
+.cta a:hover{background:#a05c38}
+/* trust */
+.trust{text-align:center;padding:26px 0 8px}
+.trust .lbl{font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--slate);font-weight:700;margin:0 0 16px}
+.trust .row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:30px}
+.trust img{height:34px;width:auto;opacity:.72;filter:grayscale(1)}
+/* footer */
+.footer{background:var(--navy);color:#cfd0e6;padding:34px 0 30px;margin-top:34px}
+.footer .wrap{text-align:center}
+.footer .lg{font-weight:800;color:#fff;font-size:20px;letter-spacing:.6px}
+.footer .tag{max-width:540px;margin:10px auto 14px;color:#9a9ac4;font-size:14px}
+.footer a{color:var(--sand);text-decoration:none;font-size:14px}
+.footer .links a{margin:0 9px}
+.footer .cr{color:#74749e;margin-top:14px;font-size:12.5px}
+/* pilot card */
+.pilot{border:1px solid var(--sand);background:var(--sand-tint);border-radius:16px;padding:26px 28px;margin:34px 0 10px}
+.pilot h3{font-size:22px;color:var(--navy);font-weight:800;margin:0 0 12px;letter-spacing:-.3px}
+.pilot ul{list-style:none;margin:0 0 14px;padding:0}
+.pilot li{position:relative;padding:7px 0 7px 22px;font-size:15px;color:#33384a;line-height:1.5}
+.pilot li:before{content:"";position:absolute;left:0;top:14px;width:7px;height:7px;border-radius:50%;background:var(--copper)}
+.pilot .price{font-size:19px;font-weight:800;color:var(--navy);margin:10px 0 4px}
+/* MCP chat illustration */
+.mcpchat{border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:0 12px 28px rgba(6,4,58,.10);overflow:hidden;margin:16px 0 6px}
+.mcpchat .bar{background:#eef0f3;border-bottom:1px solid var(--line);padding:8px 12px;display:flex;gap:6px;align-items:center}
+.mcpchat .bar i{width:10px;height:10px;border-radius:50%;display:block}
+.mcpchat .bar .r{background:#ff5f57}.mcpchat .bar .y{background:#febc2e}.mcpchat .bar .g{background:#28c840}
+.mcpchat .body-inner{padding:20px}
+.mcpchat .userbubble{background:var(--navy);color:#fff;border-radius:12px 12px 2px 12px;padding:12px 16px;font-size:14.5px;max-width:88%;margin:0 0 16px auto;line-height:1.5}
+.mcpchat .answer{background:var(--sand-tint);border:1px solid var(--sand);border-radius:12px 12px 12px 2px;padding:14px 16px;max-width:92%}
+.mcpchat .answer .lead{font-size:13.5px;color:var(--navy);font-weight:700;margin:0 0 10px}
+.mcpchat .row{display:flex;gap:10px;padding:8px 0;border-top:1px solid var(--sand)}
+.mcpchat .row:first-of-type{border-top:none}
+.mcpchat .row .dot{flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--copper);margin-top:8px}
+.mcpchat .row .txt{font-size:13.5px;color:#33384a;line-height:1.5}
+.mcpchat .row .txt b{color:var(--navy)}
+@media(max-width:680px){.hero h1{font-size:29px}.hero .stand{font-size:16.5px}.body{font-size:16px}
+  h2.sec{font-size:22px}.compare{grid-template-columns:1fr}.statgrid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header class="site-header"><div class="wrap">
+  <a href="https://www.tromml.com/"><img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0859_Tromml%20Blue.png" alt="Tromml"></a>
+  <a class="header-cta" href="https://meetings.hubspot.com/lauren756/tromml-intro-call">Let's talk</a>
+</div></header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Executive briefing &middot; Prepared for the Auto Care Association</p>
+    <h1>Your members tell you everything. <em>Almost none of it makes it into a system.</em></h1>
+    <p class="stand">Your team is with members constantly: conferences, committee calls, board calls, webinars. What members say in those moments is the most valuable data ACA has, and today it lives in people's heads. Your AMS and HubSpot are systems of record. Minecart is the system of action that sits on top, turning member conversations into a record every staffer can act on, without adding a data-entry job to anyone's day.</p>
+    <div class="actions">
+      <a class="btn" href="https://meetings.hubspot.com/lauren756/tromml-intro-call">Book a conversation</a>
+    </div>
+  </div>
+  <p class="award"><span class="star">&#9733;</span> Winner &middot; 2025 MEMA Innovation Award</p>
+</section>
+
+<div class="wrap">
+  <section class="body">
+
+    <h2 class="sec" style="margin-top:8px">An association's business is member intelligence</h2>
+    <p>Almost none of it gets captured. A staffer has a hallway conversation at a conference, a great call with a member about the brand table, a committee call where six people weigh in on a spec. Then it's gone, or it lives in one person's memory until they leave.</p>
+    <p>Your AMS holds records. Your team is bringing HubSpot in for email marketing. Neither one is built to catch what gets said out loud. That's not a knock on either system, it's just not the job they were built for. Minecart is built for exactly that job, and it hands the clean result back to whatever systems you trust to hold it, including a future data lake. It supports where you're headed, it doesn't compete with it.</p>
+    <div class="compare">
+      <div class="col">
+        <h4>Your AMS and HubSpot &middot; hold the record</h4>
+        <ul>
+          <li>Store member data, dues, subscriptions, campaign activity</li>
+          <li>Only as current and trustworthy as what someone typed in</li>
+          <li>No place for what was actually said in a conversation</li>
+          <li>Silent on the member who's about to go quiet</li>
+        </ul>
+      </div>
+      <div class="col us">
+        <h4>Tromml &middot; turns it into action</h4>
+        <ul>
+          <li>Captures conversations from conferences, calls, and committee meetings</li>
+          <li>Cleans and organizes it into a member-level record, exportable to HubSpot or a future data lake</li>
+          <li>Builds staff briefings and account groups from what members are actually saying</li>
+          <li>Surfaces the at-risk member early, with the context of the last real conversation</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">Three things it changes</h2>
+    <div class="bens">
+      <div class="ben"><div class="k"><i></i></div><div><p class="bt">Better member engagement</p><p class="bd">Right now the loudest signal comes from your most engaged members, the top of the pyramid. Minecart captures the hallway conversation and the quiet member too, so every real interaction becomes part of that member's record, not just the ones who show up to committee calls.</p></div></div>
+      <div class="ben"><div class="k"><i></i></div><div><p class="bt">A feedback loop on products and campaigns</p><p class="bd">Jonathan's team builds the brand table, part terminology, and segmentation data. Right now there's no reliable way to know what members actually use or ask for. Minecart closes that loop, and marketing gets the same benefit: personalize by segment, light-duty versus heavy-duty, based on what members said, not a guess.</p></div></div>
+      <div class="ben"><div class="k"><i></i></div><div><p class="bt">At-risk members surface early</p><p class="bd">The member who canceled last year, went quiet, or stopped logging in shows up in a briefing before the non-renewal notice, with the context of the last real conversation your team had with them.</p></div></div>
+    </div>
+
+    <div class="pull">"We probably get feedback from that top 1 percent, our most engaged members. Getting a voice from everyone else? I guarantee you, we don't have it."</div>
+    <p class="pullsrc">Jacki Lutz &middot; Auto Care Association</p>
+
+    <h2 class="sec">A week at Fall Leadership Days</h2>
+    <p class="plabel"><span class="n">1</span> Before the show</p>
+    <p>We load the attendee list against the member database. Minecart builds account groups automatically: lapsed heavy-duty members attending, members who never activated a data subscription, first-time attendees. Every staffer walks in with a planned list of who to meet and why, instead of working the floor cold.</p>
+    <div class="win"><div class="winframe"><div class="winbar"><i class="r"></i><i class="y"></i><i class="g"></i></div><div class="winshotwrap"><img src="manager-schedule.png" alt="A planned account list for the team, built from member data"></div></div>
+      <p class="shotcap"><b>The team's plan builds itself.</b> Who to meet, and why, before anyone sets foot on the floor.</p></div>
+
+    <p class="plabel"><span class="n">2</span> During the show</p>
+    <p>Your staffer walks into every conversation already briefed: membership status, products the member uses, last interactions, open follow-ups. No digging through notes at the booth.</p>
+    <div class="phones">
+      <div class="phonecol"><div class="phone"><div class="screen"><img src="rep-briefing.png" alt="Member briefing on a phone"></div></div><p class="shotcap"><b>Walk in briefed.</b> Status, products, last conversation.</p></div>
+      <div class="phonecol"><div class="phone"><div class="screen"><img src="rep-capture.png" alt="Capture by talking on a phone"></div></div><p class="shotcap"><b>One button, thirty seconds.</b> No forms, no typing at the booth.</p></div>
+    </div>
+    <p>After each conversation, press the button and talk for thirty seconds. That's it.</p>
+
+    <p class="plabel"><span class="n">3</span> After the show</p>
+    <p>Every note lands on the right member account. Follow-ups get pulled out and given an owner. Briefings are already updated for the next conversation, and the next show. Personal details from the conversation can flow to HubSpot too, so the follow-up email actually references what the member said, not a generic template.</p>
+
+    <h2 class="sec">Tuesday: the TSC call ends</h2>
+    <p>A committee call wraps. Six members weighed in. Someone on Jonathan's team talks into their phone for two minutes: what each member said, who pushed back on a spec, who asked for a feature, what needs following up.</p>
+    <p>Minecart splits that one voice note across all six member accounts. Each piece attaches to the right record, and the follow-ups come out with an owner attached. Nothing gets lost because one person didn't have time to write it up.</p>
+    <p>Over time, this becomes Jonathan's rollup: mentions of a given product across every committee and conversation accumulate in one place. "Should we build it" gets answered with what members actually said, not a hunch.</p>
+    <div class="win"><div class="winframe"><div class="winbar"><i class="r"></i><i class="y"></i><i class="g"></i></div><div class="winshotwrap"><img src="manager-notes.png" alt="Top notes and themes rolled up by product"></div></div>
+      <p class="shotcap"><b>Themes roll up automatically.</b> Whoever owns a product sees what members are actually saying about it.</p></div>
+
+    <h2 class="sec">The bonus: reports for whoever needs them</h2>
+    <p>The same engine builds stakeholder-ready reports on its own. Our rep agency customers already use this monthly to report to their partners. For ACA it could mean a report per committee, per product line, or per member segment, built from what actually happened, not assembled by hand.</p>
+    <div class="reportfig">
+      <div class="frame"><img src="merrick-report-hero-light.png" alt="A monthly stakeholder report: executive summary and month at a glance"></div>
+    </div>
+    <p class="fineprint">Beacon Ridge and Merrick Fastener Group are fictional, built to show the report format. The workflow is the one running today.</p>
+
+    <h2 class="sec">Ask it a question, in plain language</h2>
+    <p>This is the natural-language-questions-over-trusted-data experience you described wanting on every source. With Minecart, it runs on data your own team captured.</p>
+    <div class="mcpchat">
+      <div class="bar"><i class="r"></i><i class="y"></i><i class="g"></i></div>
+      <div class="body-inner">
+        <p class="userbubble">Which heavy-duty members did we talk to this fall who mentioned the brand table but don't subscribe yet?</p>
+        <div class="answer">
+          <p class="lead">3 members match:</p>
+          <div class="row"><span class="dot"></span><span class="txt"><b>Ridgeline Fleet Supply</b> &middot; asked about brand table coverage for their private-label line &middot; owner: J. Alvarez</span></div>
+          <div class="row"><span class="dot"></span><span class="txt"><b>Cascade Heavy Parts</b> &middot; mentioned it twice, once on a committee call and once at a conference booth &middot; owner: T. Reyes</span></div>
+          <div class="row"><span class="dot"></span><span class="txt"><b>Northline Truck Group</b> &middot; asked if it covers emerging brands &middot; owner: M. Chen</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="guardrail">
+      <span class="kicker">Also available</span>
+      <b>Tromml's MCP puts this data in Claude, ChatGPT, or whatever AI workspace ACA adopts.</b> The pilot itself doesn't connect to MCP. We can demo it for your team separately, along with a review of how to bring in usage analytics and other data from your AMS, a data lake, or a warehouse, whichever direction you land on. Tromml also builds secure, OpenWebUI-based AI workspaces where ACA owns the models and the usage data, so this fits the same direction as that conversation.
+    </div>
+
+    <div class="pilot">
+      <h3>Our recommendation: a Fall Conference Season pilot</h3>
+      <ul>
+        <li>Onboard mid-August, run through mid-November, wrapping after AAPEX. 10 users.</li>
+        <li>We load ACA's member database or databases and generate briefings on all member accounts.</li>
+        <li>We use the data to build account groups that help the team plan: by segment, by risk, by product usage.</li>
+        <li>During shows, notes update briefings in real time for the next conversation and the next show.</li>
+        <li>Conference-specific reports for up to 5 conferences.</li>
+        <li>Worst case at the end: ACA walks away with a cleaned, deduplicated, export-ready member interaction database. The data is yours either way.</li>
+      </ul>
+      <p class="price">Estimated pilot price: $6,000, plus two Fall Leadership Days passes.</p>
+      <p class="fineprint">Standard pricing is $500 per month for the platform plus $100 per user per month. Partner discounts are available for the Auto Care Association.</p>
+    </div>
+
+    <div class="cta">
+      <h3>Start with a free Signal Analysis</h3>
+      <p>Fifteen minutes to set up. You see what's in your own data, and you decide whether it goes further.</p>
+      <a href="https://meetings.hubspot.com/lauren756/tromml-intro-call">Get a free Signal Analysis</a>
+    </div>
+
+    <h2 class="sec">About Tromml</h2>
+    <p>We're named after the trommel, the mining equipment that separates the dirt from the gold. That's the whole job: pull the signal out of what your team is already saying and hearing, and get it to the person who can act on it. Honestly, let's not boil the ocean here. Minecart is basically a big red button a staffer talks into. CRMs and AMS platforms track what happened. Minecart turns what was said into what happens next.</p>
+
+    <div class="trust">
+      <p class="lbl">Trusted by</p>
+      <div class="row" style="margin-bottom:28px">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0875_Shock%20Surplus%20Logo.svg" alt="Shock Surplus">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0871_Temot%20Logo.svg" alt="Temot">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0880_Nexamotion%20Logo.svg" alt="NexaMotion">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f086e_OEG%20Parts%20Logo.svg" alt="OEG Parts">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0872_Equipment%20Share%20logo.svg" alt="EquipmentShare">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0873_Auto-Wares%20Logo.svg" alt="Auto-Wares">
+      </div>
+      <p class="lbl">Built for the aftermarket, by people who know it</p>
+      <div class="row">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f087d_Auto%20Care%20Association%20Logo.svg" alt="Auto Care Association">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0874_MEMA%20Logo.svg" alt="MEMA">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0877_SEMA%20Logo.svg" alt="SEMA">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f087e_the%20Group%20APSG%20logo.svg" alt="APSG">
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="lg">TROMML</div>
+  <p class="tag">Built for the aftermarket, Tromml turns complex sales data into clear insights that drive growth and efficiency.</p>
+  <p class="links"><a href="https://www.tromml.com/solutions/sales">Minecart</a><a href="https://www.tromml.com/landing/ai-training">Training</a><a href="https://www.tromml.com/about-tromml">About</a><a href="https://www.tromml.com/contact-us">Contact</a></p>
+  <p class="cr">Copyright 2026 Tromml, Inc</p>
+</div></footer>
+
+</body>
+</html>
