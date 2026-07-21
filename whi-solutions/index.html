@@ -38,6 +38,10 @@ a{color:var(--navy-mid)}
 .hero h1 em{font-style:normal;color:var(--sand)}
 .hero .stand{font-size:18px;color:#c9c9e2;margin:0 0 24px;max-width:690px}
 .hero .actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.hero .award{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;color:#fff;
+  border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);border-radius:9px;
+  padding:8px 14px;margin:26px 0 0}
+.hero .award .star{color:var(--sand);font-size:14px}
 .hero .btn{display:inline-block;background:var(--copper);color:#fff;text-decoration:none;font-weight:700;
   font-size:15.5px;padding:13px 26px;border-radius:999px}
 .hero .btn:hover{background:#a05c38}
@@ -110,8 +114,9 @@ h2.sec{font-size:26px;line-height:1.18;color:var(--navy);font-weight:800;letter-
 .proof p{margin:0 0 12px;font-size:15.5px;color:#33384a}
 .proof p b{color:var(--navy)}
 /* guardrail note */
-.guardrail{background:var(--sand-tint);border-left:4px solid var(--copper);border-radius:0 10px 10px 0;padding:15px 20px;margin:22px 0;font-size:15.5px;color:var(--ink)}
+.guardrail{background:var(--sand-tint);border-left:4px solid var(--copper);border-radius:0 10px 10px 0;padding:18px 20px;margin:40px 0 22px;font-size:15.5px;color:var(--ink)}
 .guardrail b{color:var(--navy)}
+.guardrail .kicker{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--copper);margin:0 0 7px}
 /* cta */
 .cta{background:var(--navy);border-radius:18px;padding:34px 32px;text-align:center;margin:34px 0 10px;color:#fff}
 .cta h3{color:#fff;font-size:25px;margin:0 0 8px}
@@ -151,15 +156,14 @@ h2.sec{font-size:26px;line-height:1.18;color:var(--navy);font-weight:800;letter-
     <div class="actions">
       <a class="btn" href="https://meetings.hubspot.com/lauren756/tromml-intro-call">Book a conversation</a>
     </div>
+    <p class="award"><span class="star">&#9733;</span> Winner &middot; 2025 MEMA Innovation Award</p>
   </div>
 </section>
 
 <div class="wrap">
   <section class="body">
 
-    <p class="award"><span class="star">&#9733;</span> Winner &middot; 2025 MEMA Innovation Award</p>
-
-    <h2 class="sec">You have data. It's time to put it to work.</h2>
+    <h2 class="sec" style="margin-top:8px">You have data. It's time to put it to work.</h2>
     <p>Managing relationships with hundreds of distributors and hundreds of thousands of shop buyers gives WHI an incredible amount of data. That information is available for analysis to show how parts are performing, but it can be difficult to tell the story behind the metrics.</p>
     <p>The information exists in calls, emails, field visits, and even trade show floors. Capturing that information can be challenging, especially for field work. But the even bigger challenge? Pulling out actionable signals that focus managers' attention on the activities that matter most, so they can set priorities and guide rep activity. Salesforce can hold and report this data, but its background as a database makes it hard to become a system of action your team can rely on to spend their time on the right things.</p>
     <p>Agentforce provides some support through report creation, summarization, and administration, but our experience in the aftermarket has shown it rarely changes rep behavior. And because of ongoing challenges with data entry, a lot of information never makes it into the system of record at all.</p>
@@ -283,6 +287,7 @@ h2.sec{font-size:26px;line-height:1.18;color:var(--navy);font-weight:800;letter-
     <p class="fineprint">Beacon Ridge and Merrick Fastener Group are fictional, built to show the report format. The workflow is the one running today.</p>
 
     <div class="guardrail">
+      <span class="kicker">Also available</span>
       <b>Level up with Tromml's MCP.</b> Want to build reports and plans with AI tools like Claude? Tromml's MCP lets managers create action plans and reports in Claude, ChatGPT, or whatever AI tool your team has already adopted.
     </div>
 
