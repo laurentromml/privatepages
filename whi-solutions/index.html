@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Executive briefing | Tromml for WHI</title>
+<meta name="description" content="Turn the calls and conversations your channel already has into a system of action: efficient reps, visible managers, and strategy that reaches execution.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#06043a; --navy-mid:#2a2769; --copper:#b46a43; --sand:#d9b39f;
+  --sand-tint:#f6ece6; --ink:#1a1830; --slate:#565473; --line:#e7ded8; --white:#fff;
+  --maxw:820px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;overflow-x:hidden}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);background:var(--white);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+a{color:var(--navy-mid)}
+/* header */
+.site-header{border-bottom:1px solid var(--line);padding:18px 0}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.site-header img{height:34px;display:block}
+.header-cta{font-size:13.5px;font-weight:600;text-decoration:none;color:var(--navy);
+  border:1px solid var(--navy);padding:8px 15px;border-radius:8px;white-space:nowrap}
+.header-cta:hover{background:var(--navy);color:#fff}
+/* dark hero */
+.hero{background:var(--navy);color:#fff;padding:56px 0 50px;position:relative}
+.hero:before{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:44px 44px}
+.hero .wrap{position:relative}
+.eyebrow{color:var(--copper);font-weight:700;letter-spacing:.13em;font-size:12.5px;text-transform:uppercase;margin:0 0 14px}
+.hero .eyebrow{color:var(--sand)}
+.hero h1{font-size:38px;line-height:1.12;margin:0 0 16px;color:#fff;font-weight:800;letter-spacing:-.7px;max-width:720px}
+.hero h1 em{font-style:normal;color:var(--sand)}
+.hero .stand{font-size:18px;color:#c9c9e2;margin:0 0 24px;max-width:690px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.hero .btn{display:inline-block;background:var(--copper);color:#fff;text-decoration:none;font-weight:700;
+  font-size:15.5px;padding:13px 26px;border-radius:999px}
+.hero .btn:hover{background:#a05c38}
+.hero .ghost{color:#d9d9ef;text-decoration:underline;text-underline-offset:3px;font-size:15px;font-weight:600}
+.hero .ghost:hover{color:#fff}
+/* body */
+.body{padding:14px 0 6px;font-size:17px}
+.body p{margin:0 0 18px}
+.body strong{color:var(--navy)}
+h2.sec{font-size:26px;line-height:1.18;color:var(--navy);font-weight:800;letter-spacing:-.4px;margin:42px 0 12px}
+.intro{font-size:17px;color:#33384a;margin:20px 0 14px}
+.award{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:800;color:var(--navy);
+  border:1px solid var(--sand);background:var(--sand-tint);border-radius:9px;padding:9px 15px;margin:2px 0 6px}
+.award .star{color:var(--copper);font-size:15px}
+/* compare */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 4px}
+.compare .col{border:1px solid var(--line);border-radius:13px;padding:18px 20px;background:#fff}
+.compare .col.us{background:var(--sand-tint);border-color:var(--sand)}
+.compare .col h4{margin:0 0 10px;font-size:14px;color:var(--navy);font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+.compare .col ul{list-style:none;margin:0;padding:0}
+.compare .col li{position:relative;padding:7px 0 7px 20px;font-size:14px;color:#33384a;line-height:1.5}
+.compare .col li:before{content:"";position:absolute;left:0;top:12px;width:7px;height:7px;border-radius:50%;background:#c4ccd4}
+.compare .col.us li:before{background:var(--copper)}
+/* benefits */
+.bens{display:grid;grid-template-columns:1fr;gap:0;margin:8px 0 4px}
+.ben{display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+.ben:first-child{border-top:none}
+.ben .k{flex:0 0 auto;width:34px;height:34px;border-radius:9px;background:var(--sand-tint);display:flex;align-items:center;justify-content:center}
+.ben .k i{width:13px;height:8px;border-left:2.5px solid var(--copper);border-bottom:2.5px solid var(--copper);transform:rotate(-45deg);display:block;margin-top:-2px}
+.ben .bt{font-size:17px;color:var(--navy);font-weight:800;margin:2px 0 4px}
+.ben .bd{font-size:15.5px;color:#33384a;margin:0;line-height:1.55}
+/* product visuals */
+.plabel{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--copper);font-weight:800;margin:22px 0 4px}
+.plabel .n{display:inline-flex;width:21px;height:21px;border-radius:50%;background:var(--copper);color:#fff;align-items:center;justify-content:center;font-size:11.5px;margin-right:8px;vertical-align:middle}
+.phones{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:14px 0 4px}
+.phonecol{width:210px;text-align:center}
+.phone{width:210px;height:440px;background:#0c1620;border-radius:30px;padding:7px;margin:0 auto;box-shadow:0 14px 32px rgba(6,4,58,.18)}
+.phone .screen{width:100%;height:100%;border-radius:24px;overflow:hidden;background:#e9edf0}
+.phone .screen img{width:100%;height:100%;object-fit:cover;display:block}
+.shotcap{font-size:12.5px;color:#33384a;margin:10px 4px 0;line-height:1.45}
+.shotcap b{color:var(--navy)}
+.win{max-width:720px;margin:22px auto 0}
+.winframe{border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 12px 28px rgba(6,4,58,.12);background:#fff}
+.winbar{background:#eef0f3;border-bottom:1px solid var(--line);padding:8px 12px;display:flex;gap:6px;align-items:center}
+.winbar i{width:10px;height:10px;border-radius:50%;display:block}
+.winbar .r{background:#ff5f57}.winbar .y{background:#febc2e}.winbar .g{background:#28c840}
+.winshotwrap img{width:100%;display:block}
+/* report showcase */
+.reportfig{margin:18px 0 6px}
+.reportfig .frame{border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(6,4,58,.14);background:#fff}
+.reportfig img{width:100%;display:block}
+.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0 4px}
+.statcard{border:1px solid var(--line);border-radius:12px;background:#fff;padding:14px 12px}
+.statcard .l{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--slate);font-weight:700;margin-bottom:7px;line-height:1.3}
+.statcard .vals{display:flex;align-items:baseline;gap:7px}
+.statcard .before{font-size:15px;font-weight:600;color:#a6a3bd;text-decoration:line-through}
+.statcard .arrow{color:var(--copper);font-weight:700}
+.statcard .after{font-size:23px;font-weight:800;color:var(--navy);line-height:1}
+.fineprint{font-size:12px;color:var(--slate);margin:8px 0 0}
+.demolinks{display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:center;margin:16px 0 2px}
+.demolinks a{font-size:14.5px;font-weight:700;color:var(--copper);text-decoration:underline;text-underline-offset:3px}
+.demolinks a:hover{color:var(--navy)}
+/* pull quote */
+.pull{font-size:22px;line-height:1.4;color:var(--navy);font-weight:800;letter-spacing:-.3px;margin:26px 0 4px;padding-left:18px;border-left:4px solid var(--copper)}
+.pullsrc{font-size:13px;color:var(--slate);font-weight:700;margin:0 0 8px;padding-left:18px}
+/* proof */
+.proof{border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin:18px 0;background:#fcfbfa;box-shadow:0 2px 18px rgba(6,4,58,.04)}
+.proof .co{font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--copper);font-weight:800;margin:0 0 6px}
+.proof h3{font-size:21px;color:var(--navy);font-weight:800;margin:0 0 10px;letter-spacing:-.3px}
+.proof p{margin:0 0 12px;font-size:15.5px;color:#33384a}
+.proof p b{color:var(--navy)}
+/* guardrail note */
+.guardrail{background:var(--sand-tint);border-left:4px solid var(--copper);border-radius:0 10px 10px 0;padding:15px 20px;margin:22px 0;font-size:15.5px;color:var(--ink)}
+.guardrail b{color:var(--navy)}
+/* cta */
+.cta{background:var(--navy);border-radius:18px;padding:34px 32px;text-align:center;margin:34px 0 10px;color:#fff}
+.cta h3{color:#fff;font-size:25px;margin:0 0 8px}
+.cta p{color:#c9c9e2;margin:0 auto 18px;max-width:560px;font-size:16px}
+.cta a{display:inline-block;background:var(--copper);color:#fff;text-decoration:none;font-weight:700;
+  font-size:16px;padding:13px 28px;border-radius:10px}
+.cta a:hover{background:#a05c38}
+/* trust */
+.trust{text-align:center;padding:26px 0 8px}
+.trust .lbl{font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--slate);font-weight:700;margin:0 0 16px}
+.trust .row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:30px}
+.trust img{height:34px;width:auto;opacity:.72;filter:grayscale(1)}
+/* footer */
+.footer{background:var(--navy);color:#cfd0e6;padding:34px 0 30px;margin-top:34px}
+.footer .wrap{text-align:center}
+.footer .lg{font-weight:800;color:#fff;font-size:20px;letter-spacing:.6px}
+.footer .tag{max-width:540px;margin:10px auto 14px;color:#9a9ac4;font-size:14px}
+.footer a{color:var(--sand);text-decoration:none;font-size:14px}
+.footer .links a{margin:0 9px}
+.footer .cr{color:#74749e;margin-top:14px;font-size:12.5px}
+@media(max-width:680px){.hero h1{font-size:29px}.hero .stand{font-size:16.5px}.body{font-size:16px}
+  h2.sec{font-size:22px}.compare{grid-template-columns:1fr}.statgrid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header class="site-header"><div class="wrap">
+  <a href="https://www.tromml.com/"><img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0859_Tromml%20Blue.png" alt="Tromml"></a>
+  <a class="header-cta" href="https://meetings.hubspot.com/lauren756/tromml-intro-call">Let's talk</a>
+</div></header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Executive briefing &middot; Prepared for WHI</p>
+    <h1>Salesforce AI can write the summary. <em>Minecart makes sure somebody acts on it.</em></h1>
+    <p class="stand">You've invested in Salesforce and you're building AI on top of it. We're not here to duplicate that. Tromml turns the calls and conversations your channel already has into a system of action: territory managers working the right doors, leaders seeing the whole field as it happens, and strategy that reaches execution, whether the person in the shop is on your payroll or a partner's.</p>
+    <div class="actions">
+      <a class="btn" href="https://meetings.hubspot.com/lauren756/tromml-intro-call">Book a conversation</a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="body">
+
+    <p class="intro"><strong>Tromml is built for the automotive aftermarket.</strong> CRMs track what happened. We capture what was said, and turn it into what happens next.</p>
+    <p class="award"><span class="star">&#9733;</span> Winner &middot; 2025 MEMA Innovation Award</p>
+
+    <h2 class="sec">The real constraint isn't data. It's activation.</h2>
+    <p>You see every transaction across the network, so your AI can flag the account that's gone quiet. What it can't do is tell you why, or make sure anyone acts on it. 43,000 seller locations and 370,000 buyers, covered by a WHI team you can count in dozens, plus the agency and distributor reps who carry your flag into shops and don't report to you. The signal your AI finds has nowhere reliable to land, and whatever the field hears back stays with whoever heard it. That's the actual gap: not more data, activation across a field you don't employ. Closing it, in both directions, is what we do.</p>
+    <div class="compare">
+      <div class="col">
+        <h4>Your Salesforce AI &middot; reads the record</h4>
+        <ul>
+          <li>Mines the data you already have for opportunity signals</li>
+          <li>Ranks, scores, and reports at headquarters</li>
+          <li>Only as current as what someone typed in</li>
+          <li>Finds the dormant account, but not why it went quiet</li>
+        </ul>
+      </div>
+      <div class="col us">
+        <h4>Tromml &middot; turns it into action</h4>
+        <ul>
+          <li>Reads recorded calls, voice notes, and agency reports</li>
+          <li>Drips each play to the field as a ranked list: net-new targets, dormant accounts to revive, SMS integration candidates</li>
+          <li>Sorts wins the way you report them: net new, order influence, SMS connection</li>
+          <li>Feeds the field truth back, so the record your AI reads stays current</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:16px">We're not replacing Salesforce or the AI on it. We make both worth more, because the analysis finally runs on what's happening in the market, not just what got typed in.</p>
+
+    <h2 class="sec">Three things it changes</h2>
+    <div class="bens">
+      <div class="ben"><div class="k"><i></i></div><div><p class="bt">Reps get more done</p><p class="bd">One voice note replaces the call report. When one person covers a multi-state territory, the day plans itself around the accounts that need attention, and every rep starts each visit already briefed from their own history.</p></div></div>
+      <div class="ben"><div class="k"><i></i></div><div><p class="bt">Managers finally see</p><p class="bd">Field activity rolls up in one view whether it came from your territory managers or an agency partner. What customers are saying, where the risk sits, who needs direction today. No waiting for a partner's month-end report.</p></div></div>
+      <div class="ben"><div class="k"><i></i></div><div><p class="bt">Strategy meets execution</p><p class="bd">A push on multi-seller signups or SMS integrations becomes each rep's ranked priorities the same week, and wins come back sorted the way you already count them: net new, order influence, SMS connection.</p></div></div>
+    </div>
+
+    <h2 class="sec">How it works</h2>
+    <p class="plabel"><span class="n">1</span> Capture is effortless</p>
+    <p>Minecart is basically a big red button a rep talks into after a visit. No forms, no call reports. It becomes a clean note tied to the account.</p>
+    <div class="phones">
+      <div class="phonecol"><div class="phone"><div class="screen"><img src="rep-capture.png" alt="Capture by talking"></div></div><p class="shotcap"><b>Capture by talking.</b> One voice note, no forms.</p></div>
+      <div class="phonecol"><div class="phone"><div class="screen"><img src="rep-briefing.png" alt="Account briefing"></div></div><p class="shotcap"><b>Walk in briefed.</b> Opportunities and risks from past visits.</p></div>
+      <div class="phonecol"><div class="phone"><div class="screen"><img src="rep-accounts.png" alt="Prioritized accounts"></div></div><p class="shotcap"><b>The list ranks itself</b> by what needs attention.</p></div>
+    </div>
+    <p class="plabel"><span class="n">2</span> Every call becomes something to act on</p>
+    <p>A conversation might be a voice note from the truck, a recorded inside sales or service call, or an agency partner's report. Same engine either way. We read every one, pull out the follow-ups, the part requests, and the competitor mentions, then create the task, brief the rep, and flag the manager. Nothing waits for someone to re-listen to a recording.</p>
+    <figure style="margin:22px 0 6px">
+      <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Workflow: field voice notes, recorded calls, and partner reports flow into Tromml, which reads and prioritizes them into rep lists, Salesforce tasks, manager views, and partner reports" style="width:100%;height:auto;display:block">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#b46a43"/>
+          </marker>
+        </defs>
+        <!-- input boxes -->
+        <g font-family="Inter, sans-serif">
+          <rect x="10" y="40" width="190" height="52" rx="10" fill="#fff" stroke="#e7ded8"/>
+          <text x="105" y="62" text-anchor="middle" font-size="14" font-weight="700" fill="#06043a">Field voice note</text>
+          <text x="105" y="80" text-anchor="middle" font-size="11.5" fill="#565473">one button, in the truck</text>
+
+          <rect x="10" y="134" width="190" height="52" rx="10" fill="#fff" stroke="#e7ded8"/>
+          <text x="105" y="156" text-anchor="middle" font-size="14" font-weight="700" fill="#06043a">Recorded call</text>
+          <text x="105" y="174" text-anchor="middle" font-size="11.5" fill="#565473">inside sales &amp; service lines</text>
+
+          <rect x="10" y="228" width="190" height="52" rx="10" fill="#fff" stroke="#e7ded8"/>
+          <text x="105" y="250" text-anchor="middle" font-size="14" font-weight="700" fill="#06043a">Partner report</text>
+          <text x="105" y="268" text-anchor="middle" font-size="11.5" fill="#565473">agency &amp; distributor notes</text>
+
+          <!-- arrows in -->
+          <path d="M200,66 C250,66 250,140 292,152" fill="none" stroke="#b46a43" stroke-width="2" marker-end="url(#arr)"/>
+          <path d="M200,160 L292,160" fill="none" stroke="#b46a43" stroke-width="2" marker-end="url(#arr)"/>
+          <path d="M200,254 C250,254 250,180 292,168" fill="none" stroke="#b46a43" stroke-width="2" marker-end="url(#arr)"/>
+
+          <!-- center -->
+          <rect x="296" y="110" width="168" height="100" rx="14" fill="#06043a"/>
+          <text x="380" y="152" text-anchor="middle" font-size="17" font-weight="800" fill="#fff" letter-spacing="1">TROMML</text>
+          <text x="380" y="174" text-anchor="middle" font-size="11.5" fill="#d9b39f">reads, sorts, prioritizes</text>
+
+          <!-- arrows out -->
+          <path d="M464,140 C510,130 510,52 552,52" fill="none" stroke="#b46a43" stroke-width="2" marker-end="url(#arr)"/>
+          <path d="M464,152 C510,150 510,124 552,122" fill="none" stroke="#b46a43" stroke-width="2" marker-end="url(#arr)"/>
+          <path d="M464,168 C510,170 510,196 552,198" fill="none" stroke="#b46a43" stroke-width="2" marker-end="url(#arr)"/>
+          <path d="M464,180 C510,190 510,268 552,268" fill="none" stroke="#b46a43" stroke-width="2" marker-end="url(#arr)"/>
+
+          <!-- output boxes -->
+          <rect x="556" y="28" width="194" height="48" rx="10" fill="#f6ece6" stroke="#d9b39f"/>
+          <text x="653" y="48" text-anchor="middle" font-size="13.5" font-weight="700" fill="#06043a">Ranked list per rep</text>
+          <text x="653" y="65" text-anchor="middle" font-size="11" fill="#565473">which doors, why, what to say</text>
+
+          <rect x="556" y="98" width="194" height="48" rx="10" fill="#f6ece6" stroke="#d9b39f"/>
+          <text x="653" y="118" text-anchor="middle" font-size="13.5" font-weight="700" fill="#06043a">Tasks in Salesforce</text>
+          <text x="653" y="135" text-anchor="middle" font-size="11" fill="#565473">follow-ups with an owner</text>
+
+          <rect x="556" y="174" width="194" height="48" rx="10" fill="#f6ece6" stroke="#d9b39f"/>
+          <text x="653" y="194" text-anchor="middle" font-size="13.5" font-weight="700" fill="#06043a">Manager view, same day</text>
+          <text x="653" y="211" text-anchor="middle" font-size="11" fill="#565473">risks, themes, who needs help</text>
+
+          <rect x="556" y="244" width="194" height="48" rx="10" fill="#f6ece6" stroke="#d9b39f"/>
+          <text x="653" y="264" text-anchor="middle" font-size="13.5" font-weight="700" fill="#06043a">Partner-ready report</text>
+          <text x="653" y="281" text-anchor="middle" font-size="11" fill="#565473">builds itself monthly</text>
+        </g>
+      </svg>
+      <p class="shotcap" style="text-align:center"><b>One engine, every conversation.</b> Capture flows in once, action flows out to everyone who needs it.</p>
+    </figure>
+    <div class="win"><div class="winframe"><div class="winbar"><i class="r"></i><i class="y"></i><i class="g"></i></div><div class="winshotwrap"><img src="manager-opportunity.png" alt="Calls read and turned into tracked opportunities"></div></div>
+      <p class="shotcap"><b>Recorded calls, read and turned into tracked opportunities.</b> Real deals surfaced and tied to the account.</p></div>
+
+    <h2 class="sec">Where AI add-ons stop, and we keep going</h2>
+    <p>We just watched this play out inside one of the country's largest parts distributors. They layered Salesforce's own AI on top for field dictation. It writes a decent summary, and then nothing happens. No task, no owner. A thousand-dollar return sat in a note nobody acted on. And because every call gets summarized one at a time, nobody noticed shop after shop asking for the same later delivery cutoff. The difference comes down to three things:</p>
+    <ul style="list-style:none;margin:0 0 6px;padding:0">
+      <li style="position:relative;padding:7px 0 7px 26px"><span style="position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:50%;background:#b46a43"></span><b style="color:#06043a">A follow-up becomes a Salesforce task with an owner, automatically.</b> The work lands where your team already executes, instead of dying in a summary.</li>
+      <li style="position:relative;padding:7px 0 7px 26px"><span style="position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:50%;background:#b46a43"></span><b style="color:#06043a">Patterns surface across calls and accounts,</b> not one summary at a time. Ten shops asking for the same thing become one escalation to the right owner.</li>
+      <li style="position:relative;padding:7px 0 7px 26px"><span style="position:absolute;left:0;top:11px;width:8px;height:8px;border-radius:50%;background:#b46a43"></span><b style="color:#06043a">Every role gets an action view, not a transcript archive.</b> Rep, manager, ops, partner. Each sees what to do next, and the data flows back out to your warehouse and BI.</li>
+    </ul>
+
+    <h2 class="sec">The bonus: intelligence your partners want</h2>
+    <p>The same engine builds stakeholder-ready reporting on its own. Our rep agency customers send manufacturer and distributor partners a monthly report built from what actually happened in the field. It used to take three people to assemble. Now it builds itself.</p>
+    <div class="reportfig">
+      <div class="frame"><img src="merrick-report-hero-light.png" alt="A monthly vendor report: executive summary and month at a glance, 168 notes captured across 22 accounts"></div>
+    </div>
+    <div class="statgrid">
+      <div class="statcard"><span class="l">Notes logged</span><div class="vals"><span class="before">34</span><span class="arrow">&rarr;</span><span class="after">168</span></div></div>
+      <div class="statcard"><span class="l">Accounts touched</span><div class="vals"><span class="before">14</span><span class="arrow">&rarr;</span><span class="after">22</span></div></div>
+      <div class="statcard"><span class="l">Quality-alert mentions</span><div class="vals"><span class="before">4</span><span class="arrow">&rarr;</span><span class="after">21</span></div></div>
+      <div class="statcard"><span class="l">People to build it</span><div class="vals"><span class="before">3</span><span class="arrow">&rarr;</span><span class="after">0</span></div></div>
+    </div>
+    <p class="fineprint">Beacon Ridge and Merrick Fastener Group are fictional, built to show the report format. The workflow is the one running today.</p>
+    <p style="margin-top:16px">Scale that thought to WHI. You sit between 43,000 seller locations and the shops they serve, and your field and agency partners are in those shops every week. That activity becomes a shop-level read on each market that only WHI could package for its seller partners: what's moving, what's breaking, which shop systems are landing. What that becomes is a conversation we'd like to have with your team.</p>
+
+    <div class="guardrail">
+      <b>Built inside the guardrails your team set.</b> Everything running in the field today uses accounts, opportunities, and call notes only. No sales data touches our system.
+    </div>
+
+    <div class="cta">
+      <h3>Start with a free Signal Analysis</h3>
+      <p>Fifteen minutes to set up. You see what's in your own data, and you decide whether it goes further.</p>
+      <a href="https://meetings.hubspot.com/lauren756/tromml-intro-call">Get a free Signal Analysis</a>
+    </div>
+
+    <h2 class="sec">About Tromml</h2>
+    <p>We're named after the trommel, the mining equipment that separates the dirt from the gold. That's the whole job: pull the signal out of what your team is already saying and hearing, and get it to the person who can act on it. We think this industry's biggest competitor is waste, and we'd rather fight waste than fight each other.</p>
+
+    <div class="trust">
+      <p class="lbl">Trusted by</p>
+      <div class="row" style="margin-bottom:28px">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0875_Shock%20Surplus%20Logo.svg" alt="Shock Surplus">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0871_Temot%20Logo.svg" alt="Temot">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0880_Nexamotion%20Logo.svg" alt="NexaMotion">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f086e_OEG%20Parts%20Logo.svg" alt="OEG Parts">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0872_Equipment%20Share%20logo.svg" alt="EquipmentShare">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0873_Auto-Wares%20Logo.svg" alt="Auto-Wares">
+      </div>
+      <p class="lbl">Built for the aftermarket, by people who know it</p>
+      <div class="row">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f087d_Auto%20Care%20Association%20Logo.svg" alt="Auto Care Association">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0874_MEMA%20Logo.svg" alt="MEMA">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0877_SEMA%20Logo.svg" alt="SEMA">
+        <img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f087e_the%20Group%20APSG%20logo.svg" alt="APSG">
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer class="footer"><div class="wrap">
+  <div class="lg">TROMML</div>
+  <p class="tag">Built for the aftermarket, Tromml turns complex sales data into clear insights that drive growth and efficiency.</p>
+  <p class="links"><a href="https://www.tromml.com/solutions/sales">Minecart</a><a href="https://www.tromml.com/landing/ai-training">Training</a><a href="https://www.tromml.com/about-tromml">About</a><a href="https://www.tromml.com/contact-us">Contact</a></p>
+  <p class="cr">Copyright 2026 Tromml, Inc</p>
+</div></footer>
+
+</body>
+</html>
