@@ -1,0 +1,160 @@
+{
+  "meta": {
+    "eyebrow": "MINECART PILOT  ·  60 DAYS",
+    "title": "From CAM Notes to Store-Side Action",
+    "subtitle": "Advance Auto Parts  |  Store Operations Pilot  |  60 Days",
+    "date_confidential": "July 2026  ·  Confidential"
+  },
+  "summary": [
+    ["Client", "Advance Auto Parts"],
+    ["Primary Contacts", "Anthony Sarlanis, Mindy Bennett, Mark Zuanich, Matt Montgomery"],
+    ["Scope", "Stores rolling up to one or two districts (10 to 12 stores, roughly 20 store-side users); CAM notes via nightly export; CAM workflow untouched"],
+    ["Engagement", "60-day Minecart pilot: role-tailored briefings for GMs, CPPs, and DMs, Minecart drill-in access, side-by-side comparison at the district and VP level"],
+    ["Term", "60 days from data flowing (extendable)"],
+    ["Investment", "$30,000 pilot (rolls into onboarding)"]
+  ],
+  "sections": [
+    {
+      "type": "section",
+      "heading": "What This Is",
+      "body": [
+        "Mark said it himself on our call: the sales side has spent the last four or five years getting out ahead of the rest of the organization. Your CAMs run a disciplined day, pre-flight with the store team in the morning, check-ins that serve up insights at every stop, free-flow notes after every call, and a post-flight that pushes the recap to whoever needs it by 5 o'clock. The gap is on the store and ops side. Your GMs and CPPs don't have Salesforce, your DMs have it but aren't living in it, and what they get today is an email of raw call notes. The intel is in there, somebody just has to dig for it. It comes back to the question that started this whole conversation: what's the 2% of information each person actually needs to know?",
+        "So here's the idea. We take the notes your CAMs are already capturing (nothing about their day changes) and run them through our system to pull out what each role can act on. The GM gets the highlights on their accounts. The CPP gets a watch list they'd never have time to build. The DM gets a rollup across their stores. It all lands in their inbox, written for action instead of reading, with the ability to click through and drill in when something's interesting. No Salesforce licenses, no Salesforce development, just a nightly export. We're turning the post-flight from a pile of notes into a system of action."
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "How We Measure Success",
+      "body": [
+        "Here's how I always measure a win on these. First, did we save people time, so a GM isn't digging through call notes to find the two things that matter to their store. Second, did we give better visibility into what needs attention: which accounts, which issues keep coming up, whether the promotion you're running is actually coming up in conversations. Third, did we build intelligence that compounds, so the system keeps getting sharper about what matters to Advance, and the store side and the sales side finally see the same picture. The pilot is how we prove all three on one or two districts before anyone commits to more."
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "The Pilot",
+      "intro": "One or two districts, your existing notes, and no change to how your CAMs work. Here's what's included.",
+      "bullets": [
+        "Scope: stores rolling up to one or two districts (10 to 12 stores). That's roughly two CAMs' worth of notes, 10 to 12 GMs, and their CPPs, around 20 store-side users in total.",
+        "Data: a scheduled nightly export of CAM sales-call notes for the pilot stores. No Salesforce development, your admin team can set it up.",
+        "Daily role-tailored briefings for the GM and CPP: the highlights of CAM activity on their accounts, what needs attention, and what to do about it.",
+        "A district rollup for the DM, so they see across their stores without logging into anything.",
+        "Drill-in access through Minecart, so when a briefing item is worth a closer look, the store team can go down that rabbit hole in a clean view, outside Salesforce.",
+        "A side-by-side comparison at the district and VP level: our actionable report next to today's recaps, so leadership can judge which one earns its place. We're processing the notes anyway, so this comes along for the ride.",
+        "An easy way for store teams to add their own commentary (push a button and talk), turned on only where operations leadership wants it.",
+        "CAMs untouched. Their pre-flight, check-ins, and post-flight stay exactly as they are."
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "The Guardrails",
+      "intro": "We asked Mark how a project like this fails, and then we scoped the pilot so it can't fail that way.",
+      "bullets": [
+        "No Salesforce development. We work from a scheduled nightly export your admin team can manage, and we keep it that simple for the whole pilot.",
+        "No changes to the CAM day. Everyone in the organization wants mindshare of the sales team; we're not asking for any. The pilot runs in parallel and stays out of their way.",
+        "No sales data in phase one. Store teams already have Power BI and the point of sale when they need numbers. Our job is to send them down the right rabbit hole, not to build another reporting stack.",
+        "No forced note-taking. If store teams want to log an insight, we make it as low-friction as talking into a phone. But we only turn that on where the operator leadership is bought in. Nobody needs a repeat of the check-the-box outbound call logs."
+      ]
+    },
+    {
+      "type": "examples",
+      "heading": "What This Looks Like in Practice",
+      "labels": { "signal": "Signal", "collateral": "Surfaced", "ai": "Action" },
+      "items": [
+        {
+          "title": "A category slipping at one shop",
+          "signal": "A CAM logs a note after a visit: this customer's brake purchases are down versus the prior three months, and there's a quality objection behind it.",
+          "collateral": "The GM's and CPP's morning briefing flags it on their account, with the context, instead of burying it in the day's notes.",
+          "ai": "The store team knows before the customer calls in, the CAM's follow-up is tracked, and a month later you can see whether brakes recovered at that shop."
+        },
+        {
+          "title": "The watch list a CPP would never have time to build",
+          "signal": "Accounts drifting toward credit hold, a tax-exempt form about to expire, an open case with the B2B team.",
+          "collateral": "A short watch list in the briefing. When Harry mocked up exactly this on his ride-along (accounts getting near credit hold), the CPP's reaction was: this would be tremendous.",
+          "ai": "The CPP gets ahead of it between phone calls, without hunting through reports to figure out which one holds the answer."
+        },
+        {
+          "title": "Knowing whether the promotion is landing",
+          "signal": "You're running a brake promotion, and the question is always the same: are customers actually talking about it?",
+          "collateral": "We read every note in the pilot districts and show whether the promotion is coming up, where it's hitting a wall, and what customers are saying instead.",
+          "ai": "Leadership sees campaign traction while the campaign is still running, not in a recap after it's over."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Deliverables",
+      "bullets": [
+        "Daily role-tailored briefings for GMs, CPPs, and DMs, each leading with what needs attention on their accounts",
+        "A district rollup and an actionability lens at the VP level, delivered side by side with today's recaps for comparison",
+        "Minecart access for the pilot store teams: a clean drill-in view, no Salesforce license required",
+        "Account briefings, the quick history on any account in the pilot",
+        "Tuning across the 60 days, so the briefings learn what matters to Advance",
+        "A written read-out at the end: what the store teams used, what they ignored, and our recommendation on scaling and on passing store-side intelligence back into Salesforce"
+      ]
+    },
+    {
+      "type": "investment",
+      "heading": "Investment",
+      "intro": "One number, one clean bill. The pilot is $30,000 for the 60 days, covering setup, all the briefings and rollups, Minecart access for the pilot stores, tuning, and the written read-out. If we both decide to keep going, the pilot fee rolls into onboarding, so none of the work or the spend is wasted. We price it this way on purpose: one small slice of the business and a real result, before anyone talks about a bigger number.",
+      "tables": [
+        {
+          "title": "60-Day Pilot",
+          "columns": ["Component", "What We Deliver", "Fee"],
+          "rows": [
+            ["Minecart Pilot", "Role-tailored briefings for GMs, CPPs, and DMs, district and VP rollups with side-by-side comparison, Minecart drill-in access, account briefings, tuning, and a written scale recommendation, across one or two districts", "$30,000"]
+          ],
+          "totalRow": ["Pilot Total", "60 days, rolls into onboarding", "$30,000"]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Where This Goes",
+      "body": [
+        "The pilot is scoped tight on purpose, but it's pointed somewhere. A few things we already know are on the other side of it:"
+      ],
+      "bullets": [
+        "Closing the loop with the sales side. Store insights flow back into Salesforce as notes and follow-ups for the CAM, so the right hand and the left hand finally talk. We can even use the notes to refresh stale account fields, like the shop that went from two bays to nine and nobody ever updated the record.",
+        "The CPP phone call. Your best customers call 20 or 25 times a day, and today nobody knows what's said on those calls. A telephony pilot captures that conversation without adding a single step to the CPP's day. That's the piece Anthony and Mindy flagged, and it's the natural second phase once the briefings have proven out.",
+        "Scale. The same pipeline that serves two districts serves a region, and an executive lens across 20,000 notes a week gets a lot more interesting once it's been tuned on real Advance data."
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Our Guarantee",
+      "body": [
+        "We keep the first step small because we want this to be a good fit before anyone commits to more. One or two districts, one bill, 60 days. If the store teams aren't opening the briefings and telling us they'd miss them, we'll be the first to say so. All we ask is the data flowing and a little time from your team to tune with us. And honestly, it won't be perfect on day one. These things get sharp through use, and that's exactly what the pilot is for."
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Terms",
+      "bullets": [
+        "Timeline: 60 days from the day the nightly export is flowing, extendable if we need more runway",
+        "Data source: a scheduled nightly export of CAM sales-call notes and account data for the pilot districts; no Salesforce development required",
+        "Data ownership: Advance's data stays Advance's, and we delete it on request at the end of the pilot",
+        "Subject to Tromml's Standard Terms of Service and Privacy Policy"
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Next Steps",
+      "intro": "Once you give the go:",
+      "bullets": [
+        "We lock the plan with Anthony and Mindy, and pick the pilot district or two with Mark",
+        "Matt's team schedules the nightly export (admin-level, no development work)",
+        "We process the history, tune the first briefings, and start delivering to the pilot GMs, CPPs, and DMs",
+        "The 60 days starts when the data's flowing, and we check in every couple of weeks on what's landing and what to tune"
+      ]
+    }
+  ],
+  "signature": {
+    "heading": "Agreement",
+    "intro": "By signing below, both parties agree to the scope, deliverables, fee, and terms outlined in this proposal.",
+    "provider_name": "Lauren McCullough",
+    "provider_title": "CEO, Tromml, Inc.",
+    "client_line": "Advance Auto Parts",
+    "client_sub": "Name and title"
+  },
+  "contact": "Questions? Contact lauren@tromml.com"
+}
