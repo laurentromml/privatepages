@@ -1,0 +1,454 @@
+<!doctype html>
+<!--
+  Daily Prep — private briefing page.
+  NOTE: this repo is served publicly by URL (robots.txt only blocks indexing).
+  Keep this on the working branch; do not merge to main.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Daily Prep — Tuesday, August 11, 2026</title>
+<style>
+  :root{
+    --slate:#33384a;
+    --slate-deep:#232734;
+    --slate-soft:#3d4356;
+    --copper:#a05c38;
+    --copper-lift:#c47a52;
+    --cream:#fcfbfa;
+    --cream-warm:#f6ece6;
+    --sand:#e7ded8;
+    --muted:#a8a5b4;
+    --line:rgba(231,222,216,.14);
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--slate-deep);
+    color:var(--cream-warm);
+    font-family:var(--font);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:32px 20px 96px}
+
+  /* ---------- masthead ---------- */
+  .mast{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:28px}
+  .kicker{
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--copper-lift);font-weight:700;margin:0 0 10px
+  }
+  h1{font-size:clamp(28px,5vw,40px);line-height:1.15;margin:0 0 8px;letter-spacing:-.02em;color:var(--cream)}
+  .sub{margin:0;color:var(--muted);font-size:15px}
+
+  /* ---------- player ---------- */
+  .player{
+    background:var(--slate);border:1px solid var(--line);border-radius:16px;
+    padding:20px;margin-bottom:12px;position:sticky;top:12px;z-index:20;
+    box-shadow:0 12px 32px rgba(0,0,0,.35)
+  }
+  .controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  button{font-family:inherit;cursor:pointer;border:none;transition:.15s}
+  .play{
+    background:var(--copper);color:var(--cream);width:56px;height:56px;border-radius:50%;
+    display:grid;place-items:center;flex:none
+  }
+  .play:hover{background:var(--copper-lift)}
+  .play svg{width:22px;height:22px;fill:currentColor}
+  .skip{
+    background:transparent;color:var(--sand);border:1px solid var(--line);
+    border-radius:8px;padding:8px 12px;font-size:13px;font-weight:600
+  }
+  .skip:hover{border-color:var(--copper-lift);color:var(--cream)}
+  .now{flex:1;min-width:180px}
+  .now-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  .now-title{font-size:15px;font-weight:650;color:var(--cream)}
+  .bar{height:4px;background:rgba(231,222,216,.12);border-radius:99px;margin-top:16px;overflow:hidden}
+  .bar-fill{height:100%;width:0;background:var(--copper);border-radius:99px;transition:width .3s}
+  .opts{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--muted);align-items:center}
+  .opts label{display:flex;align-items:center;gap:7px}
+  select,input[type=range]{font-family:inherit;font-size:12px;accent-color:var(--copper)}
+  select{
+    background:var(--slate-soft);color:var(--cream-warm);border:1px solid var(--line);
+    border-radius:6px;padding:4px 7px;max-width:190px
+  }
+  .warn{
+    display:none;background:rgba(160,92,56,.18);border:1px solid var(--copper);
+    border-radius:8px;padding:10px 12px;margin-top:14px;font-size:13px;color:var(--cream-warm)
+  }
+
+  /* ---------- run of show ---------- */
+  .runlabel{
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+    font-weight:700;margin:32px 0 12px
+  }
+  .run{list-style:none;margin:0 0 8px;padding:0;border-top:1px solid var(--line)}
+  .run li{border-bottom:1px solid var(--line)}
+  .run button{
+    width:100%;background:transparent;text-align:left;padding:13px 4px;
+    display:flex;align-items:baseline;gap:14px;color:var(--sand);font-size:15px
+  }
+  .run button:hover{color:var(--cream)}
+  .run .n{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none;width:22px;font-weight:700}
+  .run .t{flex:1;font-weight:600}
+  .run .d{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none}
+  .run li.on button{color:var(--copper-lift)}
+  .run li.on .n{color:var(--copper-lift)}
+
+  /* ---------- transcript ---------- */
+  section.seg{margin:44px 0;scroll-margin-top:190px}
+  section.seg h2{
+    font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--copper-lift);
+    margin:0 0 14px;font-weight:700
+  }
+  p.line{
+    margin:0 0 14px;font-size:17px;color:var(--cream-warm);
+    border-left:2px solid transparent;padding-left:14px;margin-left:-16px;
+    transition:.2s;cursor:pointer
+  }
+  p.line:hover{border-left-color:var(--line)}
+  p.line.speaking{border-left-color:var(--copper);color:var(--cream);background:rgba(160,92,56,.10)}
+  footer{
+    margin-top:64px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:12px;color:var(--muted)
+  }
+  footer a{color:var(--copper-lift)}
+  @media (max-width:520px){
+    .player{position:static}
+    section.seg{scroll-margin-top:20px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <p class="kicker">Daily Prep &middot; Episode 01</p>
+    <h1>Tuesday, August 11</h1>
+    <p class="sub">Five agency calls, one demo environment, and a decision you have been sitting on.</p>
+  </header>
+
+  <div class="player">
+    <div class="controls">
+      <button class="play" id="play" aria-label="Play">
+        <svg id="icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="now">
+        <div class="now-label">Now playing</div>
+        <div class="now-title" id="nowTitle">Cold open</div>
+      </div>
+      <button class="skip" id="prev">&#8249; Prev</button>
+      <button class="skip" id="next">Next &#8250;</button>
+      <button class="skip" id="restart">Restart</button>
+    </div>
+    <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+    <div class="opts">
+      <label id="voiceWrap" style="display:none">Voice <select id="voice"></select></label>
+      <label>Speed <input type="range" id="rate" min="0.7" max="1.6" step="0.05" value="1"> <span id="rateVal">1.0&times;</span></label>
+      <span id="runtime"></span>
+    </div>
+    <div class="warn" id="warn">
+      This browser will not read the episode aloud. The full transcript is below.
+    </div>
+  </div>
+
+  <p class="runlabel">Run of show</p>
+  <ul class="run" id="run"></ul>
+
+  <div id="transcript"></div>
+
+  <footer>
+    Assembled from Google Calendar, Gmail and Fathom on the morning of August 11, 2026.
+    Audio is generated in your browser &mdash; nothing is uploaded. Tap any line to start reading from there.
+  </footer>
+
+</div>
+
+<script>
+/* ---------------------------------------------------------------
+   Episode script. Each segment is a list of spoken lines.
+----------------------------------------------------------------*/
+const EPISODE = [
+  {
+    title: "Cold open",
+    lines: [
+      "Good morning, Lauren. It is Tuesday, August eleventh. Here is your day.",
+      "The short version: you have five agency calls today. Five. Astrep at nine, Joyce Sales at ten, Pusateri at eleven thirty, N W Heavy Duty at one, and Shimp Sales at three.",
+      "Every one of them is a first conversation. Every one of them is the exact segment you have been building the funnel for. This is the day the rep agency motion starts proving itself, or does not.",
+      "And there is one thing standing directly in front of it. So let us start there."
+    ]
+  },
+  {
+    title: "The demo environment",
+    lines: [
+      "Yesterday you and Harry ran the agency demo end to end. The verdict was blunt: the demo environment is not usable for a live presentation without data fixes.",
+      "Most accounts have no insights, which makes them unclickable, which kills the mobile walkthrough. Vendor tags are not showing on activities, so you cannot demonstrate which lines a rep is actually selling. Those are not cosmetic gaps. They are the demo.",
+      "Harry owns the fixes: turn on the vendor tag flag, turn on account groups, and generate account briefings for the first twenty five accounts on the Accounts page plus everything on page one of Notes and Activities. He was going to tell you when the generation finished.",
+      "You have Priority Sync with Harry at eight thirty. That is thirty minutes before Astrep, and it is your only checkpoint. The first question is not how is it going. It is: is the data generated, yes or no.",
+      "If the answer is no, you need the fallback decided before nine, not at nine oh five. The good news is the W D Report path already works. You regenerated it live for the FITEC brand yesterday and it held. So the fallback is: demo the report workflow and the manager review story, and quietly skip the account briefing click through and the mobile experience.",
+      "One more thing from that call is on you, not Harry. The login button on the homepage, the one Bob asked for because he keeps losing the Headframe U R L. Small, but it is yours."
+    ]
+  },
+  {
+    title: "The story you are telling five times",
+    lines: [
+      "You landed on the shape of the demo yesterday, so let us lock it in your head before the first call.",
+      "You lead with the W D Report and the manager review workflow. Three beats.",
+      "One: nothing reaches a client until a manager approves it. Two: the manager can edit anything. Move sections, delete a line like twelve reps active, remove sections that have no data. Three: those edits train the system, so the next report comes out better.",
+      "The core claim underneath all three is that this is richer and more professional than what their clients get today. Remember who you are selling to. For a rep agency, the client facing report is the product. That is the whole business. Sell that, not the note capture.",
+      "Your scripted scenario: a multi line visit note that mentions FITEC, Westin and A R P. Generate the W D Report from that note. Then use the account briefings for quick insight.",
+      "Same script, five times, one day. That is genuinely a gift. It will be rough at nine and tight by eleven thirty. Do not let the ninth version be your best one, but do expect Astrep to be the rehearsal."
+    ]
+  },
+  {
+    title: "Three logistics snags",
+    lines: [
+      "Small things that will cost you real minutes if you skip them.",
+      "Joyce Sales at ten. Steve has not accepted the invite. It still shows as no response this morning. That is worth a nudge before nine, or you will be sitting alone on a Meet link at ten oh five.",
+      "Three o clock. Your calendar invite says Shrimp Sales. The attendee is Bob Shimp, at Shimp Sales. Fix the title before he opens his calendar.",
+      "And N W Heavy Duty at one. John has accepted, J Young has not. Probably fine, but plan for either one person or two."
+    ]
+  },
+  {
+    title: "The shape of the day",
+    lines: [
+      "Here is how the day actually stacks up.",
+      "Eight thirty, Harry. Nine, Astrep. Ten, Joyce Sales. Eleven, product huddle. Eleven fifteen, finance check in with Corrina, where you are optional. Eleven thirty, Pusateri.",
+      "Notice that the huddle and finance are sandwiched into thirty minutes right before an external call. If either one runs long, you walk into Pusateri unprepared. Hold the line on both.",
+      "Then one o clock, N W Heavy Duty. Three o clock, Shimp. Five o clock, the feedback slot with Corrina.",
+      "You have two real windows of open time. Forty five minutes after Pusateri, from twelve fifteen to one. And seventy five minutes between N W Heavy Duty and Shimp, from one forty five to three.",
+      "That second window is the one that matters, because by then you will have three calls worth of follow up owed and nothing on the calendar to protect it. Put the follow ups there deliberately, or the day will fill it for you."
+    ]
+  },
+  {
+    title: "What is actually waiting in your inbox",
+    lines: [
+      "Three things need you. Everything else can wait.",
+      "First, Nexamotion. Erik St. Pierre has left the company and the invoice is still open. You pinged Corrina again last night asking if there were any more thoughts. Harry came back at three this morning with an actual escalation path: reconstruct the evidence packet, the invoice, the P O, the delivery confirmation, and use Erik leaving as the opening to restate the situation and push for resolution.",
+      "That is not a thread that needs more discussion. It needs your decision. This has been sitting since the sixth. Make the call at Priority Sync or at the finance check in, and hand it to someone with a date on it.",
+      "Second, Dorman. Harry is meeting Katie Pupillo on Friday. Katie cannot export the review data but can grant temporary access to some of it. You flagged that you want the proposal to follow.",
+      "So the real question is sequencing: does the proposal go out before Friday, or does Friday's data conversation shape what you put in it. Harry is already in motion, so this is a two minute answer from you, not a project.",
+      "Third, Snap-on. Allison came back with two things. Mariana is traveling, so they want to move the training to the twenty first. And the security review has been escalated to the next level internally, still awaiting enablement. You already replied asking what enablement actually means and offered the twenty first. The ball is with them. Nothing for you today.",
+      "And a clean one: Aldan is confirmed. Garrett replied yes for tomorrow at noon Pacific. That one is done, no action.",
+      "Everything else in there is noise. Omar from Optise is on the last touch of a cold sequence, so you can stop reading those. The one item worth ten seconds is the Auto Care newsletter, where the I V C Council applications and the People Awards both close soon. Given how deep you are with Auto Care right now, that is worth handing to someone on your team today rather than losing it."
+    ]
+  },
+  {
+    title: "One personal flag",
+    lines: [
+      "Not business, but it lands today, so you should hear it.",
+      "Your American Express AutoPay of twenty eight hundred forty six dollars processes today.",
+      "There are also three notices from last week still sitting unread: the account went over its credit limit, and two transactions on an additional card were declined because the balance was higher than usual.",
+      "Your finance check in is at eleven fifteen. That is the natural moment to deal with it rather than finding out through a declined card in the middle of something else."
+    ]
+  },
+  {
+    title: "Tomorrow, so you are not cold",
+    lines: [
+      "Two things on Wednesday you should be thinking about today, not tomorrow morning.",
+      "Nine a m, Shaun Healey. Ex B P Ventures, led their PartsTech deal, knows the aftermarket cold. You last spoke on July twentieth about angel participation and seed preparation.",
+      "Here is why that matters today: Miriam gave you memo feedback yesterday, and the revisions were specific. Sharpen the sales rep positioning. Two hundred K goal with a twenty five K minimum. Forty to fifty percent pilot conversion. Conservative enterprise assumptions. Add C A C and sales cycle. Name the next three to four markets.",
+      "Shaun is the audience that memo was written for. If the revision is not done, tonight is the night, because tomorrow at nine is too late.",
+      "Then three p m, Aldan American. Garrett Harmola, introduced by Jon Kunzman. Kunzman is your signed annual customer with roughly twenty users onboarded, which means you are walking in with a live reference from the person who made the introduction. Use it."
+    ]
+  },
+  {
+    title: "Three things that matter",
+    lines: [
+      "If the day gets away from you, these are the three.",
+      "One. Confirm the demo data with Harry at eight thirty, and know your fallback before nine. Five first conversations against a broken demo is an expensive way to spend a Tuesday.",
+      "Two. Same demo, five times. Astrep is your rehearsal. Be tight by Pusateri.",
+      "Three. Decide on Nexamotion. It has been open since the sixth, two people are waiting on you, and it is your call, not Corrina's.",
+      "That is the day. Go get it."
+    ]
+  }
+];
+
+/* ---------------------------------------------------------------
+   Build the page
+----------------------------------------------------------------*/
+const WPM = 165;
+const words = s => s.trim().split(/\s+/).length;
+const secs  = seg => Math.round(seg.lines.reduce((n,l)=>n+words(l),0) / WPM * 60);
+const clock = s => Math.floor(s/60) + ":" + String(s%60).padStart(2,"0");
+
+const runEl = document.getElementById("run");
+const trEl  = document.getElementById("transcript");
+const flat  = [];   // {seg, line, el}
+
+EPISODE.forEach((seg, si) => {
+  const li = document.createElement("li");
+  const b  = document.createElement("button");
+  b.innerHTML = '<span class="n">' + String(si+1).padStart(2,"0") + '</span>' +
+                '<span class="t"></span>' +
+                '<span class="d">' + clock(secs(seg)) + '</span>';
+  b.querySelector(".t").textContent = seg.title;
+  b.onclick = () => jumpToSegment(si);
+  li.appendChild(b);
+  runEl.appendChild(li);
+  seg._li = li;
+
+  const sec = document.createElement("section");
+  sec.className = "seg";
+  const h2 = document.createElement("h2");
+  h2.textContent = String(si+1).padStart(2,"0") + " — " + seg.title;
+  sec.appendChild(h2);
+  seg._sec = sec;
+
+  seg.lines.forEach(line => {
+    const p = document.createElement("p");
+    p.className = "line";
+    p.textContent = line;
+    const idx = flat.length;
+    p.onclick = () => { stop(); cursor = idx; play(); };
+    sec.appendChild(p);
+    flat.push({ si, text: line, el: p });
+  });
+  trEl.appendChild(sec);
+});
+
+const total = EPISODE.reduce((n,s)=>n+secs(s), 0);
+document.getElementById("runtime").textContent = "Runtime about " + Math.round(total/60) + " minutes";
+
+/* ---------------------------------------------------------------
+   Speech
+----------------------------------------------------------------*/
+const synth = window.speechSynthesis;
+const playBtn  = document.getElementById("play");
+const icon     = document.getElementById("icon");
+const nowTitle = document.getElementById("nowTitle");
+const barFill  = document.getElementById("barFill");
+const voiceSel = document.getElementById("voice");
+const rateInp  = document.getElementById("rate");
+const rateVal  = document.getElementById("rateVal");
+
+const ICON_PLAY  = "M8 5v14l11-7z";
+const ICON_PAUSE = "M6 5h4v14H6zm8 0h4v14h-4z";
+
+let cursor = 0;         // index into flat
+let playing = false;
+let voices = [];
+let keepAlive = null;
+
+if (!synth) {
+  document.getElementById("warn").style.display = "block";
+  playBtn.disabled = true;
+  playBtn.style.opacity = .4;
+}
+
+function loadVoices(){
+  if (!synth) return;
+  voices = synth.getVoices().filter(v => v.lang && v.lang.toLowerCase().startsWith("en"));
+  // Some browsers populate voices asynchronously; only show the picker once we have some.
+  document.getElementById("voiceWrap").style.display = voices.length ? "" : "none";
+  if (!voices.length) return;
+  voiceSel.innerHTML = "";
+  // Prefer a natural-sounding voice where one exists.
+  const nice = /samantha|serena|karen|daniel|alex|google us english|natural|aria|jenny|zira/i;
+  voices.sort((a,b) => (nice.test(b.name)?1:0) - (nice.test(a.name)?1:0));
+  voices.forEach((v,i) => {
+    const o = document.createElement("option");
+    o.value = i;
+    o.textContent = v.name.replace(/\s*\(.*?\)\s*/g," ").trim() + " · " + v.lang;
+    voiceSel.appendChild(o);
+  });
+}
+loadVoices();
+if (synth) synth.onvoiceschanged = loadVoices;
+
+function highlight(i){
+  flat.forEach(f => f.el.classList.remove("speaking"));
+  EPISODE.forEach(s => s._li.classList.remove("on"));
+  const f = flat[i];
+  if (!f) return;
+  f.el.classList.add("speaking");
+  EPISODE[f.si]._li.classList.add("on");
+  nowTitle.textContent = EPISODE[f.si].title;
+  barFill.style.width = ((i+1) / flat.length * 100) + "%";
+  const r = f.el.getBoundingClientRect();
+  if (r.top < 170 || r.bottom > window.innerHeight - 40){
+    f.el.scrollIntoView({ behavior:"smooth", block:"center" });
+  }
+}
+
+function speakAt(i){
+  if (i >= flat.length){ stop(); cursor = 0; highlight(0); return; }
+  cursor = i;
+  highlight(i);
+  const u = new SpeechSynthesisUtterance(flat[i].text);
+  const v = voices[voiceSel.value|0];
+  if (v) { u.voice = v; u.lang = v.lang; }
+  u.rate  = parseFloat(rateInp.value);
+  u.pitch = 1;
+  u.onend = () => { if (playing) speakAt(i+1); };
+  u.onerror = e => { if (playing && e.error !== "interrupted") speakAt(i+1); };
+  synth.speak(u);
+}
+
+function play(){
+  if (!synth) return;
+  playing = true;
+  icon.setAttribute("d", ICON_PAUSE);
+  // Chrome silently stops long sessions; a periodic resume keeps it alive.
+  clearInterval(keepAlive);
+  keepAlive = setInterval(() => {
+    if (playing && synth.speaking && !synth.paused) { synth.pause(); synth.resume(); }
+  }, 9000);
+  speakAt(cursor);
+}
+
+function stop(){
+  playing = false;
+  clearInterval(keepAlive);
+  icon.setAttribute("d", ICON_PLAY);
+  if (synth) synth.cancel();
+}
+
+function jumpToSegment(si){
+  const wasPlaying = playing;
+  stop();
+  cursor = flat.findIndex(f => f.si === si);
+  highlight(cursor);
+  EPISODE[si]._sec.scrollIntoView({ behavior:"smooth", block:"start" });
+  if (wasPlaying) play();
+}
+
+playBtn.onclick = () => playing ? stop() : play();
+
+document.getElementById("next").onclick = () => {
+  const si = flat[cursor] ? flat[cursor].si : 0;
+  jumpToSegment(Math.min(si+1, EPISODE.length-1));
+};
+document.getElementById("prev").onclick = () => {
+  const si = flat[cursor] ? flat[cursor].si : 0;
+  jumpToSegment(Math.max(si-1, 0));
+};
+document.getElementById("restart").onclick = () => {
+  const wasPlaying = playing;
+  stop(); cursor = 0; highlight(0);
+  window.scrollTo({ top:0, behavior:"smooth" });
+  if (wasPlaying) play();
+};
+
+rateInp.oninput = () => {
+  rateVal.textContent = parseFloat(rateInp.value).toFixed(2).replace(/0$/,"") + "×";
+  if (playing){ synth.cancel(); speakAt(cursor); }   // apply immediately
+};
+voiceSel.onchange = () => { if (playing){ synth.cancel(); speakAt(cursor); } };
+
+// Space bar toggles playback, unless the user is on a control.
+document.addEventListener("keydown", e => {
+  if (e.code === "Space" && !/SELECT|INPUT|BUTTON/.test(document.activeElement.tagName)){
+    e.preventDefault();
+    playing ? stop() : play();
+  }
+});
+window.addEventListener("beforeunload", () => { if (synth) synth.cancel(); });
+
+highlight(0);
+</script>
+</body>
+</html>

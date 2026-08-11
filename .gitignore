@@ -13,5 +13,9 @@
 !pivotree/
 !pivotree/**
 
+# Daily prep briefings
+!daily-prep/
+!daily-prep/**
+
 # Disable Jekyll so the bare root URL 404s (no README fallback)
 !.nojekyll
