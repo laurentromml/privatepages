@@ -1,0 +1,164 @@
+{
+  "meta": {
+    "eyebrow": "MINECART PILOT  ·  30 DAYS",
+    "title": "From Notes to a System of Action",
+    "subtitle": "Eastern  |  Sales Management Pilot  |  30 Days",
+    "date_confidential": "June 2026  ·  Confidential"
+  },
+  "summary": [
+    ["Client", "Eastern (automotive parts distribution)"],
+    ["Primary Contacts", "Jack Mills, Nick, Chick Capoli, Jr."],
+    ["Scope", "One region under a single RSM, a strong store paired with a struggling one; notes plus sales data"],
+    ["Engagement", "30-day Minecart pilot: manager and regional reports, opportunity tracking, Claude integration"],
+    ["Term", "30 days from data ready (extendable)"],
+    ["Investment", "$5,000 pilot (rolls into onboarding)"]
+  ],
+  "sections": [
+    {
+      "type": "section",
+      "heading": "What This Is",
+      "body": [
+        "Your reps already know more than your reports do. They're walking out of shops every day with intel, who's about to switch, who's fed up with delivery windows, who just gave a verbal commitment, and most of it ends up buried in notes nobody has time to read. Jack, you said it yourself: somebody would have to read all 60-plus notes a day, basically 18 hours, to find the few that actually matter. That's the problem worth solving. Not more data. The gold that's already sitting in what you've got.",
+        "So here's the whole idea. We take the notes your team is already capturing, run them through our system, and pull out the roughly 2% somebody can actually act on. Then we put it in front of the right person in the right view: the store manager, the regional manager, the owner. We're not changing what your reps do or asking them to learn a new tool. We plug into what's already working and turn those notes into a system of action."
+      ],
+      "note": "A couple of sample report exports come with this, so Nick and the team can see exactly what it looks like."
+    },
+    {
+      "type": "section",
+      "heading": "How We Measure Success",
+      "body": [
+        "Here's how I always measure a win on these. First, did we save your managers time, so they're not hunting through hundreds of notes to find the five that matter. Second, did we give better visibility into what actually needs attention: which opportunities, which stores, which reps. Third, did we build something that compounds, so every week the system gets a little sharper about what a real opportunity looks like for Eastern. The pilot is how we prove all three on one slice of the business before we touch the rest."
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "The Pilot",
+      "intro": "30 days, one region, your own data, and no change to how your reps work. Here's exactly what's included.",
+      "bullets": [
+        "Your own data, your reps untouched. We work entirely from what you already have, no change to how anyone logs a note.",
+        "We run your notes and sales summaries through our system together (we recommend 90 days of history), and geo-validate every account so it's placed and grouped right.",
+        "Daily and weekly reports tuned to Eastern's priorities, built differently for the regional manager and the store manager, because they care about different things.",
+        "An account summary for every account, a quick history you can drill into.",
+        "Rep activity insights, who's taking how many notes, and when.",
+        "An opportunity tracker, so you can see how our system builds opportunities and follows them over time.",
+        "A proof of concept for where it goes, routed back into your own systems or kept in Minecart, your call.",
+        "A proof of concept for the AI layer, this data in Claude for planning and reporting, and in Copilot for rep execution."
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "What This Looks Like in Practice",
+      "intro": "To make it real, here are the kinds of things we already pulled out of the 30 days of notes you sent, before any tuning. Take them with a grain of salt, it was a quick run, but this is the shape of it.",
+      "body": [
+        "A verbal commitment, surfaced and tracked. One note from Hillside Auto: the owner said he'd get a shop to start ordering with you, and mentioned he's good friends with Ray over at RBAC. On its own, that line is buried in 992 notes. Surfaced, it becomes a tracked opportunity and a nudge to your sales manager to get ahead of Ray, and then we can actually see whether it happened.",
+        "A risk you want to catch early. Another account's sensitive to delivery windows and is moving from NAPA over to Advance because of it. That's exactly the kind of thing a manager wants in front of them before it's a lost account, not after.",
+        "A play you can actually measure. Say you run a premium battery play. We can read the notes to see who actually ran it, and where it's hitting a wall (a competitor rebate that makes you uncompetitive for municipalities, for instance). That's the difference between hoping a play landed and knowing it did."
+      ]
+    },
+    {
+      "type": "table",
+      "heading": "The Claude or Copilot Integration",
+      "intro": "A working integration is part of the pilot, not a someday. Here's the recommendation, what your team can actually do with it, and the proof of concept we'll stand up in the 30 days.",
+      "body": [
+        "My recommendation: use Claude for the planning and reporting side, where you're asking questions of the data and pulling briefings, and use Copilot for rep execution, since that's what most of your team already has in their hands. The plumbing's the same either way. It's an MCP, basically the USB port for how a chat tool talks to your data, so we decide together exactly what to expose on each side, and we keep it read-only until you're comfortable turning on write-back."
+      ],
+      "tables": [
+        {
+          "title": "What your team can do once it is connected",
+          "columns": ["Capability", "What it means for you"],
+          "rows": [
+            ["Ask", "Put a question to your own data in plain language. Which of Mike Miller's stores is sliding and why, what's open in Allentown right now, what did reps actually hear about delivery windows this week."],
+            ["Act", "Push the good stuff back into your own system, so a real opportunity doesn't die in a tool nobody opens. Your reps stay where they are and the intel still lands."],
+            ["Run plays", "Take every account that mentioned Zone, or every account near a lake that buys marine, and queue the play. The human still makes the call. The AI just lines it up with the manager's guidance."],
+            ["Re-angle", "We've already processed the data, so you can come back and slice it a different way later, by competitor or by brand, without starting the whole thing over."]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "The POC, in the 30 Days",
+      "body": [
+        "The proof of concept is small and concrete on purpose, so you can see it actually work before anyone commits to a wider rollout."
+      ],
+      "bullets": [
+        "Connect the pilot region to your Claude environment through the MCP",
+        "Expose that region's notes, opportunities, and sales data, with the guardrails we agree on",
+        "Hand you a set of starter prompts, so a manager can ask questions and pull account briefings on day one",
+        "Run one write-back and one play end to end, so you see the whole loop, not just a demo",
+        "Write down what worked and what to tune, so it shapes how we open this up to Copilot and the wider team later"
+      ],
+      "note": "Net of all of it: by day 30 you know exactly how this should run in your environment, before you spend a dollar scaling it."
+    },
+    {
+      "type": "section",
+      "heading": "Deliverables",
+      "bullets": [
+        "Daily and weekly reports for store managers and regional managers, tuned to what each one needs",
+        "Opportunity tracking that surfaces real opportunities and follows them through to execution",
+        "Account briefings that put your notes next to your sales data",
+        "A working Claude (or Copilot) integration with starter prompts, so you can query the data and run plays in your own environment",
+        "Tuning across the pilot, so the system learns what a real opportunity looks like for Eastern, plus automatic follow-up extraction",
+        "An export of sample reports, so Nick and the team can see exactly what this looks like"
+      ]
+    },
+    {
+      "type": "investment",
+      "heading": "Investment",
+      "intro": "One simple number to start. The pilot's $5,000 for 30 days, and it rolls into onboarding if you decide to keep going, so the tuning we do now isn't wasted, it carries straight forward. If you need a little more runway, we'll keep rolling and talk about an extension. The whole point of doing it this way is to keep it small and low-risk: one slice of the business, one clean bill, before you decide anything bigger.",
+      "tables": [
+        {
+          "title": "30-Day Pilot",
+          "columns": ["Component", "What We Deliver", "Fee"],
+          "rows": [["Minecart Pilot", "Manager and regional reports, opportunity and pipeline tracking, account briefings (notes + sales data), tuning, and a working Claude or Copilot integration, on one region", "$5,000"]],
+          "totalRow": ["Pilot Total", "30 days, rolls into onboarding", "$5,000"]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Where This Goes",
+      "body": [
+        "This pilot is really about building the foundation for what's next. It's how we learn to tune your reports before a full launch, what a regional manager needs versus a store manager, and what's worth surfacing for Eastern. It's also where we settle the routing question together: what Tromml handles, and what your existing reporting already does well and should keep doing. Nothing that's working gets torn out, and you come away with a clear map to scale from one region to the rest. And the pilot fee gets applied to any onboarding fees later, so none of the work or the spend is wasted."
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Our Guarantee",
+      "body": [
+        "We keep this small and bite-sized because we want it to be a good fit before anyone commits to more. One region, one bill, 30 days, and if you need more runway we'll extend it rather than rush it. This assumes we get the data and a bit of your team's time to tune it together. It won't be perfect on day one, honestly, these things take a little time to get useful, and that's exactly what the pilot's for."
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Terms",
+      "bullets": [
+        "Timeline: 30 days from the day the data's flowing, extendable if you want more runway",
+        "Data sources: your existing notes plus sales data; integration into your Claude or Copilot environment via MCP",
+        "Data ownership: your data stays yours, and we can write the insights back into your own system",
+        "Subject to Tromml's Standard Terms of Service and Privacy Policy"
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Next Steps",
+      "intro": "Quick and easy from here:",
+      "bullets": [
+        "We get you the contract for the pilot",
+        "Jack squares away the budget with Sean, and gets Nick the recording and reports to look at (he's back Monday)",
+        "You sit down around Tuesday and decide to move forward",
+        "We can start picking up the data as early as Monday, and the 30 days starts once everything's set up",
+        "We send over a couple of sample report exports, so the team can see it for themselves"
+      ]
+    }
+  ],
+  "signature": {
+    "heading": "Agreement",
+    "intro": "By signing below, both parties agree to the scope, deliverables, fee, and terms outlined in this proposal.",
+    "provider_name": "Lauren McCullough",
+    "provider_title": "CEO, Tromml, Inc.",
+    "client_line": "Eastern",
+    "client_sub": "Name and title"
+  },
+  "contact": "Questions? Contact lauren@tromml.com"
+}

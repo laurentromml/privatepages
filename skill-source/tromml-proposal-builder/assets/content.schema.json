@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tromml proposal content",
+  "description": "Input for build_proposal.js. Order of `sections` is the order they render. Add or drop sections freely — the structure is a default, not a cage.",
+  "type": "object",
+  "required": ["meta", "summary", "sections"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["eyebrow", "title"],
+      "properties": {
+        "eyebrow": { "type": "string", "description": "ALL-CAPS kicker above the title, e.g. 'SIGNAL AUDIT + AI ENABLEMENT'." },
+        "title": { "type": "string", "description": "Big proposal title." },
+        "subtitle": { "type": "string", "description": "Client | team | term line, italic." },
+        "date_confidential": { "type": "string", "description": "e.g. 'June 2026  ·  Confidential'." }
+      }
+    },
+    "summary": {
+      "type": "array",
+      "description": "At-a-glance table. Each item is [label, value]. Typical labels: Client, Primary Contacts, Scope, Engagement, Term, Investment.",
+      "items": { "type": "array", "items": { "type": "string" }, "minItems": 2, "maxItems": 2 }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "heading"],
+        "properties": {
+          "type": { "enum": ["section", "examples", "investment", "table"], "description": "'section' = heading + optional italic intro + body paragraphs + optional bullets + optional note. 'examples' = the 'What This Looks Like in Practice' block (default labels Signal/Collateral/AI executes, but configurable — see labels/rows). 'investment' = prose + one or more fee tables (last column right-aligned). 'table' = heading + intro + body + one or more left-aligned tables (e.g. a capabilities map) + optional bullets + note." },
+          "labels": { "type": "object", "description": "examples type only: override the default labels. Keys: signal, collateral, ai. Use this for non-marketing deals, e.g. {\"collateral\":\"Surfaced\",\"ai\":\"Action\"}.", "properties": { "signal": {"type":"string"}, "collateral": {"type":"string"}, "ai": {"type":"string"} } },
+          "heading": { "type": "string" },
+          "intro": { "type": "string", "description": "For 'section': italic lead-in under the heading. For 'investment': normal prose paragraph." },
+          "body": { "type": "array", "items": { "type": "string" }, "description": "Body paragraphs (section type)." },
+          "bullets": { "type": "array", "items": { "type": "string" }, "description": "Bulleted items (section type)." },
+          "note": { "type": "string", "description": "Italic muted note at the end of the block." },
+          "items": {
+            "type": "array",
+            "description": "examples type only.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "signal": { "type": "string", "description": "What the audit finds." },
+                "collateral": { "type": "string", "description": "The marketing piece it becomes." },
+                "ai": { "type": "string", "description": "How AI produces / maintains it." },
+                "rows": { "type": "array", "items": { "type": "array", "items": {"type":"string"}, "minItems": 2, "maxItems": 2 }, "description": "Alternative to signal/collateral/ai: fully custom [label, text] pairs for this item." }
+              }
+            }
+          },
+          "closing": { "type": "string", "description": "examples type only: italic closing line." },
+          "tables": {
+            "type": "array",
+            "description": "investment type only.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string", "description": "Sub-head above the table, e.g. 'Phase 1: Signal Audit'." },
+                "columns": { "type": "array", "items": { "type": "string" }, "description": "Header cells, usually 3. Last column is the fee (right-aligned)." },
+                "rows": { "type": "array", "items": { "type": "array", "items": { "type": "string" } } },
+                "totalRow": { "type": "array", "items": { "type": "string" }, "description": "Peach-shaded total row." },
+                "columnWidths": { "type": "array", "items": { "type": "number" }, "description": "Optional DXA widths summing to 9360. Default [2300,5060,2000]." }
+              }
+            }
+          }
+        }
+      }
+    },
+    "signature": {
+      "type": "object",
+      "properties": {
+        "heading": { "type": "string", "default": "Agreement" },
+        "intro": { "type": "string" },
+        "provider_name": { "type": "string", "default": "Lauren McCullough" },
+        "provider_title": { "type": "string", "default": "CEO, Tromml, Inc." },
+        "client_line": { "type": "string" },
+        "client_sub": { "type": "string", "default": "Name and title" }
+      }
+    },
+    "contact": { "type": "string", "default": "Questions? Contact lauren@tromml.com" },
+    "footer": { "type": "string", "default": "Tromml, Inc.  •  201 E Main Street, Durham, NC 27701  •  tromml.com" }
+  }
+}

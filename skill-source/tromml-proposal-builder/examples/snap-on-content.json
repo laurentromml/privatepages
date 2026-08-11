@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "eyebrow": "SIGNAL AUDIT + AI ENABLEMENT",
+    "title": "Signal Audit & AI Enablement",
+    "subtitle": "Snap-on Equipment, John Bean  |  Marketing  |  ~90 Days",
+    "date_confidential": "June 2026  ·  Confidential"
+  },
+  "summary": [
+    ["Client", "Snap-on Equipment (John Bean), Marketing"],
+    ["Primary Contacts", "Allison Moody, Mariana, Jing"],
+    ["Scope", "John Bean brand, North America, HubSpot data (call transcripts if available)"],
+    ["Engagement", "Phase 1 signal audit, Phase 2 AI enablement"],
+    ["Term", "~90 days (about 1 month audit, 60 days enablement)"],
+    ["Investment", "$11,000 total ($5,000 + $6,000)"]
+  ],
+  "sections": [
+    {
+      "type": "section",
+      "heading": "What This Is",
+      "body": [
+        "You have field and marketing data flowing into HubSpot and a team that knows AI can do more here, but no clear place to start. This gives you that start, in two steps. First we mine your existing data for the gold your marketing team can actually use: the themes, the objections, the regional patterns, the content angles already sitting in your notes and calls. Then we teach your team to put it to work in Claude and make it repeatable, with skills, prompts, and coaching built around John Bean.",
+        "The audit gives you something concrete to bring to leadership. The enablement makes the capability yours. We present this in tiered blocks so you can see the picture, approve a step, and move."
+      ],
+      "note": "A short companion example accompanies this proposal — an illustrative look at the kind of findings an audit like this surfaces for John Bean, and what your team would do with them."
+    },
+    {
+      "type": "section",
+      "heading": "How We Measure Success",
+      "body": [
+        "We check three things on every engagement. First, we save your team time on work you would otherwise do by hand. Second, we give you better visibility into what needs attention — which markets, which objections, which angles. Third, we build long-term intelligence you keep: a context layer, enriched accounts, and skills that compound over time. The audit gives you a benchmark on day one, so you can show leadership a clear before and after."
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Phase 1: Signal Audit (Project Canary)",
+      "intro": "About one month. Project Canary works entirely from data you already have — no new tools and no new behavior from your team. This is the “crawl” step.",
+      "bullets": [
+        "Process your John Bean data directly from HubSpot — and call transcripts, if available — capped at 5,000 records (notes or calls)",
+        "Run our standard signal audit to find the key risks and opportunities sitting in that data: recurring themes, objections, competitor mentions, and regional patterns",
+        "Deliver this first read as a findings report — the out-of-the-box view of what your data is telling you",
+        "Run a second iteration with your team through a marketing lens, translating the findings into your key marketing priorities based on what’s happening in your market",
+        "Split your key accounts (Gerber, Caliber, Walmart, Sam’s Club) from the shop base so each is read on its own terms",
+        "Include an account-enhancement sample on ~100 shops as a demonstration: validate category and location from public sources where notes are thin (~80% match)",
+        "Position the findings as a marketing plan you can act on, with general recommendations on ongoing processes — what to capture next to keep the signal useful"
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Phase 2: AI Enablement (Private to Your Team)",
+      "intro": "About 60 days. We take the priorities from Phase 1 and teach your marketing team to execute on them with AI: two half-day working sessions to get set up, then about 10 hours of reinforcement training. This is the “walk, then run” step.",
+      "bullets": [
+        "Configure your Claude environment so your team can make the right connections safely and securely — the dedicated, professional AI setup you’ve been wanting — in two half-day working sessions for setup and configuration. On-site option: we can combine these into one full-day session at your location if you cover travel.",
+        "About 10 hours of reinforcement training with your marketing team — weekly working sessions to make adjustments and build these tools into your repeated workflows",
+        "Specific John Bean plays we build with you: a competitor-monitoring agent on public activity, content generation against your public asset library, campaign-angle recommendations drawn from the signal, regional targeting (where to put the muscle by market), and turning recurring field and call objections into FAQ and campaign content",
+        "Hand over the pre-packaged skills we’ve developed over time, tailored to John Bean — and teach your team to build their own, so you’re not staring at a blank canvas",
+        "Show your team how to use these tools the way we do, drawing on our expertise in this space and on doing it safely and securely. Harry, our co-founder, joins for the agent and skill build.",
+        "If you want to keep going after the engagement, we recommend continuing on a retainer based on your needs at the time — scoped in a simple addendum."
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Deliverables",
+      "bullets": [
+        "Primary deliverable — the signal audit: a findings report on the key risks and opportunities in your data, plus a marketing-lens iteration with your team",
+        "A marketing plan that positions those findings into clear priorities you can act on",
+        "Account-enhancement examples on ~100 shops as a demonstration — category + location validation, ~80% match",
+        "Your Claude environment configured for safe, secure connections, with pre-packaged John Bean skills handed over and your team trained to build their own",
+        "Two half-day setup sessions plus about 10 hours of reinforcement training, private to your team",
+        "General recommendations on ongoing processes — including a clear read on what your data does and doesn’t yet support, so you know what to capture next"
+      ]
+    },
+    {
+      "type": "examples",
+      "heading": "What This Looks Like in Practice",
+      "intro": "To make it concrete: the audit finds a specific signal, we turn it into a piece of marketing collateral, and we show your team how AI does the work to produce and keep it current. Three examples of the kind of thing this produces:",
+      "items": [
+        { "title": "Better digital positioning — an FAQ that answers what shops keep asking", "signal": "the same technical questions come up again and again in calls and notes — ADAS readiness, calibration steps, software updates.", "collateral": "an FAQ section and help content on the John Bean site that answers them and lifts how you show up in search.", "ai": "a skill that drafts and refreshes FAQ entries from new signal, in your voice." },
+        { "title": "A customer-education campaign — making the case for ADAS calibration", "signal": "shops hesitate on whether ADAS calibration is worth the space and the spend.", "collateral": "an education campaign — email, social, and a short explainer — built on Tru-Point’s OEM approvals and ROI.", "ai": "a campaign skill that turns a chosen angle into channel-ready drafts your team edits and ships." },
+        { "title": "Sales assets for your reps — a battlecard they can actually use", "signal": "Hunter comes up in the deals that stall, usually on price and service.", "collateral": "a value-comparison one-pager and battlecard reps hand to shops.", "ai": "an agent that keeps the battlecard current against competitor public activity, plus quick account briefings before visits." }
+      ],
+      "closing": "Each one starts in the audit and becomes a repeatable workflow your team owns by the end of Phase 2."
+    },
+    {
+      "type": "investment",
+      "heading": "Investment",
+      "intro": "Two tiered blocks, $11,000 total. Phase 1 (Signal Audit) is $5,000. Phase 2 (AI Enablement) is $6,000 for setup and training across the 60 days. Approve the audit, see the gold, move into enablement. Optional: on-site setup for the cost of travel, and ongoing training beyond the engagement on a retainer — scoped in a simple addendum to fit your needs at the time.",
+      "tables": [
+        { "title": "Phase 1: Signal Audit", "columns": ["Component", "What We Deliver", "Fee"], "rows": [["Signal Audit", "HubSpot and transcripts up to 5,000 records; signal audit of key risks and opportunities; marketing-lens iteration with your team; account-enhancement demonstration; findings report and marketing plan", "$5,000"]], "totalRow": ["Phase 1 Total", "About one month", "$5,000"] },
+        { "title": "Phase 2: AI Enablement", "columns": ["Component", "Details", "Fee"], "rows": [["AI Enablement", "Setup and training over 60 days: two half-day setup-and-configuration sessions, about 10 hours of reinforcement training, a Claude environment configured for safe and secure connections, and pre-packaged John Bean skills with your team trained to build their own", "$6,000"]], "totalRow": ["Phase 2 Total", "About 60 days", "$6,000"] }
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Where This Goes",
+      "body": [
+        "The goal is a system you own, not a project that ends. If the signal keeps surfacing gold worth acting on, we can keep a refreshed feed flowing as an optional add-on so your team iterates on live data — something we’d scope separately once you’ve seen the first results. When it makes sense to bring this capability to your field sales team, we can take that up separately too. We are interested in the long relationship here, not a one-off."
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Our Guarantee",
+      "body": [
+        "We work in bite-sized pieces because we want this to be a good fit and a long relationship. If at any point the engagement is not delivering value, you can opt out. This assumes timely access to your data and team participation during the work."
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Terms",
+      "bullets": [
+        "Timeline: about 90 days, roughly one month of audit and 60 days of enablement, from receipt of data",
+        "Data sources: HubSpot (via a quick, secure connection — OAuth), plus notes or call transcripts as CSV or JSON export, up to 5,000 records",
+        "Data ownership: all data remains Snap-on Equipment property and is deleted on request",
+        "Subject to Tromml’s Standard Terms of Service and Privacy Policy"
+      ]
+    },
+    {
+      "type": "section",
+      "heading": "Next Steps",
+      "intro": "We have the sample data to begin. Once you give the go:",
+      "bullets": [
+        "You take this to your approver with the audit as the concrete first ask",
+        "We connect HubSpot and confirm whether call transcripts are included",
+        "We begin the first audit iteration within a week of approval",
+        "Harry joins for the enablement sessions once Phase 1 findings are in hand"
+      ]
+    }
+  ],
+  "signature": {
+    "heading": "Agreement",
+    "intro": "By signing below, both parties agree to the scope, deliverables, fees, and terms outlined in this proposal.",
+    "provider_name": "Lauren McCullough",
+    "provider_title": "CEO, Tromml, Inc.",
+    "client_line": "Snap-on Equipment, John Bean",
+    "client_sub": "Name and title"
+  },
+  "contact": "Questions? Contact lauren@tromml.com"
+}
