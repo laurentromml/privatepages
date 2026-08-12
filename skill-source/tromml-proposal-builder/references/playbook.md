@@ -40,16 +40,20 @@ types without a reason.
    mechanism'") — their past failure is the differentiator, not something to
    dodge.
 
-5. **The Minecart system.** The product mechanism in plain, concrete,
-   active-voice prose. The gold-standard paragraph shape (from the
-   Auto-Wares CEO-ready rewrite): "It works as a loop. Whoever is in front
-   of the customer talks for about ninety seconds, with no typing and no
-   form..." A person doing a thing, then the next thing. **Warning: this is
-   the section where consultant-slop reintroduces itself** ("unified
-   intelligence layer", "simultaneously optimizing efficiency and impact",
-   "administrative friction is eliminated"). Her final Auto-Wares draft
-   regressed exactly here. If a sentence has no human subject doing a
-   concrete action, rewrite it.
+5. **The Minecart system.** Use the canonical product description (Lauren's
+   own wording, August 2026): "Minecart reduces the friction of capturing
+   field insights: reps take a voice memo and just talk. Our
+   industry-trained AI attaches the note to the account, extracts the key
+   intel and follow-ups, and tags the brand details." Then land the two or
+   three outcomes that matter for this deal (leveled-up vendor/principal
+   reports, effortless capture, a geographic planning view of accounts —
+   distributors, jobbers, fleets). **Do not use the old "talks for about
+   ninety seconds" framing — Lauren retired it.** Keep sentences concrete
+   and active. **Warning: this is the section where consultant-slop
+   reintroduces itself** ("unified intelligence layer", "simultaneously
+   optimizing efficiency and impact", "administrative friction is
+   eliminated"). If a sentence has no human subject doing a concrete
+   action, rewrite it.
 
 6. **Pilot details.** Small, countable, low-friction: name the district /
    region / rep count / user count ("one district, 10–12 stores, about
@@ -145,13 +149,35 @@ story; vary the client material around them, not the lines themselves.
   question ("Why not just use Agentforce?") and answer on industry depth and
   action-vs-record, not on features.
 
+## Rep-agency deal kit (numbers and terms Lauren reuses)
+
+- **Pilot pricing.** Standard pilot range: $3,500 to $5,000, covering setup
+  and usage. Discounts get one plain clause ("discounted for [Client] as a
+  small repping agency"), never a paragraph of justification.
+- **Pilot scope bullets** (adapt, don't pad): batch load of their CRM data;
+  an initial account-activity analysis from that load, delivered as a
+  keepable artifact; Minecart access for notes; monthly vendor reports
+  after the first month closes, refined to their needs; pilot data
+  available back for upload into their CRM; at no additional cost,
+  consulting on the systems side and spec work on their planning process.
+- **ROI benchmarks** (only ones Lauren has stated; never invent others):
+  reps save about 2 to 4 hours a week of admin time; the vendor report
+  process saves 1 to 2 hours per vendor (multiply by their line count);
+  clients are seeing territory and line-coverage increases after their
+  first vendor reports. The closer: one territory or line expansion pays
+  for the project for the year.
+- **Affiliate / move-forward benefits**: affiliate membership on
+  continuing, retroactive credit for introductions made during the pilot,
+  commissions of 5 to 10% paid in cash or applied to the monthly bill.
+  Introductions supporting the VIPAR relationship are a priority.
+
 ## Sizing rules — match the document to the deal
 
 Her shipped pages prove weight scales with stakes, so decide size first:
 
 | Deal shape | Length & register | Proof | Objection handling |
 |---|---|---|---|
-| Small fast pilot (~$5K, warm single buyer — PowerStop) | Short memo, one scroll, one pricing card | 1–2 named quotes only | Cut the defensive section entirely; end on the guarantee |
+| Small fast pilot (warm single buyer — PowerStop, Shimp) | Short memo, one scroll, one pricing card, **600–700 words of body copy max** | 1–2 named quotes only | Cut the defensive section entirely; end on the guarantee |
 | Phased / multi-stakeholder deal ($15–25K+, committee — Worldpac, Auto-Wares) | Full spine, possibly an appendix case study | Named+dated quotes per sub-problem, measured stats | Strategic objection gets its own section with the objection as the header |
 | Cold / exec briefing (no prior relationship — WHI) | Briefing register, more visual | Quotes + stat cards + logo trust strip + About Tromml | Competitor-AI section, sharpened |
 
