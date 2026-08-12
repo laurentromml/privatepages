@@ -130,6 +130,11 @@ the link; if HTML, give the page path/URL and confirm the push.
   fabricated attributions once ("Angelica Polly" → "Angelo Capoli, Capoli
   Sales"). Verified material or a clearly-marked placeholder — nothing in
   between. Illustrative examples get the explicit fictional label.
+- **Every client-specific fact traces to this client's call.** Keep a fact
+  sheet with transcript timestamps while mining, run the cross-client
+  contamination check before delivering, and hand Lauren the trace list
+  (claim → timestamp) with the deliverable. She runs many similar deals at
+  once; the proposal must prove its facts came from the right conversation.
 - **The guarantee and the closing ask are required sections.** Her strongest
   drafts always had both; the one final that shipped without them lost its
   risk-reversal and its CTA in a merge accident, not by decision.

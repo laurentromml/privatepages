@@ -19,6 +19,22 @@ Leave conversion enabled (do not set `disableConversionToGoogleType`).
   replacing it) over scattering near-duplicate files — her Drive already has
   six Auto-Wares variants; don't add to the pile without being asked.
 
+## Tromml branding (required — a bare doc reads as unfinished)
+
+The Doc must look like it came from Tromml, not from a text editor:
+
+- **Logo at the top**, above the memo block:
+  `<img src="https://cdn.prod.website-files.com/697676589a486c82d39f0601/697676589a486c82d39f0859_Tromml%20Blue.png" width="150">`
+  (the live CDN logo; Drive fetches and embeds it during HTML conversion).
+- **Navy headings**: inline-style the title and section headings with
+  Tromml navy — `<h1 style="color:#06043a">`, `<h2 style="color:#06043a">`.
+  Copper `#b46a43` may accent the tagline or labels, sparingly.
+- **Footer line** at the bottom, slate and small:
+  `<p style="color:#565473">Tromml, Inc. &bull; 201 E Main Street, Durham, NC 27701 &bull; tromml.com</p>`
+- The API read-back is text-only, so it cannot confirm the logo or colors
+  rendered. Tell Lauren to eyeball the Doc once before sending — say so
+  explicitly when delivering.
+
 ## Formatting conventions (these read as "finished" to her)
 
 - **Memo letterhead:** `FROM:` / `TO:` / `RE:` in caps, bold labels, at the

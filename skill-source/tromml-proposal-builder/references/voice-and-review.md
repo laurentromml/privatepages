@@ -30,6 +30,13 @@ this material is the evidence backbone of the whole document:
 - **Their calendar.** A real deadline in their world (Labor Day, a leadership
   meeting, a season start) to anchor the Next Steps section.
 
+Keep this material in a **fact sheet with timestamps** as you mine: each
+quote, name, tool, number, and agreement, with where in the transcript it
+came from. This is not busywork. Lauren works many similar deals at once,
+and the fastest way to lose her trust is a detail from one client's call
+appearing in another client's proposal. The fact sheet is what lets you,
+and her, prove that didn't happen.
+
 ## Quote handling rules
 
 - Never invent a name, quote, or figure. Lauren hand-fixed fabricated
@@ -76,6 +83,22 @@ the right first question...") is wrong on an asset that will be reused with
 people who weren't on that call. Ask what the document's real audience and
 lifespan are before keeping call-specific framing.
 
+**Proposal-specific AI tells** (these survived lauren-voice + stop-slop in
+real drafts and got flagged, so hunt them explicitly):
+
+- Quotable epigrams and snapped antitheses: "tested, not guessed",
+  "context instead of memory". Say the plain version.
+- Staccato mic-drops: "Notes. That's the whole job." / "Ever." A short
+  sentence is fine; a short sentence posing for applause is the tell.
+- Framing devices that admire the customer's quote before giving it
+  ("you said something that should be printed on a poster"). Just give
+  the quote.
+- Performative candor: "we'll be straight with you about timing." Being
+  straight is showing the honest date, not announcing straightness.
+- The best de-slop trick in this corpus: when describing how the product
+  works, reuse Lauren's own demo narration from the transcript. She
+  already said it in her voice on the call; her phrasing beats fresh copy.
+
 ## The win-rate review (run before delivering, every time)
 
 This checklist is what protects the 75% pilot win rate. Render/preview the
@@ -107,6 +130,14 @@ actual deliverable and check it, don't check the draft in your head.
    its named reason; strikethrough anchor present.
 10. Every pain claim carried by a real, attributed quote or clearly-labeled
     fictional example — nothing invented.
+10b. **Cross-client contamination check.** List every company, product,
+    tool, person, and number named in the draft. Each one must trace to
+    (a) this client's transcript (cite the timestamp from your fact sheet),
+    (b) canonical Tromml messaging, or (c) an other-client proof point that
+    the text explicitly labels as another client's. Anything that fails all
+    three gets cut. When delivering, give Lauren the receipts: a short
+    trace list in chat (claim → timestamp) so she can spot-check without
+    rereading the transcript.
 11. Headcount-equivalent translation present in the ROI section if this is
     an executive audience.
 
