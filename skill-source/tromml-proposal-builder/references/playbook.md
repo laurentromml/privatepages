@@ -151,25 +151,48 @@ story; vary the client material around them, not the lines themselves.
 
 ## Rep-agency deal kit (numbers and terms Lauren reuses)
 
-- **Pilot pricing.** Standard pilot range: $3,500 to $5,000, covering setup
-  and usage. Discounts get one plain clause ("discounted for [Client] as a
-  small repping agency"), never a paragraph of justification.
-- **Pilot scope bullets** (adapt, don't pad): batch load of their CRM data;
-  an initial account-activity analysis from that load, delivered as a
-  keepable artifact; Minecart access for notes; monthly vendor reports
-  after the first month closes, refined to their needs; pilot data
-  available back for upload into their CRM; at no additional cost,
-  consulting on the systems side and spec work on their planning process.
-- **ROI benchmarks** (only ones Lauren has stated; never invent others):
-  reps save about 2 to 4 hours a week of admin time; the vendor report
-  process saves 1 to 2 hours per vendor (multiply by their line count);
-  clients are seeing territory and line-coverage increases after their
-  first vendor reports. The closer: one territory or line expansion pays
-  for the project for the year.
-- **Affiliate / move-forward benefits**: affiliate membership on
-  continuing, retroactive credit for introductions made during the pilot,
-  commissions of 5 to 10% paid in cash or applied to the monthly bill.
-  Introductions supporting the VIPAR relationship are a priority.
+- **Solution positioning line** (open the solution section with it):
+  "Tromml's Minecart is a field intelligence solution built for the
+  aftermarket. Everything comes back to three things: save your reps time,
+  give managers visibility, and build long-term intelligence the client
+  keeps." Then three pillars for agencies: voice-first capture (a memo
+  instead of logging into a system), rich context in one note (multiple
+  brands per note; "one shop conversation covers five lines, and without a
+  system only the loudest line gets credit"), and an industry-trained AI
+  that organizes it (updates the account, extracts follow-ups and
+  opportunities, files intel by brand).
+- **The month arc.** Structure how-it-works as Plan (geographic view of
+  distributors/jobbers/fleets, route support) → Capture (voice memo per
+  stop) → Track (running progress toward each vendor: line coverage,
+  repeating issues, behind-pace flags) → Report (Report Studio drafts each
+  vendor's monthly report; the client edits in minutes and sends). Name
+  Report Studio as the product.
+- **Pilot pricing and the no-brainer.** Standard pilot range: $3,500 to
+  $5,000, covering setup and usage. Discounts get one plain clause
+  ("discounted for [Client] as a small repping agency"), never a paragraph
+  of justification. The no-brainer lever: the pilot loads up to two years
+  of CRM history and delivers a full account-activity analysis the client
+  keeps — value before the first note is taken.
+- **Pilot scope bullets** (adapt, don't pad): up to two years of CRM data
+  batch-loaded; the account-activity analysis as a keepable deliverable;
+  Minecart access with follow-ups/opportunities on one screen; Report
+  Studio live after month one, refined to their needs; pilot data back for
+  upload into their CRM; at no additional cost, consulting on the systems
+  side and spec work on their planning process.
+- **ROI framing** (only claims Lauren has stated; never invent others):
+  lead with "one caught issue or opportunity at a single shop, distributor,
+  or fleet account can cover the pilot" and "a line or territory expansion
+  pays for the project for the year"; "most of our repping agencies see
+  ROI inside the first 60 days." Supporting numbers: reps save 2 to 4
+  hours a week of admin; the vendor report process saves 1 to 2 hours per
+  vendor (multiply by line count).
+- **Affiliate (frame as a bonus section)**: agency customers have the
+  right to enter an affiliate relationship — compensation for
+  introductions and supported deals with distributors and suppliers at 5
+  to 10% commission; credits can significantly reduce or eliminate
+  software costs, with the remainder paid in cash. Introductions
+  supporting the VIPAR relationship are a priority; credit intros made
+  during the pilot period.
 
 ## Sizing rules — match the document to the deal
 
