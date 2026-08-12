@@ -33,6 +33,10 @@ available; don't delegate the prose to a lightweight model tier.
 
 ## What's in this skill
 
+- `references/transcript-sources.md` — where call transcripts live and how
+  to find them when Fathom doesn't show up (it often doesn't): the Fathom
+  Recordings folder in Drive, Meet auto-transcripts, txt exports. **Read
+  whenever you need to locate a transcript.**
 - `references/playbook.md` — the proposal spine, the canonical Minecart
   messaging lines, and the sizing rules (how big a proposal this deal
   deserves). **Read before planning any draft.**
@@ -52,8 +56,13 @@ available; don't delegate the prose to a lightweight model tier.
 
 ### 1. Mine the inputs
 
-Get the transcript (Fathom or Granola tools if only a link/ID exists) and any
-notes or earlier proposals. Then mine them the way
+Get the transcript. Fathom tools first when they're connected, but Fathom is
+often unavailable — the transcripts also live in Google Drive, and
+`references/transcript-sources.md` maps exactly where (the Fathom Recordings
+folder's per-company docs, Meet auto-transcripts, txt exports). Look there
+yourself before asking Lauren to paste anything, and verify you have the
+right call (date, attendees, company) before mining it. Gather any notes or
+earlier proposals too. Then mine them the way
 `references/voice-and-review.md` describes: verbatim quotes with names and
 dates, the client's own vocabulary for their rituals and problems, their past
 failed attempts, scope narrowing, who's who (especially the approver), what
