@@ -1,0 +1,1262 @@
+<title>Redline Performance Direct — Call Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --page-bg:#f4f4f1;
+    --appbar-bg:#ffffff;
+    --appbar-border:#e6e6e2;
+    --card-bg:#ffffff;
+    --card-border:#e7e7e3;
+    --text-primary:#16181c;
+    --text-secondary:#6b7280;
+    --text-tertiary:#9ca0a6;
+    --muted-box-bg:#f6f6f4;
+
+    --tag-orange-bg:#fbe3d1;
+    --tag-orange-text:#a8540c;
+    --tag-blue-bg:#dbe7fb;
+    --tag-blue-text:#2c58ad;
+    --tag-gray-bg:#edede9;
+    --tag-gray-text:#5b5e64;
+
+    --pink-bg:#fdecec;
+    --pink-border:#f5c7c4;
+    --pink-text:#8a2e2e;
+
+    --yellow-bg:#fdf6dc;
+    --yellow-border:#efdf9d;
+
+    --green-bg:#e3f4ec;
+    --green-text:#1c7a4c;
+    --green-border:#bfe4d1;
+
+    --amber-bg:#fdf2df;
+    --amber-text:#93630a;
+    --amber-border:#f0dcaa;
+
+    --red-bg:#fdecec;
+    --red-text:#ad3a3a;
+    --red-border:#f3c6c3;
+
+    --link-color:#2c58ad;
+    --action-stripe:#c2410c;
+    --action-bg:#fff8f4;
+    --action-border:#f3d9c4;
+
+    --demo-bg:#fdf6dc;
+    --demo-border:#efdf9d;
+    --demo-text:#7a5c05;
+
+    --tab-active-bg:#16181c;
+    --tab-active-text:#ffffff;
+    --tab-track-bg:#eceae5;
+    --tab-inactive-text:#54575d;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--page-bg);
+    color:var(--text-primary);
+    font-family:'Inter',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    font-size:14px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{text-wrap:balance;}
+  .tabular{font-variant-numeric:tabular-nums;}
+
+  /* ---- App chrome ---- */
+  .appbar{
+    background:var(--appbar-bg);
+    border-bottom:1px solid var(--appbar-border);
+    padding:14px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .appbar .icon-btn{
+    width:22px;height:16px;position:relative;color:var(--text-secondary);
+  }
+  .hamburger{width:20px;height:14px;display:flex;flex-direction:column;justify-content:space-between;}
+  .hamburger span{display:block;height:2px;background:var(--text-secondary);border-radius:2px;}
+  .bell{width:18px;height:18px;color:var(--text-secondary);}
+
+  .demo-banner{
+    background:var(--demo-bg);
+    border-bottom:1px solid var(--demo-border);
+    color:var(--demo-text);
+    font-size:12.5px;
+    text-align:center;
+    padding:8px 16px;
+    letter-spacing:.01em;
+  }
+  .demo-banner strong{font-weight:700;}
+
+  .wrap{max-width:860px;margin:0 auto;padding:28px 20px 80px;}
+
+  /* ---- Tabs ---- */
+  .tab-input{
+    position:absolute;opacity:0;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);
+  }
+  .tab-bar{
+    display:inline-flex;
+    background:var(--tab-track-bg);
+    border-radius:10px;
+    padding:3px;
+    gap:2px;
+    margin-bottom:22px;
+  }
+  .tab-label{
+    display:inline-block;
+    padding:7px 18px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:13px;
+    color:var(--tab-inactive-text);
+    cursor:pointer;
+    user-select:none;
+    transition:background .15s ease, color .15s ease;
+  }
+  .tab-label:focus{outline:2px solid var(--link-color);outline-offset:2px;}
+  #tab-weekly:checked ~ .tab-bar label[for="tab-weekly"],
+  #tab-daily:checked ~ .tab-bar label[for="tab-daily"]{
+    background:var(--tab-active-bg);
+    color:var(--tab-active-text);
+  }
+
+  .tab-panel{display:none;}
+  #tab-weekly:checked ~ #panel-weekly{display:block;}
+  #tab-daily:checked ~ #panel-daily{display:block;}
+
+  /* ---- Breadcrumb / tags / heading ---- */
+  .breadcrumb{
+    color:var(--text-secondary);
+    font-size:13px;
+    margin-bottom:16px;
+    display:flex;align-items:center;gap:6px;
+  }
+  .tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+  .pill{
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:999px;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .pill-orange{background:var(--tag-orange-bg);color:var(--tag-orange-text);}
+  .pill-blue{background:var(--tag-blue-bg);color:var(--tag-blue-text);}
+  .pill-gray{background:var(--tag-gray-bg);color:var(--tag-gray-text);}
+  .pill-plain{background:var(--muted-box-bg);color:var(--text-secondary);font-weight:600;text-transform:none;letter-spacing:0;font-size:12px;}
+
+  h1.title{font-size:30px;font-weight:800;margin:0 0 6px;letter-spacing:-.01em;}
+  .date-range{color:var(--text-secondary);font-size:15px;margin:0 0 4px;}
+  .generated{color:var(--text-tertiary);font-size:12.5px;margin:0 0 20px;}
+
+  /* ---- Cards ---- */
+  .card{
+    background:var(--card-bg);
+    border:1px solid var(--card-border);
+    border-radius:14px;
+    padding:22px 24px;
+    margin-bottom:18px;
+  }
+  .eyebrow{
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--text-secondary);
+    margin:0 0 14px;
+  }
+
+  /* Action items */
+  .action-card{
+    background:var(--action-bg);
+    border:1px solid var(--action-border);
+    border-left:4px solid var(--action-stripe);
+    border-radius:12px;
+    padding:20px 22px;
+    margin-bottom:18px;
+  }
+  .action-card .eyebrow{color:var(--action-stripe);}
+  .action-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .action-item{display:flex;gap:12px;align-items:flex-start;}
+  .action-num{
+    flex:0 0 auto;
+    width:22px;height:22px;border-radius:6px;
+    background:var(--action-stripe);color:#fff;
+    font-size:12px;font-weight:800;
+    display:flex;align-items:center;justify-content:center;
+    margin-top:1px;
+  }
+  .action-body strong{font-weight:700;}
+  .action-meta{margin-top:4px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+
+  /* Snapshot */
+  .snapshot-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;margin-bottom:2px;}
+  .snapshot-title{font-size:17px;font-weight:700;margin:0;}
+  .snapshot-sub{color:var(--text-secondary);font-size:13px;}
+  .snapshot-range{color:var(--text-secondary);font-size:13px;margin:2px 0 12px;}
+  .snapshot-body{color:var(--text-primary);font-size:14px;line-height:1.65;}
+
+  /* Stats grid */
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+  .stat-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;padding:18px 20px;}
+  .stat-num{font-size:28px;font-weight:800;letter-spacing:-.01em;}
+  .stat-label{color:var(--text-secondary);font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-top:2px;}
+
+  /* Table */
+  .table-scroll{overflow-x:auto;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:560px;}
+  th{
+    text-align:left;color:var(--text-secondary);
+    font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    padding:0 10px 10px 0;border-bottom:1px solid var(--card-border);
+  }
+  td{padding:12px 10px 12px 0;border-bottom:1px solid var(--card-border);vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  td.rep-name{font-weight:700;}
+  td.rep-role{color:var(--text-secondary);font-weight:400;}
+  .table-note{color:var(--text-tertiary);font-size:12px;margin-top:12px;}
+
+  /* Escalation / negative cards */
+  .escalation-card{
+    background:var(--pink-bg);border:1px solid var(--pink-border);border-radius:12px;
+    padding:18px 20px;margin-bottom:14px;
+  }
+  .escalation-card h3, .negative-card h3, .opp-card h3, .coach-card h3{
+    font-size:15.5px;margin:0 0 8px;font-weight:700;
+  }
+  .escalation-card p, .opp-card p{margin:0 0 10px;line-height:1.6;}
+  .escalation-card p:last-of-type, .opp-card p:last-of-type{margin-bottom:12px;}
+
+  .negative-card{
+    background:var(--yellow-bg);border:1px solid var(--yellow-border);border-radius:12px;
+    padding:16px 20px;margin-bottom:12px;
+  }
+  .negative-card h3{font-size:14.5px;display:flex;align-items:baseline;gap:6px;}
+  .negative-card h3 .topic{font-weight:400;color:var(--text-secondary);font-size:13px;}
+  .negative-card p{margin:6px 0 10px;line-height:1.55;}
+
+  .opp-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:18px 20px;margin-bottom:14px;}
+
+  .link-row{display:flex;gap:16px;font-size:13px;margin-top:2px;}
+  .link-row a{color:var(--link-color);text-decoration:underline;font-weight:600;}
+  .call-id{color:var(--text-secondary);font-size:12.5px;}
+
+  /* Coaching cards */
+  .coach-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:20px 22px;margin-bottom:14px;}
+  .coach-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:2px;}
+  .coach-name{font-size:16px;font-weight:700;}
+  .coach-role{color:var(--text-secondary);font-size:13px;margin-bottom:14px;}
+  .coach-badges{display:flex;gap:8px;flex-shrink:0;}
+  .badge{background:var(--muted-box-bg);border-radius:999px;padding:4px 11px;font-size:12px;font-weight:700;color:var(--text-primary);white-space:nowrap;}
+  .coach-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+  .coach-box{background:var(--muted-box-bg);border-radius:10px;padding:12px 14px;}
+  .coach-box .k{color:var(--text-secondary);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-bottom:4px;}
+  .coach-box .v{font-size:13.5px;font-weight:600;}
+  .coach-section-label{font-size:11.5px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.03em;margin:0 0 4px;}
+  .coach-section-text{font-size:13.5px;margin:0 0 12px;line-height:1.5;}
+  .topic-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+  .topic-tag{background:var(--muted-box-bg);border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:600;color:var(--text-primary);}
+
+  /* Themes */
+  .theme-item{background:var(--muted-box-bg);border-radius:10px;padding:13px 16px;font-size:13.5px;line-height:1.55;margin-bottom:10px;}
+  .theme-item:last-child{margin-bottom:0;}
+
+  /* Sentiment boxes */
+  .sentiment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .sent-box{border-radius:12px;padding:16px 18px;border:1px solid;}
+  .sent-box.pos{background:var(--green-bg);border-color:var(--green-border);}
+  .sent-box.neu{background:var(--amber-bg);border-color:var(--amber-border);}
+  .sent-box.neg{background:var(--red-bg);border-color:var(--red-border);}
+  .sent-num{font-size:26px;font-weight:800;}
+  .sent-box.pos .sent-num{color:var(--green-text);}
+  .sent-box.neu .sent-num{color:var(--amber-text);}
+  .sent-box.neg .sent-num{color:var(--red-text);}
+  .sent-label{font-weight:700;font-size:13px;margin-top:2px;}
+  .sent-pct{color:var(--text-secondary);font-size:12.5px;}
+
+  /* Topic drill-down */
+  .topic-block{margin-bottom:20px;}
+  .topic-block:last-child{margin-bottom:0;}
+  .topic-block-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+  .topic-block-head h4{font-size:14.5px;font-weight:700;margin:0;}
+  .drill-item{border:1px solid var(--card-border);border-radius:10px;padding:12px 14px;margin-bottom:8px;font-size:13.5px;line-height:1.5;}
+  .drill-item .who{font-weight:700;}
+  .drill-item .sep{color:var(--text-tertiary);margin:0 4px;}
+  .drill-links{margin-top:6px;display:flex;gap:14px;font-size:12.5px;}
+  .drill-links a{color:var(--link-color);text-decoration:underline;font-weight:600;}
+  .more-note{color:var(--text-tertiary);font-size:12.5px;padding:6px 2px 0;font-style:italic;}
+
+  .lines-note{
+    background:var(--muted-box-bg);border-radius:10px;padding:12px 14px;font-size:13px;
+    color:var(--text-primary);margin-top:14px;line-height:1.55;
+  }
+  .lines-note b{font-weight:700;}
+
+  .footer-imperson{
+    color:var(--text-tertiary);font-size:12px;margin-top:26px;padding-top:16px;border-top:1px solid var(--card-border);
+  }
+  .footer-imperson .links{margin-top:4px;}
+  .footer-imperson a{color:var(--link-color);text-decoration:underline;margin-right:14px;font-weight:600;}
+  .footer-credit{color:var(--text-tertiary);font-size:11.5px;margin-top:10px;}
+
+  @media (max-width:520px){
+    .stat-grid{grid-template-columns:1fr;}
+    .coach-grid{grid-template-columns:1fr;}
+    .sentiment-grid{grid-template-columns:1fr;}
+  }
+</style>
+
+<div class="appbar">
+  <div class="hamburger"><span></span><span></span><span></span></div>
+  <svg class="bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+</div>
+<div class="demo-banner"><strong>Sample data.</strong> Company, people, and call content below are fictionalized for demonstration — figures and layout mirror a real Headframe report.</div>
+
+<div class="wrap">
+
+  <input type="radio" name="tabs" id="tab-weekly" class="tab-input" checked>
+  <input type="radio" name="tabs" id="tab-daily" class="tab-input">
+
+  <div class="tab-bar">
+    <label class="tab-label" for="tab-weekly">Weekly report</label>
+    <label class="tab-label" for="tab-daily">Daily report</label>
+  </div>
+
+  <!-- ======================= WEEKLY PANEL ======================= -->
+  <div class="tab-panel" id="panel-weekly">
+
+    <div class="breadcrumb">&lsaquo; Back to Reports</div>
+    <div class="tag-row">
+      <span class="pill pill-orange">Call Analysis (Weekly)</span>
+      <span class="pill pill-blue">Scheduled</span>
+      <span class="pill pill-gray">Schema 2.0</span>
+    </div>
+    <h1 class="title">Call Analysis (Weekly)</h1>
+    <p class="date-range">August 10 &ndash; August 16, 2026</p>
+    <p class="generated">Generated Aug 17, 2026 7:04 AM</p>
+
+    <div class="action-card">
+      <p class="eyebrow">Top action items</p>
+      <ul class="action-list">
+        <li class="action-item">
+          <div class="action-num">1</div>
+          <div class="action-body">
+            <strong>Escalate Owen Feld's repeat clutch/driveline issue</strong> &mdash; this is his second visit for the same fault since the Ignite clutch install; drivetrain vibration is now layered on top. Needs a warranty/service-recovery decision before he drops the car off, not after.
+            <div class="action-meta">
+              <span class="badge">Derek Holt</span>
+              <span class="call-id">Call 220145591389</span>
+            </div>
+          </div>
+        </li>
+        <li class="action-item">
+          <div class="action-num">2</div>
+          <div class="action-body">
+            <strong>Get Apex Motorsports a replacement splitter bracket today</strong> &mdash; a dealer account is already improvising a fix on a customer's car; every day this sits open is a day a dealer explains our shipping miss to their own customer.
+            <div class="action-meta">
+              <span class="badge">Tyler Voss</span>
+              <span class="call-id">Call 220990987401</span>
+            </div>
+          </div>
+        </li>
+        <li class="action-item">
+          <div class="action-num">3</div>
+          <div class="action-body">
+            <strong>Close the loop with Chris Whitfield on order #48217</strong> &mdash; he's told us directly he'll cancel if the missing bracket isn't expedited. Nina promised a callback; make sure it happened.
+            <div class="action-meta">
+              <span class="badge">Nina Kowalski</span>
+              <span class="call-id">Call 220905274276</span>
+            </div>
+          </div>
+        </li>
+        <li class="action-item">
+          <div class="action-num">4</div>
+          <div class="action-body">
+            <strong>Spot-check two of Tyler Voss's calls</strong> &mdash; lowest sentiment ratio on the team this week (20 / 15 / 7), and he's carrying two of the six flagged escalations. Worth 15 minutes before next week looks the same.
+            <div class="action-meta">
+              <span class="badge">Coaching</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="snapshot-head">
+        <p class="snapshot-title">Call Analysis Snapshot</p>
+        <span class="snapshot-sub">Call Analysis (Weekly) &middot; Redline Performance Direct</span>
+      </div>
+      <p class="snapshot-range">2026-08-10 &ndash; 2026-08-16</p>
+      <div class="tag-row">
+        <span class="pill pill-gray">Schema 2.0</span>
+        <span class="pill pill-plain">Top Topic: Customer service call routing</span>
+      </div>
+      <p class="snapshot-body">
+        Call mix in the current snapshot is 73% inbound (422 calls, 27h 26m) and 27% outbound (158 calls, 7h 24m).
+        Sentiment is mostly healthy: 310 positive, 242 neutral, 28 negative. The most common inbound work right now is
+        Technical support / install guidance. The most common outbound work right now is Order status / delivery
+        questions. Top topics in the analyzed set: Customer service call routing, Customer satisfaction survey, Parts
+        and fitment installation policy, Performance vehicle customization, Service appointment scheduling, Customer
+        service greeting. Top keywords in the analyzed set: performance, tires, customer service, service,
+        installation, warranty, sales, turbo.
+      </p>
+      <div class="lines-note"><b>Lines carried:</b> Ignite (suspension &amp; coilovers), Vantage (aero, body &amp; wheels), Meridian (tires), Volt Line (electrical), PitPower (batteries), PitView (data &amp; gauges) &mdash; six manufacturer lines sold direct and through a small regional dealer network.</div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-num tabular">580</div><div class="stat-label">Analyzed Calls</div></div>
+      <div class="stat-card"><div class="stat-num tabular">14</div><div class="stat-label">Active Reps</div></div>
+      <div class="stat-card"><div class="stat-num tabular">34h 50m</div><div class="stat-label">Total Duration</div></div>
+      <div class="stat-card"><div class="stat-num tabular">19</div><div class="stat-label">Escalations</div></div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Rep Summary</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Rep</th><th>Calls</th><th>Inbound</th><th>Outbound</th><th>Total Time</th><th>Sentiment (+/0/&minus;)</th></tr></thead>
+          <tbody>
+            <tr><td class="rep-name">Marcus Reyes<div class="rep-role">Sales</div></td><td class="tabular">128</td><td class="tabular">102</td><td class="tabular">26</td><td class="tabular">9h 23m</td><td class="tabular">81/45/2</td></tr>
+            <tr><td class="rep-name">Nina Kowalski<div class="rep-role">Sales</div></td><td class="tabular">117</td><td class="tabular">103</td><td class="tabular">14</td><td class="tabular">7h 4m</td><td class="tabular">61/51/5</td></tr>
+            <tr><td class="rep-name">Priya Anand<div class="rep-role">Sales</div></td><td class="tabular">96</td><td class="tabular">67</td><td class="tabular">29</td><td class="tabular">6h 39m</td><td class="tabular">50/41/5</td></tr>
+            <tr><td class="rep-name">Derek Holt<div class="rep-role">Sales</div></td><td class="tabular">44</td><td class="tabular">37</td><td class="tabular">7</td><td class="tabular">2h 20m</td><td class="tabular">24/19/1</td></tr>
+            <tr><td class="rep-name">Tyler Voss<div class="rep-role">Specialty Sales</div></td><td class="tabular">42</td><td class="tabular">18</td><td class="tabular">24</td><td class="tabular">2h 6m</td><td class="tabular">20/15/7</td></tr>
+            <tr><td class="rep-name">Casey Lindgren<div class="rep-role">Sales</div></td><td class="tabular">42</td><td class="tabular">36</td><td class="tabular">6</td><td class="tabular">2h 25m</td><td class="tabular">13/25/4</td></tr>
+            <tr><td class="rep-name">Vince Dalton<div class="rep-role">Sales</div></td><td class="tabular">39</td><td class="tabular">39</td><td class="tabular">0</td><td class="tabular">1h 40m</td><td class="tabular">15/24/0</td></tr>
+            <tr><td class="rep-name">Ray Kessler<div class="rep-role">Service</div></td><td class="tabular">31</td><td class="tabular">0</td><td class="tabular">31</td><td class="tabular">58m</td><td class="tabular">20/10/1</td></tr>
+            <tr><td class="rep-name">Sales Queue<div class="rep-role">Sales</div></td><td class="tabular">17</td><td class="tabular">11</td><td class="tabular">6</td><td class="tabular">1h 5m</td><td class="tabular">9/6/2</td></tr>
+            <tr><td class="rep-name">Miguel Ortega<div class="rep-role">Specialty Sales</div></td><td class="tabular">14</td><td class="tabular">4</td><td class="tabular">10</td><td class="tabular">48m</td><td class="tabular">11/3/0</td></tr>
+            <tr><td class="rep-name">Aaron Fitch<div class="rep-role">Specialty Sales</div></td><td class="tabular">6</td><td class="tabular">2</td><td class="tabular">4</td><td class="tabular">9m</td><td class="tabular">3/2/1</td></tr>
+            <tr><td class="rep-name">Sales Queue 2<div class="rep-role">Sales</div></td><td class="tabular">2</td><td class="tabular">2</td><td class="tabular">0</td><td class="tabular">8m</td><td class="tabular">1/1/0</td></tr>
+            <tr><td class="rep-name">Sales Queue 3<div class="rep-role">Sales</div></td><td class="tabular">1</td><td class="tabular">1</td><td class="tabular">0</td><td class="tabular">3m</td><td class="tabular">1/0/0</td></tr>
+            <tr><td class="rep-name">Leo Bianchi<div class="rep-role">Service</div></td><td class="tabular">1</td><td class="tabular">0</td><td class="tabular">1</td><td class="tabular">2m</td><td class="tabular">1/0/0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Note: calls and minutes are attributed to the rep on the call record. Rep-to-rep transfers are not yet split &mdash; coming soon.</p>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Escalations Requiring Attention</p>
+
+      <div class="escalation-card">
+        <h3>Derek Holt</h3>
+        <p>Customer reports recurring clutch failure after recent service, multiple previous issues with same component, and now additional drivetrain vibration concerns. Pattern of unresolved mechanical problems requires management review and potential warranty/service recovery discussion.</p>
+        <p>Owen Feld called Redline Performance Direct regarding ongoing clutch issues with his recently built Mustang GT. After returning from a track weekend, the clutch is engaging abruptly and grabbing as the pedal is released &mdash; similar to or worse than the original problem. The service team suspects a hydraulic issue, possibly the slave cylinder, since mechanical components shouldn't change while the car sits. Owen also mentioned a driveline vibration around 50&ndash;60 mph that Ray noted may require a shim adjustment. Owen wants to drop off the vehicle for inspection and repair.</p>
+        <span class="pill pill-gray">High</span> <span class="call-id">Call 220145591389</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="escalation-card">
+        <h3>Tyler Voss</h3>
+        <p>Missing critical component (splitter mounting bracket) from product shipment; customer has already implemented a workaround (taking from an unopened box) and needs a replacement urgently to complete installation.</p>
+        <p>Danny Ruiz from Apex Motorsports called to report that a widebody fender flare kit for a Mustang GT arrived missing the splitter mounting bracket and hardware. They discovered this by comparing it to another delivered kit that had the bracket. They temporarily plan to use the bracket from an unopened box and need to know the process for obtaining a replacement mounting bracket for a 2022+ Mustang GT widebody kit.</p>
+        <span class="pill pill-gray">High</span> <span class="call-id">Call 220990987401</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="escalation-card">
+        <h3>Nina Kowalski</h3>
+        <p>Customer has urgent need for part (stated "dire need") and is requesting overnight shipping. Representative is transferring to the web team to verify inventory and fulfill the expedited order request.</p>
+        <p>Jordan Pike called Redline Performance Direct inquiring about a replacement cartridge for an Ignite Stage 2 coilover (driver side). Customer found the part listed as in stock on the website. Nina verified the SKU (IGN&#8209;CO2&#8209;300&#8209;DRV) and confirmed the part should be available for drop shipment. Customer requested overnight shipping ahead of an upcoming track event. Nina transferred the call to the web team to verify inventory source and shipping options.</p>
+        <span class="pill pill-gray">High</span> <span class="call-id">Call 220904281374</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="escalation-card">
+        <h3>Nina Kowalski</h3>
+        <p>Customer is frustrated with order fulfillment issues, missing parts, and lack of transparency about drop-shipping. Customer explicitly stated willingness to cancel the order if the missing bracket cannot be expedited. Agent promised to investigate and call back, indicating an unresolved issue requiring follow-up.</p>
+        <p>Customer Chris Whitfield called regarding order #48217 to inquire about a missing mounting bracket for a big brake kit. He expressed frustration about not being told the order would be drop-shipped from the manufacturer's inventory rather than fulfilled directly &mdash; the matching rotors, ordered from the manufacturer the same day, had already arrived. Nina acknowledged the confusion around inventory transparency and special-order labeling, and offered to investigate whether the manufacturer can release the order without the missing component.</p>
+        <span class="pill pill-gray">High</span> <span class="call-id">Call 220905274276</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="escalation-card">
+        <h3>Marcus Reyes</h3>
+        <p>Customer is in distress over an urgent freight problem (event this weekend) and needs immediate assistance. Marcus has committed to making calls to resolve the situation, which requires follow-up and potential manager involvement to expedite the freight issue.</p>
+        <p>Sam Whitmore called because his track-day tire shipment, scheduled for will-call pickup, was rerouted by the freight carrier and won't arrive before his event this weekend. He needs a local pickup option near Charlotte instead of the scheduled Mooresville depot. Marcus offered to call the carrier's regional terminals to try to redirect the shipment.</p>
+        <span class="pill pill-gray">High</span> <span class="call-id">Call 220659819866</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="escalation-card">
+        <h3>Tyler Voss</h3>
+        <p>Customer is stranded on a road trip with the vehicle stuck in limp mode after a recent ECU tune. Tune failure affecting vehicle drivability requires immediate resolution.</p>
+        <p>Dylan from Apex Fab Works called Tyler regarding a 2019 WRX STI that had an Ignite Stage 2 ECU flash installed on Friday. The tune tested clean before the customer left, but the car is now stuck in limp mode on the highway en route to Charlotte &mdash; it starts and idles fine but won't hold boost. Tyler flagged this as unusual and walked through initial troubleshooting steps.</p>
+        <span class="pill pill-gray">High</span> <span class="call-id">Call 220585822024</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Sales Opportunities</p>
+
+      <div class="opp-card">
+        <h3>Marcus Reyes</h3>
+        <p>Grant Mosley called about sagging rear ride height on his 2021 Mustang GT running a track-day aero package. He currently has a 1-inch lowering spring set with stock shocks. Marcus recommended swapping to Ignite Stage 2 heavy-duty coilovers to handle the added aero load without changing stance. Estimated cost is approximately $1,600 after a 5% track-club discount. Grant tentatively booked an 8:30 AM appointment for September 1st or 2nd, with confirmation expected by Friday.</p>
+        <p>Next step: Grant to confirm appointment date (September 1st or 2nd) by Friday</p>
+        <span class="call-id">Call 220632955251</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="opp-card">
+        <h3>Marcus Reyes</h3>
+        <p>This is an automated phone system greeting for Redline Performance Direct, a multi-line performance parts and race-support company. The call contains no actual business conversation, only a recorded menu and promotional messaging about products and services, including turbo kits, coilovers, brake systems, and the Ignite, Vantage, and Meridian lines. The greeting emphasizes experienced staff and race-day support and directs callers to redlineperformance.com.</p>
+        <p>Next step: No action items &mdash; this is an automated greeting with no actual customer interaction</p>
+        <span class="call-id">Call 220955287878</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="opp-card">
+        <h3>Casey Lindgren</h3>
+        <p>Andrew Pruitt from TrackForged Wheels assisted AJ Sanders in setting up a dealer account for Vantage widebody kits. TrackForged is a major distributor in California looking to sell Redline product. Casey provided portal access and explained the dealer program: pricing (18.78% margin on credit card, 20% on wire transfer), shipping options ($250 flat rate, or free on orders of 4+), and fulfillment through the 3PL warehouse in Charlotte. Casey also mentioned the dealer display program with additional discounts on showroom items.</p>
+        <p>Next step: AJ Sanders to receive portal login credentials and set up account at b2b.redlineperformance.com</p>
+        <span class="call-id">Call 220810631304</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="opp-card">
+        <h3>Priya Anand</h3>
+        <p>Andrew Pierce called to discuss roll-cage options for his track-prepped Civic Type R. He was concerned a standard bolt-in cage wouldn't clear the stock dash and door bars without trimming. Priya walked through alternatives &mdash; a weld-in 6-point cage and a NASCAR-style door bar kit &mdash; and flagged the project as a $7,000+ job including 2 days of shop time. She recommended Andrew visit in person to test fitment and cautioned against low-quality import cage kits.</p>
+        <p>Next step: Priya to send Andrew links to the weld-in 6-point and NASCAR-style bar options</p>
+        <span class="call-id">Call 220574090574</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="opp-card">
+        <h3>Priya Anand</h3>
+        <p>Alex Donnelly called to schedule tire replacement and alignment on his 2019 Corvette Z06 &mdash; two front Meridian ST3 275/35R19 tires mounted and balanced with balance beads, plus an alignment check. The car runs an Ignite coilover kit with Vantage dampers. Total cost is $1,926.55 with a $750 deposit charged to his card. Priya is checking availability and will confirm a Thursday appointment around 3:00 PM, pending Ray's confirmation on parts arrival.</p>
+        <p>Next step: Confirm Thursday 3:00 PM appointment with Ray and call Alex back</p>
+        <span class="call-id">Call 220909784104</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="opp-card">
+        <h3>Marcus Reyes</h3>
+        <p>David Kerr called Redline Performance Direct in Mooresville, North Carolina about a roof-mount aero package for his track support van &mdash; specifically a compact wing/spoiler kit. Marcus provided detailed specs on sizing options. David discovered he'd previously bought a splitter kit from Redline in July 2024, and mentioned needing help wiring auxiliary lighting on his tow rig. He may visit the shop with his daughter for a build-project consult.</p>
+        <p>Next step: Measure roof and rack capacity to determine aero kit compatibility</p>
+        <span class="call-id">Call 220567761505</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Rep Coaching Cards</p>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Marcus Reyes</div><div class="coach-role">Sales</div></div><div class="coach-badges"><span class="badge">128 calls</span><span class="badge">9h 23m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">44 sales, 55 support, 15 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">81 / 45 / 2</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Watch for the handful of tougher calls and make sure concerns are acknowledged early.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Handles front-door traffic steadily without a sentiment problem spike.</p>
+        <div class="topic-tags"><span class="topic-tag">Parts and fitment installation policy</span><span class="topic-tag">Customer satisfaction survey</span><span class="topic-tag">Service appointment scheduling</span><span class="topic-tag">Liability and warranty concerns</span><span class="topic-tag">Customer service call routing</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Nina Kowalski</div><div class="coach-role">Sales</div></div><div class="coach-badges"><span class="badge">117 calls</span><span class="badge">7h 4m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">36 sales, 53 support, 17 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">61 / 51 / 5</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Watch for the handful of tougher calls and make sure concerns are acknowledged early.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Handles front-door traffic steadily without a sentiment problem spike.</p>
+        <div class="topic-tags"><span class="topic-tag">Customer service call routing</span><span class="topic-tag">Appointment scheduling</span><span class="topic-tag">Customer service inquiry</span><span class="topic-tag">Order status inquiry</span><span class="topic-tag">Customer satisfaction survey</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Priya Anand</div><div class="coach-role">Sales</div></div><div class="coach-badges"><span class="badge">96 calls</span><span class="badge">6h 39m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">23 sales, 32 support, 28 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">50 / 41 / 5</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Watch for the handful of tougher calls and make sure concerns are acknowledged early.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Handles front-door traffic steadily without a sentiment problem spike.</p>
+        <div class="topic-tags"><span class="topic-tag">Customer service call routing</span><span class="topic-tag">Call recording and quality assurance notice</span><span class="topic-tag">Appointment scheduling</span><span class="topic-tag">Customer service greeting</span><span class="topic-tag">Dyno tuning and ECU calibration</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Derek Holt</div><div class="coach-role">Sales</div></div><div class="coach-badges"><span class="badge">44 calls</span><span class="badge">2h 20m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">14 sales, 18 support, 7 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">24 / 19 / 1</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Watch for the handful of tougher calls and make sure concerns are acknowledged early.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Handles front-door traffic steadily without a sentiment problem spike.</p>
+        <div class="topic-tags"><span class="topic-tag">Customer service call routing</span><span class="topic-tag">Customer satisfaction survey</span><span class="topic-tag">Track day support services</span><span class="topic-tag">Parts and fitment installation policy</span><span class="topic-tag">Liability and warranty concerns</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Tyler Voss</div><div class="coach-role">Specialty Sales</div></div><div class="coach-badges"><span class="badge">42 calls</span><span class="badge">2h 6m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">6 sales, 14 support, 8 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">20 / 15 / 7</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Watch for the handful of tougher calls and make sure concerns are acknowledged early.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Maintains good tone while moving operational calls along.</p>
+        <div class="topic-tags"><span class="topic-tag">Callback request</span><span class="topic-tag">Return label creation</span><span class="topic-tag">Customer order inquiry</span><span class="topic-tag">Wheel and tire fitment request</span><span class="topic-tag">Expedited shipping/delivery timeline</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Casey Lindgren</div><div class="coach-role">Sales</div></div><div class="coach-badges"><span class="badge">42 calls</span><span class="badge">2h 25m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">10 sales, 19 support, 9 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">13 / 25 / 4</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Watch for the handful of tougher calls and make sure concerns are acknowledged early.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Handles front-door traffic steadily without a sentiment problem spike.</p>
+        <div class="topic-tags"><span class="topic-tag">Order status inquiry</span><span class="topic-tag">Dyno tuning and ECU calibration</span><span class="topic-tag">Performance vehicle customization</span><span class="topic-tag">Customer satisfaction survey</span><span class="topic-tag">Parts and fitment installation policy</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Vince Dalton</div><div class="coach-role">Sales</div></div><div class="coach-badges"><span class="badge">39 calls</span><span class="badge">1h 40m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">11 sales, 19 support, 5 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">15 / 24 / 0</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Protect time from getting consumed by service and routing traffic. Route low-value questions away when possible.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Handles front-door traffic steadily without a sentiment problem spike.</p>
+        <div class="topic-tags"><span class="topic-tag">Customer service call routing</span><span class="topic-tag">Performance vehicle customization</span><span class="topic-tag">Customer service support</span><span class="topic-tag">Parts and fitment installation policy</span><span class="topic-tag">Customer satisfaction survey</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Ray Kessler</div><div class="coach-role">Service</div></div><div class="coach-badges"><span class="badge">31 calls</span><span class="badge">58m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">0 sales, 15 support, 13 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">20 / 10 / 1</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Watch for the handful of tougher calls and make sure concerns are acknowledged early.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Maintains good tone while moving operational calls along.</p>
+        <div class="topic-tags"><span class="topic-tag">Pickup scheduling</span><span class="topic-tag">Service appointment scheduling</span><span class="topic-tag">Pickup arrangement</span><span class="topic-tag">Customer pickup arrangement</span><span class="topic-tag">voicemail greeting</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Sales Queue</div><div class="coach-role">Sales</div></div><div class="coach-badges"><span class="badge">17 calls</span><span class="badge">1h 5m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">8 sales, 6 support, 3 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">9 / 6 / 2</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Watch for the handful of tougher calls and make sure concerns are acknowledged early.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Strong commercial mix. This rep is spending meaningful time on buying-intent conversations.</p>
+        <div class="topic-tags"><span class="topic-tag">Customer service call routing</span><span class="topic-tag">Dyno tuning and ECU calibration</span><span class="topic-tag">Social media presence</span><span class="topic-tag">Company policies (parts installation, liability)</span><span class="topic-tag">Product inquiry &mdash; turbo heat shield kit</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Miguel Ortega</div><div class="coach-role">Specialty Sales</div></div><div class="coach-badges"><span class="badge">14 calls</span><span class="badge">48m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">3 sales, 4 support, 5 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">11 / 3 / 0</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Tighten follow-up calls so every update closes with owner, timing, and confirmation of the next step.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Good follow-through discipline. The call mix shows active loop-closing rather than passive waiting.</p>
+        <div class="topic-tags"><span class="topic-tag">Contact information exchange</span><span class="topic-tag">Customer service</span><span class="topic-tag">Custom pallet specifications</span><span class="topic-tag">Customer service transfer</span><span class="topic-tag">CounterPoint system issue</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Aaron Fitch</div><div class="coach-role">Specialty Sales</div></div><div class="coach-badges"><span class="badge">6 calls</span><span class="badge">9m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">0 sales, 2 support, 3 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">3 / 2 / 1</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Watch for the handful of tougher calls and make sure concerns are acknowledged early.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Good follow-through discipline. The call mix shows active loop-closing rather than passive waiting.</p>
+        <div class="topic-tags"><span class="topic-tag">Callback request</span><span class="topic-tag">Product replacement notification</span><span class="topic-tag">Exhaust delivery/shipping inquiry</span><span class="topic-tag">Customer callback request</span><span class="topic-tag">Delayed product delivery &mdash; intercooler, downpipe, wastegate</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Sales Queue 2</div><div class="coach-role">Sales</div></div><div class="coach-badges"><span class="badge">2 calls</span><span class="badge">8m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">1 sales, 1 support, 0 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">1 / 1 / 0</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Push more of the product-interest calls to a clear quote, callback time, or next step before the call ends.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Strong commercial mix. This rep is spending meaningful time on buying-intent conversations.</p>
+        <div class="topic-tags"><span class="topic-tag">Coilover kit fitment availability</span><span class="topic-tag">Mustang GT vehicle compatibility</span><span class="topic-tag">Turbo kit removal and installation service</span><span class="topic-tag">Labor pricing for installation</span><span class="topic-tag">Customer product dissatisfaction with tuner</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Sales Queue 3</div><div class="coach-role">Sales</div></div><div class="coach-badges"><span class="badge">1 call</span><span class="badge">3m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">1 sales, 0 support, 0 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">1 / 0 / 0</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Push more of the product-interest calls to a clear quote, callback time, or next step before the call ends.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Strong commercial mix. This rep is spending meaningful time on buying-intent conversations.</p>
+        <div class="topic-tags"><span class="topic-tag">Company introduction and values</span><span class="topic-tag">YouTube channel subscription</span><span class="topic-tag">Website and resources</span><span class="topic-tag">Newsletter signup</span><span class="topic-tag">Payment processing</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Leo Bianchi</div><div class="coach-role">Service</div></div><div class="coach-badges"><span class="badge">1 call</span><span class="badge">2m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">0 sales, 0 support, 1 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">1 / 0 / 0</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Tighten follow-up calls so every update closes with owner, timing, and confirmation of the next step.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Good follow-through discipline. The call mix shows active loop-closing rather than passive waiting.</p>
+        <div class="topic-tags"><span class="topic-tag">Wheel spacers arrival notification</span><span class="topic-tag">Customer location and shipping arrangement</span><span class="topic-tag">Mailing address confirmation</span><span class="topic-tag">Delivery timeline estimate</span><span class="topic-tag">Fender rubbing issue discussion</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Coaching Themes</p>
+      <div class="theme-item">Close sales and follow-up calls with a concrete next step, named owner, and timing.</div>
+      <div class="theme-item">Route or deflect low-value order-status traffic faster so product and service reps keep time for higher-value work.</div>
+      <div class="theme-item">On service and logistics complaints, surface risk early and escalate before the customer has to repeat the problem.</div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+        <p class="eyebrow" style="margin:0;">Inbound Call Mix</p>
+        <span class="badge">422 calls</span>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Call Type</th><th>Calls</th><th>% of Calls</th><th>Total Time</th><th>% of Time</th><th>Avg Duration</th></tr></thead>
+          <tbody>
+            <tr><td>Technical support / install guidance</td><td class="tabular">188</td><td class="tabular">45%</td><td class="tabular">13h 4m</td><td class="tabular">48%</td><td class="tabular">4m</td></tr>
+            <tr><td>Order status / delivery questions</td><td class="tabular">118</td><td class="tabular">28%</td><td class="tabular">8h 0m</td><td class="tabular">29%</td><td class="tabular">4m</td></tr>
+            <tr><td>Product availability / quote / fitment</td><td class="tabular">46</td><td class="tabular">11%</td><td class="tabular">2h 49m</td><td class="tabular">10%</td><td class="tabular">4m</td></tr>
+            <tr><td>General support</td><td class="tabular">42</td><td class="tabular">10%</td><td class="tabular">2h 6m</td><td class="tabular">8%</td><td class="tabular">3m</td></tr>
+            <tr><td>Appointment / pickup coordination</td><td class="tabular">23</td><td class="tabular">5%</td><td class="tabular">1h 17m</td><td class="tabular">5%</td><td class="tabular">3m</td></tr>
+            <tr><td>General routing / admin</td><td class="tabular">5</td><td class="tabular">1%</td><td class="tabular">11m</td><td class="tabular">1%</td><td class="tabular">2m</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+        <p class="eyebrow" style="margin:0;">Outbound Call Mix</p>
+        <span class="badge">158 calls</span>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Call Type</th><th>Calls</th><th>% of Calls</th><th>Total Time</th><th>% of Time</th><th>Avg Duration</th></tr></thead>
+          <tbody>
+            <tr><td>Order status / delivery questions</td><td class="tabular">59</td><td class="tabular">37%</td><td class="tabular">3h 14m</td><td class="tabular">44%</td><td class="tabular">3m</td></tr>
+            <tr><td>Technical support / install guidance</td><td class="tabular">39</td><td class="tabular">25%</td><td class="tabular">2h 13m</td><td class="tabular">30%</td><td class="tabular">3m</td></tr>
+            <tr><td>General follow-up</td><td class="tabular">27</td><td class="tabular">17%</td><td class="tabular">55m</td><td class="tabular">12%</td><td class="tabular">2m</td></tr>
+            <tr><td>Product availability / quote / fitment</td><td class="tabular">18</td><td class="tabular">11%</td><td class="tabular">27m</td><td class="tabular">6%</td><td class="tabular">1m</td></tr>
+            <tr><td>Appointment / pickup coordination</td><td class="tabular">13</td><td class="tabular">8%</td><td class="tabular">33m</td><td class="tabular">7%</td><td class="tabular">3m</td></tr>
+            <tr><td>General routing / admin</td><td class="tabular">2</td><td class="tabular">1%</td><td class="tabular">2m</td><td class="tabular">0%</td><td class="tabular">1m</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Sentiment Summary</p>
+      <div class="sentiment-grid">
+        <div class="sent-box pos"><div class="sent-num tabular">310</div><div class="sent-label">Positive</div><div class="sent-pct">53%</div></div>
+        <div class="sent-box neu"><div class="sent-num tabular">242</div><div class="sent-label">Neutral</div><div class="sent-pct">42%</div></div>
+        <div class="sent-box neg"><div class="sent-num tabular">28</div><div class="sent-label">Negative</div><div class="sent-pct">5%</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Daily Breakdown</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Date</th><th>Calls</th><th>Total Time</th><th>Reps</th></tr></thead>
+          <tbody>
+            <tr><td class="tabular">2026-08-10</td><td class="tabular">115</td><td class="tabular">9h 15m</td><td>Marcus Reyes, Derek Holt, Nina Kowalski, Priya Anand, Tyler Voss, Sales Queue, Miguel Ortega</td></tr>
+            <tr><td class="tabular">2026-08-11</td><td class="tabular">113</td><td class="tabular">6h 30m</td><td>Marcus Reyes, Derek Holt, Nina Kowalski, Vince Dalton, Aaron Fitch, Tyler Voss, Sales Queue, Casey Lindgren, Miguel Ortega</td></tr>
+            <tr><td class="tabular">2026-08-12</td><td class="tabular">94</td><td class="tabular">5h 18m</td><td>Marcus Reyes, Derek Holt, Nina Kowalski, Vince Dalton, Priya Anand, Tyler Voss, Casey Lindgren, Ray Kessler, Miguel Ortega</td></tr>
+            <tr><td class="tabular">2026-08-13</td><td class="tabular">129</td><td class="tabular">6h 14m</td><td>Marcus Reyes, Derek Holt, Nina Kowalski, Aaron Fitch, Priya Anand, Tyler Voss, Sales Queue, Casey Lindgren, Ray Kessler, Miguel Ortega</td></tr>
+            <tr><td class="tabular">2026-08-14</td><td class="tabular">101</td><td class="tabular">6h 6m</td><td>Marcus Reyes, Derek Holt, Nina Kowalski, Priya Anand, Tyler Voss, Sales Queue, Sales Queue 2, Leo Bianchi, Casey Lindgren, Ray Kessler</td></tr>
+            <tr><td class="tabular">2026-08-15</td><td class="tabular">28</td><td class="tabular">1h 26m</td><td>Marcus Reyes, Derek Holt, Priya Anand, Sales Queue, Sales Queue 3, Ray Kessler</td></tr>
+            <tr><td class="tabular">2026-08-16</td><td class="tabular">0</td><td class="tabular">0m</td><td>Data unavailable</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="footer-imperson">
+      You are currently working on behalf of <em>Alicia Moreno &lt;alicia@redlineperformance.com&gt;</em>.
+      <div class="links"><a href="#">hide warning</a><a href="#">stop impersonating</a></div>
+      <div class="footer-credit">Sample report &middot; generated with Headframe, a Tromml product</div>
+    </div>
+
+  </div>
+  <!-- ======================= END WEEKLY PANEL ======================= -->
+
+  <!-- ======================= DAILY PANEL ======================= -->
+  <div class="tab-panel" id="panel-daily">
+
+    <div class="breadcrumb">&lsaquo; Back to Reports</div>
+    <div class="tag-row">
+      <span class="pill pill-orange">Call Analysis (Daily)</span>
+      <span class="pill pill-blue">Scheduled</span>
+      <span class="pill pill-gray">Schema 2.0</span>
+    </div>
+    <h1 class="title">Call Analysis (Daily)</h1>
+    <p class="date-range">August 19 &ndash; August 19, 2026</p>
+    <p class="generated">Generated Aug 20, 2026 6:05 AM</p>
+
+    <div class="action-card">
+      <p class="eyebrow">Top action items</p>
+      <ul class="action-list">
+        <li class="action-item">
+          <div class="action-num">1</div>
+          <div class="action-body">
+            <strong>Call Owen Feld back today</strong> &mdash; the grease-fitting spec issue on his Ignite coilover kit is the day's only flagged escalation. Marcus promised to chase the correct fitting size with Ignite; make sure that happened before Owen calls back angrier.
+            <div class="action-meta">
+              <span class="badge">Marcus Reyes</span>
+              <span class="call-id">Call 220194535429</span>
+            </div>
+          </div>
+        </li>
+        <li class="action-item">
+          <div class="action-num">2</div>
+          <div class="action-body">
+            <strong>Clean up Marcus's failed-call trio</strong> &mdash; a bad number, an unset voicemail box, and a truncated transcript all scored negative today. That's a data-hygiene problem dragging his sentiment score, not a service failure &mdash; worth separating from real complaints in next week's review.
+            <div class="action-meta">
+              <span class="badge">Marcus Reyes</span>
+            </div>
+          </div>
+        </li>
+        <li class="action-item">
+          <div class="action-num">3</div>
+          <div class="action-body">
+            <strong>Follow up on the damaged intake, Order #2827</strong> &mdash; Casey is waiting on photos from the customer to process the replacement. Don't let it go cold over the weekend.
+            <div class="action-meta">
+              <span class="badge">Casey Lindgren</span>
+              <span class="call-id">Call 220185758840</span>
+            </div>
+          </div>
+        </li>
+        <li class="action-item">
+          <div class="action-num">4</div>
+          <div class="action-body">
+            <strong>Spot-check two of Tyler's calls</strong> &mdash; only 13 calls today but the lowest positive ratio on the floor (2 / 10 / 1). Small sample, but worth a quick listen before it becomes a pattern.
+            <div class="action-meta">
+              <span class="badge">Coaching</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="snapshot-head">
+        <p class="snapshot-title">Call Analysis Snapshot</p>
+        <span class="snapshot-sub">Call Analysis (Daily) &middot; Redline Performance Direct</span>
+      </div>
+      <p class="snapshot-range">2026-08-19 &ndash; 2026-08-19</p>
+      <div class="tag-row">
+        <span class="pill pill-gray">Schema 2.0</span>
+        <span class="pill pill-plain">Top Topic: Customer service call routing</span>
+      </div>
+      <p class="snapshot-body">
+        Call mix in the current snapshot is 72% inbound (81 calls, 4h 51m) and 28% outbound (32 calls, 1h 20m).
+        Sentiment is mostly healthy: 60 positive, 46 neutral, 7 negative. The most common inbound work right now is
+        Technical support / install guidance. The most common outbound work right now is Order status / delivery
+        questions. Top topics in the analyzed set: Customer service call routing, Call recording and quality
+        assurance, Customer satisfaction survey, Parts and fitment installation policy, Liability and warranty
+        concerns, Call recording and quality assurance notice. Top keywords in the analyzed set: performance,
+        warranty, warranty concerns, sales, service, tires, installation, customer service.
+      </p>
+      <div class="lines-note"><b>Lines carried:</b> Ignite (suspension &amp; coilovers), Vantage (aero, body &amp; wheels), Meridian (tires), Volt Line (electrical), PitPower (batteries), PitView (data &amp; gauges).</div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-num tabular">113</div><div class="stat-label">Analyzed Calls</div></div>
+      <div class="stat-card"><div class="stat-num tabular">7</div><div class="stat-label">Active Reps</div></div>
+      <div class="stat-card"><div class="stat-num tabular">6h 11m</div><div class="stat-label">Total Duration</div></div>
+      <div class="stat-card"><div class="stat-num tabular">1</div><div class="stat-label">Escalations</div></div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Rep Summary</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Rep</th><th>Calls</th><th>Inbound</th><th>Outbound</th><th>Total Time</th><th>Sentiment (+/0/&minus;)</th></tr></thead>
+          <tbody>
+            <tr><td class="rep-name">Marcus Reyes<div class="rep-role">Sales</div></td><td class="tabular">51</td><td class="tabular">38</td><td class="tabular">13</td><td class="tabular">3h 31m</td><td class="tabular">31/16/4</td></tr>
+            <tr><td class="rep-name">Derek Holt<div class="rep-role">Sales</div></td><td class="tabular">32</td><td class="tabular">28</td><td class="tabular">4</td><td class="tabular">1h 48m</td><td class="tabular">16/15/1</td></tr>
+            <tr><td class="rep-name">Tyler Voss<div class="rep-role">Specialty Sales</div></td><td class="tabular">13</td><td class="tabular">7</td><td class="tabular">6</td><td class="tabular">18m</td><td class="tabular">2/10/1</td></tr>
+            <tr><td class="rep-name">Ray Kessler<div class="rep-role">Service</div></td><td class="tabular">9</td><td class="tabular">0</td><td class="tabular">9</td><td class="tabular">20m</td><td class="tabular">8/1/0</td></tr>
+            <tr><td class="rep-name">Casey Lindgren<div class="rep-role">Sales</div></td><td class="tabular">6</td><td class="tabular">6</td><td class="tabular">0</td><td class="tabular">12m</td><td class="tabular">3/2/1</td></tr>
+            <tr><td class="rep-name">Nina Kowalski<div class="rep-role">Sales</div></td><td class="tabular">1</td><td class="tabular">1</td><td class="tabular">0</td><td class="tabular">0m</td><td class="tabular">0/1/0</td></tr>
+            <tr><td class="rep-name">Sales Queue<div class="rep-role">Sales</div></td><td class="tabular">1</td><td class="tabular">1</td><td class="tabular">0</td><td class="tabular">2m</td><td class="tabular">0/1/0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Note: calls and minutes are attributed to the rep on the call record. Rep-to-rep transfers are not yet split &mdash; coming soon.</p>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Escalations Requiring Attention</p>
+      <div class="escalation-card">
+        <h3>Marcus Reyes</h3>
+        <p>Customer is frustrated with a product specification discrepancy, has spent money on the wrong parts, and is threatening to return the suspension system. Requires immediate manager follow-up and resolution.</p>
+        <p>Customer Owen Feld called Redline Performance Direct regarding incorrect grease fitting size for ball joints on a coilover kit he purchased. Marcus initially recommended 1/8 inch NPT grease fittings, but Owen confirmed this size is too large &mdash; it won't fit the recess of the cap and doesn't align with the Allen screw hole. The manufacturer's instructions don't specify the correct size. Marcus acknowledged the issue and committed to contacting the Ignite Suspension rep to determine the correct fitting size. Owen expressed frustration that inexpensive parts like this weren't included with the kit in the first place.</p>
+        <span class="pill pill-gray">High</span> <span class="call-id">Call 220194535429</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Negative-Sentiment Calls</p>
+
+      <div class="negative-card">
+        <h3>Marcus Reyes <span class="topic">&middot; Technical support / install guidance</span></h3>
+        <p>Customer Owen called Redline Performance Direct regarding incorrect grease fitting size for ball joints on a coilover kit he purchased. Marcus initially recommended 1/8 inch NPT grease fittings, but Owen confirmed this size is too large. The manufacturer's instructions do not specify the correct size. Marcus committed to contacting the Ignite Suspension rep to determine the correct fitting size.</p>
+        <span class="pill pill-gray">Score &minus;0.85</span> <span class="call-id">Call 220194535429</span>
+        <div class="link-row"><a href="#">Open transcript</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="negative-card">
+        <h3>Marcus Reyes <span class="topic">&middot; General follow-up</span></h3>
+        <p>Call attempt failed &mdash; the dialed number is not in service.</p>
+        <span class="pill pill-gray">Score &minus;0.70</span> <span class="call-id">Call 220193615115</span>
+        <div class="link-row"><a href="#">Open transcript</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="negative-card">
+        <h3>Tyler Voss <span class="topic">&middot; General follow-up</span></h3>
+        <p>Call transcript is incomplete or inaccessible. Unable to summarize due to a permission error or truncated content.</p>
+        <span class="pill pill-gray">Score &minus;0.70</span> <span class="call-id">Call 220215408193</span>
+        <div class="link-row"><a href="#">Open transcript</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="negative-card">
+        <h3>Marcus Reyes <span class="topic">&middot; Order status / delivery questions</span></h3>
+        <p>Call attempt failed &mdash; recipient's voicemail box has not been set up yet, preventing message delivery.</p>
+        <span class="pill pill-gray">Score &minus;0.70</span> <span class="call-id">Call 220207190923</span>
+        <div class="link-row"><a href="#">Open transcript</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="negative-card">
+        <h3>Derek Holt <span class="topic">&middot; Technical support / install guidance</span></h3>
+        <p>Call between Marcus and Jamie from Ignite Suspension regarding upper control arm bushings and ball joints. Discussion covered serviceability of bushings (non-greasable), greasability of ball joints (greasable with Zerk fitting installation required), and frustration with parts availability in the USA database. Jamie explained that individual bushings and ball joints aren't available for purchase in their system &mdash; the practice is to send replacement control arms instead, then discard the returned defective units rather than sell individual components.</p>
+        <span class="pill pill-gray">Score &minus;0.65</span> <span class="call-id">Call 220199084084</span>
+        <div class="link-row"><a href="#">Open transcript</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="negative-card">
+        <h3>Casey Lindgren <span class="topic">&middot; General support</span></h3>
+        <p>Customer Owen called regarding a defective cold-air intake (Order #2827) received with a broken clamp bracket. Possible shipping damage noted with a puncture wound in the box. Casey will send Owen an email to respond with pictures of the damage and box for replacement processing.</p>
+        <span class="pill pill-gray">Score &minus;0.65</span> <span class="call-id">Call 220185758840</span>
+        <div class="link-row"><a href="#">Open transcript</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="negative-card">
+        <h3>Marcus Reyes <span class="topic">&middot; Technical support / install guidance</span></h3>
+        <p>Customer Stephen called regarding a missing Zerk fitting (grease fitting) on the upper control arms of an Ignite MT64 coilover kit installed in his Tacoma. The cap can be removed with an Allen wrench, but the Zerk fitting that should be inside is missing. Stephen is frustrated because he wants to perform routine ball-joint maintenance but can't proceed without it. He has video showing the fitting should be present.</p>
+        <span class="pill pill-gray">Score &minus;0.65</span> <span class="call-id">Call 220174145863</span>
+        <div class="link-row"><a href="#">Open transcript</a><a href="#">Open Recording</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Topic Drill-Down</p>
+
+      <div class="topic-block">
+        <div class="topic-block-head"><h4>Technical support / install guidance</h4><span class="badge">56 calls</span></div>
+        <div class="drill-item"><span class="who">Derek Holt</span><span class="sep">&middot;</span>Customer called to schedule a tire repair for Friday. The customer has a nail in one of their tires and wanted a plug repair. Derek informed the customer that the &hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Customer called inquiring about aftermarket mirrors for a 2021 Jeep Wrangler Unlimited to use when doors are removed. Sales representative confirmed availability&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Derek Holt</span><span class="sep">&middot;</span>Charles Wilson called to follow up on an estimate with Casey for a 2.5-inch coilover install on his 2022 Toyota 4Runner TRD Pro. He discussed suspension co&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Tyler Voss</span><span class="sep">&middot;</span>Dan and Jordan discussed a damaged widebody kit (2016 Mustang GT) that arrived with dents on the side panels near the mounts and a cracked splitter. The shipping box appeared u&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Customer Christian Francisco called regarding tires installed on August 8th. He requested to exchange 275-section tires for 305-section tires, believing the 275s were too &hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Derek Holt</span><span class="sep">&middot;</span>Jordan called Marcus to check on the status of his build. The car is 97% complete with alignment done. Marcus's service manager Ray still needs to do a f&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Derek Holt</span><span class="sep">&middot;</span>Customer Jon Verrano called and asked to speak with Marcus. Derek answered and indicated he would locate Marcus for the caller.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Customer Chris called to inquire about a specific part &mdash; a square bracket that mounts over a spring and connects to a sway bar end link underneath. The part specifications di&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Derek Holt</span><span class="sep">&middot;</span>Incoming call from Jamie at Ignite Suspension looking to speak with Marcus. Derek answered and transferred the call to Marcus.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Customer called regarding their 2016 Silverado. They initially planned to drop off the vehicle on Monday but changed the appointment to Thursday instead. The repr&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <p class="more-note">+46 more calls in this period</p>
+      </div>
+
+      <div class="topic-block">
+        <div class="topic-block-head"><h4>Order status / delivery questions</h4><span class="badge">27 calls</span></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Nick called to confirm a service appointment for his 2012 Jeep Wrangler scheduled Thursday with technician Derek. Nick provided detailed information about vehi&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Marcus called Denny's Collision to arrange a drop-off with Chris. Marcus will deliver items to Denny's Collision, located in Concord behind the diner&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Derek Holt</span><span class="sep">&middot;</span>Derek called PitPower Batteries Charlotte to place a battery order. He ordered three items: RB35, RB24F, and RB94RH7, with PO number 217635.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Derek Holt</span><span class="sep">&middot;</span>Zach from Apex Motor Supply in California called to inquire about ordering a 24-volt Extreme Air Magnum compressor. He asked about second-day air shipping options&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Derek Holt</span><span class="sep">&middot;</span>Owen called to confirm that the Ignite Racing part Derek ordered has shipped. Owen provided the UPS tracking number and confirmed delivery is expected Friday, Augus&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Derek Holt</span><span class="sep">&middot;</span>Customer called regarding order #135434, which contains two items: a data logger shipping tomorrow and an adapter on back order until late September. Customer requested the back-o&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Marcus called Apex Motorsports regarding a customer's PitView data display, purchased in February 2025, that is experiencing erra&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Derek Holt</span><span class="sep">&middot;</span>Chris called to inquire about ordering a lightweight racing seat for shipment to Montana. Derek confirmed the item is in stock and can ship tomorrow via website or&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <p class="more-note">+19 more calls in this period</p>
+      </div>
+
+      <div class="topic-block">
+        <div class="topic-block-head"><h4>General support</h4><span class="badge">9 calls</span></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Summary unavailable.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Incomplete call attempt. Dan from Summit Trackside Vehicles tried to reach Jordan but reached an unavailable extension (760) instead.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Tyler Voss</span><span class="sep">&middot;</span>Chris called Jordan requesting he email over a photo to help identify a missing box.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Tyler Voss</span><span class="sep">&middot;</span>Brief greeting exchange between two parties.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Tyler Voss</span><span class="sep">&middot;</span>Brief greeting attempt followed by notification that the person at extension 760 is unavailable.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Casey Lindgren</span><span class="sep">&middot;</span>Customer Owen called regarding a defective cold-air intake (Order #2827) received with a broken clamp bracket. Possible shipping damage noted with a&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Incomplete call transcript &mdash; insufficient content to summarize.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Customer Jason called regarding a PitView data display purchased in January 2025 that is experiencing temperature sensor fault codes. The display shows erratic &hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Tyler Voss</span><span class="sep">&middot;</span>Summary unavailable.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+      </div>
+
+      <div class="topic-block">
+        <div class="topic-block-head"><h4>Product availability / quote / fitment</h4><span class="badge">8 calls</span></div>
+        <div class="drill-item"><span class="who">Derek Holt</span><span class="sep">&middot;</span>Customer called with a tire fitment question about installing 315/35 or 305/35 tires on a 2021 Ford Mustang GT with OEM 20x9.5 wheels (60mm o&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Tyler Voss</span><span class="sep">&middot;</span>Nate from Apex Fab Works called Jordan regarding stronger struts for a track-prepped roll cage build. The customer needs struts stronger than the 350&ndash;400 model Vantage currently stock&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Marcus provided Adam with a truck estimate. The Meridian tires originally requested are unavailable in the required size. Marcus recommended Meridian AS2&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Customer called inquiring about van suspension and interior build-out services. Blake, the representative, clarified that the shop handles suspension, wheels, and&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Derek Holt</span><span class="sep">&middot;</span>Customer called asking about coilover pricing for a 2023 Dodge Charger with a 2&ndash;2.5 inch drop. Sales representative Derek recommended Ignite brand and offered to prov&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Customer called regarding a 2002 green Tacoma being purchased from a dealership in Charlotte. The vehicle was previously inspected by the shop, and the cust&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Derek Holt</span><span class="sep">&middot;</span>Customer called asking to speak with a specific female staff member who was not available. Derek confirmed she will be back tomorrow, and the customer decided to v&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Casey Lindgren</span><span class="sep">&middot;</span>Customer Gregory called inquiring about product availability for item MER174500. The product is not currently in stock at the showroom, but sales representative C&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+      </div>
+
+      <div class="topic-block">
+        <div class="topic-block-head"><h4>General follow-up</h4><span class="badge">6 calls</span></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Call attempt failed &mdash; the dialed number is not in service.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Tyler Voss</span><span class="sep">&middot;</span>Call transcript is incomplete or inaccessible. Unable to summarize due to permission error or truncated content.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Marcus left a voicemail for Brett returning his call on Wednesday at 2:30 PM. Marcus is asking Brett to call him back at his convenience.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Tyler Voss</span><span class="sep">&middot;</span>Automated voicemail message from Summit Trackside Vehicles announcing updated business hours (8:00 a.m. to 6:00 p.m. Monday through Thursday) and providing menu options for ro&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Marcus Collins called Apex Motorsports dealer support regarding a warranty issue with a PitView data display. He left a voicemail requesting a cal&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Tyler Voss</span><span class="sep">&middot;</span>Automated call to Summit Rig Co. The call was not completed &mdash; it reached an automated menu system and was unable to connect to a representative.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+      </div>
+
+      <div class="topic-block">
+        <div class="topic-block-head"><h4>Appointment / pickup coordination</h4><span class="badge">5 calls</span></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Marcus found 4 U-bolts (2.5" inner diameter square, 1/2" rod, 13.5" long with 3" thread) for Chris at Denny's Collision. The U-bolts are missing nuts and washers but Marcus is giving&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Marcus Reyes</span><span class="sep">&middot;</span>Janine called regarding a 2016 Silverado with custom/aftermarket wheels that has a faulty TPMS light and non-functioning key fob&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Ray Kessler</span><span class="sep">&middot;</span>Ray called Bruce Baker to schedule a service appointment. The car has about 9,000&ndash;10,000 miles and needs an oil change before the season. Ray w&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Ray Kessler</span><span class="sep">&middot;</span>Ray called Dan to inform him that his car is ready for pickup. Dan confirmed he will pick it up today between 5:15 and 5:45 PM.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Ray Kessler</span><span class="sep">&middot;</span>Ray called to notify that Mario's service is completed. The service cost is $3,438.51. Jill from Airside agreed to arrange for a driver to pick up the&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+      </div>
+
+      <div class="topic-block">
+        <div class="topic-block-head"><h4>General routing / admin</h4><span class="badge">2 calls</span></div>
+        <div class="drill-item"><span class="who">Derek Holt</span><span class="sep">&middot;</span>Charles called but experienced poor reception during the call. Derek answered and they agreed to reconnect later when Charles has better signal.<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+        <div class="drill-item"><span class="who">Derek Holt</span><span class="sep">&middot;</span>Jon Ledgerton called to follow up on previous conversations with Marcus regarding the racing seat slider rail kit. The call was transferred to locate&hellip;<div class="drill-links"><a href="#">Open transcript</a><a href="#">Open Recording</a></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Sales Opportunities</p>
+
+      <div class="opp-card">
+        <h3>Marcus Reyes</h3>
+        <p>Chris called to discuss mounting a data-logger tray on his Mustang GT with a Vantage seat/harness system. Marcus recommended Vantage mounting trays (standard or extended sizes, $550&ndash;$600). They discussed powering the display with a dual-battery setup and a Volt Line DC-DC charger, leaving room for future data-acquisition expansion. Marcus emphasized motorsport-grade wiring components for vibration resistance. Chris is weighing a showroom visit against local install.</p>
+        <p>Next step: Chris to measure his mounting bay and call back with exact dimensions to determine tray size</p>
+        <span class="call-id">Call 220181517577</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="opp-card">
+        <h3>Marcus Reyes</h3>
+        <p>Doug Kenziger called to inquire about the Vantage full aero package for a Dodge Charger. Marcus covered the package assembly (front splitter, side skirts, rear diffuser, mount kit), shipping (~$1,500), total pricing (~$14,000 fully configured), and lead times (5&ndash;7 days typical, 4&ndash;5 weeks if out of stock). The rear wing doesn't fit Chargers due to trunk clearance, and the diffuser lighting needs extra wiring. Marcus recommended a $400 power board with a Volt Line switch panel to simplify install.</p>
+        <p>Next step: Doug to research Vantage aero package specifications and pricing further</p>
+        <span class="call-id">Call 220189464676</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="opp-card">
+        <h3>Marcus Reyes</h3>
+        <p>Seth Lawrence called to schedule a wheel alignment for his 2001 Dodge Ram 3500 dually. His mechanic did front-end suspension work and installed new tires but couldn't complete the alignment, and recommended Redline Performance Direct. Marcus booked Thursday the 27th at 8:30 AM for drop-off, with alignment work starting around 10:00 AM.</p>
+        <p>Next step: Schedule wheel alignment for Seth Lawrence's 2001 Dodge Ram 3500 dually on Thursday the 27th</p>
+        <span class="call-id">Call 220174541225</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="opp-card">
+        <h3>Marcus Reyes</h3>
+        <p>Customer called inquiring about aftermarket mirrors for a 2021 Jeep Wrangler Unlimited to use when doors are removed. Sales representative confirmed availability of generic mirror sets priced around $100 that drop into door hinges. Customer was satisfied with product and pricing for legal compliance purposes.</p>
+        <p>Next step: Customer to purchase generic mirror set (~$100) for door-off configuration</p>
+        <span class="call-id">Call 220199092777</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="opp-card">
+        <h3>Derek Holt</h3>
+        <p>Customer called inquiring about coilover pricing for a 2023 Dodge Charger. Marcus provided a quote of $3,800 (including tax) for a 2.5-inch Ignite coilover kit with full installation, alignment, and all components &mdash; shocks, springs, calibration module, track bar brackets, control arm brackets, bump stops, sway bar end links, and factory jack extension.</p>
+        <p>Next step: Customer to decide on proceeding with the 2.5-inch Ignite coilover install at the quoted $3,800</p>
+        <span class="call-id">Call 220196057211</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="opp-card">
+        <h3>Derek Holt</h3>
+        <p>Zach from Apex Motor Supply in California called to inquire about ordering a 24-volt Extreme Air Magnum compressor. He asked about second-day air shipping options. Derek confirmed the compressor ships from California and typically arrives within 1&ndash;2 days. Zach was satisfied with the timeline and proceeded with the order.</p>
+        <p>Next step: Process the 24-volt Extreme Air Magnum compressor order for Apex Motor Supply</p>
+        <span class="call-id">Call 220208003190</span>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Rep Coaching Cards</p>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Marcus Reyes</div><div class="coach-role">Sales</div></div><div class="coach-badges"><span class="badge">51 calls</span><span class="badge">3h 31m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">12 sales, 19 support, 11 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">31 / 16 / 4</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Watch for the handful of tougher calls and make sure concerns are acknowledged early.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Handles front-door traffic steadily without a sentiment problem spike.</p>
+        <div class="topic-tags"><span class="topic-tag">Call recording and quality assurance</span><span class="topic-tag">Customer satisfaction survey</span><span class="topic-tag">Parts and fitment installation policy</span><span class="topic-tag">Customer service call routing</span><span class="topic-tag">Liability and warranty concerns</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Derek Holt</div><div class="coach-role">Sales</div></div><div class="coach-badges"><span class="badge">32 calls</span><span class="badge">1h 48m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">10 sales, 11 support, 6 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">16 / 15 / 1</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Watch for the handful of tougher calls and make sure concerns are acknowledged early.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Handles front-door traffic steadily without a sentiment problem spike.</p>
+        <div class="topic-tags"><span class="topic-tag">Customer service call routing</span><span class="topic-tag">Liability and warranty concerns</span><span class="topic-tag">Call recording and quality assurance notice</span><span class="topic-tag">Order status inquiry</span><span class="topic-tag">Call recording and quality assurance</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Tyler Voss</div><div class="coach-role">Specialty Sales</div></div><div class="coach-badges"><span class="badge">13 calls</span><span class="badge">18m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">0 sales, 5 support, 0 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">2 / 10 / 1</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Watch for the handful of tougher calls and make sure concerns are acknowledged early.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Handles front-door traffic steadily without a sentiment problem spike.</p>
+        <div class="topic-tags"><span class="topic-tag">greeting</span><span class="topic-tag">Customer Service IVR</span><span class="topic-tag">Sales Inquiry</span><span class="topic-tag">Build Status Check</span><span class="topic-tag">Call Recording Notice</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Ray Kessler</div><div class="coach-role">Service</div></div><div class="coach-badges"><span class="badge">9 calls</span><span class="badge">20m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">1 sales, 2 support, 6 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">8 / 1 / 0</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Tighten follow-up calls so every update closes with owner, timing, and confirmation of the next step.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Good follow-through discipline. The call mix shows active loop-closing rather than passive waiting.</p>
+        <div class="topic-tags"><span class="topic-tag">Vehicle service completion</span><span class="topic-tag">Ball joint maintenance</span><span class="topic-tag">Grease fitting installation</span><span class="topic-tag">Control arm manufacturing</span><span class="topic-tag">Vehicle parts sourcing</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Casey Lindgren</div><div class="coach-role">Sales</div></div><div class="coach-badges"><span class="badge">6 calls</span><span class="badge">12m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">2 sales, 3 support, 1 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">3 / 2 / 1</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Watch for the handful of tougher calls and make sure concerns are acknowledged early.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Handles front-door traffic steadily without a sentiment problem spike.</p>
+        <div class="topic-tags"><span class="topic-tag">Product availability inquiry</span><span class="topic-tag">Item stock check</span><span class="topic-tag">Customer callback request</span><span class="topic-tag">Performance vehicle parts</span><span class="topic-tag">Company policies and procedures</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Nina Kowalski</div><div class="coach-role">Sales</div></div><div class="coach-badges"><span class="badge">1 call</span><span class="badge">0m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">0 sales, 0 support, 1 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">0 / 1 / 0</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Tighten follow-up calls so every update closes with owner, timing, and confirmation of the next step.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Good follow-through discipline. The call mix shows active loop-closing rather than passive waiting.</p>
+        <div class="topic-tags"><span class="topic-tag">Coilover installation</span><span class="topic-tag">Tire replacement</span><span class="topic-tag">Wheel change</span><span class="topic-tag">2022 Dodge Charger vehicle modification</span><span class="topic-tag">Follow-up on service quote</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+
+      <div class="coach-card">
+        <div class="coach-head"><div><div class="coach-name">Sales Queue</div><div class="coach-role">Sales</div></div><div class="coach-badges"><span class="badge">1 call</span><span class="badge">2m</span></div></div>
+        <div class="coach-grid">
+          <div class="coach-box"><div class="k">Call Mix</div><div class="v">0 sales, 1 support, 0 follow-up</div></div>
+          <div class="coach-box"><div class="k">Sentiment</div><div class="v">0 / 1 / 0</div></div>
+        </div>
+        <p class="coach-section-label">Coaching Focus</p><p class="coach-section-text">Protect time from getting consumed by service and routing traffic. Route low-value questions away when possible.</p>
+        <p class="coach-section-label">Recognition</p><p class="coach-section-text">Handles front-door traffic steadily without a sentiment problem spike.</p>
+        <div class="topic-tags"><span class="topic-tag">Customer service greeting and menu options</span><span class="topic-tag">Call recording and quality assurance notice</span><span class="topic-tag">No customer-supplied parts or tires policy</span><span class="topic-tag">Warranty and liability concerns</span><span class="topic-tag">Customer inquiry about suspension installation</span></div>
+        <div class="link-row"><a href="#">View in HubSpot</a><a href="#">Open Recording</a></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Coaching Themes</p>
+      <div class="theme-item">Close sales and follow-up calls with a concrete next step, named owner, and timing.</div>
+      <div class="theme-item">Route or deflect low-value order-status traffic faster so product and service reps keep time for higher-value work.</div>
+      <div class="theme-item">On service and logistics complaints, surface risk early and escalate before the customer has to repeat the problem.</div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+        <p class="eyebrow" style="margin:0;">Inbound Call Mix</p>
+        <span class="badge">81 calls</span>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Call Type</th><th>Calls</th><th>% of Calls</th><th>Total Time</th><th>% of Time</th><th>Avg Duration</th></tr></thead>
+          <tbody>
+            <tr><td>Technical support / install guidance</td><td class="tabular">46</td><td class="tabular">57%</td><td class="tabular">2h 49m</td><td class="tabular">58%</td><td class="tabular">4m</td></tr>
+            <tr><td>Order status / delivery questions</td><td class="tabular">16</td><td class="tabular">20%</td><td class="tabular">1h 10m</td><td class="tabular">24%</td><td class="tabular">4m</td></tr>
+            <tr><td>General support</td><td class="tabular">9</td><td class="tabular">11%</td><td class="tabular">19m</td><td class="tabular">6%</td><td class="tabular">2m</td></tr>
+            <tr><td>Product availability / quote / fitment</td><td class="tabular">7</td><td class="tabular">9%</td><td class="tabular">21m</td><td class="tabular">7%</td><td class="tabular">3m</td></tr>
+            <tr><td>General routing / admin</td><td class="tabular">2</td><td class="tabular">2%</td><td class="tabular">2m</td><td class="tabular">1%</td><td class="tabular">1m</td></tr>
+            <tr><td>Appointment / pickup coordination</td><td class="tabular">1</td><td class="tabular">1%</td><td class="tabular">11m</td><td class="tabular">4%</td><td class="tabular">11m</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+        <p class="eyebrow" style="margin:0;">Outbound Call Mix</p>
+        <span class="badge">32 calls</span>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Call Type</th><th>Calls</th><th>% of Calls</th><th>Total Time</th><th>% of Time</th><th>Avg Duration</th></tr></thead>
+          <tbody>
+            <tr><td>Order status / delivery questions</td><td class="tabular">11</td><td class="tabular">34%</td><td class="tabular">28m</td><td class="tabular">35%</td><td class="tabular">3m</td></tr>
+            <tr><td>Technical support / install guidance</td><td class="tabular">10</td><td class="tabular">31%</td><td class="tabular">30m</td><td class="tabular">38%</td><td class="tabular">3m</td></tr>
+            <tr><td>General follow-up</td><td class="tabular">6</td><td class="tabular">19%</td><td class="tabular">4m</td><td class="tabular">6%</td><td class="tabular">1m</td></tr>
+            <tr><td>Appointment / pickup coordination</td><td class="tabular">4</td><td class="tabular">12%</td><td class="tabular">12m</td><td class="tabular">15%</td><td class="tabular">3m</td></tr>
+            <tr><td>Product availability / quote / fitment</td><td class="tabular">1</td><td class="tabular">3%</td><td class="tabular">5m</td><td class="tabular">6%</td><td class="tabular">5m</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Sentiment Summary</p>
+      <div class="sentiment-grid">
+        <div class="sent-box pos"><div class="sent-num tabular">60</div><div class="sent-label">Positive</div><div class="sent-pct">53%</div></div>
+        <div class="sent-box neu"><div class="sent-num tabular">46</div><div class="sent-label">Neutral</div><div class="sent-pct">41%</div></div>
+        <div class="sent-box neg"><div class="sent-num tabular">7</div><div class="sent-label">Negative</div><div class="sent-pct">6%</div></div>
+      </div>
+    </div>
+
+    <div class="footer-imperson">
+      You are currently working on behalf of <em>Alicia Moreno &lt;alicia@redlineperformance.com&gt;</em>.
+      <div class="links"><a href="#">hide warning</a><a href="#">stop impersonating</a></div>
+      <div class="footer-credit">Sample report &middot; generated with Headframe, a Tromml product</div>
+    </div>
+
+  </div>
+  <!-- ======================= END DAILY PANEL ======================= -->
+
+</div>
