@@ -138,8 +138,8 @@
   <section class="hero">
     <div class="wrap">
       <p class="eyebrow">Minecart for Advance Auto Parts &middot; Addendum to the July pilot briefing</p>
-      <h1>We ran one store's notes through Minecart. Seven accounts came back under threat.</h1>
-      <p class="lede">Two weeks of CAM notes, roughly 250 in all, from a single store. Seven accounts flagged with active competitive threats and availability losses, about $56,000 a month in spend, and none of it visible in sales reporting yet. This page shows what we found and what it makes possible.</p>
+      <h1>One store is leaving ~$80,000 a month on the table. Here is the case for going and getting it.</h1>
+      <p class="lede">We analyzed one store's CAM notes and sales history. Eight accounts, roughly $80,000 a month in Pro spend, are being actively worked by AutoZone, O'Reilly, and NAPA, and none of it shows in sales reporting yet. This is the business case: the ROI, the evidence, and what changes with the pilot running.</p>
     </div>
   </section>
 
@@ -167,6 +167,14 @@
   .memo{display:grid;grid-template-columns:64px 1fr;gap:6px 14px;border:1px solid var(--tromml-line);border-radius:12px;padding:18px 22px;margin:6px 0 26px;font-size:15px;}
   .memo dt{font-weight:700;color:var(--tromml-navy);text-transform:uppercase;font-size:12px;letter-spacing:.06em;padding-top:2px;}
   .memo dd{margin:0;color:var(--tromml-ink);}
+  .tiles{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:18px 0 8px;}
+  @media(max-width:600px){.tiles{grid-template-columns:1fr;}}
+  .tile{background:var(--tromml-sand-tint);border-radius:12px;padding:16px 18px;}
+  .tile .big{font-size:24px;font-weight:700;color:var(--tromml-navy);margin:0 0 4px;}
+  .tile p{font-size:13.5px;margin:0;color:var(--tromml-slate);line-height:1.45;}
+  .sens{margin:14px 0 4px;border-top:1px solid var(--tromml-line);}
+  .sens .row{display:flex;justify-content:space-between;gap:16px;padding:9px 2px;border-bottom:1px solid var(--tromml-line);font-size:15px;}
+  .sens .row span:last-child{white-space:nowrap;font-weight:600;color:var(--tromml-navy);}
   .table-scroll{overflow-x:auto;margin:14px 0 4px;}
   table.data{width:100%;border-collapse:collapse;font-size:14px;min-width:560px;}
   table.data th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--tromml-slate);border-bottom:2px solid var(--tromml-navy);padding:8px 10px 6px;}
@@ -176,10 +184,15 @@
   table.data tr.total td{font-weight:700;color:var(--tromml-navy);border-bottom:none;}
   table.data tr.total td.num{color:var(--tromml-copper);}
   .method{font-size:13px;color:var(--tromml-slate);margin:6px 0 18px;}
-  .callout{background:var(--tromml-sand-tint);border-radius:12px;padding:18px 24px;margin:22px 0;}
-  .callout h3{margin:0 0 8px;}
-  .callout p{margin:0 0 10px;font-size:15px;}
-  .callout p:last-child{margin-bottom:0;}
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 8px;}
+  @media(max-width:600px){.ba{grid-template-columns:1fr;}}
+  .ba .col{border-radius:12px;padding:18px 20px;}
+  .ba .today{background:#f3f2f7;border:1px solid var(--tromml-line);}
+  .ba .after{background:var(--tromml-sand-tint);border:1px solid var(--tromml-sand);}
+  .ba h4{margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--tromml-slate);}
+  .ba .after h4{color:var(--tromml-copper);}
+  .ba ol{margin:0;padding-left:18px;}
+  .ba ol li{font-size:14.5px;margin-bottom:8px;padding-left:2px;}
   .pilot-box{border:2px solid var(--tromml-copper);border-radius:14px;padding:22px 28px;margin:26px 0;}
   .pilot-box .tag{display:inline-block;background:var(--tromml-copper);color:#fff;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:4px 12px;border-radius:999px;margin:0 0 8px;}
   .pilot-box h2{margin-top:0 !important;}
@@ -189,10 +202,6 @@
   .stack .row.total span:last-child{color:var(--tromml-copper);}
   .stack .row.total{font-weight:700;color:var(--tromml-navy);}
   .fine{font-size:14px;color:var(--tromml-slate);margin-top:8px;}
-  .steps{margin:0 0 20px;padding:0;list-style:none;counter-reset:step;}
-  .steps li{position:relative;padding:0 0 14px 44px;margin:0;font-size:16px;counter-increment:step;}
-  .steps li::before{content:counter(step);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--tromml-navy);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;mask:none;-webkit-mask:none;}
-  .steps strong{color:var(--tromml-navy);}
   .ask-list li strong{color:var(--tromml-navy);}
   .provenance{border-top:1px solid var(--tromml-line);margin-top:36px;padding-top:16px;font-size:13px;color:var(--tromml-slate);}
 </style>
@@ -200,19 +209,31 @@
 <dl class="memo">
   <dt>From</dt><dd>Lauren McCullough, Harry Park (Tromml)</dd>
   <dt>To</dt><dd>Anthony Sarlanis, Mindy Bennett, Brian Quinlan, Mark Zuanich (Advance Auto Parts)</dd>
-  <dt>Re</dt><dd>Findings from the one-store analysis of CAM notes and sales data, and the business case for the $25,000 Minecart pilot proposed in July</dd>
+  <dt>Re</dt><dd>The revenue case for the $25,000 Minecart pilot proposed in July, built from one store's own CAM notes and sales data</dd>
 </dl>
 
-<h2>What you asked us to show</h2>
-<p>Two things. First, a way to quantify the Pro desk: what CPPs actually handle, what they surface, and the infrastructure to build a scorecard around it. Second, your team was plain about the bar for any new initiative: everything has to link back to revenue.</p>
-<p>This page answers the second, using your own data. The pilot builds the first.</p>
+<h2>The bar you set</h2>
+<p>Your team was plain about it: everything has to link back to revenue. So this page is built backwards from that bar. The ROI first, from your own data. Then the evidence. Then what one of these threats looks like today versus with the pilot running.</p>
 
-<h2>What we did</h2>
-<p>You sent us one store's Salesforce export: CAM notes and sales history, May through August. We loaded it into Minecart and processed it exactly the way the pilot would. For the threat scan below, we used the most recent two weeks of notes, August 12 to 25, roughly 250 notes in all.</p>
-<p>No integration work, no IT time, no cost to Advance. Everything on this page comes from that data, and the walkthrough shows the same accounts live in the product.</p>
+<h2>The ROI, from one store</h2>
+<p>We analyzed one store's Salesforce export: CAM notes and sales history, May through August. In the notes from August 11 to 25 alone, eight accounts surfaced with active competitive threats and availability losses.</p>
+<div class="tiles">
+  <div class="tile"><p class="big">~$80,600&thinsp;/&thinsp;mo</p><p>Observed spend across the eight threatened accounts. Money being actively worked by AutoZone, O'Reilly, and NAPA right now.</p></div>
+  <div class="tile"><p class="big">~$967,000&thinsp;/&thinsp;yr</p><p>The same book, annualized. None of it shows in sales reporting yet. That is what early detection means.</p></div>
+  <div class="tile"><p class="big">$25,000</p><p>The pilot, once. It watches 10 to 12 stores, not one.</p></div>
+</div>
+<p>The only assumption in this math is the save rate: when you know about a threat in time, how much of the loss you prevent. That number is yours, and we will ask you for it in this meeting. Here is what the pilot returns at rates you can pick from:</p>
+<div class="sens">
+  <div class="row"><span>Save 5% of the threatened book at this one store</span><span>~$48,000&thinsp;/&thinsp;yr &middot; pilot covered ~2x</span></div>
+  <div class="row"><span>Save 15%</span><span>~$145,000&thinsp;/&thinsp;yr &middot; ~6x</span></div>
+  <div class="row"><span>Save 25%</span><span>~$242,000&thinsp;/&thinsp;yr &middot; ~10x</span></div>
+</div>
+<p class="fine">At a 15% save rate, the recovered revenue inside the pilot's own 60 days (~$24,000) covers the pilot's cost. From one store. The pilot watches ten to twelve.</p>
+<p>Or take the simplest version, no percentages at all: Troutman Auto Care buys roughly $25,000 a month. Keep that one account and the pilot is covered nearly twelve times over.</p>
+<p>The revenue link runs through three levers: churn caught before it shows up in sales data, account value defended while the account is still buying, and CAM and Pro desk time pointed at the accounts that need it. And the same processing quantifies the desk itself, which is the infrastructure a CPP scorecard needs.</p>
 
-<h2>What we found</h2>
-<p>Out of roughly 250 notes, seven flagged accounts where money is moving to a competitor right now. That is the small sliver that needed attention above the store, and it was sitting in notes nobody upstream reads.</p>
+<h2>Where the money is leaking</h2>
+<p>Out of roughly 250 notes in two weeks, seven flagged accounts where money is moving to a competitor. That is the small sliver that needed attention above the store, and it was sitting in notes nobody upstream reads.</p>
 
 <h3>Active losses: money that already walked</h3>
 <p>All from CAM John Hunter's own notes. These needed the GM and the Pro desk the same day, and merchandising for the stock-outs.</p>
@@ -234,45 +255,52 @@
   <tr><th>Account</th><th>Note</th><th>The threat, in the note's words</th><th class="num">Est. monthly</th><th class="num">Last 4 wks</th></tr>
   <tr><td>Black's Tire #72</td><td>Aug 18</td><td class="q">&ldquo;Black's has been pushing them more to use NAPA&rdquo; (the local shop prefers Advance)</td><td class="num">~$8,600</td><td class="num">$7,003</td></tr>
   <tr><td>Firehouse Auto Care</td><td>Aug 18</td><td class="q">NAPA AutoCare Center member, &ldquo;they have been getting better on pricing&rdquo;</td><td class="num">~$3,000</td><td class="num">$1,457</td></tr>
-  <tr class="total"><td colspan="3">Seven accounts, flagged in fourteen days of notes</td><td class="num">~$56,000&thinsp;/&thinsp;mo</td><td class="num">$42,221</td></tr>
+  <tr class="total"><td colspan="3">Seven accounts from the Aug 12&ndash;25 scan, plus Troutman Auto Care (~$24,600&thinsp;/&thinsp;mo), flagged Aug 11</td><td class="num">~$80,600&thinsp;/&thinsp;mo</td><td class="num"></td></tr>
 </table>
 </div>
-<p class="method">Estimated monthly = net purchases May 1 to Aug 17 &divide; 3.55 months, net of returns. &ldquo;Last 4 wks&rdquo; is actual purchases. Quotes are verbatim from the CAM notes, lightly trimmed.</p>
+<p class="method">Estimated monthly = net purchases May 1 to Aug 17 &divide; 3.55 months, net of returns. &ldquo;Last 4 wks&rdquo; is actual purchases. Quotes are verbatim from the CAM notes, lightly trimmed. Troutman: $87,000 in purchases over the May&ndash;August window; its threat note is dated one day before the two-week scan.</p>
 <p>The structured version of the Black's note can also answer a question the note alone cannot: is the NAPA push happening at every Black's location you serve? Once notes become structured signal, that becomes a one-minute question across all 4,500 stores.</p>
 
-<div class="callout">
-  <h3>One day outside the scan window, and too big to leave out</h3>
-  <p><em>&ldquo;AutoZone has been by offering 15% rebate for every thousand dollars spent.&rdquo;</em><br><span style="font-size:14px;color:var(--tromml-slate);">Troutman Auto Care, CAM note, August 11</span></p>
-  <p>Troutman bought $87,000 from this store over the May to August window, roughly $25,000 a month. The same week this note was written, the shop bought $11,000. Minecart's processing already generated the follow-up on its own: flag the AutoZone threat and get it in front of the people who can respond.</p>
+<h2>Before and after: the Troutman note</h2>
+<p><em>&ldquo;AutoZone has been by offering 15% rebate for every thousand dollars spent.&rdquo;</em> CAM note, Troutman Auto Care, August 11. The same week, the shop bought $11,000.</p>
+<div class="ba">
+  <div class="col today">
+    <h4>Today</h4>
+    <ol>
+      <li>John writes the note. It lands in Salesforce with the day's others.</li>
+      <li>It reaches store ops as a raw daily note export. The GM has no easy way to spot it; the Pro desk, on the phone with shops like this all day, never hears it.</li>
+      <li>Nothing routes it to the district or to anyone who can answer a 15% rebate.</li>
+      <li>The response clock starts when the sales line finally drops, months after AutoZone's did.</li>
+    </ol>
+  </div>
+  <div class="col after">
+    <h4>With the pilot running</h4>
+    <ol>
+      <li>The same note is flagged the night it is written. Minecart generated this exact follow-up in our analysis, on its own.</li>
+      <li>Next morning it is in the GM's and CPP's brief, with the account history one tap away. John's follow-up is on his list.</li>
+      <li>The district rollup asks the bigger question: where else is AutoZone running this rebate?</li>
+      <li>The CPP hears a price grumble on a call that week, replies to the brief, and it is logged. John sees it before his next pre-flight. The response starts while the shop is still buying $11,000 a week.</li>
+    </ol>
+  </div>
 </div>
 
-<h2>Why nobody sees this in time</h2>
-<p>None of this is a note-taking problem. John's notes are excellent, and they are timely the moment a visit happens. The gaps are between visits and above the note.</p>
+<h2>Why this stays invisible today</h2>
 <ul>
-  <li><strong>Threat discovery arrives in visit-shaped bursts.</strong> Four of the seven surfaced on a single day, August 18, because that is the day John swept his territory. A threat that lands the day after his stop can wait two weeks to be seen.</li>
+  <li><strong>Threat discovery arrives in visit-shaped bursts.</strong> Four of the seven scan-window threats surfaced on a single day, August 18, because that is the day John swept his territory. A threat that lands the day after his stop can wait two weeks to be seen. John's notes are excellent; the gap is between visits and above the note.</li>
   <li><strong>The phone channel is uncaptured.</strong> Between visits, the Pro desk talks with these same accounts every day, roughly 18 calls a day, and none of it is recorded anywhere the CAM or the GM can see.</li>
-  <li><strong>None of this is a sales decline yet.</strong> These accounts still look healthy in reporting. That is the point of early detection: by the time the drop shows up in sales data, the customer has already moved their business.</li>
+  <li><strong>None of this is a sales decline yet.</strong> These accounts still look healthy in reporting. By the time the drop shows up in sales data, the customer has already moved their business.</li>
 </ul>
-<p>You have invested in fixing this communication gap before, with Salesforce seats for the store side. It became, in your team's own words, a very expensive tracking mechanism, and the seats were pulled. The pilot restores the same flow without the seats:</p>
-<ol class="steps">
-  <li><strong>Role-tuned reports.</strong> The GM and the CPP each get a daily brief of what needs their attention, in the email they already read. The CAM gets the store's answers back before the next pre-flight.</li>
-  <li><strong>One-tap history.</strong> Any account in the report opens to its full story: prior notes, open issues, what changed.</li>
-  <li><strong>Reply to log.</strong> Answering the report, or copying Minecart on an email to the CAM, logs the note to the account. No form, no new habit.</li>
-  <li><strong>The pre-flight, kept.</strong> Record the morning huddle as it already happens and the accounts discussed get updated on their own.</li>
-</ol>
+<p>You have invested in fixing this before, with Salesforce seats for the store side. It became, in your team's own words, a very expensive tracking mechanism, and the seats were pulled. The pilot restores the flow without seats: role-tuned daily reports in the email people already read, one-tap account history, reply-to-log (answering the report, or copying Minecart on an email to the CAM, logs the note to the account), and the morning pre-flight, recorded, updating the accounts it mentions. Nobody changes how they work.</p>
 <p class="fine">The walkthrough also includes one simulated Pro-desk call, to show what capture from the phone channel would add. It is labeled as simulated. Everything else on this page is your data.</p>
 
-<h2>What early detection is worth</h2>
-<p>We are not going to invent your ROI. The numbers that matter are yours, and we will ask for them in this meeting:</p>
+<h2>The numbers we will ask you for</h2>
+<p>Three questions in this meeting, and your answers complete the ROI above with your numbers instead of ours:</p>
 <ul class="ask-list">
   <li><strong>What is it worth to know an account is under threat before the sales drop shows up?</strong></li>
   <li><strong>When you do know in time, as with the AutoZone rebate, how much of the loss can you typically prevent?</strong></li>
   <li><strong>How many of your stores would you guess look like this one?</strong></li>
 </ul>
-<p>The arithmetic from there is short: observed threatened spend per store per month, times the share you can save, times the stores that look like this one, against a $25,000 pilot. One computed line we will stand behind: if early detection helps you keep one Troutman-sized account, the pilot has covered its cost many times over.</p>
-<p>And the honest hedge: one store and two weeks of notes cannot prove a rate. Measuring that rate, at scale, is exactly what the pilot is for.</p>
-<p>The revenue link runs through three levers, in this order: churn caught early, account value defended (box oil, availability, and rebates all attack share of wallet before they attack the account), and CAM and CPP time pointed at the accounts that need it.</p>
-<p>The same processing also quantifies the desk itself: what CPPs handle, what they surface, what gets resolved. That is the infrastructure a CPP scorecard needs, and the pilot tunes it with your team.</p>
+<p>One store and two weeks of notes cannot prove a save rate. Measuring that rate, at scale, is exactly what the pilot is for.</p>
 
 <div class="pilot-box">
   <span class="tag">The decision</span>
@@ -307,7 +335,7 @@
 </ol>
 <p>The export lands this week, and first reports are flowing before Labor Day.</p>
 
-<p class="provenance">All quotes are verbatim from Advance's own Salesforce CAM notes, lightly trimmed for filler. Estimated monthly spend = net purchases May 1 to Aug 17 &divide; 3.55 months, net of returns; &ldquo;last 4 weeks&rdquo; is actual purchases. The one simulated example in the walkthrough is labeled as such. This page contains no Advance data beyond what Advance provided for this analysis.</p>
+<p class="provenance">All quotes are verbatim from Advance's own Salesforce CAM notes, lightly trimmed for filler. Estimated monthly spend = net purchases May 1 to Aug 17 &divide; 3.55 months, net of returns; &ldquo;last 4 weeks&rdquo; is actual purchases. Annualized figures are the observed monthly book &times; 12 and assume threats persist at the observed level; save-rate scenarios are illustrative and marked as such. The one simulated example in the walkthrough is labeled simulated. This page contains no Advance data beyond what Advance provided for this analysis.</p>
 
     </div>
   </main>
@@ -315,7 +343,7 @@
   <!-- CTA BLOCK -->
   <section class="cta-block">
     <div class="wrap">
-      <h2>Seven threats in two weeks at one store. The pilot tells you what that number is at scale.</h2>
+      <h2>~$80,000 a month under threat at one store. The pilot tells you what that number is at scale.</h2>
       <p>Questions before or after the meeting: lauren@tromml.com, or grab time below.</p>
       <a class="btn" href="https://meetings.hubspot.com/lauren756/tromml-intro-call">Talk to Lauren</a>
     </div>
