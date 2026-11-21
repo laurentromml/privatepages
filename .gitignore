@@ -2,9 +2,6 @@
 *
 .*
 
-# Track only the website project
-!auroraflow-website/
-!auroraflow-website/**
 !README.md
 !.gitignore
 
